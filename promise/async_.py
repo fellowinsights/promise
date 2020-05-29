@@ -38,12 +38,6 @@ class Async(local):
         self.normal_queue.append(promise)
         self.queue_tick(promise.scheduler)
 
-    def invoke_later(self, fn):
-        if self.trampoline_enabled:
-            self._async_invoke_later(fn, scheduler)
-        else:
-            scheduler.call_later(0.1, fn)
-
     def invoke(self, fn, scheduler):
         # type: (Callable, Any) -> None
         if self.trampoline_enabled:

@@ -69,3 +69,5 @@ target/
 /.pyre
 /.mypy_cache
 /type_info.json
+
+/promise/**/*.c

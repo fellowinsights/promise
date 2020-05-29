@@ -1,6 +1,13 @@
 import sys
 from setuptools import setup, find_packages
 
+cython_setup_args = {}
+try:
+    from Cython.Build import cythonize
+    cython_setup_args = dict(ext_modules=cythonize('promise/**.py', compiler_directives={'language_level' : "3"}))
+except ImportError:
+    pass
+
 if sys.version_info[0] < 3:
     import __builtin__ as builtins
 else:
@@ -61,4 +68,5 @@ setup(
         "six"
     ],
     tests_require=tests_require,
+    **cython_setup_args,
 )

@@ -20,7 +20,7 @@ class deprecated(object):
         self.name = name
 
     def __call__(self, cls_or_func):
-        if inspect.isfunction(cls_or_func):
+        if callable(cls_or_func):
             fmt = "Call to deprecated function or method {name} ({reason})."
 
         elif inspect.isclass(cls_or_func):

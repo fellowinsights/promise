@@ -90,11 +90,7 @@ def try_catch(handler, *args, **kwargs):
         return (None, (e, tb))
 
 
-T = TypeVar("T")
-S = TypeVar("S", contravariant=True)
-
-
-class Promise(Generic[T]):
+class Promise():
     """
     This is the Promise class that complies
     Promises/A+ specification.
