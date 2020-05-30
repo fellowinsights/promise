@@ -526,10 +526,13 @@ cdef class Promise:
         return Promise.all(m.values()).then(handle_success)
 
 
-cpdef bint is_thenable(object obj):
+cdef bint is_thenable(object obj):
+    cdef object typ = type(obj)
     if isinstance(obj, Promise):
         return True
-    elif iscoroutine(obj) or is_future_like(obj.__class__):
+    elif typ in (int, str, bool, float, complex, tuple, list, dict, bytes):
+        return False
+    elif iscoroutine(obj) or is_future_like(typ):
         return True
     else:
         return False
@@ -540,7 +543,7 @@ cdef Promise _try_convert_to_promise(object obj):
     if isinstance(obj, Promise):
         return obj
 
-    type_ = obj.__class__
+    type_ = type(obj)
     if iscoroutine(obj):
         obj = ensure_future(obj)
         type_ = obj.__class__
@@ -557,9 +560,6 @@ cdef Promise _try_convert_to_promise(object obj):
         return promise
 
     return obj
-
-cpdef Promise try_convert_to_promise(object obj):
-    return _try_convert_to_promise(obj)
 
 
 cdef bint is_future_like(object type_):

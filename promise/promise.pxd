@@ -56,5 +56,5 @@ cdef class Promise:
     cpdef list then_all(self, handlers=*)
 
 
-cpdef bint is_thenable(object obj)
-cpdef Promise try_convert_to_promise(object obj)
+cdef bint is_thenable(object obj)
+cdef Promise _try_convert_to_promise(object obj)

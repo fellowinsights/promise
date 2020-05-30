@@ -2,7 +2,7 @@
 
 cimport cython
 
-from .promise cimport Promise, is_thenable, try_convert_to_promise
+from .promise cimport Promise, is_thenable, _try_convert_to_promise
 
 
 @cython.final
@@ -33,7 +33,7 @@ cdef class PromiseList:
         self._values = None
 
         if is_thenable(values):
-            self._init_promise(try_convert_to_promise(values)._target())
+            self._init_promise(_try_convert_to_promise(values)._target())
         else:
             self._init(values)
 
@@ -66,7 +66,7 @@ cdef class PromiseList:
         for i in range(self._length):
             val = values[i]
             if is_thenable(val):
-                maybe_promise = try_convert_to_promise(val)._target()
+                maybe_promise = _try_convert_to_promise(val)._target()
                 if maybe_promise.is_pending():
                     maybe_promise._add_callbacks(
                         PartialFulfilled(self, i),
