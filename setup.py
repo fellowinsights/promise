@@ -7,7 +7,7 @@ try:
 
     cython_setup_args = dict(
         ext_modules=cythonize(
-            ["promise/**.py", "promise/**.pyx"],
+            ["promise/**/*.py", "promise/**/*.pyx"],
             compiler_directives={"language_level": "3"},
         )
     )

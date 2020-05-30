@@ -85,7 +85,7 @@ cdef class Promise:
     __await__ = __iter__
 
     cdef void _resolve_callback(self, object value):
-        cdef int len
+        cdef int len, i
 
         if value is self:
             self._reject_callback(TypeError("Promise is self"))
@@ -171,6 +171,7 @@ cdef class Promise:
 
     cdef void _fulfill_promises(self, int length, object value):
         cdef Promise promise
+        cdef int i
 
         for i in range(1, length):
             handler = self._fulfillment_handlers[i]
@@ -180,6 +181,7 @@ cdef class Promise:
 
     cdef void _reject_promises(self, int length, Exception reason):
         cdef Promise promise
+        cdef int i
 
         for i in range(1, length):
             handler = self._rejection_handlers[i]
@@ -402,10 +404,14 @@ cdef class Promise:
         promise._is_final = True
 
     cpdef void done_all(self, handlers=None):
-        if not handlers:
+        cdef int i
+        cdef list handler_list = list(handlers)
+
+        if not handler_list:
             return
 
-        for handler in handlers:
+        for i in range(len(handler_list)):
+            handler = handler_list[i]
             if isinstance(handler, tuple):
                 s, f = handler
                 self.done(s, f)
@@ -418,12 +424,16 @@ cdef class Promise:
                 self.done(handler)
 
     cpdef list then_all(self, handlers=None):
-        if not handlers:
+        cdef int i
+        cdef list handler_list = list(handlers)
+
+        if not handler_list:
             return []
 
         cdef list promises = []
 
-        for handler in list(handlers):
+        for i in range(len(handler_list)):
+            handler = handler_list[i]
             if isinstance(handler, tuple):
                 s, f = handler
                 promises.append(self.then(s, f))
