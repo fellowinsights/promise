@@ -1,13 +1,10 @@
 from asyncio import Future
 
+from .schedulers cimport SchedulerFn, Scheduler
+
 
 cdef enum State:
     PENDING, REJECTED, FULFILLED
-
-
-cdef class PartialSettlePromise:
-    cdef Promise target, promise
-    cdef object handler, value, traceback
 
 
 cdef class Promise:
@@ -21,7 +18,7 @@ cdef class Promise:
     cdef Promise _promise0
     cdef object _future, _fulfillment_handler0, _rejection_handler0, _scheduler
 
-    cpdef object get_scheduler(self)
+    cpdef Scheduler get_scheduler(self)
     cpdef object get_future(self)
 
     cdef void _resolve_callback(self, object value)
@@ -41,8 +38,8 @@ cdef class Promise:
     cpdef Promise _target(self)
     cdef Promise _followee(self)
     cdef void _set_followee(self, Promise promise)
-    cpdef void _settle_promises(self)
-    cdef _resolve_from_executor(self, executor)
+    cdef public void _settle_promises(self)
+    cdef void _resolve_from_executor(self, executor)
     cdef void _wait(self, object timeout=*)
     cpdef object get(self, object timeout=*)
     cpdef object _target_settled_value(self, bint raise_=*)
@@ -59,5 +56,5 @@ cdef class Promise:
     cpdef list then_all(self, handlers=*)
 
 
-cpdef public bint is_thenable(object obj)
-cpdef public Promise try_convert_to_promise(object obj)
+cpdef bint is_thenable(object obj)
+cpdef Promise try_convert_to_promise(object obj)

@@ -1,10 +1,13 @@
+cimport cython
+
 from ..promise cimport Promise
+from . cimport Scheduler, SchedulerFn
 
 
 cdef class SetEvent:
     cdef object event
 
 
-cdef class ImmediateScheduler:
-    cpdef void call(self, fn)
-    cpdef int wait(self, Promise promise, timeout=*) except -1
+@cython.final
+cdef class ImmediateScheduler(Scheduler):
+    pass

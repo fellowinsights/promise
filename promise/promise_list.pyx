@@ -1,6 +1,11 @@
+# cython: profile=True
+
+cimport cython
+
 from .promise cimport Promise, is_thenable, try_convert_to_promise
 
 
+@cython.final
 cdef class PartialFulfilled:
     def __init__(self, PromiseList promise_list, int i):
         self.promise_list = promise_list
@@ -10,6 +15,7 @@ cdef class PartialFulfilled:
         return self.promise_list._promise_fulfilled(value, self.i)
 
 
+@cython.final
 cdef class PartialRejected:
     def __init__(self, PromiseList promise_list, Promise promise):
         self.promise_list = promise_list
@@ -19,6 +25,7 @@ cdef class PartialRejected:
         return self.promise_list._promise_rejected(reason, self.promise)
 
 
+@cython.final
 cdef class PromiseList:
     def __init__(self, values):
         self.promise = Promise()

@@ -1,18 +1,23 @@
+# cython: profile=True
+
+cimport cython
+
 from asyncio import Future, ensure_future
 from functools import wraps
 from inspect import iscoroutine
 from sys import exc_info
 
-from .async_ import Async
-from .promise_list import PromiseList
-from .schedulers.immediate import ImmediateScheduler
+from .async_ cimport Async
+from .promise_list cimport PromiseList
+from .schedulers cimport Scheduler, SchedulerFn
+from .schedulers.immediate cimport ImmediateScheduler
 
 
 cdef int MAX_LENGTH = 0xFFFF | 0
 DEFAULT_TIMEOUT = None
 
-async_instance = Async()
-default_scheduler = ImmediateScheduler()
+cdef Async async_instance = Async()
+cdef Scheduler default_scheduler = ImmediateScheduler()
 
 
 def get_default_scheduler():
@@ -32,7 +37,11 @@ def try_catch(handler, *args, **kwargs):
         return (None, (e, tb))
 
 
-cdef class PartialSettlePromise:
+@cython.final
+cdef class PartialSettlePromise(SchedulerFn):
+    cdef Promise target, promise
+    cdef object handler, value, traceback
+
     def __init__(self, Promise target, Promise promise, handler, value, traceback):
         self.target = target
         self.promise = promise
@@ -40,8 +49,8 @@ cdef class PartialSettlePromise:
         self.value = value
         self.traceback = traceback
 
-    def __call__(self):
-        return self.target._settle_promise(
+    cdef void call(self) except *:
+        self.target._settle_promise(
             self.promise,
             self.handler,
             self.value,
@@ -49,6 +58,17 @@ cdef class PartialSettlePromise:
         )
 
 
+# @cython.final
+# cdef class SettlePromisesFn:
+#     cdef Promise this
+# 
+#     def __init__(self, Promise this):
+#         self.this = this
+# 
+#     def __call__(
+
+
+@cython.final
 cdef class Promise:
     def __init__(self, executor=None, scheduler=None):
         self._state = State.PENDING
@@ -70,7 +90,7 @@ cdef class Promise:
         if executor is not None:
             self._resolve_from_executor(executor)
 
-    cpdef object get_scheduler(self):
+    cpdef Scheduler get_scheduler(self):
         return self._scheduler or default_scheduler
 
     cpdef object get_future(self):
@@ -94,7 +114,7 @@ cdef class Promise:
             self._fulfill(value)
             return
 
-        promise = _try_convert_to_promise(value)._target()
+        cdef Promise promise = _try_convert_to_promise(value)._target()
         if promise == self:
             self._reject(TypeError("Promise is self"))
             return
@@ -285,7 +305,7 @@ cdef class Promise:
         assert not isinstance(self._rejection_handler0, Promise)
         self._rejection_handler0 = promise
 
-    cpdef void _settle_promises(self):
+    cdef public void _settle_promises(self):
         cdef int length = self._length
         if length > 0:
             if self._state == State.REJECTED:
@@ -300,7 +320,7 @@ cdef class Promise:
 
             self._length = 0
 
-    cdef _resolve_from_executor(self, executor):
+    cdef void _resolve_from_executor(self, executor):
         def resolve(value):
             self._resolve_callback(value)
 
@@ -447,7 +467,7 @@ cdef class Promise:
         return promises
 
     @staticmethod
-    def reject(reason: Exception) -> "Promise":
+    def reject(reason: Exception) -> Promise:
         ret = Promise()
         ret._reject_callback(reason)
         return ret
@@ -455,7 +475,7 @@ cdef class Promise:
     rejected = reject
 
     @staticmethod
-    def resolve(obj) -> "Promise":
+    def resolve(obj) -> Promise:
         if not is_thenable(obj):
             ret = Promise()
             ret._state = State.FULFILLED
@@ -490,7 +510,7 @@ cdef class Promise:
         return wrapper
 
     @staticmethod
-    def all(promises) -> "Promise":
+    def all(promises) -> Promise:
         return PromiseList(promises).promise
 
     @staticmethod

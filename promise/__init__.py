@@ -20,19 +20,11 @@ if not __SETUP__:
         promise_for_dict,
         promisify,
         is_thenable,
-        async_instance,
-        get_default_scheduler,
-        set_default_scheduler,
     )
-    from .schedulers.immediate import ImmediateScheduler
 
     __all__ = [
         "Promise",
         "promise_for_dict",
         "promisify",
         "is_thenable",
-        "async_instance",
-        "get_default_scheduler",
-        "set_default_scheduler",
-        "ImmediateScheduler",
     ]

@@ -1,8 +1,12 @@
 # cython: profile=True
+
+cimport cython
+
 from threading import Event
 from cpython.exc cimport PyErr_SetString
 
 from ..promise cimport Promise
+from . cimport Scheduler, SchedulerFn
 
 
 cdef class SetEvent:
@@ -13,14 +17,15 @@ cdef class SetEvent:
         self.event.set()
 
 
-cdef class ImmediateScheduler:
-    cpdef void call(self, fn):
+@cython.final
+cdef class ImmediateScheduler(Scheduler):
+    cdef void call(self, SchedulerFn fn):
         try:
-            fn()
+            fn.call()
         except:
             pass
 
-    cpdef int wait(self, Promise promise, timeout=None) except -1:
+    cdef int wait(self, Promise promise, timeout=None) except -1:
         e = Event()
         on_resolve_or_reject = SetEvent(e)
         promise._then(on_resolve_or_reject, on_resolve_or_reject)
