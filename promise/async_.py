@@ -36,7 +36,7 @@ class Async(local):
     def _async_settle_promise(self, promise):
         # type: (Promise) -> None
         self.normal_queue.append(promise)
-        self.queue_tick(promise.scheduler)
+        self.queue_tick(promise.get_scheduler())
 
     def invoke(self, fn, scheduler):
         # type: (Callable, Any) -> None
@@ -50,7 +50,7 @@ class Async(local):
         if self.trampoline_enabled:
             self._async_settle_promise(promise)
         else:
-            promise.scheduler.call(promise._settle_promises)
+            promise.get_scheduler().call(promise._settle_promises)
 
     def throw_later(self, reason, scheduler):
         # type: (Exception, Any) -> None

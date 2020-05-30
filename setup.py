@@ -4,7 +4,13 @@ from setuptools import setup, find_packages
 cython_setup_args = {}
 try:
     from Cython.Build import cythonize
-    cython_setup_args = dict(ext_modules=cythonize('promise/**.py', compiler_directives={'language_level' : "3"}))
+
+    cython_setup_args = dict(
+        ext_modules=cythonize(
+            ["promise/**.py", "promise/**.pyx"],
+            compiler_directives={"language_level": "3"},
+        )
+    )
 except ImportError:
     pass
 
@@ -63,10 +69,7 @@ setup(
     # PEP-561: https://www.python.org/dev/peps/pep-0561/
     package_data={"promise": ["py.typed"]},
     extras_require={"test": tests_require},
-    install_requires=[
-        "typing>=3.6.4; python_version < '3.5'",
-        "six"
-    ],
+    install_requires=["typing>=3.6.4; python_version < '3.5'", "six"],
     tests_require=tests_require,
     **cython_setup_args,
 )

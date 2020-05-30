@@ -71,3 +71,4 @@ target/
 /type_info.json
 
 /promise/**/*.c
+/promise/**/*.h
