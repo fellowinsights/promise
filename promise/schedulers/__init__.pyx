@@ -1,5 +1,3 @@
-# cython: profile=True
-
 from promise.promise cimport Promise
 
 

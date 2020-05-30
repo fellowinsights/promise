@@ -1,5 +1,3 @@
-# cython: profile=True
-
 cimport cython
 
 from threading import Event

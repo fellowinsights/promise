@@ -1,5 +1,3 @@
-# cython: profile=True
-
 cimport cython
 
 from asyncio import Future, ensure_future
@@ -18,6 +16,14 @@ DEFAULT_TIMEOUT = None
 
 cdef Async async_instance = Async()
 cdef Scheduler default_scheduler = ImmediateScheduler()
+
+
+cdef class Box:
+    cdef public object value
+
+
+def get_async_instance():
+    return async_instance
 
 
 def get_default_scheduler():
@@ -39,15 +45,9 @@ def try_catch(handler, *args, **kwargs):
 
 @cython.final
 cdef class PartialSettlePromise(SchedulerFn):
-    cdef Promise target, promise
-    cdef object handler, value, traceback
-
-    def __init__(self, Promise target, Promise promise, handler, value, traceback):
-        self.target = target
-        self.promise = promise
-        self.handler = handler
-        self.value = value
-        self.traceback = traceback
+    cdef public:
+        Promise target, promise
+        object handler, value, traceback
 
     cdef void call(self) except *:
         self.target._settle_promise(
@@ -56,16 +56,6 @@ cdef class PartialSettlePromise(SchedulerFn):
             self.value,
             self.traceback,
         )
-
-
-# @cython.final
-# cdef class SettlePromisesFn:
-#     cdef Promise this
-# 
-#     def __init__(self, Promise this):
-#         self.this = this
-# 
-#     def __call__(
 
 
 @cython.final
@@ -81,7 +71,8 @@ cdef class Promise:
         self._fulfillment_handler0 = \
             self._rejection_handler0 = \
             self._promise0 = \
-            self._future = None
+            self._future = \
+            self._traceback = None
         self._scheduler = scheduler
         self._promises = []
         self._rejection_handlers = []
@@ -91,9 +82,12 @@ cdef class Promise:
             self._resolve_from_executor(executor)
 
     cpdef Scheduler get_scheduler(self):
-        return self._scheduler or default_scheduler
+        if self._scheduler is not None:
+            return self._scheduler
+        return default_scheduler
 
     cpdef object get_future(self):
+        cdef object fut
         if not self._future:
             fut = self._future = Future()
             self._then(fut.set_result, fut.set_exception)
@@ -102,7 +96,8 @@ cdef class Promise:
     def __iter__(self):
         return iterate_promise(self._target())
 
-    __await__ = __iter__
+    def __await__(self):
+        return self.__iter__()
 
     cdef void _resolve_callback(self, object value):
         cdef int len, i
@@ -110,12 +105,12 @@ cdef class Promise:
         if value is self:
             self._reject_callback(TypeError("Promise is self"))
             return
-        if not is_thenable(value):
+        if not _is_thenable(value):
             self._fulfill(value)
             return
 
         cdef Promise promise = _try_convert_to_promise(value)._target()
-        if promise == self:
+        if promise is self:
             self._reject(TypeError("Promise is self"))
             return
 
@@ -129,15 +124,17 @@ cdef class Promise:
             self._length = 0
             self._set_followee(promise)
         elif promise._state == State.FULFILLED:
-            self._fulfill(promise._value())
+            self._fulfill(promise._target_settled_value())
         elif promise._state == State.REJECTED:
-            self._reject(promise._reason(), promise._target()._traceback)
+            self._reject(
+                promise._target_settled_value(), promise._target()._traceback
+            )
 
     cdef object _settled_value(self, bint raise_ = False):
         assert not self._is_following
         if self._state == State.FULFILLED:
             return self._rejection_handler0
-        elif self.state == State.REJECTED:
+        elif self._state == State.REJECTED:
             if raise_:
                 raise_val = self._fulfillment_handler0
                 raise raise_val.with_traceback(self._traceback)
@@ -297,7 +294,7 @@ cdef class Promise:
 
     cdef Promise _followee(self):
         assert self._is_following
-        assert isinstance(self.rejection_handler0, Promise)
+        assert isinstance(self._rejection_handler0, Promise)
         return self._rejection_handler0
 
     cdef void _set_followee(self, Promise promise):
@@ -306,7 +303,9 @@ cdef class Promise:
         self._rejection_handler0 = promise
 
     cdef public void _settle_promises(self):
-        cdef int length = self._length
+        cdef:
+            int length = self._length
+            object value, reason
         if length > 0:
             if self._state == State.REJECTED:
                 reason = self._fulfillment_handler0
@@ -349,12 +348,8 @@ cdef class Promise:
         self._wait(timeout or DEFAULT_TIMEOUT)
         return self._target_settled_value(raise_=True)
 
-    cpdef object _target_settled_value(self, bint raise_ = False):
+    cdef object _target_settled_value(self, bint raise_ = False):
         return self._target()._settled_value(raise_)
-
-    _value = _reason = _target_settled_value
-
-    value = reason = property(_target_settled_value)
 
     def __repr__(self):
         hex_id = hex(id(self))
@@ -387,9 +382,11 @@ cdef class Promise:
         return self.then(None, on_rejection)
 
     cdef Promise _then(self, did_fulfill=None, did_reject=None):
-        cdef Promise promise = Promise(), \
-            target = self._target()
-        cdef State state = target._state
+        cdef:
+            Promise promise = Promise(), \
+                target = self._target()
+            State state = target._state
+            PartialSettlePromise fn
 
         if state == State.PENDING:
             target._add_callbacks(did_fulfill, did_reject, promise)
@@ -401,10 +398,14 @@ cdef class Promise:
             elif state == State.REJECTED:
                 value = target._fulfillment_handler0
                 handler = did_reject
-            async_instance.invoke(
-                PartialSettlePromise(target, promise, handler, value, traceback),
-                promise.get_scheduler(),
-            )
+
+            fn = PartialSettlePromise()
+            fn.target = target
+            fn.promise = promise
+            fn.handler = handler
+            fn.value = value
+            fn.traceback = traceback
+            async_instance.invoke(fn, promise.get_scheduler())
 
         return promise
 
@@ -476,7 +477,7 @@ cdef class Promise:
 
     @staticmethod
     def resolve(obj) -> Promise:
-        if not is_thenable(obj):
+        if not _is_thenable(obj):
             ret = Promise()
             ret._state = State.FULFILLED
             ret._rejection_handler0 = obj
@@ -496,16 +497,16 @@ cdef class Promise:
 
         return wrapper
 
-    _safe_resolved_promise = None
+    _safe_resolved_promise = Box.__new__(Box)
 
     @staticmethod
     def safe(fn):
-        if not Promise._safe_resolved_promise:
-            Promise._safe_resolved_promise = Promise.resolve(None)
+        if not Promise._safe_resolved_promise.value:
+            Promise._safe_resolved_promise.value = Promise.resolve(None)
 
         @wraps(fn)
         def wrapper(*args, **kwargs):
-            return Promise._safe_resolved_promise.then(lambda v: fn(*args, **kwargs))
+            return Promise._safe_resolved_promise.value.then(lambda v: fn(*args, **kwargs))
 
         return wrapper
 
@@ -526,7 +527,7 @@ cdef class Promise:
         return Promise.all(m.values()).then(handle_success)
 
 
-cdef bint is_thenable(object obj):
+cdef bint _is_thenable(object obj):
     cdef object typ = type(obj)
     if isinstance(obj, Promise):
         return True
@@ -536,6 +537,10 @@ cdef bint is_thenable(object obj):
         return True
     else:
         return False
+
+
+def is_thenable(obj):
+    return _is_thenable(obj)
 
 
 cdef Promise _try_convert_to_promise(object obj):
@@ -583,6 +588,6 @@ def _process_future_result(resolve, reject):
 
 def iterate_promise(promise: Promise) -> object:
     if not promise.is_fulfilled():
-        yield from promise.future
+        yield from promise.get_future()
     assert promise.is_fulfilled()
     return promise.get()

@@ -1,16 +1,6 @@
 from .promise cimport Promise
 
 
-cdef class PartialFulfilled:
-    cdef PromiseList promise_list
-    cdef int i
-
-
-cdef class PartialRejected:
-    cdef PromiseList promise_list
-    cdef Promise promise
-
-
 cdef class PromiseList:
     cdef list _values
     cdef int _length, _total_resolved

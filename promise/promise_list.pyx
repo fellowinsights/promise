@@ -1,15 +1,13 @@
-# cython: profile=True
-
 cimport cython
 
-from .promise cimport Promise, is_thenable, _try_convert_to_promise
+from .promise cimport Promise, _is_thenable, _try_convert_to_promise
 
 
 @cython.final
 cdef class PartialFulfilled:
-    def __init__(self, PromiseList promise_list, int i):
-        self.promise_list = promise_list
-        self.i = i
+    cdef:
+        PromiseList promise_list
+        int i
 
     def __call__(self, object value):
         return self.promise_list._promise_fulfilled(value, self.i)
@@ -17,9 +15,9 @@ cdef class PartialFulfilled:
 
 @cython.final
 cdef class PartialRejected:
-    def __init__(self, PromiseList promise_list, Promise promise):
-        self.promise_list = promise_list
-        self.promise = promise
+    cdef:
+        PromiseList promise_list
+        Promise promise
 
     def __call__(self, Exception reason):
         return self.promise_list._promise_rejected(reason, self.promise)
@@ -32,16 +30,16 @@ cdef class PromiseList:
         self._length = self._total_resolved = 0
         self._values = None
 
-        if is_thenable(values):
+        if _is_thenable(values):
             self._init_promise(_try_convert_to_promise(values)._target())
         else:
             self._init(values)
 
     cdef void _init_promise(self, Promise values):
         if values.is_fulfilled():
-            values = values._value()
+            values = values._target_settled_value()
         elif values.is_rejected():
-            self._reject(values._reason())
+            self._reject(values._target_settled_value())
             return
 
         self.promise._is_async_guaranteed = True
@@ -50,35 +48,43 @@ cdef class PromiseList:
     cpdef void _init(self, object values):
         cdef list values_list = list(values)
         if not values_list:
-            self._resolve([])
+            self._resolve(values_list)
             return
         self._iterate(values_list)
 
     cdef void _iterate(self, list values):
-        cdef bint is_resolved = False
-        cdef Promise result = self.promise, \
+        cdef:
+            int i
+            bint is_resolved = False
+            Promise result = self.promise, \
                 maybe_promise
-        cdef object val
+            object val
+            PartialFulfilled on_fulfill
+            PartialRejected on_reject
 
         self._length = len(values)
         self._values = [None] * self._length
 
         for i in range(self._length):
             val = values[i]
-            if is_thenable(val):
+            if _is_thenable(val):
                 maybe_promise = _try_convert_to_promise(val)._target()
                 if maybe_promise.is_pending():
-                    maybe_promise._add_callbacks(
-                        PartialFulfilled(self, i),
-                        PartialRejected(self, maybe_promise),
-                        None,
-                    )
+                    on_fulfill = PartialFulfilled.__new__(PartialFulfilled)
+                    on_reject = PartialRejected.__new__(PartialRejected)
+                    on_fulfill.promise_list = on_reject.promise_list = self
+                    on_fulfill.i = i
+                    on_reject.promise = maybe_promise
+                    maybe_promise._add_callbacks(on_fulfill, on_reject, None)
                     self._values[i] = maybe_promise
                 elif maybe_promise.is_fulfilled():
-                    is_resolved = self._promise_fulfilled(maybe_promise._value(), i)
+                    is_resolved = self._promise_fulfilled(
+                        maybe_promise._target_settled_value(), i
+                    )
                 elif maybe_promise.is_rejected():
                     is_resolved = self._promise_rejected(
-                        maybe_promise._reason(), promise=maybe_promise
+                        maybe_promise._target_settled_value(),
+                        promise=maybe_promise,
                     )
             else:
                 is_resolved = self._promise_fulfilled(val, i)

@@ -16,7 +16,11 @@ cdef class Promise:
 
     cdef list _promises, _rejection_handlers, _fulfillment_handlers
     cdef Promise _promise0
-    cdef object _future, _fulfillment_handler0, _rejection_handler0, _scheduler
+    cdef object _future, \
+        _fulfillment_handler0, \
+        _rejection_handler0, \
+        _scheduler, \
+        _traceback
 
     cpdef Scheduler get_scheduler(self)
     cpdef object get_future(self)
@@ -42,7 +46,7 @@ cdef class Promise:
     cdef void _resolve_from_executor(self, executor)
     cdef void _wait(self, object timeout=*)
     cpdef object get(self, object timeout=*)
-    cpdef object _target_settled_value(self, bint raise_=*)
+    cdef object _target_settled_value(self, bint raise_=*)
     cpdef bint is_pending(self)
     cpdef bint is_fulfilled(self)
     cpdef bint is_rejected(self)
@@ -56,5 +60,5 @@ cdef class Promise:
     cpdef list then_all(self, handlers=*)
 
 
-cdef bint is_thenable(object obj)
+cdef bint _is_thenable(object obj)
 cdef Promise _try_convert_to_promise(object obj)

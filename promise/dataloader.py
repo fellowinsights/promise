@@ -6,7 +6,7 @@ except ImportError:
 from functools import partial
 from threading import local
 
-from .promise import Promise, async_instance, get_default_scheduler
+from .promise import Promise, get_async_instance, get_default_scheduler
 
 if False:
     from typing import (
@@ -224,7 +224,7 @@ def enqueue_post_promise_job(fn, scheduler):
 
     def on_promise_resolve(v):
         # type: (Any) -> None
-        async_instance.invoke(fn, scheduler)
+        get_async_instance().invoke(fn, scheduler)
 
     cache.resolved_promise.then(on_promise_resolve) 
 

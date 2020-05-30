@@ -19,10 +19,18 @@ if not __SETUP__:
         Promise,
         promise_for_dict,
         promisify,
+        is_thenable,
+        get_async_instance,
+        get_default_scheduler,
+        set_default_scheduler,
     )
 
     __all__ = [
         "Promise",
         "promise_for_dict",
         "promisify",
+        "is_thenable",
+        "get_async_instance",
+        "get_default_scheduler",
+        "set_default_scheduler",
     ]
