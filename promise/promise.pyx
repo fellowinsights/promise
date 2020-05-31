@@ -35,12 +35,26 @@ def set_default_scheduler(scheduler):
     default_scheduler = scheduler
 
 
-def try_catch(handler, *args, **kwargs):
+@cython.final
+cdef class TryCatchResult:
+    cdef:
+        object value, tb
+        Exception exc
+
+
+cdef TryCatchResult try_catch(object handler, object value):
+    cdef:
+        TryCatchResult res = TryCatchResult.__new__(TryCatchResult)
+        Exception e
     try:
-        return (handler(*args, **kwargs), None)
+        res.value = handler(value)
+        res.exc = None
+        res.tb = None
     except Exception as e:
-        tb = exc_info()[2]
-        return (None, (e, tb))
+        res.value = None
+        res.tb = exc_info()[2]
+        res.exc = e
+    return res
 
 
 @cython.final
@@ -234,13 +248,12 @@ cdef class Promise:
         self._settle_promise(promise, handler, value, traceback)
 
     cdef void _settle_promise_from_handler(self, handler, value, Promise promise):
-        value, error_with_tb = try_catch(handler, value)
+        cdef TryCatchResult result = try_catch(handler, value)
 
-        if error_with_tb:
-            error, tb = error_with_tb
-            promise._reject_callback(error, tb)
+        if result.exc is not None:
+            promise._reject_callback(result.exc, result.tb)
         else:
-            promise._resolve_callback(value)
+            promise._resolve_callback(result.value)
 
     cdef void _migrate_callback0(self, Promise follower):
         self._add_callbacks(
