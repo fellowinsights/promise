@@ -2,6 +2,8 @@ from pytest import mark
 from promise import Promise
 from promise.dataloader import DataLoader
 
+pytestmark = mark.skip
+
 
 def id_loader(**options):
     load_calls = []

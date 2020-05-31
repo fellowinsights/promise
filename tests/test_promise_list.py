@@ -5,7 +5,7 @@ from promise.promise_list import PromiseList
 
 
 def all(promises):
-    return PromiseList(promises, Promise).promise
+    return PromiseList(promises).promise
 
 
 def test_empty_promises():
@@ -57,7 +57,7 @@ def test_promise_reject_skip_all_other_values():
 def test_promise_lazy_promise():
     p = Promise()
     all_promises = all([1, 2, p])
-    assert not all_promises.is_fulfilled
+    assert not all_promises.is_fulfilled()
     p.do_resolve(3)
     assert all_promises.get() == [1, 2, 3]
 
@@ -65,6 +65,6 @@ def test_promise_lazy_promise():
 def test_promise_contained_promise():
     p = Promise()
     all_promises = all([1, 2, Promise.resolve(None).then(lambda v: p)])
-    assert not all_promises.is_fulfilled
+    assert not all_promises.is_fulfilled()
     p.do_resolve(3)
     assert all_promises.get() == [1, 2, 3]

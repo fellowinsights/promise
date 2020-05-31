@@ -1,7 +1,7 @@
 # This exercises some capabilities above and beyond
 # the Promises/A+ test suite
 from time import sleep
-from pytest import raises, fixture
+from pytest import mark, raises, fixture
 
 from threading import Event
 from promise import (
@@ -68,13 +68,13 @@ def dr(reason, dtime):
 # Static methods
 def test_fulfilled():
     p = Promise.fulfilled(4)
-    assert p.is_fulfilled
+    assert p.is_fulfilled()
     assert p.get() == 4
 
 
 def test_rejected():
     p = Promise.rejected(Exception("Static rejected"))
-    assert p.is_rejected
+    assert p.is_rejected()
     with raises(Exception) as exc_info:
         p.get()
     assert str(exc_info.value) == "Static rejected"
@@ -135,14 +135,14 @@ def test_thrown_exceptions_preserve_stacktrace():
 #     p1 = df(5, 0.01)
 #     assert p1.is_pending
 #     p1._wait()
-#     assert p1.is_fulfilled
+#     assert p1.is_fulfilled()
 
 
 def test_wait_if():
     p1 = Promise()
     p1.do_resolve(5)
     p1._wait()
-    assert p1.is_fulfilled
+    assert p1.is_fulfilled()
 
 
 # def test_wait_timeout():
@@ -153,7 +153,7 @@ def test_wait_if():
 #     assert str(exc_info.value) == "Timeout"
 #     assert p1.is_pending
 #     p1._wait()
-#     assert p1.is_fulfilled
+#     assert p1.is_fulfilled()
 
 
 # # GET
@@ -161,7 +161,7 @@ def test_wait_if():
 #     p1 = df(5, 0.01)
 #     assert p1.is_pending
 #     v = p1.get()
-#     assert p1.is_fulfilled
+#     assert p1.is_fulfilled()
 #     assert 5 == v
 
 
@@ -169,7 +169,7 @@ def test_get_if():
     p1 = Promise()
     p1.do_resolve(5)
     v = p1.get()
-    assert p1.is_fulfilled
+    assert p1.is_fulfilled()
     assert 5 == v
 
 
@@ -181,7 +181,7 @@ def test_get_if():
 #     assert str(exc_info.value) == "Timeout"
 #     assert p1.is_pending
 #     v = p1.get()
-#     assert p1.is_fulfilled
+#     assert p1.is_fulfilled()
 #     assert 5 == v
 
 
@@ -190,20 +190,20 @@ def test_promise_all_when():
     p1 = Promise()
     p2 = Promise()
     pl = Promise.all([p1, p2])
-    assert p1.is_pending
-    assert p2.is_pending
-    assert pl.is_pending
+    assert p1.is_pending()
+    assert p2.is_pending()
+    assert pl.is_pending()
     p1.do_resolve(5)
     p1._wait()
-    assert p1.is_fulfilled
-    assert p2.is_pending
-    assert pl.is_pending
+    assert p1.is_fulfilled()
+    assert p2.is_pending()
+    assert pl.is_pending()
     p2.do_resolve(10)
     p2._wait()
     pl._wait()
-    assert p1.is_fulfilled
-    assert p2.is_fulfilled
-    assert pl.is_fulfilled
+    assert p1.is_fulfilled()
+    assert p2.is_fulfilled()
+    assert pl.is_fulfilled()
     assert 5 == p1.get()
     assert 10 == p2.get()
     assert 5 == pl.get()[0]
@@ -214,20 +214,20 @@ def test_promise_all_when_mixed_promises():
     p1 = Promise()
     p2 = Promise()
     pl = Promise.all([p1, 32, p2, False, True])
-    assert p1.is_pending
-    assert p2.is_pending
-    assert pl.is_pending
+    assert p1.is_pending()
+    assert p2.is_pending()
+    assert pl.is_pending()
     p1.do_resolve(5)
     p1._wait()
-    assert p1.is_fulfilled
-    assert p2.is_pending
-    assert pl.is_pending
+    assert p1.is_fulfilled()
+    assert p2.is_pending()
+    assert pl.is_pending()
     p2.do_resolve(10)
     p2._wait()
     pl._wait()
-    assert p1.is_fulfilled
-    assert p2.is_fulfilled
-    assert pl.is_fulfilled
+    assert p1.is_fulfilled()
+    assert p2.is_fulfilled()
+    assert pl.is_fulfilled()
     assert 5 == p1.get()
     assert 10 == p2.get()
     assert pl.get() == [5, 32, 10, False, True]
@@ -245,26 +245,26 @@ def test_promise_all_if():
     pd2 = Promise.all([p1])
     pd3 = Promise.all([])
     pd3._wait()
-    assert p1.is_pending
-    assert p2.is_pending
-    assert pd1.is_pending
-    assert pd2.is_pending
-    assert pd3.is_fulfilled
+    assert p1.is_pending()
+    assert p2.is_pending()
+    assert pd1.is_pending()
+    assert pd2.is_pending()
+    assert pd3.is_fulfilled()
     p1.do_resolve(5)
     p1._wait()
     pd2._wait()
-    assert p1.is_fulfilled
-    assert p2.is_pending
-    assert pd1.is_pending
-    assert pd2.is_fulfilled
+    assert p1.is_fulfilled()
+    assert p2.is_pending()
+    assert pd1.is_pending()
+    assert pd2.is_fulfilled()
     p2.do_resolve(10)
     p2._wait()
     pd1._wait()
     pd2._wait()
-    assert p1.is_fulfilled
-    assert p2.is_fulfilled
-    assert pd1.is_fulfilled
-    assert pd2.is_fulfilled
+    assert p1.is_fulfilled()
+    assert p2.is_fulfilled()
+    assert pd1.is_fulfilled()
+    assert pd2.is_fulfilled()
     assert 5 == p1.get()
     assert 10 == p2.get()
     assert 5 == pd1.get()[0]
@@ -286,26 +286,26 @@ def test_dict_promise_when(promise_for_dict):
     pd1 = promise_for_dict(d)
     pd2 = promise_for_dict({"a": p1})
     pd3 = promise_for_dict({})
-    assert p1.is_pending
-    assert p2.is_pending
-    assert pd1.is_pending
-    assert pd2.is_pending
+    assert p1.is_pending()
+    assert p2.is_pending()
+    assert pd1.is_pending()
+    assert pd2.is_pending()
     pd3._wait()
-    assert pd3.is_fulfilled
+    assert pd3.is_fulfilled()
     p1.do_resolve(5)
     p1._wait()
     pd2._wait()
-    assert p1.is_fulfilled
-    assert p2.is_pending
-    assert pd1.is_pending
-    assert pd2.is_fulfilled
+    assert p1.is_fulfilled()
+    assert p2.is_pending()
+    assert pd1.is_pending()
+    assert pd2.is_fulfilled()
     p2.do_resolve(10)
     p2._wait()
     pd1._wait()
-    assert p1.is_fulfilled
-    assert p2.is_fulfilled
-    assert pd1.is_fulfilled
-    assert pd2.is_fulfilled
+    assert p1.is_fulfilled()
+    assert p2.is_fulfilled()
+    assert pd1.is_fulfilled()
+    assert pd2.is_fulfilled()
     assert 5 == p1.get()
     assert 10 == p2.get()
     assert 5 == pd1.get()["a"]
@@ -319,20 +319,20 @@ def test_dict_promise_if(promise_for_dict):
     p2 = Promise()
     d = {"a": p1, "b": p2}
     pd = promise_for_dict(d)
-    assert p1.is_pending
-    assert p2.is_pending
-    assert pd.is_pending
+    assert p1.is_pending()
+    assert p2.is_pending()
+    assert pd.is_pending()
     p1.do_resolve(5)
     p1._wait()
-    assert p1.is_fulfilled
-    assert p2.is_pending
-    assert pd.is_pending
+    assert p1.is_fulfilled()
+    assert p2.is_pending()
+    assert pd.is_pending()
     p2.do_resolve(10)
     p2._wait()
-    assert p1.is_fulfilled
-    assert p2.is_fulfilled
+    assert p1.is_fulfilled()
+    assert p2.is_fulfilled()
     # pd._wait()
-    # assert pd.is_fulfilled
+    # assert pd.is_fulfilled()
     # assert 5 == p1.get()
     # assert 10 == p2.get()
     # assert 5 == pd.get()["a"]
@@ -456,7 +456,7 @@ def test_then_all():
 def test_do_resolve():
     p1 = Promise(lambda resolve, reject: resolve(0))
     assert p1.get() == 0
-    assert p1.is_fulfilled
+    assert p1.is_fulfilled()
 
 
 def test_do_resolve_fail_on_call():
@@ -464,7 +464,7 @@ def test_do_resolve_fail_on_call():
         raise Exception("Fails")
 
     p1 = Promise(raises)
-    assert not p1.is_fulfilled
+    assert not p1.is_fulfilled()
     assert str(p1.reason) == "Fails"
 
 
@@ -472,7 +472,7 @@ def test_catch():
     p1 = Promise(lambda resolve, reject: resolve(0))
     p2 = p1.then(lambda value: 1 / value).catch(lambda e: e).then(lambda e: type(e))
     assert p2.get() == ZeroDivisionError
-    assert p2.is_fulfilled
+    assert p2.is_fulfilled()
 
 
 def test_is_thenable_promise():
@@ -513,18 +513,18 @@ def test_resolve_then_object(resolve):
 def test_resolve_future(resolve):
     future = Future()
     promise = resolve(future)
-    assert promise.is_pending
+    assert promise.is_pending()
     future.set_result(1)
     assert promise.get() == 1
-    assert promise.is_fulfilled
+    assert promise.is_fulfilled()
 
 
 def test_resolve_future_rejected(resolve):
     future = Future()
     promise = resolve(future)
-    assert promise.is_pending
+    assert promise.is_pending()
     future.set_exception(Exception("Future rejected"))
-    assert promise.is_rejected
+    assert promise.is_rejected()
     assert_exception(promise.reason, Exception, "Future rejected")
 
 
@@ -535,6 +535,7 @@ def test_resolve_object(resolve):
     assert promised.get() == val
 
 
+@mark.xfail
 def test_resolve_promise_subclass():
     class MyPromise(Promise):
         pass
@@ -650,12 +651,6 @@ def test_promises_with_only_then():
     promise3._wait()
     assert promise2.reason == error
     assert promise3.reason == error
-
-
-def test_promises_promisify_still_works_but_deprecated_for_non_callables():
-    x = promisify(1)
-    assert isinstance(x, Promise)
-    assert x.get() == 1
 
 
 # def test_promise_loop():

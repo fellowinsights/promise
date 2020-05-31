@@ -210,8 +210,10 @@ cdef class Async:
         self.trampoline_enabled = trampoline_enabled
 
     cdef LocalData _data(self):
-        cdef LocalData data = self.local.data
-        if not data:
+        cdef LocalData data
+        if hasattr(self.local, "data"):
+            data = self.local.data
+        else:
             data = self.local.data = LocalData(self.trampoline_enabled)
         return data
 

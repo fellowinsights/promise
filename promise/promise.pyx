@@ -190,7 +190,7 @@ cdef class Promise:
         cdef Promise promise
         cdef int i
 
-        for i in range(1, length):
+        for i in range(length - 1):
             handler = self._fulfillment_handlers[i]
             promise = self._promises[i]
             self._clear_callback_data_index_at(i)
@@ -200,7 +200,7 @@ cdef class Promise:
         cdef Promise promise
         cdef int i
 
-        for i in range(1, length):
+        for i in range(length - 1):
             handler = self._rejection_handlers[i]
             promise = self._promises[i]
             self._clear_callback_data_index_at(i)
@@ -258,9 +258,9 @@ cdef class Promise:
 
     cdef int _add_callbacks(self, fulfill, reject, Promise promise):
         assert not self._is_following
-        cdef int index = self._length
-        if index > MAX_LENGTH:
-            self._length = index = 0
+        cdef int index = self._length % MAX_LENGTH, \
+                idx = index - 1
+        self._length = index
 
         if index == 0:
             assert not self._promise0
@@ -273,15 +273,20 @@ cdef class Promise:
             if callable(reject):
                 self._rejection_handler0 = reject
         else:
-            assert self._promises[index] is None
-            assert self._fulfillment_handlers[index] is None
-            assert self._rejection_handlers[index] is None
+            if idx >= len(self._promises):
+                self._promises.append(None)
+                self._fulfillment_handlers.append(None)
+                self._rejection_handlers.append(None)
+            else:
+                assert self._promises[idx] is None
+                assert self._fulfillment_handlers[idx] is None
+                assert self._rejection_handlers[idx] is None
 
-            self._promises[index] = promise
+            self._promises[idx] = promise
             if callable(fulfill):
-                self._fulfillment_handlers[index] = fulfill
+                self._fulfillment_handlers[idx] = fulfill
             if callable(reject):
-                self._rejection_handlers[index] = reject
+                self._rejection_handlers[idx] = reject
 
         self._length = index + 1
         return index
@@ -340,7 +345,7 @@ cdef class Promise:
     def wait(Promise promise, object timeout = None):
         async_instance.wait(promise, timeout)
 
-    cdef void _wait(self, object timeout = None):
+    cpdef void _wait(self, object timeout = None):
         Promise.wait(self, timeout)
 
     cpdef object get(self, object timeout = None):
@@ -350,6 +355,14 @@ cdef class Promise:
 
     cdef object _target_settled_value(self, bint raise_ = False):
         return self._target()._settled_value(raise_)
+
+    @property
+    def value(self):
+        return self._target_settled_value()
+
+    @property
+    def reason(self):
+        return self._target_settled_value()
 
     def __repr__(self):
         hex_id = hex(id(self))
@@ -426,11 +439,12 @@ cdef class Promise:
 
     cpdef void done_all(self, handlers=None):
         cdef int i
-        cdef list handler_list = list(handlers)
+        cdef list handler_list
 
-        if not handler_list:
+        if handlers is None:
             return
 
+        handler_list = list(handlers)
         for i in range(len(handler_list)):
             handler = handler_list[i]
             if isinstance(handler, tuple):
@@ -446,12 +460,12 @@ cdef class Promise:
 
     cpdef list then_all(self, handlers=None):
         cdef int i
-        cdef list handler_list = list(handlers)
 
-        if not handler_list:
+        if handlers is None:
             return []
 
-        cdef list promises = []
+        cdef list handler_list = list(handlers), \
+            promises = []
 
         for i in range(len(handler_list)):
             handler = handler_list[i]

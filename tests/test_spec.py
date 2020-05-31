@@ -296,13 +296,13 @@ def test_3_2_6_2_when():
     p1 = Promise.resolve(5)
     pf = p1.then(fail)
     pf._wait()
-    assert pf.is_rejected
+    assert pf.is_rejected()
     assert_exception(pf.reason, AssertionError, "Exception Message")
 
     p2 = Promise.reject(Exception("Error"))
     pr = p2.then(None, fail)
     pr._wait()
-    assert pr.is_rejected
+    assert pr.is_rejected()
     assert_exception(pr.reason, AssertionError, "Exception Message")
 
 
@@ -318,13 +318,13 @@ def test_3_2_6_2_if():
     p1 = Promise.resolve(5)
     pf = p1.then(fail)
     pf._wait()
-    assert pf.is_rejected
+    assert pf.is_rejected()
     assert_exception(pf.reason, AssertionError, "Exception Message")
 
     p2 = Promise.reject(Exception("Error"))
     pr = p2.then(None, fail)
     pr._wait()
-    assert pr.is_rejected
+    assert pr.is_rejected()
     assert_exception(pr.reason, AssertionError, "Exception Message")
 
 
@@ -344,29 +344,29 @@ def test_3_2_6_3_when_fulfilled():
 
     pf = p1.then(p1_resolved)
 
-    assert pending.is_pending
-    assert pf.is_pending
+    assert pending.is_pending()
+    assert pf.is_pending()
     p1.do_resolve(10)
     pending.do_resolve(5)
     pending._wait()
-    assert pending.is_fulfilled
+    assert pending.is_fulfilled()
     assert 5 == pending.get()
     pf._wait()
-    assert pf.is_fulfilled
+    assert pf.is_fulfilled()
     assert 5 == pf.get()
 
     p2 = Promise()
     bad = Promise()
     pr = p2.then(lambda r: bad)
-    assert bad.is_pending
-    assert pr.is_pending
+    assert bad.is_pending()
+    assert pr.is_pending()
     p2.do_resolve(10)
-    bad._reject_callback(Exception("Error"))
+    bad.do_reject(Exception("Error"))
     bad._wait()
-    assert bad.is_rejected
+    assert bad.is_rejected()
     assert_exception(bad.reason, Exception, "Error")
     pr._wait()
-    assert pr.is_rejected
+    assert pr.is_rejected()
     assert_exception(pr.reason, Exception, "Error")
 
 
@@ -384,10 +384,10 @@ def test_3_2_6_3_if_fulfilled():
     pending.do_resolve(5)
     pf = p1.then(lambda r: pending)
     pending._wait()
-    assert pending.is_fulfilled
+    assert pending.is_fulfilled()
     assert 5 == pending.get()
     pf._wait()
-    assert pf.is_fulfilled
+    assert pf.is_fulfilled()
     assert 5 == pf.get()
 
     p2 = Promise()
@@ -398,7 +398,7 @@ def test_3_2_6_3_if_fulfilled():
     bad._wait()
     assert_exception(bad.reason, Exception, "Error")
     pr._wait()
-    assert pr.is_rejected
+    assert pr.is_rejected()
     assert_exception(pr.reason, Exception, "Error")
 
 
@@ -413,27 +413,27 @@ def test_3_2_6_3_when_rejected():
     p1 = Promise()
     pending = Promise()
     pr = p1.then(None, lambda r: pending)
-    assert pending.is_pending
-    assert pr.is_pending
+    assert pending.is_pending()
+    assert pr.is_pending()
     p1.do_reject(Exception("Error"))
     pending.do_resolve(10)
     pending._wait()
-    assert pending.is_fulfilled
+    assert pending.is_fulfilled()
     assert 10 == pending.get()
     assert 10 == pr.get()
 
     p2 = Promise()
     bad = Promise()
     pr = p2.then(None, lambda r: bad)
-    assert bad.is_pending
-    assert pr.is_pending
+    assert bad.is_pending()
+    assert pr.is_pending()
     p2.do_reject(Exception("Error"))
     bad.do_reject(Exception("Assertion"))
     bad._wait()
-    assert bad.is_rejected
+    assert bad.is_rejected()
     assert_exception(bad.reason, Exception, "Assertion")
     pr._wait()
-    assert pr.is_rejected
+    assert pr.is_rejected()
     assert_exception(pr.reason, Exception, "Assertion")
 
 
@@ -451,10 +451,10 @@ def test_3_2_6_3_if_rejected():
     pending.do_resolve(10)
     pr = p1.then(None, lambda r: pending)
     pending._wait()
-    assert pending.is_fulfilled
+    assert pending.is_fulfilled()
     assert 10 == pending.get()
     pr._wait()
-    assert pr.is_fulfilled
+    assert pr.is_fulfilled()
     assert 10 == pr.get()
 
     p2 = Promise()
@@ -463,10 +463,10 @@ def test_3_2_6_3_if_rejected():
     bad.do_reject(Exception("Assertion"))
     pr = p2.then(None, lambda r: bad)
     bad._wait()
-    assert bad.is_rejected
+    assert bad.is_rejected()
     assert_exception(bad.reason, Exception, "Assertion")
     pr._wait()
-    assert pr.is_rejected
+    assert pr.is_rejected()
     assert_exception(pr.reason, Exception, "Assertion")
 
 
@@ -480,7 +480,7 @@ def test_3_2_6_4_pending():
     p1.do_resolve(10)
     assert 10 == p1.get()
     p2._wait()
-    assert p2.is_fulfilled
+    assert p2.is_fulfilled()
     assert 10 == p2.get()
 
 
@@ -494,7 +494,7 @@ def test_3_2_6_4_fulfilled():
     p2 = p1.then(5)
     assert 10 == p1.get()
     p2._wait()
-    assert p2.is_fulfilled
+    assert p2.is_fulfilled()
     assert 10 == p2.get()
 
 
@@ -508,7 +508,7 @@ def test_3_2_6_5_pending():
     p1.do_reject(Exception("Error"))
     assert_exception(p1.reason, Exception, "Error")
     p2._wait()
-    assert p2.is_rejected
+    assert p2.is_rejected()
     assert_exception(p2.reason, Exception, "Error")
 
 
@@ -522,7 +522,7 @@ def test_3_2_6_5_rejected():
     p2 = p1.then(None, 5)
     assert_exception(p1.reason, Exception, "Error")
     p2._wait()
-    assert p2.is_rejected
+    assert p2.is_rejected()
     assert_exception(p2.reason, Exception, "Error")
 
 

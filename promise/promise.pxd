@@ -44,7 +44,7 @@ cdef class Promise:
     cdef void _set_followee(self, Promise promise)
     cdef public void _settle_promises(self)
     cdef void _resolve_from_executor(self, executor)
-    cdef void _wait(self, object timeout=*)
+    cpdef void _wait(self, object timeout=*)
     cpdef object get(self, object timeout=*)
     cdef object _target_settled_value(self, bint raise_=*)
     cpdef bint is_pending(self)

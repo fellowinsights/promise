@@ -30,7 +30,6 @@ tests_require = [
     "pytest>=2.7.3",
     "pytest-cov",
     "coveralls",
-    "futures",
     "pytest-benchmark",
     "mock",
 ]

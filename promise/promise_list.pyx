@@ -35,7 +35,7 @@ cdef class PromiseList:
         else:
             self._init(values)
 
-    cdef void _init_promise(self, Promise values):
+    cdef void _init_promise(self, Promise values) except *:
         if values.is_fulfilled():
             values = values._target_settled_value()
         elif values.is_rejected():
@@ -45,9 +45,22 @@ cdef class PromiseList:
         self.promise._is_async_guaranteed = True
         values._then(self._init, self._reject)
 
-    cpdef void _init(self, object values):
-        cdef list values_list = list(values)
-        if not values_list:
+    cpdef void _init(self, object values) except *:
+        cdef list values_list
+
+        try:
+            values_list = list(values)
+        except Exception:
+            err = Exception(
+                "PromiseList requires an iterable. Received {}.".format(repr(values))
+            )
+            self.promise._reject_callback(err)
+            return
+
+        # Assign list to self.values before resolving, otherwise we will get an
+        # AssertionError
+        self._values = values_list
+        if len(values_list) == 0:
             self._resolve(values_list)
             return
         self._iterate(values_list)
