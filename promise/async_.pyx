@@ -1,5 +1,6 @@
 cimport cython
 
+from collections import deque
 from threading import local
 from cpython.exc cimport PyErr_SetString
 
@@ -14,30 +15,18 @@ cdef class QueueItem:
 @cython.final
 cdef class Queue:
     cdef inline bint is_empty(self):
-        return self.length == 0
+        return len(self.inner) == 0
 
     cdef void push(self, QueueItem item):
-        self.length += 1
-        self.items.append(item)
+        self.inner.append(item)
 
     cdef QueueItem shift(self):
-        if self.is_empty():
-            return None
-        cdef:
-            QueueItem item = self.items[self.offset]
-        self.items[self.offset] = None
-        self.length -= 1
-        self.offset += 1
-        if self.length > 8 and self.offset >= self.length:
-            self.items = self.items[self.offset:]
-            self.offset = 0
-        return item
+        return self.inner.popleft()
 
 
 cdef Queue make_queue():
-    cdef Queue q = Queue()
-    q.length = q.offset = 0
-    q.items = []
+    cdef Queue q = Queue.__new__(Queue)
+    q.inner = deque()
     return q
 
 

@@ -7,9 +7,7 @@ cdef class QueueItem:
 
 
 cdef class Queue:
-    cdef:
-        int offset, length
-        list items
+    cdef object inner
 
     cdef bint is_empty(self)
     cdef void push(self, QueueItem item)
