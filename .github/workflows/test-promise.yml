@@ -73,7 +73,7 @@ jobs:
         pip install -e '.[test]'
         pip install -e ../promise
 
-    - name: Test graphene
+    - name: Run tests
       run: |
         cd graphene
         pytest -v
@@ -116,7 +116,11 @@ jobs:
         pip install -e '.[test]'
         pip install -e ../promise
 
-    - name: Test graphene
+    - name: Run tests
       run: |
         cd graphql-core-legacy
-        pytest -v
+
+        # NOTE: need to exclude test_reraise_from_promise since it compares
+        # tracebacks, which won't work the same when you're dealing with a C
+        # extension
+        pytest -vk 'not test_reraise_from_promise'

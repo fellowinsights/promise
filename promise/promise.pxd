@@ -15,6 +15,7 @@ cdef enum State:
 cdef class Promise:
     cdef public State _state
     cdef public bint _is_following, _is_async_guaranteed
+    cdef public object _traceback
 
     cdef bint _is_final, _is_bound, _is_waiting
     cdef int _length
@@ -24,8 +25,7 @@ cdef class Promise:
     cdef object _future, \
         _fulfillment_handler0, \
         _rejection_handler0, \
-        _scheduler, \
-        _traceback
+        _scheduler
 
     cpdef Scheduler get_scheduler(self)
     cpdef object get_future(self)
