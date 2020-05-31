@@ -36,9 +36,9 @@ cdef class PromiseList:
             self._init(values)
 
     cdef void _init_promise(self, Promise values) except *:
-        if values.is_fulfilled():
+        if values._is_fulfilled():
             values = values._target_settled_value()
-        elif values.is_rejected():
+        elif values._is_rejected():
             self._reject(values._target_settled_value())
             return
 
@@ -82,7 +82,7 @@ cdef class PromiseList:
             val = values[i]
             if _is_thenable(val):
                 maybe_promise = _try_convert_to_promise(val)._target()
-                if maybe_promise.is_pending():
+                if maybe_promise._is_pending():
                     on_fulfill = PartialFulfilled.__new__(PartialFulfilled)
                     on_reject = PartialRejected.__new__(PartialRejected)
                     on_fulfill.promise_list = on_reject.promise_list = self
@@ -90,11 +90,11 @@ cdef class PromiseList:
                     on_reject.promise = maybe_promise
                     maybe_promise._add_callbacks(on_fulfill, on_reject, None)
                     self._values[i] = maybe_promise
-                elif maybe_promise.is_fulfilled():
+                elif maybe_promise._is_fulfilled():
                     is_resolved = self._promise_fulfilled(
                         maybe_promise._target_settled_value(), i
                     )
-                elif maybe_promise.is_rejected():
+                elif maybe_promise._is_rejected():
                     is_resolved = self._promise_rejected(
                         maybe_promise._target_settled_value(),
                         promise=maybe_promise,

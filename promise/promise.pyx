@@ -394,14 +394,26 @@ cdef class Promise:
 
         return "<Promise unknown>"
 
-    cpdef bint is_pending(self):
+    cdef bint _is_pending(self):
         return self._target()._state == State.PENDING
 
-    cpdef bint is_fulfilled(self):
+    cdef bint _is_fulfilled(self):
         return self._target()._state == State.FULFILLED
 
-    cpdef bint is_rejected(self):
+    cdef bint _is_rejected(self):
         return self._target()._state == State.REJECTED
+
+    @property
+    def is_pending(self):
+        return self._is_pending()
+
+    @property
+    def is_fulfilled(self):
+        return self._is_fulfilled()
+
+    @property
+    def is_rejected(self):
+        return self._is_rejected()
 
     cpdef Promise catch(self, on_rejection):
         return self.then(None, on_rejection)
@@ -621,7 +633,7 @@ def _process_future_result(resolve, reject):
 
 
 def iterate_promise(promise: Promise) -> object:
-    if not promise.is_fulfilled():
+    if not promise.is_fulfilled:
         yield from promise.get_future()
-    assert promise.is_fulfilled()
+    assert promise.is_fulfilled
     return promise.get()

@@ -152,7 +152,7 @@ cdef class LocalData:
             FunctionContainer f
 
         while not queue.is_empty():
-            if not promise.is_pending():
+            if not promise._is_pending():
                 return 0
             fn = queue.shift()
             if isinstance(fn, PromiseContainer):
@@ -173,7 +173,7 @@ cdef class LocalData:
         return 0
 
     cdef void wait(self, Promise promise, object timeout = None):
-        if not promise.is_pending():
+        if not promise._is_pending():
             return
 
         cdef Promise target = promise._target()
@@ -181,7 +181,7 @@ cdef class LocalData:
         if self.trampoline_enabled:
             if self.is_tick_used:
                 self.drain_queue_until_resolved(target)
-            if not promise.is_pending():
+            if not promise._is_pending():
                 return
         target.get_scheduler().wait(target, timeout)
 
