@@ -74,7 +74,6 @@ cdef class PartialSettlePromise(SchedulerFn):
         )
 
 
-@cython.final
 cdef class Promise:
     def __init__(self, executor=None, scheduler=None):
         self._state = State.PENDING
@@ -561,8 +560,12 @@ cdef class Promise:
         return wrapper
 
     @staticmethod
-    def all(promises) -> Promise:
+    cdef Promise _all(object promises):
         return PromiseList(promises).promise
+
+    @staticmethod
+    def all(promises) -> Promise:
+        return Promise._all(promises)
 
     @staticmethod
     def for_dict(m):

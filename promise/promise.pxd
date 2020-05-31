@@ -64,6 +64,8 @@ cdef class Promise:
     cpdef void done_all(self, handlers=*)
     cpdef list then_all(self, handlers=*)
     @staticmethod
+    cdef Promise _all(object promises)
+    @staticmethod
     cdef Promise c_resolve(object obj)
     @staticmethod
     cdef Promise c_reject(Exception obj)
