@@ -43,7 +43,7 @@ cdef class Promise:
     cdef void _settle_promise_from_handler(self, handler, value, Promise promise)
     cdef void _migrate_callback0(self, Promise follower)
     cdef void _migrate_callback_at(self, Promise follower, int index)
-    cdef int _add_callbacks(self, fulfill, reject, Promise promise)
+    cdef int _add_callbacks(self, fulfill, reject, Promise promise) except -1
     cpdef Promise _target(self)
     cdef Promise _followee(self)
     cdef void _set_followee(self, Promise promise)

@@ -4,6 +4,7 @@ from asyncio import Future, ensure_future
 from functools import wraps
 from inspect import iscoroutine
 from sys import exc_info
+from cpython.exc cimport PyErr_SetString
 
 from .async_ cimport Async
 from .promise_list cimport PromiseList
@@ -11,8 +12,9 @@ from .schedulers cimport Scheduler, SchedulerFn
 from .schedulers.immediate cimport ImmediateScheduler
 
 
-cdef int MAX_LENGTH = 0xFFFF | 0
+cdef int _MAX_LENGTH = 0xFFFF
 DEFAULT_TIMEOUT = None
+MAX_LENGTH = _MAX_LENGTH
 
 cdef Async async_instance = Async()
 cdef Scheduler default_scheduler = ImmediateScheduler()
@@ -269,16 +271,16 @@ cdef class Promise:
             follower._promises[index],
         )
 
-    cdef int _add_callbacks(self, fulfill, reject, Promise promise):
-        assert not self._is_following
-        cdef int index = self._length % MAX_LENGTH, \
+    cdef int _add_callbacks(self, fulfill, reject, Promise promise) except -1:
+        assert not self._is_following, "Should not be following"
+        cdef int index = self._length % _MAX_LENGTH, \
                 idx = index - 1
         self._length = index
 
         if index == 0:
-            assert not self._promise0
-            assert not self._fulfillment_handler0
-            assert not self._rejection_handler0
+            if self._promise0 is not None:
+                PyErr_SetString(AssertionError, "Exceeded promise MAX_LENGTH")
+                return -1
 
             self._promise0 = promise
             if callable(fulfill):
@@ -291,9 +293,11 @@ cdef class Promise:
                 self._fulfillment_handlers.append(None)
                 self._rejection_handlers.append(None)
             else:
-                assert self._promises[idx] is None
-                assert self._fulfillment_handlers[idx] is None
-                assert self._rejection_handlers[idx] is None
+                if self._promises[idx] is not None:
+                    PyErr_SetString(
+                        AssertionError, "Exceeded promise MAX_LENGTH"
+                    )
+                    return -1
 
             self._promises[idx] = promise
             if callable(fulfill):
