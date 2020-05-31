@@ -72,3 +72,5 @@ target/
 
 /promise/**/*.c
 /promise/**/*.h
+/promise/**/*.html
+*.prof
