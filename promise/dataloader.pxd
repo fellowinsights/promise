@@ -13,14 +13,14 @@ cdef class LocalData:
 
 cdef class DataLoader:
     cdef:
-        object threadlocal
+        object threadlocal, _batch_load_fn
         bint batch, cache
         int max_batch_size
         Scheduler _scheduler
 
     cdef LocalData local_data(self)
     cpdef object get_cache_key(self, object value)
-    cpdef Promise batch_load_fn(self, list ids)
+    cpdef object batch_load_fn(self, list ids)
     cdef Promise _load(self, object key)
     cdef void do_resolve_reject(self, key, resolve, reject)
     cpdef Promise load_many(self, object keys)

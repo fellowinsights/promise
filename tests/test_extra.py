@@ -535,7 +535,7 @@ def test_resolve_object(resolve):
     assert promised.get() == val
 
 
-@mark.xfail
+@mark.xfail # Subclassing promise is not permitted
 def test_resolve_promise_subclass():
     class MyPromise(Promise):
         pass

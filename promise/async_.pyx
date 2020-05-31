@@ -1,6 +1,7 @@
 cimport cython
 
 from threading import local
+from cpython.exc cimport PyErr_SetString
 
 from .promise cimport Promise
 from .schedulers cimport SchedulerFn, Scheduler
@@ -132,7 +133,7 @@ cdef class LocalData:
     cpdef void fatal_error(self, Exception reason, Scheduler scheduler):
         self.throw_later(reason, scheduler)
 
-    cdef void drain_queue(self, Queue queue):
+    cdef int drain_queue(self, Queue queue) except -1:
         cdef:
             QueueItem fn
             PromiseContainer p
@@ -147,8 +148,14 @@ cdef class LocalData:
             elif isinstance(fn, FunctionContainer):
                 f = fn
                 f.fn.call()
+            else:
+                PyErr_SetString(
+                    ValueError, "Unexpected queue item: {}".format(repr(fn))
+                )
+                return -1
+        return 0
 
-    cdef void drain_queue_until_resolved(self, Promise promise):
+    cdef int drain_queue_until_resolved(self, Promise promise) except -1:
         cdef:
             Queue queue = self.normal_queue
             QueueItem fn
@@ -157,19 +164,24 @@ cdef class LocalData:
 
         while not queue.is_empty():
             if not promise.is_pending():
-                return
+                return 0
             fn = queue.shift()
             if isinstance(fn, PromiseContainer):
                 p = fn
                 p.promise._settle_promises()
-                continue
             elif isinstance(fn, FunctionContainer):
                 f = fn
                 f.fn.call()
+            else:
+                PyErr_SetString(
+                    ValueError, "Unexpected queue item: {}".format(repr(fn))
+                )
+                return -1
 
         self.reset()
         self.have_drained_queues = True
         self.drain_queue(self.late_queue)
+        return 0
 
     cdef void wait(self, Promise promise, object timeout = None):
         if not promise.is_pending():
@@ -264,3 +276,6 @@ cdef class Async:
 
     cdef void reset(self):
         self._data().reset()
+
+    cpdef bint _TEST_have_drained_queues(self):
+        return self._data().have_drained_queues

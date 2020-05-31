@@ -343,13 +343,12 @@ cdef class Promise:
 
     @staticmethod
     def wait(Promise promise, object timeout = None):
-        async_instance.wait(promise, timeout)
+        promise._wait(timeout)
 
     cpdef void _wait(self, object timeout = None):
-        Promise.wait(self, timeout)
+        async_instance.wait(self, timeout)
 
     cpdef object get(self, object timeout = None):
-        target = self._target()
         self._wait(timeout or DEFAULT_TIMEOUT)
         return self._target_settled_value(raise_=True)
 

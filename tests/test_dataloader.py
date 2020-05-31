@@ -1,4 +1,3 @@
-import pytest
 from pytest import raises
 
 from promise import Promise, get_async_instance
@@ -6,7 +5,6 @@ from promise.dataloader import DataLoader
 
 
 async_instance = get_async_instance()
-pytestmark = pytest.mark.skip
 
 
 def id_loader(**options):
@@ -216,11 +214,11 @@ def test_does_not_replace_cache_map():
         assert a == "A"
         assert b == "B"
 
-        cache_map = identity_loader._promise_cache
+        cache_map = identity_loader._TEST_get_promise_cache()
 
         identity_loader.clear_all()
 
-        assert id(identity_loader._promise_cache) == id(cache_map)
+        assert id(identity_loader._TEST_get_promise_cache()) == id(cache_map)
 
     do().get()
 
@@ -449,9 +447,9 @@ def test_wrong_loader_return_type_does_not_block_async_instance():
 
         with raises(Exception):
             a_loader.load("A1").get()
-        assert async_instance.have_drained_queues
+        assert async_instance._TEST_have_drained_queues()
         with raises(Exception):
             a_loader.load("A2").get()
-        assert async_instance.have_drained_queues
+        assert async_instance._TEST_have_drained_queues()
 
     do().get()

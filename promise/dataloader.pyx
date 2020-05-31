@@ -51,11 +51,13 @@ cdef class DispatchQueueFn(SchedulerFn):
 cdef class DataLoader:
     def __init__(
         self,
+        object batch_load_fn = None,
         bint batch = True,
         int max_batch_size = -1,
         bint cache = True,
         Scheduler scheduler = None,
     ):
+        self._batch_load_fn = batch_load_fn
         self.threadlocal = local()
         self.batch = batch
         self.max_batch_size = max_batch_size
@@ -76,7 +78,9 @@ cdef class DataLoader:
     cpdef object get_cache_key(self, object o):
         return o
 
-    cpdef Promise batch_load_fn(self, list keys):
+    cpdef object batch_load_fn(self, list keys):
+        if self._batch_load_fn is not None:
+            return self._batch_load_fn(keys)
         return Promise.c_resolve([None for _ in keys])
 
     def load(self, key) -> Promise:
@@ -154,7 +158,8 @@ cdef class DataLoader:
         cdef:
             LocalData loc = self.local_data()
             object cache_key = self.get_cache_key(key)
-        del loc.promise_cache[cache_key]
+        if cache_key in loc.promise_cache:
+            del loc.promise_cache[cache_key]
         return self
 
     cpdef DataLoader clear_all(self):
@@ -175,9 +180,12 @@ cdef class DataLoader:
                 promise = Promise.c_reject(exc)
             else:
                 promise = Promise.c_resolve(value)
-            self._promise_cache[cache_key] = promise
+            loc.promise_cache[cache_key] = promise
 
         return self
+
+    def _TEST_get_promise_cache(self):
+        return self.local_data().promise_cache
 
 
 @cython.final
@@ -220,7 +228,7 @@ cdef void dispatch_queue(DataLoader loader):
 
     loc.queue = []
 
-    if max_batch_size is not None and max_batch_size > len(queue):
+    if max_batch_size > 0 and max_batch_size < len(queue):
         chunks = get_chunks(queue, max_batch_size)
         for chunk in chunks:
             dispatch_queue_batch(loader, chunk)
@@ -272,7 +280,7 @@ cdef void dispatch_queue_batch(DataLoader loader, list queue):
         list keys = []
         int i
         Loader l
-        Promise batch_promise
+        object batch_promise
 
     for i in range(len(queue)):
         l = queue[i]
@@ -295,6 +303,7 @@ cdef void dispatch_queue_batch(DataLoader loader, list queue):
         return
 
     cdef:
+        Promise promise = batch_promise
         BatchPromiseResolved then
         FailedDispatch catch
     then = BatchPromiseResolved.__new__(BatchPromiseResolved)
@@ -304,7 +313,7 @@ cdef void dispatch_queue_batch(DataLoader loader, list queue):
     catch.loader = loader
     catch.queue = queue
 
-    batch_promise.then(then).catch(catch)
+    promise.then(then).catch(catch)
 
 
 cdef void failed_dispatch(DataLoader loader, list queue, Exception error):

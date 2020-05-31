@@ -30,8 +30,8 @@ cdef class LocalData:
     cdef void settle_promises(self, Promise promise)
     cdef void throw_later(self, Exception reason, Scheduler scheduler)
     cpdef void fatal_error(self, Exception reason, Scheduler scheduler)
-    cdef void drain_queue(self, Queue queue)
-    cdef void drain_queue_until_resolved(self, Promise promise)
+    cdef int drain_queue(self, Queue queue) except -1
+    cdef int drain_queue_until_resolved(self, Promise promise) except -1
     cdef void wait(self, Promise promise, object timeout=*)
     cdef void drain_queues(self)
     cdef void queue_tick(self, Scheduler scheduler)
@@ -59,3 +59,4 @@ cdef class Async:
     cdef void drain_queues(self)
     cdef void queue_tick(self, Scheduler scheduler)
     cdef void reset(self)
+    cpdef bint _TEST_have_drained_queues(self)

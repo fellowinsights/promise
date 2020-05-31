@@ -23,7 +23,9 @@ async def test_coroutine_is_thenable():
         await sleep(.01)
         return True
 
-    assert is_thenable(my_coroutine())
+    coro = my_coroutine()
+    assert is_thenable(coro)
+    await coro  # prevent warning for not awaiting
 
 
 @mark.asyncio
