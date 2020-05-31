@@ -3,8 +3,7 @@ name: test promise
 on: push
 
 jobs:
-  build:
-
+  test_promise:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -12,18 +11,112 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -e '.[test]'
         pip install Cython
+
     - name: Build extension
       run: |
         python setup.py build_ext --inplace
+
     - name: Test with pytest on Python ${{ matrix.python-version }}
       run: |
-        pytest -v tests
+        pytest -v --benchmark-skip tests
+
+  test_graphene:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        graphene-version: [master, v2]
+
+    steps:
+    - name: Checkout promise
+      uses: actions/checkout@v2
+      with:
+        path: promise
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Checkout graphene ${{ matrix.graphene-version }}
+      uses: actions/checkout@v2
+      with:
+        repository: graphql-python/graphene
+        ref: ${{ matrix.graphene-version }}
+        path: graphene
+
+    - name: Install promise dependencies
+      run: |
+        python -m pip install --upgrade pip
+        cd promise
+        pip install -e '.[test]'
+        pip install Cython
+
+    - name: Build extension
+      run: |
+        cd promise
+        python setup.py build_ext --inplace
+
+    - name: Install dependencies
+      run: |
+        cd graphene
+        pip install -e '.[test]'
+        pip install -e ../promise
+
+    - name: Test graphene
+      run: |
+        cd graphene
+        pytest -v
+
+  test_graphql-core-legacy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout promise
+      uses: actions/checkout@v2
+      with:
+        path: promise
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Checkout graphql-core-legacy
+      uses: actions/checkout@v2
+      with:
+        repository: graphql-python/graphql-core-legacy
+        path: graphql-core-legacy
+
+    - name: Install promise dependencies
+      run: |
+        python -m pip install --upgrade pip
+        cd promise
+        pip install -e '.[test]'
+        pip install Cython
+
+    - name: Build extension
+      run: |
+        cd promise
+        python setup.py build_ext --inplace
+
+    - name: Install dependencies
+      run: |
+        cd graphql-core-legacy
+        pip install -e '.[test]'
+        pip install -e ../promise
+
+    - name: Test graphene
+      run: |
+        cd graphql-core-legacy
+        pytest -v
