@@ -482,21 +482,29 @@ cdef class Promise:
         return promises
 
     @staticmethod
-    def reject(reason: Exception) -> Promise:
+    cdef Promise c_reject(Exception reason):
         ret = Promise()
         ret._reject_callback(reason)
         return ret
 
+    @staticmethod
+    def reject(obj: Exception) -> Promise:
+        return Promise.c_reject(obj)
+
     rejected = reject
 
     @staticmethod
-    def resolve(obj) -> Promise:
+    cdef Promise c_resolve(object obj):
         if not _is_thenable(obj):
             ret = Promise()
             ret._state = State.FULFILLED
             ret._rejection_handler0 = obj
             return ret
         return _try_convert_to_promise(obj)
+
+    @staticmethod
+    def resolve(obj) -> Promise:
+        return Promise.c_resolve(obj)
 
     fulfilled = cast = resolve
 

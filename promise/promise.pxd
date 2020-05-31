@@ -1,6 +1,11 @@
 from asyncio import Future
 
+from .async_ cimport Async
 from .schedulers cimport SchedulerFn, Scheduler
+
+
+cdef Scheduler default_scheduler
+cdef Async async_instance
 
 
 cdef enum State:
@@ -58,6 +63,10 @@ cdef class Promise:
     cpdef void done(self, did_fulfill=*, did_reject=*)
     cpdef void done_all(self, handlers=*)
     cpdef list then_all(self, handlers=*)
+    @staticmethod
+    cdef Promise c_resolve(object obj)
+    @staticmethod
+    cdef Promise c_reject(Exception obj)
 
 
 cdef bint _is_thenable(object obj)
