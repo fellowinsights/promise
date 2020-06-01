@@ -1,30 +1,48 @@
 import sys
 from setuptools import setup, find_packages
+from distutils.core import Extension
 
-cython_setup_args = {}
 try:
+    import Cython
+except ImportError:
+    USE_CYTHON = False
+else:
+    USE_CYTHON = True
+
+pyx = "pyx" if USE_CYTHON else "c"
+py = "py" if USE_CYTHON else "c"
+
+ext_modules = [
+    Extension("promise", [f"promise/__init__.{py}"]),
+    Extension("promise.promise", [f"promise/promise.{pyx}"]),
+    Extension("promise.promise_list", [f"promise/promise_list.{pyx}"]),
+    Extension("promise.dataloader", [f"promise/dataloader.{pyx}"]),
+    Extension("promise.async_", [f"promise/async_.{pyx}"]),
+    Extension("promise.schedulers", [f"promise/schedulers/__init__.{py}"]),
+    Extension("promise.schedulers.base", [f"promise/schedulers/base.{pyx}"]),
+    Extension("promise.schedulers.immediate", [f"promise/schedulers/immediate.{pyx}"]),
+    Extension("promise.pyutils", [f"promise/pyutils/__init__.{py}"]),
+    Extension("promise.pyutils.version", [f"promise/pyutils/version.{py}"]),
+]
+
+if USE_CYTHON:
     from Cython.Build import cythonize
 
-    cython_setup_args = dict(
-        ext_modules=cythonize(
-            ["promise/**/*.py", "promise/**/*.pyx"],
-            compiler_directives={"language_level": "3"},
-        )
+    ext_modules = cythonize(
+        ext_modules,
+        compiler_directives={
+            "language_level": "3",
+            "warn.unused": True,
+            "warn.unused_result": True,
+        },
     )
-except ImportError:
-    pass
 
-if sys.version_info[0] < 3:
-    import __builtin__ as builtins
-else:
-    import builtins
+import builtins
 
-builtins.__SETUP__ = True
+builtins.__SETUP__ = True  # type: ignore
 
 version = __import__("promise").get_version()
 
-
-IS_PY3 = sys.hexversion >= 0x03000000
 
 tests_require = [
     "pytest>=2.7.3",
@@ -32,9 +50,8 @@ tests_require = [
     "coveralls",
     "pytest-benchmark",
     "mock",
+    "pytest-asyncio",
 ]
-if IS_PY3:
-    tests_require += ["pytest-asyncio"]
 
 
 setup(
@@ -51,16 +68,11 @@ setup(
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Libraries",
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.3",
-        "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: Implementation :: PyPy",
+        "Programming Language :: Python :: Implementation :: CPython",
         "License :: OSI Approved :: MIT License",
     ],
     keywords="concurrent future deferred promise",
@@ -68,7 +80,7 @@ setup(
     # PEP-561: https://www.python.org/dev/peps/pep-0561/
     package_data={"promise": ["py.typed"]},
     extras_require={"test": tests_require},
-    install_requires=["typing>=3.6.4; python_version < '3.5'", "six"],
+    install_requires=["typing>=3.6.4; python_version < '3.5'"],
     tests_require=tests_require,
-    **cython_setup_args,
+    ext_modules=ext_modules,
 )

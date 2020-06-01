@@ -70,7 +70,5 @@ target/
 /.mypy_cache
 /type_info.json
 
-/promise/**/*.c
-/promise/**/*.h
 /promise/**/*.html
 *.prof
