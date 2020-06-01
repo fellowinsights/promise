@@ -56,13 +56,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install Cython
         cd promise
-        pip install -e '.[test]'
+        pip install .
 
     - name: Install dependencies
       run: |
         cd graphene
         pip install -e '.[test]'
-        pip install -e ../promise
+        pip install ../promise
 
     - name: Run tests
       run: |
@@ -94,13 +94,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install Cython
         cd promise
-        pip install -e '.[test]'
+        pip install .
 
     - name: Install dependencies
       run: |
         cd graphql-core-legacy
         pip install -e '.[test]'
-        pip install -e ../promise
+        pip install ../promise
 
     - name: Run tests
       run: |
@@ -110,3 +110,42 @@ jobs:
         # tracebacks, which won't work the same when you're dealing with a C
         # extension
         pytest -vk 'not test_reraise_from_promise'
+
+  test_graphene-django:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout promise
+      uses: actions/checkout@v2
+      with:
+        path: promise
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Checkout graphene-django
+      uses: actions/checkout@v2
+      with:
+        repository: graphql-python/graphene-django
+        path: graphene-django
+
+    - name: Install promise dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install Cython
+        cd promise
+        pip install .
+
+    - name: Install dependencies
+      run: |
+        cd graphene-django
+        pip install -e '.[dev]'
+        pip install ../promise
+
+    - name: Run tests
+      run: |
+        cd graphene-django
+
+        pytest -v graphene_django
