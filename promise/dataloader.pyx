@@ -2,7 +2,7 @@ cimport cython
 
 from threading import local
 
-from .schedulers cimport Scheduler, SchedulerFn
+from .schedulers.base cimport Scheduler, SchedulerFn
 from .promise cimport Promise, default_scheduler, async_instance
 
 

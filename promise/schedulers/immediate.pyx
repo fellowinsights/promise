@@ -4,7 +4,7 @@ from threading import Event
 from cpython.exc cimport PyErr_SetString
 
 from ..promise cimport Promise
-from . cimport Scheduler, SchedulerFn
+from .base cimport Scheduler, SchedulerFn
 
 
 @cython.final

@@ -1,7 +1,7 @@
 from asyncio import Future
 
 from .async_ cimport Async
-from .schedulers cimport SchedulerFn, Scheduler
+from .schedulers.base cimport SchedulerFn, Scheduler
 
 
 cdef Scheduler default_scheduler

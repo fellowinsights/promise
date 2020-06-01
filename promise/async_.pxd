@@ -1,5 +1,5 @@
 from .promise cimport Promise
-from .schedulers cimport SchedulerFn, Scheduler
+from .schedulers.base cimport SchedulerFn, Scheduler
 
 
 cdef class QueueItem:

@@ -8,7 +8,7 @@ from cpython.exc cimport PyErr_SetString
 
 from .async_ cimport Async
 from .promise_list cimport PromiseList
-from .schedulers cimport Scheduler, SchedulerFn
+from .schedulers.base cimport Scheduler, SchedulerFn
 from .schedulers.immediate cimport ImmediateScheduler
 
 

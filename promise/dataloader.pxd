@@ -1,7 +1,7 @@
 cimport cython
 
 from .promise cimport Promise
-from .schedulers cimport Scheduler
+from .schedulers.base cimport Scheduler
 
 
 @cython.final
