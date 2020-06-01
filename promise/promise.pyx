@@ -568,6 +568,10 @@ cdef class Promise:
         return Promise._all(promises)
 
     @staticmethod
+    def is_thenable(obj) -> bool:
+        return _is_thenable(obj)
+
+    @staticmethod
     def for_dict(m):
         dict_type = type(m)
 

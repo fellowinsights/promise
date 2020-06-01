@@ -1326,7 +1326,7 @@ struct __pyx_obj_7promise_7promise___pyx_scope_struct_4_wrapper {
 };
 
 
-/* "promise/promise.pyx":571
+/* "promise/promise.pyx":575
  * 
  *     @staticmethod
  *     def for_dict(m):             # <<<<<<<<<<<<<<
@@ -1340,7 +1340,7 @@ struct __pyx_obj_7promise_7promise___pyx_scope_struct_5_for_dict {
 };
 
 
-/* "promise/promise.pyx":599
+/* "promise/promise.pyx":603
  * 
  * 
  * cdef Promise _try_convert_to_promise(object obj):             # <<<<<<<<<<<<<<
@@ -1353,7 +1353,7 @@ struct __pyx_obj_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promis
 };
 
 
-/* "promise/promise.pyx":631
+/* "promise/promise.pyx":635
  * 
  * 
  * def _process_future_result(resolve, reject):             # <<<<<<<<<<<<<<
@@ -1367,7 +1367,7 @@ struct __pyx_obj_7promise_7promise___pyx_scope_struct_7__process_future_result {
 };
 
 
-/* "promise/promise.pyx":642
+/* "promise/promise.pyx":646
  * 
  * 
  * def iterate_promise(promise: Promise) -> object:             # <<<<<<<<<<<<<<
@@ -2382,7 +2382,6 @@ static const char __pyx_k_keys[] = "keys";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_safe[] = "safe";
-static const char __pyx_k_self[] = "self";
 static const char __pyx_k_send[] = "send";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_then[] = "then";
@@ -2391,23 +2390,19 @@ static const char __pyx_k_catch[] = "catch";
 static const char __pyx_k_class[] = "__class__";
 static const char __pyx_k_close[] = "close";
 static const char __pyx_k_range[] = "range";
-static const char __pyx_k_state[] = "state";
 static const char __pyx_k_throw[] = "throw";
 static const char __pyx_k_value[] = "value";
 static const char __pyx_k_wraps[] = "wraps";
 static const char __pyx_k_Future[] = "Future";
-static const char __pyx_k_dict_2[] = "_dict";
 static const char __pyx_k_format[] = "format";
 static const char __pyx_k_future[] = "future";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_kwargs[] = "kwargs";
-static const char __pyx_k_object[] = "object";
 static const char __pyx_k_pickle[] = "pickle";
 static const char __pyx_k_reason[] = "reason";
 static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_reject[] = "reject";
 static const char __pyx_k_result[] = "result";
-static const char __pyx_k_return[] = "return";
 static const char __pyx_k_target[] = "_target";
 static const char __pyx_k_update[] = "update";
 static const char __pyx_k_values[] = "values";
@@ -2434,7 +2429,6 @@ static const char __pyx_k_pyx_type[] = "__pyx_type";
 static const char __pyx_k_rejected[] = "rejected";
 static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_then_all[] = "then_all";
-static const char __pyx_k_Exception[] = "Exception";
 static const char __pyx_k_TypeError[] = "TypeError";
 static const char __pyx_k_dict_type[] = "dict_type";
 static const char __pyx_k_do_reject[] = "do_reject";
@@ -2453,83 +2447,56 @@ static const char __pyx_k_pyx_result[] = "__pyx_result";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_set_result[] = "set_result";
 static const char __pyx_k_PickleError[] = "PickleError";
-static const char __pyx_k_Promise_all[] = "Promise.all";
-static const char __pyx_k_Promise_get[] = "Promise.get";
 static const char __pyx_k_did_fulfill[] = "did_fulfill";
 static const char __pyx_k_is_thenable[] = "is_thenable";
 static const char __pyx_k_iscoroutine[] = "iscoroutine";
-static const char __pyx_k_Promise_done[] = "Promise.done";
-static const char __pyx_k_Promise_safe[] = "Promise.safe";
-static const char __pyx_k_Promise_then[] = "Promise.then";
-static const char __pyx_k_Promise_wait[] = "Promise.wait";
 static const char __pyx_k_is_fulfilled[] = "is_fulfilled";
-static const char __pyx_k_on_rejection[] = "on_rejection";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_staticmethod[] = "staticmethod";
 static const char __pyx_k_stringsource[] = "stringsource";
-static const char __pyx_k_use_setstate[] = "use_setstate";
-static const char __pyx_k_Promise__wait[] = "Promise._wait";
-static const char __pyx_k_Promise_catch[] = "Promise.catch";
 static const char __pyx_k_asyncio_tasks[] = "asyncio.tasks";
 static const char __pyx_k_ensure_future[] = "ensure_future";
 static const char __pyx_k_get_scheduler[] = "get_scheduler";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_set_exception[] = "set_exception";
 static const char __pyx_k_AssertionError[] = "AssertionError";
-static const char __pyx_k_Promise_reject[] = "Promise.reject";
 static const char __pyx_k_TryCatchResult[] = "TryCatchResult";
 static const char __pyx_k_async_instance[] = "async_instance";
 static const char __pyx_k_handle_success[] = "handle_success";
 static const char __pyx_k_with_traceback[] = "with_traceback";
 static const char __pyx_k_DEFAULT_TIMEOUT[] = "DEFAULT_TIMEOUT";
-static const char __pyx_k_Promise__target[] = "Promise._target";
 static const char __pyx_k_Promise_is_self[] = "Promise is self";
-static const char __pyx_k_Promise_resolve[] = "Promise.resolve";
 static const char __pyx_k_Promise_unknown[] = "<Promise unknown>";
 static const char __pyx_k_iterate_promise[] = "iterate_promise";
 static const char __pyx_k_promise_promise[] = "promise.promise";
 static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
 static const char __pyx_k_resolved_values[] = "resolved_values";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
-static const char __pyx_k_Promise_done_all[] = "Promise.done_all";
-static const char __pyx_k_Promise_for_dict[] = "Promise.for_dict";
-static const char __pyx_k_Promise_then_all[] = "Promise.then_all";
 static const char __pyx_k_promise_for_dict[] = "promise_for_dict";
 static const char __pyx_k_pyx_unpickle_Box[] = "__pyx_unpickle_Box";
-static const char __pyx_k_Promise_do_reject[] = "Promise.do_reject";
-static const char __pyx_k_Promise_promisify[] = "Promise.promisify";
 static const char __pyx_k_add_done_callback[] = "add_done_callback";
 static const char __pyx_k_default_scheduler[] = "default_scheduler";
 static const char __pyx_k_Promise_at_pending[] = "<Promise at {} pending>";
-static const char __pyx_k_Promise_do_resolve[] = "Promise.do_resolve";
-static const char __pyx_k_Promise_get_future[] = "Promise.get_future";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_get_async_instance[] = "get_async_instance";
-static const char __pyx_k_Box___reduce_cython[] = "Box.__reduce_cython__";
 static const char __pyx_k_promise_promise_pyx[] = "promise/promise.pyx";
 static const char __pyx_k_safe_locals_wrapper[] = "safe.<locals>.wrapper";
 static const char __pyx_k_PartialSettlePromise[] = "PartialSettlePromise";
 static const char __pyx_k_Promise_at_following[] = "<Promise at {} following {}>";
 static const char __pyx_k_handle_future_result[] = "handle_future_result";
 static const char __pyx_k_pyx_unpickle_Promise[] = "__pyx_unpickle_Promise";
-static const char __pyx_k_Box___setstate_cython[] = "Box.__setstate_cython__";
-static const char __pyx_k_Promise_get_scheduler[] = "Promise.get_scheduler";
 static const char __pyx_k_get_default_scheduler[] = "get_default_scheduler";
 static const char __pyx_k_process_future_result[] = "_process_future_result";
 static const char __pyx_k_safe_resolved_promise[] = "_safe_resolved_promise";
 static const char __pyx_k_set_default_scheduler[] = "set_default_scheduler";
-static const char __pyx_k_Promise___reduce_cython[] = "Promise.__reduce_cython__";
 static const char __pyx_k_Should_not_be_following[] = "Should not be following";
 static const char __pyx_k_Promise_at_rejected_with[] = "<Promise at {} rejected with {}>";
 static const char __pyx_k_promisify_locals_wrapper[] = "promisify.<locals>.wrapper";
-static const char __pyx_k_Promise___setstate_cython[] = "Promise.__setstate_cython__";
 static const char __pyx_k_Promise_at_fulfilled_with[] = "<Promise at {} fulfilled with {}>";
 static const char __pyx_k_pyx_unpickle_TryCatchResult[] = "__pyx_unpickle_TryCatchResult";
-static const char __pyx_k_TryCatchResult___reduce_cython[] = "TryCatchResult.__reduce_cython__";
 static const char __pyx_k_for_dict_locals_handle_success[] = "for_dict.<locals>.handle_success";
 static const char __pyx_k_pyx_unpickle_PartialSettleProm[] = "__pyx_unpickle_PartialSettlePromise";
-static const char __pyx_k_PartialSettlePromise___setstate[] = "PartialSettlePromise.__setstate_cython__";
 static const char __pyx_k_process_future_result_locals_ha[] = "_process_future_result.<locals>.handle_future_result";
 static const char __pyx_k_promisify_locals_wrapper_locals[] = "promisify.<locals>.wrapper.<locals>.executor";
 static const char __pyx_k_try_convert_to_promise_locals_e[] = "_try_convert_to_promise.<locals>.executor";
@@ -2537,17 +2504,12 @@ static const char __pyx_k_Incompatible_checksums_s_vs_0x20[] = "Incompatible che
 static const char __pyx_k_Incompatible_checksums_s_vs_0x47[] = "Incompatible checksums (%s vs 0x47960a2 = (exc, tb, value))";
 static const char __pyx_k_Incompatible_checksums_s_vs_0xb4[] = "Incompatible checksums (%s vs 0xb499ce5 = (_fulfillment_handler0, _fulfillment_handlers, _future, _is_async_guaranteed, _is_bound, _is_final, _is_following, _is_waiting, _length, _promise0, _promises, _rejection_handler0, _rejection_handlers, _scheduler, _state, _traceback))";
 static const char __pyx_k_Incompatible_checksums_s_vs_0xb5[] = "Incompatible checksums (%s vs 0xb5dc62b = (handler, promise, target, traceback, value))";
-static const char __pyx_k_PartialSettlePromise___reduce_cy[] = "PartialSettlePromise.__reduce_cython__";
 static const char __pyx_k_Promise__resolve_from_executor_l[] = "Promise._resolve_from_executor.<locals>.resolve";
-static const char __pyx_k_TryCatchResult___setstate_cython[] = "TryCatchResult.__setstate_cython__";
 static const char __pyx_k_safe_locals_wrapper_locals_lambd[] = "safe.<locals>.wrapper.<locals>.<lambda>";
 static const char __pyx_k_Promise__resolve_from_executor_l_2[] = "Promise._resolve_from_executor.<locals>.reject";
 static PyObject *__pyx_n_s_AssertionError;
 static PyObject *__pyx_n_s_Box;
-static PyObject *__pyx_n_s_Box___reduce_cython;
-static PyObject *__pyx_n_s_Box___setstate_cython;
 static PyObject *__pyx_n_s_DEFAULT_TIMEOUT;
-static PyObject *__pyx_n_u_Exception;
 static PyObject *__pyx_n_s_Future;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x20;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x47;
@@ -2555,44 +2517,18 @@ static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0xb4;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0xb5;
 static PyObject *__pyx_n_s_MAX_LENGTH;
 static PyObject *__pyx_n_s_PartialSettlePromise;
-static PyObject *__pyx_n_s_PartialSettlePromise___reduce_cy;
-static PyObject *__pyx_n_s_PartialSettlePromise___setstate;
 static PyObject *__pyx_n_s_PickleError;
 static PyObject *__pyx_n_s_Promise;
-static PyObject *__pyx_n_u_Promise;
-static PyObject *__pyx_n_s_Promise___reduce_cython;
-static PyObject *__pyx_n_s_Promise___setstate_cython;
 static PyObject *__pyx_n_s_Promise__resolve_from_executor_l;
 static PyObject *__pyx_n_s_Promise__resolve_from_executor_l_2;
-static PyObject *__pyx_n_s_Promise__target;
-static PyObject *__pyx_n_s_Promise__wait;
-static PyObject *__pyx_n_s_Promise_all;
 static PyObject *__pyx_kp_u_Promise_at_following;
 static PyObject *__pyx_kp_u_Promise_at_fulfilled_with;
 static PyObject *__pyx_kp_u_Promise_at_pending;
 static PyObject *__pyx_kp_u_Promise_at_rejected_with;
-static PyObject *__pyx_n_s_Promise_catch;
-static PyObject *__pyx_n_s_Promise_do_reject;
-static PyObject *__pyx_n_s_Promise_do_resolve;
-static PyObject *__pyx_n_s_Promise_done;
-static PyObject *__pyx_n_s_Promise_done_all;
-static PyObject *__pyx_n_s_Promise_for_dict;
-static PyObject *__pyx_n_s_Promise_get;
-static PyObject *__pyx_n_s_Promise_get_future;
-static PyObject *__pyx_n_s_Promise_get_scheduler;
 static PyObject *__pyx_kp_u_Promise_is_self;
-static PyObject *__pyx_n_s_Promise_promisify;
-static PyObject *__pyx_n_s_Promise_reject;
-static PyObject *__pyx_n_s_Promise_resolve;
-static PyObject *__pyx_n_s_Promise_safe;
-static PyObject *__pyx_n_s_Promise_then;
-static PyObject *__pyx_n_s_Promise_then_all;
 static PyObject *__pyx_kp_u_Promise_unknown;
-static PyObject *__pyx_n_s_Promise_wait;
 static PyObject *__pyx_kp_u_Should_not_be_following;
 static PyObject *__pyx_n_s_TryCatchResult;
-static PyObject *__pyx_n_s_TryCatchResult___reduce_cython;
-static PyObject *__pyx_n_s_TryCatchResult___setstate_cython;
 static PyObject *__pyx_n_s_TypeError;
 static PyObject *__pyx_n_s_add_done_callback;
 static PyObject *__pyx_n_u_add_done_callback;
@@ -2609,7 +2545,6 @@ static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_close;
 static PyObject *__pyx_n_s_default_scheduler;
 static PyObject *__pyx_n_s_dict;
-static PyObject *__pyx_n_s_dict_2;
 static PyObject *__pyx_n_s_dict_type;
 static PyObject *__pyx_n_s_did_fulfill;
 static PyObject *__pyx_n_s_did_reject;
@@ -2656,8 +2591,6 @@ static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_new;
 static PyObject *__pyx_n_s_obj;
-static PyObject *__pyx_n_u_object;
-static PyObject *__pyx_n_s_on_rejection;
 static PyObject *__pyx_n_s_pickle;
 static PyObject *__pyx_n_s_process_future_result;
 static PyObject *__pyx_n_s_process_future_result_locals_ha;
@@ -2690,20 +2623,17 @@ static PyObject *__pyx_n_s_rejected;
 static PyObject *__pyx_n_s_resolve;
 static PyObject *__pyx_n_s_resolved_values;
 static PyObject *__pyx_n_s_result;
-static PyObject *__pyx_n_s_return;
 static PyObject *__pyx_n_s_safe;
 static PyObject *__pyx_n_s_safe_locals_wrapper;
 static PyObject *__pyx_n_s_safe_locals_wrapper_locals_lambd;
 static PyObject *__pyx_n_s_safe_resolved_promise;
 static PyObject *__pyx_n_s_scheduler;
-static PyObject *__pyx_n_s_self;
 static PyObject *__pyx_n_s_send;
 static PyObject *__pyx_n_s_set_default_scheduler;
 static PyObject *__pyx_n_s_set_exception;
 static PyObject *__pyx_n_s_set_result;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
-static PyObject *__pyx_n_s_state;
 static PyObject *__pyx_n_s_staticmethod;
 static PyObject *__pyx_kp_s_stringsource;
 static PyObject *__pyx_n_u_success;
@@ -2718,7 +2648,6 @@ static PyObject *__pyx_n_s_timeout;
 static PyObject *__pyx_n_s_traceback;
 static PyObject *__pyx_n_s_try_convert_to_promise_locals_e;
 static PyObject *__pyx_n_s_update;
-static PyObject *__pyx_n_s_use_setstate;
 static PyObject *__pyx_n_s_value;
 static PyObject *__pyx_n_s_values;
 static PyObject *__pyx_n_s_wait;
@@ -2787,8 +2716,9 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, CYTHON_UNUSED
 static PyObject *__pyx_pf_7promise_7promise_7Promise_4safe_wrapper(PyObject *__pyx_self, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_40safe(PyObject *__pyx_v_fn); /* proto */
 static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7Promise_42all(PyObject *__pyx_v_promises); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_44is_thenable(PyObject *__pyx_v_obj); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_8for_dict_handle_success(PyObject *__pyx_self, PyObject *__pyx_v_resolved_values); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_44for_dict(PyObject *__pyx_v_m); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_46for_dict(PyObject *__pyx_v_m); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_6_state___get__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
 static int __pyx_pf_7promise_7promise_7Promise_6_state_2__set__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_13_is_following___get__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
@@ -2798,8 +2728,8 @@ static int __pyx_pf_7promise_7promise_7Promise_20_is_async_guaranteed_2__set__(s
 static PyObject *__pyx_pf_7promise_7promise_7Promise_10_traceback___get__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
 static int __pyx_pf_7promise_7promise_7Promise_10_traceback_2__set__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static int __pyx_pf_7promise_7promise_7Promise_10_traceback_4__del__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_46__reduce_cython__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_48__setstate_cython__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_48__reduce_cython__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_50__setstate_cython__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_6is_thenable(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_obj); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(PyObject *__pyx_self, PyObject *__pyx_v_resolve, PyObject *__pyx_v_reject); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_future_result(PyObject *__pyx_self, PyObject *__pyx_v_future); /* proto */
@@ -2836,8 +2766,8 @@ static PyObject *__pyx_tuple__11;
 static PyObject *__pyx_tuple__13;
 static PyObject *__pyx_tuple__15;
 static PyObject *__pyx_tuple__17;
-static PyObject *__pyx_tuple__20;
 static PyObject *__pyx_tuple__22;
+static PyObject *__pyx_tuple__24;
 static PyObject *__pyx_tuple__26;
 static PyObject *__pyx_tuple__28;
 static PyObject *__pyx_tuple__30;
@@ -2848,29 +2778,10 @@ static PyObject *__pyx_tuple__38;
 static PyObject *__pyx_tuple__40;
 static PyObject *__pyx_tuple__42;
 static PyObject *__pyx_tuple__44;
-static PyObject *__pyx_tuple__46;
-static PyObject *__pyx_tuple__48;
-static PyObject *__pyx_tuple__50;
-static PyObject *__pyx_tuple__52;
-static PyObject *__pyx_tuple__54;
-static PyObject *__pyx_tuple__56;
-static PyObject *__pyx_tuple__58;
-static PyObject *__pyx_tuple__60;
-static PyObject *__pyx_tuple__62;
-static PyObject *__pyx_tuple__64;
-static PyObject *__pyx_tuple__66;
-static PyObject *__pyx_tuple__68;
-static PyObject *__pyx_tuple__70;
-static PyObject *__pyx_tuple__72;
-static PyObject *__pyx_tuple__74;
-static PyObject *__pyx_tuple__76;
-static PyObject *__pyx_tuple__78;
-static PyObject *__pyx_tuple__80;
-static PyObject *__pyx_tuple__82;
-static PyObject *__pyx_tuple__83;
-static PyObject *__pyx_tuple__85;
-static PyObject *__pyx_tuple__87;
-static PyObject *__pyx_tuple__89;
+static PyObject *__pyx_tuple__45;
+static PyObject *__pyx_tuple__47;
+static PyObject *__pyx_tuple__49;
+static PyObject *__pyx_tuple__51;
 static PyObject *__pyx_codeobj__3;
 static PyObject *__pyx_codeobj__5;
 static PyObject *__pyx_codeobj__8;
@@ -2880,9 +2791,9 @@ static PyObject *__pyx_codeobj__14;
 static PyObject *__pyx_codeobj__16;
 static PyObject *__pyx_codeobj__18;
 static PyObject *__pyx_codeobj__19;
+static PyObject *__pyx_codeobj__20;
 static PyObject *__pyx_codeobj__21;
 static PyObject *__pyx_codeobj__23;
-static PyObject *__pyx_codeobj__24;
 static PyObject *__pyx_codeobj__25;
 static PyObject *__pyx_codeobj__27;
 static PyObject *__pyx_codeobj__29;
@@ -2893,29 +2804,10 @@ static PyObject *__pyx_codeobj__37;
 static PyObject *__pyx_codeobj__39;
 static PyObject *__pyx_codeobj__41;
 static PyObject *__pyx_codeobj__43;
-static PyObject *__pyx_codeobj__45;
-static PyObject *__pyx_codeobj__47;
-static PyObject *__pyx_codeobj__49;
-static PyObject *__pyx_codeobj__51;
-static PyObject *__pyx_codeobj__53;
-static PyObject *__pyx_codeobj__55;
-static PyObject *__pyx_codeobj__57;
-static PyObject *__pyx_codeobj__59;
-static PyObject *__pyx_codeobj__61;
-static PyObject *__pyx_codeobj__63;
-static PyObject *__pyx_codeobj__65;
-static PyObject *__pyx_codeobj__67;
-static PyObject *__pyx_codeobj__69;
-static PyObject *__pyx_codeobj__71;
-static PyObject *__pyx_codeobj__73;
-static PyObject *__pyx_codeobj__75;
-static PyObject *__pyx_codeobj__77;
-static PyObject *__pyx_codeobj__79;
-static PyObject *__pyx_codeobj__81;
-static PyObject *__pyx_codeobj__84;
-static PyObject *__pyx_codeobj__86;
-static PyObject *__pyx_codeobj__88;
-static PyObject *__pyx_codeobj__90;
+static PyObject *__pyx_codeobj__46;
+static PyObject *__pyx_codeobj__48;
+static PyObject *__pyx_codeobj__50;
+static PyObject *__pyx_codeobj__52;
 /* Late includes */
 
 /* "promise/promise.pyx":24
@@ -3021,7 +2913,6 @@ static int __pyx_pf_7promise_7promise_3Box_5value_4__del__(struct __pyx_obj_7pro
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_3Box_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_3Box_1__reduce_cython__ = {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_7promise_3Box_1__reduce_cython__, METH_NOARGS, 0};
 static PyObject *__pyx_pw_7promise_7promise_3Box_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -3257,7 +3148,6 @@ static PyObject *__pyx_pf_7promise_7promise_3Box___reduce_cython__(struct __pyx_
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_3Box_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_3Box_3__setstate_cython__ = {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_7promise_3Box_3__setstate_cython__, METH_O, 0};
 static PyObject *__pyx_pw_7promise_7promise_3Box_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -3491,7 +3381,6 @@ static PyObject *__pyx_pf_7promise_7promise_4set_default_scheduler(CYTHON_UNUSED
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_14TryCatchResult_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_14TryCatchResult_1__reduce_cython__ = {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_7promise_14TryCatchResult_1__reduce_cython__, METH_NOARGS, 0};
 static PyObject *__pyx_pw_7promise_7promise_14TryCatchResult_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -3751,7 +3640,6 @@ static PyObject *__pyx_pf_7promise_7promise_14TryCatchResult___reduce_cython__(s
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_14TryCatchResult_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_14TryCatchResult_3__setstate_cython__ = {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_7promise_14TryCatchResult_3__setstate_cython__, METH_O, 0};
 static PyObject *__pyx_pw_7promise_7promise_14TryCatchResult_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -4698,7 +4586,6 @@ static int __pyx_pf_7promise_7promise_20PartialSettlePromise_9traceback_4__del__
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_20PartialSettlePromise_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_20PartialSettlePromise_1__reduce_cython__ = {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_7promise_20PartialSettlePromise_1__reduce_cython__, METH_NOARGS, 0};
 static PyObject *__pyx_pw_7promise_7promise_20PartialSettlePromise_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -4978,7 +4865,6 @@ static PyObject *__pyx_pf_7promise_7promise_20PartialSettlePromise___reduce_cyth
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_20PartialSettlePromise_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_20PartialSettlePromise_3__setstate_cython__ = {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_7promise_20PartialSettlePromise_3__setstate_cython__, METH_O, 0};
 static PyObject *__pyx_pw_7promise_7promise_20PartialSettlePromise_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -5494,7 +5380,6 @@ static struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_f_7promise_
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_7Promise_3get_scheduler(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_3get_scheduler = {"get_scheduler", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_3get_scheduler, METH_NOARGS, 0};
 static PyObject *__pyx_pw_7promise_7promise_7Promise_3get_scheduler(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -5713,7 +5598,6 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get_future(struct __pyx_obj_
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_7Promise_5get_future(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_5get_future = {"get_future", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_5get_future, METH_NOARGS, 0};
 static PyObject *__pyx_pw_7promise_7promise_7Promise_5get_future(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -8385,7 +8269,6 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_7Promise_11_target(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_11_target = {"_target", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_11_target, METH_NOARGS, 0};
 static PyObject *__pyx_pw_7promise_7promise_7Promise_11_target(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -9555,7 +9438,6 @@ static void __pyx_f_7promise_7promise_7Promise__wait(struct __pyx_obj_7promise_7
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_7Promise_15_wait(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_15_wait = {"_wait", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_15_wait, METH_VARARGS|METH_KEYWORDS, 0};
 static PyObject *__pyx_pw_7promise_7promise_7Promise_15_wait(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_timeout = 0;
   int __pyx_lineno = 0;
@@ -9784,7 +9666,6 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get(struct __pyx_obj_7promis
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_7Promise_17get(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_17get = {"get", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_17get, METH_VARARGS|METH_KEYWORDS, 0};
 static PyObject *__pyx_pw_7promise_7promise_7Promise_17get(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_timeout = 0;
   int __pyx_lineno = 0;
@@ -10904,7 +10785,6 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_7Promise_21catch(PyObject *__pyx_v_self, PyObject *__pyx_v_on_rejection); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_21catch = {"catch", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_21catch, METH_O, 0};
 static PyObject *__pyx_pw_7promise_7promise_7Promise_21catch(PyObject *__pyx_v_self, PyObject *__pyx_v_on_rejection) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -11353,7 +11233,6 @@ static void __pyx_f_7promise_7promise_7Promise_do_resolve(struct __pyx_obj_7prom
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_7Promise_23do_resolve(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_23do_resolve = {"do_resolve", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_23do_resolve, METH_O, 0};
 static PyObject *__pyx_pw_7promise_7promise_7Promise_23do_resolve(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -11528,7 +11407,6 @@ static void __pyx_f_7promise_7promise_7Promise_do_reject(struct __pyx_obj_7promi
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_7Promise_25do_reject(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_25do_reject = {"do_reject", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_25do_reject, METH_VARARGS|METH_KEYWORDS, 0};
 static PyObject *__pyx_pw_7promise_7promise_7Promise_25do_reject(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_reason = 0;
   PyObject *__pyx_v_traceback = 0;
@@ -11783,7 +11661,6 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_7Promise_27then(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_27then = {"then", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_27then, METH_VARARGS|METH_KEYWORDS, 0};
 static PyObject *__pyx_pw_7promise_7promise_7Promise_27then(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_did_fulfill = 0;
   PyObject *__pyx_v_did_reject = 0;
@@ -12040,7 +11917,6 @@ static void __pyx_f_7promise_7promise_7Promise_done(struct __pyx_obj_7promise_7p
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_7Promise_29done(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_29done = {"done", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_29done, METH_VARARGS|METH_KEYWORDS, 0};
 static PyObject *__pyx_pw_7promise_7promise_7Promise_29done(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_did_fulfill = 0;
   PyObject *__pyx_v_did_reject = 0;
@@ -12506,7 +12382,6 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_7Promise_31done_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_31done_all = {"done_all", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_31done_all, METH_VARARGS|METH_KEYWORDS, 0};
 static PyObject *__pyx_pw_7promise_7promise_7Promise_31done_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_handlers = 0;
   int __pyx_lineno = 0;
@@ -13005,7 +12880,6 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_7Promise_33then_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_33then_all = {"then_all", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_33then_all, METH_VARARGS|METH_KEYWORDS, 0};
 static PyObject *__pyx_pw_7promise_7promise_7Promise_33then_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_handlers = 0;
   int __pyx_lineno = 0;
@@ -14538,15 +14412,119 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7P
 /* "promise/promise.pyx":571
  * 
  *     @staticmethod
+ *     def is_thenable(obj) -> bool:             # <<<<<<<<<<<<<<
+ *         return _is_thenable(obj)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_7promise_7promise_7Promise_45is_thenable(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_45is_thenable = {"is_thenable", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_45is_thenable, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_45is_thenable(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_obj = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("is_thenable (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_obj,0};
+    PyObject* values[1] = {0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_obj)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "is_thenable") < 0)) __PYX_ERR(0, 571, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+    }
+    __pyx_v_obj = values[0];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("is_thenable", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 571, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("promise.promise.Promise.is_thenable", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_44is_thenable(__pyx_v_obj);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_7promise_7promise_7Promise_44is_thenable(PyObject *__pyx_v_obj) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("is_thenable", 0);
+
+  /* "promise/promise.pyx":572
+ *     @staticmethod
+ *     def is_thenable(obj) -> bool:
+ *         return _is_thenable(obj)             # <<<<<<<<<<<<<<
+ * 
+ *     @staticmethod
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_7promise_7promise__is_thenable(__pyx_v_obj)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 572, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "promise/promise.pyx":571
+ * 
+ *     @staticmethod
+ *     def is_thenable(obj) -> bool:             # <<<<<<<<<<<<<<
+ *         return _is_thenable(obj)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("promise.promise.Promise.is_thenable", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "promise/promise.pyx":575
+ * 
+ *     @staticmethod
  *     def for_dict(m):             # <<<<<<<<<<<<<<
  *         dict_type = type(m)
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_45for_dict(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_45for_dict = {"for_dict", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_45for_dict, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_7promise_7promise_7Promise_45for_dict(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_47for_dict(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_47for_dict = {"for_dict", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_47for_dict, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_47for_dict(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_m = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -14573,7 +14551,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_45for_dict(CYTHON_UNUSED Py
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "for_dict") < 0)) __PYX_ERR(0, 571, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "for_dict") < 0)) __PYX_ERR(0, 575, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -14584,20 +14562,20 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_45for_dict(CYTHON_UNUSED Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("for_dict", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 571, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("for_dict", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 575, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.for_dict", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_44for_dict(__pyx_v_m);
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_46for_dict(__pyx_v_m);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":577
+/* "promise/promise.pyx":581
  *             return Promise.resolve(dict_type())
  * 
  *         def handle_success(resolved_values):             # <<<<<<<<<<<<<<
@@ -14634,7 +14612,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8for_dict_handle_success(Py
   __pyx_outer_scope = (struct __pyx_obj_7promise_7promise___pyx_scope_struct_5_for_dict *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "promise/promise.pyx":578
+  /* "promise/promise.pyx":582
  * 
  *         def handle_success(resolved_values):
  *             return dict_type(zip(m.keys(), resolved_values))             # <<<<<<<<<<<<<<
@@ -14642,9 +14620,9 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8for_dict_handle_success(Py
  *         return Promise.all(m.values()).then(handle_success)
  */
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_dict_type)) { __Pyx_RaiseClosureNameError("dict_type"); __PYX_ERR(0, 578, __pyx_L1_error) }
-  if (unlikely(!__pyx_cur_scope->__pyx_v_m)) { __Pyx_RaiseClosureNameError("m"); __PYX_ERR(0, 578, __pyx_L1_error) }
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_m, __pyx_n_s_keys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 578, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_dict_type)) { __Pyx_RaiseClosureNameError("dict_type"); __PYX_ERR(0, 582, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_m)) { __Pyx_RaiseClosureNameError("m"); __PYX_ERR(0, 582, __pyx_L1_error) }
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_m, __pyx_n_s_keys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 582, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -14658,10 +14636,10 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8for_dict_handle_success(Py
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 578, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 582, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 578, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 582, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
@@ -14669,17 +14647,17 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8for_dict_handle_success(Py
   __Pyx_GIVEREF(__pyx_v_resolved_values);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_resolved_values);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 578, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 582, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_cur_scope->__pyx_v_dict_type), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 578, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_cur_scope->__pyx_v_dict_type), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 582, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":577
+  /* "promise/promise.pyx":581
  *             return Promise.resolve(dict_type())
  * 
  *         def handle_success(resolved_values):             # <<<<<<<<<<<<<<
@@ -14700,7 +14678,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8for_dict_handle_success(Py
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":571
+/* "promise/promise.pyx":575
  * 
  *     @staticmethod
  *     def for_dict(m):             # <<<<<<<<<<<<<<
@@ -14708,7 +14686,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8for_dict_handle_success(Py
  * 
  */
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_44for_dict(PyObject *__pyx_v_m) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_46for_dict(PyObject *__pyx_v_m) {
   struct __pyx_obj_7promise_7promise___pyx_scope_struct_5_for_dict *__pyx_cur_scope;
   PyObject *__pyx_v_handle_success = 0;
   PyObject *__pyx_r = NULL;
@@ -14729,7 +14707,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_44for_dict(PyObject *__pyx_
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7promise_7promise___pyx_scope_struct_5_for_dict *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 571, __pyx_L1_error)
+    __PYX_ERR(0, 575, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -14737,7 +14715,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_44for_dict(PyObject *__pyx_
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_m);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_m);
 
-  /* "promise/promise.pyx":572
+  /* "promise/promise.pyx":576
  *     @staticmethod
  *     def for_dict(m):
  *         dict_type = type(m)             # <<<<<<<<<<<<<<
@@ -14748,18 +14726,18 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_44for_dict(PyObject *__pyx_
   __Pyx_GIVEREF(((PyObject *)Py_TYPE(__pyx_cur_scope->__pyx_v_m)));
   __pyx_cur_scope->__pyx_v_dict_type = ((PyTypeObject*)((PyObject *)Py_TYPE(__pyx_cur_scope->__pyx_v_m)));
 
-  /* "promise/promise.pyx":574
+  /* "promise/promise.pyx":578
  *         dict_type = type(m)
  * 
  *         if not m:             # <<<<<<<<<<<<<<
  *             return Promise.resolve(dict_type())
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_cur_scope->__pyx_v_m); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 574, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_cur_scope->__pyx_v_m); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 578, __pyx_L1_error)
   __pyx_t_2 = ((!__pyx_t_1) != 0);
   if (__pyx_t_2) {
 
-    /* "promise/promise.pyx":575
+    /* "promise/promise.pyx":579
  * 
  *         if not m:
  *             return Promise.resolve(dict_type())             # <<<<<<<<<<<<<<
@@ -14767,9 +14745,9 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_44for_dict(PyObject *__pyx_
  *         def handle_success(resolved_values):
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_resolve); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 575, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_resolve); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 579, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_cur_scope->__pyx_v_dict_type)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 575, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_cur_scope->__pyx_v_dict_type)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 579, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -14784,14 +14762,14 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_44for_dict(PyObject *__pyx_
     __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 575, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 579, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":574
+    /* "promise/promise.pyx":578
  *         dict_type = type(m)
  * 
  *         if not m:             # <<<<<<<<<<<<<<
@@ -14800,19 +14778,19 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_44for_dict(PyObject *__pyx_
  */
   }
 
-  /* "promise/promise.pyx":577
+  /* "promise/promise.pyx":581
  *             return Promise.resolve(dict_type())
  * 
  *         def handle_success(resolved_values):             # <<<<<<<<<<<<<<
  *             return dict_type(zip(m.keys(), resolved_values))
  * 
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_8for_dict_1handle_success, 0, __pyx_n_s_for_dict_locals_handle_success, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 577, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_8for_dict_1handle_success, 0, __pyx_n_s_for_dict_locals_handle_success, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 581, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_handle_success = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "promise/promise.pyx":580
+  /* "promise/promise.pyx":584
  *             return dict_type(zip(m.keys(), resolved_values))
  * 
  *         return Promise.all(m.values()).then(handle_success)             # <<<<<<<<<<<<<<
@@ -14820,9 +14798,9 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_44for_dict(PyObject *__pyx_
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_all); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 580, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_all); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 584, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_m, __pyx_n_s_values); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 580, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_m, __pyx_n_s_values); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 584, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_t_8 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -14836,7 +14814,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_44for_dict(PyObject *__pyx_
   }
   __pyx_t_6 = (__pyx_t_8) ? __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_8) : __Pyx_PyObject_CallNoArg(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 580, __pyx_L1_error)
+  if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 584, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_7 = NULL;
@@ -14852,10 +14830,10 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_44for_dict(PyObject *__pyx_
   __pyx_t_4 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_7, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 580, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 584, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_then); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 580, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_then); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 584, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -14870,14 +14848,14 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_44for_dict(PyObject *__pyx_
   }
   __pyx_t_3 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_4, __pyx_v_handle_success) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_handle_success);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 580, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 584, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":571
+  /* "promise/promise.pyx":575
  * 
  *     @staticmethod
  *     def for_dict(m):             # <<<<<<<<<<<<<<
@@ -15243,20 +15221,19 @@ static int __pyx_pf_7promise_7promise_7Promise_10_traceback_4__del__(struct __py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_47__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_47__reduce_cython__ = {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_47__reduce_cython__, METH_NOARGS, 0};
-static PyObject *__pyx_pw_7promise_7promise_7Promise_47__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_49__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_49__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_46__reduce_cython__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_48__reduce_cython__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_46__reduce_cython__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_48__reduce_cython__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
   PyObject *__pyx_v_state = 0;
   PyObject *__pyx_v__dict = 0;
   int __pyx_v_use_setstate;
@@ -15608,20 +15585,19 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_46__reduce_cython__(struct 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_49__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_49__setstate_cython__ = {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_49__setstate_cython__, METH_O, 0};
-static PyObject *__pyx_pw_7promise_7promise_7Promise_49__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_51__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_51__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_48__setstate_cython__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_50__setstate_cython__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_48__setstate_cython__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_50__setstate_cython__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -15660,7 +15636,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_48__setstate_cython__(struc
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":583
+/* "promise/promise.pyx":587
  * 
  * 
  * cdef bint _is_thenable(object obj):             # <<<<<<<<<<<<<<
@@ -15682,7 +15658,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_is_thenable", 0);
 
-  /* "promise/promise.pyx":584
+  /* "promise/promise.pyx":588
  * 
  * cdef bint _is_thenable(object obj):
  *     cdef object typ = type(obj)             # <<<<<<<<<<<<<<
@@ -15692,7 +15668,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
   __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_v_obj)));
   __pyx_v_typ = ((PyObject *)Py_TYPE(__pyx_v_obj));
 
-  /* "promise/promise.pyx":585
+  /* "promise/promise.pyx":589
  * cdef bint _is_thenable(object obj):
  *     cdef object typ = type(obj)
  *     if isinstance(obj, Promise):             # <<<<<<<<<<<<<<
@@ -15703,7 +15679,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "promise/promise.pyx":586
+    /* "promise/promise.pyx":590
  *     cdef object typ = type(obj)
  *     if isinstance(obj, Promise):
  *         return True             # <<<<<<<<<<<<<<
@@ -15713,7 +15689,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
     __pyx_r = 1;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":585
+    /* "promise/promise.pyx":589
  * cdef bint _is_thenable(object obj):
  *     cdef object typ = type(obj)
  *     if isinstance(obj, Promise):             # <<<<<<<<<<<<<<
@@ -15722,7 +15698,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
  */
   }
 
-  /* "promise/promise.pyx":587
+  /* "promise/promise.pyx":591
  *     if isinstance(obj, Promise):
  *         return True
  *     elif typ in (int, str, bool, float, complex, tuple, list, dict, bytes):             # <<<<<<<<<<<<<<
@@ -15731,72 +15707,72 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
  */
   __Pyx_INCREF(__pyx_v_typ);
   __pyx_t_3 = __pyx_v_typ;
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyInt_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyInt_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyUnicode_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyUnicode_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject*)&PyBool_Type), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject*)&PyBool_Type), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyFloat_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyFloat_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyComplex_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyComplex_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyTuple_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyTuple_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyList_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyList_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyDict_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyDict_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyBytes_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyBytes_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = __pyx_t_1;
   __pyx_L4_bool_binop_done:;
@@ -15804,7 +15780,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "promise/promise.pyx":588
+    /* "promise/promise.pyx":592
  *         return True
  *     elif typ in (int, str, bool, float, complex, tuple, list, dict, bytes):
  *         return False             # <<<<<<<<<<<<<<
@@ -15814,7 +15790,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":587
+    /* "promise/promise.pyx":591
  *     if isinstance(obj, Promise):
  *         return True
  *     elif typ in (int, str, bool, float, complex, tuple, list, dict, bytes):             # <<<<<<<<<<<<<<
@@ -15823,14 +15799,14 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
  */
   }
 
-  /* "promise/promise.pyx":589
+  /* "promise/promise.pyx":593
  *     elif typ in (int, str, bool, float, complex, tuple, list, dict, bytes):
  *         return False
  *     elif iscoroutine(obj) or is_future_like(typ):             # <<<<<<<<<<<<<<
  *         return True
  *     else:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_iscoroutine); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 589, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_iscoroutine); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 593, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -15844,10 +15820,10 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
   }
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_v_obj) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_obj);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 589, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 593, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 589, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 593, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (!__pyx_t_2) {
   } else {
@@ -15859,7 +15835,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
   __pyx_L13_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "promise/promise.pyx":590
+    /* "promise/promise.pyx":594
  *         return False
  *     elif iscoroutine(obj) or is_future_like(typ):
  *         return True             # <<<<<<<<<<<<<<
@@ -15869,7 +15845,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
     __pyx_r = 1;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":589
+    /* "promise/promise.pyx":593
  *     elif typ in (int, str, bool, float, complex, tuple, list, dict, bytes):
  *         return False
  *     elif iscoroutine(obj) or is_future_like(typ):             # <<<<<<<<<<<<<<
@@ -15878,7 +15854,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
  */
   }
 
-  /* "promise/promise.pyx":592
+  /* "promise/promise.pyx":596
  *         return True
  *     else:
  *         return False             # <<<<<<<<<<<<<<
@@ -15890,7 +15866,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
     goto __pyx_L0;
   }
 
-  /* "promise/promise.pyx":583
+  /* "promise/promise.pyx":587
  * 
  * 
  * cdef bint _is_thenable(object obj):             # <<<<<<<<<<<<<<
@@ -15911,7 +15887,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":595
+/* "promise/promise.pyx":599
  * 
  * 
  * def is_thenable(obj):             # <<<<<<<<<<<<<<
@@ -15942,7 +15918,7 @@ static PyObject *__pyx_pf_7promise_7promise_6is_thenable(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("is_thenable", 0);
 
-  /* "promise/promise.pyx":596
+  /* "promise/promise.pyx":600
  * 
  * def is_thenable(obj):
  *     return _is_thenable(obj)             # <<<<<<<<<<<<<<
@@ -15950,13 +15926,13 @@ static PyObject *__pyx_pf_7promise_7promise_6is_thenable(CYTHON_UNUSED PyObject 
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_7promise_7promise__is_thenable(__pyx_v_obj)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 596, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_7promise_7promise__is_thenable(__pyx_v_obj)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 600, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":595
+  /* "promise/promise.pyx":599
  * 
  * 
  * def is_thenable(obj):             # <<<<<<<<<<<<<<
@@ -15975,7 +15951,7 @@ static PyObject *__pyx_pf_7promise_7promise_6is_thenable(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":610
+/* "promise/promise.pyx":614
  * 
  *     if is_future_like(type_):
  *         def executor(resolve, reject):             # <<<<<<<<<<<<<<
@@ -16018,11 +15994,11 @@ static PyObject *__pyx_pw_7promise_7promise_23_try_convert_to_promise_1executor(
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_reject)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("executor", 1, 2, 2, 1); __PYX_ERR(0, 610, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("executor", 1, 2, 2, 1); __PYX_ERR(0, 614, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "executor") < 0)) __PYX_ERR(0, 610, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "executor") < 0)) __PYX_ERR(0, 614, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -16035,7 +16011,7 @@ static PyObject *__pyx_pw_7promise_7promise_23_try_convert_to_promise_1executor(
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("executor", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 610, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("executor", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 614, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise._try_convert_to_promise.executor", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -16068,15 +16044,15 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
   __pyx_outer_scope = (struct __pyx_obj_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "promise/promise.pyx":611
+  /* "promise/promise.pyx":615
  *     if is_future_like(type_):
  *         def executor(resolve, reject):
  *             if obj.done():             # <<<<<<<<<<<<<<
  *                 _process_future_result(resolve, reject)(obj)
  *             else:
  */
-  if (unlikely(!__pyx_cur_scope->__pyx_v_obj)) { __Pyx_RaiseClosureNameError("obj"); __PYX_ERR(0, 611, __pyx_L1_error) }
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_obj, __pyx_n_s_done); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 611, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_obj)) { __Pyx_RaiseClosureNameError("obj"); __PYX_ERR(0, 615, __pyx_L1_error) }
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_obj, __pyx_n_s_done); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 615, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -16090,21 +16066,21 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 611, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 611, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 615, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_4) {
 
-    /* "promise/promise.pyx":612
+    /* "promise/promise.pyx":616
  *         def executor(resolve, reject):
  *             if obj.done():
  *                 _process_future_result(resolve, reject)(obj)             # <<<<<<<<<<<<<<
  *             else:
  *                 obj.add_done_callback(_process_future_result(resolve, reject))
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_process_future_result); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 612, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_process_future_result); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 616, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -16121,7 +16097,7 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_resolve, __pyx_v_reject};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 612, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 616, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
@@ -16129,13 +16105,13 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_resolve, __pyx_v_reject};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 612, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 616, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 612, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 616, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_5) {
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -16146,12 +16122,12 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
       __Pyx_INCREF(__pyx_v_reject);
       __Pyx_GIVEREF(__pyx_v_reject);
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_v_reject);
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 612, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 616, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_cur_scope->__pyx_v_obj)) { __Pyx_RaiseClosureNameError("obj"); __PYX_ERR(0, 612, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_v_obj)) { __Pyx_RaiseClosureNameError("obj"); __PYX_ERR(0, 616, __pyx_L1_error) }
     __pyx_t_3 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
       __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
@@ -16164,12 +16140,12 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
     }
     __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_cur_scope->__pyx_v_obj) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_cur_scope->__pyx_v_obj);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 612, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 616, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "promise/promise.pyx":611
+    /* "promise/promise.pyx":615
  *     if is_future_like(type_):
  *         def executor(resolve, reject):
  *             if obj.done():             # <<<<<<<<<<<<<<
@@ -16179,7 +16155,7 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
     goto __pyx_L3;
   }
 
-  /* "promise/promise.pyx":614
+  /* "promise/promise.pyx":618
  *                 _process_future_result(resolve, reject)(obj)
  *             else:
  *                 obj.add_done_callback(_process_future_result(resolve, reject))             # <<<<<<<<<<<<<<
@@ -16187,10 +16163,10 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
  *         promise = Promise(executor)
  */
   /*else*/ {
-    if (unlikely(!__pyx_cur_scope->__pyx_v_obj)) { __Pyx_RaiseClosureNameError("obj"); __PYX_ERR(0, 614, __pyx_L1_error) }
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_obj, __pyx_n_s_add_done_callback); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 614, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_v_obj)) { __Pyx_RaiseClosureNameError("obj"); __PYX_ERR(0, 618, __pyx_L1_error) }
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_obj, __pyx_n_s_add_done_callback); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 618, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_process_future_result); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 614, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_process_future_result); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 618, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -16207,7 +16183,7 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_resolve, __pyx_v_reject};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 614, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 618, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else
@@ -16215,13 +16191,13 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_resolve, __pyx_v_reject};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 614, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 618, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 614, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 618, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       if (__pyx_t_5) {
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -16232,7 +16208,7 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
       __Pyx_INCREF(__pyx_v_reject);
       __Pyx_GIVEREF(__pyx_v_reject);
       PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_6, __pyx_v_reject);
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 614, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 618, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
@@ -16250,14 +16226,14 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
     __pyx_t_1 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_7, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 614, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 618, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
   __pyx_L3:;
 
-  /* "promise/promise.pyx":610
+  /* "promise/promise.pyx":614
  * 
  *     if is_future_like(type_):
  *         def executor(resolve, reject):             # <<<<<<<<<<<<<<
@@ -16283,7 +16259,7 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":599
+/* "promise/promise.pyx":603
  * 
  * 
  * cdef Promise _try_convert_to_promise(object obj):             # <<<<<<<<<<<<<<
@@ -16311,7 +16287,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 599, __pyx_L1_error)
+    __PYX_ERR(0, 603, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -16319,7 +16295,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_obj);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_obj);
 
-  /* "promise/promise.pyx":601
+  /* "promise/promise.pyx":605
  * cdef Promise _try_convert_to_promise(object obj):
  *     # can't subclass promise, don't need to check
  *     if isinstance(obj, Promise):             # <<<<<<<<<<<<<<
@@ -16333,7 +16309,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
 
-    /* "promise/promise.pyx":602
+    /* "promise/promise.pyx":606
  *     # can't subclass promise, don't need to check
  *     if isinstance(obj, Promise):
  *         return obj             # <<<<<<<<<<<<<<
@@ -16341,12 +16317,12 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
  *     type_ = type(obj)
  */
     __Pyx_XDECREF(((PyObject *)__pyx_r));
-    if (!(likely(((__pyx_cur_scope->__pyx_v_obj) == Py_None) || likely(__Pyx_TypeTest(__pyx_cur_scope->__pyx_v_obj, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 602, __pyx_L1_error)
+    if (!(likely(((__pyx_cur_scope->__pyx_v_obj) == Py_None) || likely(__Pyx_TypeTest(__pyx_cur_scope->__pyx_v_obj, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 606, __pyx_L1_error)
     __Pyx_INCREF(__pyx_cur_scope->__pyx_v_obj);
     __pyx_r = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_cur_scope->__pyx_v_obj);
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":601
+    /* "promise/promise.pyx":605
  * cdef Promise _try_convert_to_promise(object obj):
  *     # can't subclass promise, don't need to check
  *     if isinstance(obj, Promise):             # <<<<<<<<<<<<<<
@@ -16355,7 +16331,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
  */
   }
 
-  /* "promise/promise.pyx":604
+  /* "promise/promise.pyx":608
  *         return obj
  * 
  *     type_ = type(obj)             # <<<<<<<<<<<<<<
@@ -16365,14 +16341,14 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
   __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_cur_scope->__pyx_v_obj)));
   __pyx_v_type_ = ((PyObject *)Py_TYPE(__pyx_cur_scope->__pyx_v_obj));
 
-  /* "promise/promise.pyx":605
+  /* "promise/promise.pyx":609
  * 
  *     type_ = type(obj)
  *     if iscoroutine(obj):             # <<<<<<<<<<<<<<
  *         obj = ensure_future(obj)
  *         type_ = obj.__class__
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_iscoroutine); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 605, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_iscoroutine); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 609, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -16386,21 +16362,21 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
   }
   __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_cur_scope->__pyx_v_obj) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_cur_scope->__pyx_v_obj);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 605, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 609, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 605, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 609, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_3) {
 
-    /* "promise/promise.pyx":606
+    /* "promise/promise.pyx":610
  *     type_ = type(obj)
  *     if iscoroutine(obj):
  *         obj = ensure_future(obj)             # <<<<<<<<<<<<<<
  *         type_ = obj.__class__
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ensure_future); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 606, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ensure_future); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 610, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -16414,7 +16390,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
     }
     __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_cur_scope->__pyx_v_obj) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_cur_scope->__pyx_v_obj);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 606, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_cur_scope->__pyx_v_obj);
@@ -16422,19 +16398,19 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
     __Pyx_GIVEREF(__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "promise/promise.pyx":607
+    /* "promise/promise.pyx":611
  *     if iscoroutine(obj):
  *         obj = ensure_future(obj)
  *         type_ = obj.__class__             # <<<<<<<<<<<<<<
  * 
  *     if is_future_like(type_):
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_obj, __pyx_n_s_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 607, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_obj, __pyx_n_s_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 611, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF_SET(__pyx_v_type_, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "promise/promise.pyx":605
+    /* "promise/promise.pyx":609
  * 
  *     type_ = type(obj)
  *     if iscoroutine(obj):             # <<<<<<<<<<<<<<
@@ -16443,7 +16419,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
  */
   }
 
-  /* "promise/promise.pyx":609
+  /* "promise/promise.pyx":613
  *         type_ = obj.__class__
  * 
  *     if is_future_like(type_):             # <<<<<<<<<<<<<<
@@ -16453,31 +16429,31 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
   __pyx_t_3 = (__pyx_f_7promise_7promise_is_future_like(__pyx_v_type_) != 0);
   if (__pyx_t_3) {
 
-    /* "promise/promise.pyx":610
+    /* "promise/promise.pyx":614
  * 
  *     if is_future_like(type_):
  *         def executor(resolve, reject):             # <<<<<<<<<<<<<<
  *             if obj.done():
  *                 _process_future_result(resolve, reject)(obj)
  */
-    __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_23_try_convert_to_promise_1executor, 0, __pyx_n_s_try_convert_to_promise_locals_e, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_23_try_convert_to_promise_1executor, 0, __pyx_n_s_try_convert_to_promise_locals_e, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 614, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_executor = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "promise/promise.pyx":616
+    /* "promise/promise.pyx":620
  *                 obj.add_done_callback(_process_future_result(resolve, reject))
  * 
  *         promise = Promise(executor)             # <<<<<<<<<<<<<<
  *         promise._future = obj
  *         return promise
  */
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_v_executor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 616, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_v_executor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_promise = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "promise/promise.pyx":617
+    /* "promise/promise.pyx":621
  * 
  *         promise = Promise(executor)
  *         promise._future = obj             # <<<<<<<<<<<<<<
@@ -16490,7 +16466,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
     __Pyx_DECREF(__pyx_v_promise->_future);
     __pyx_v_promise->_future = __pyx_cur_scope->__pyx_v_obj;
 
-    /* "promise/promise.pyx":618
+    /* "promise/promise.pyx":622
  *         promise = Promise(executor)
  *         promise._future = obj
  *         return promise             # <<<<<<<<<<<<<<
@@ -16502,7 +16478,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
     __pyx_r = __pyx_v_promise;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":609
+    /* "promise/promise.pyx":613
  *         type_ = obj.__class__
  * 
  *     if is_future_like(type_):             # <<<<<<<<<<<<<<
@@ -16511,7 +16487,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
  */
   }
 
-  /* "promise/promise.pyx":620
+  /* "promise/promise.pyx":624
  *         return promise
  * 
  *     return obj             # <<<<<<<<<<<<<<
@@ -16519,12 +16495,12 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
  * 
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  if (!(likely(((__pyx_cur_scope->__pyx_v_obj) == Py_None) || likely(__Pyx_TypeTest(__pyx_cur_scope->__pyx_v_obj, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 620, __pyx_L1_error)
+  if (!(likely(((__pyx_cur_scope->__pyx_v_obj) == Py_None) || likely(__Pyx_TypeTest(__pyx_cur_scope->__pyx_v_obj, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 624, __pyx_L1_error)
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_obj);
   __pyx_r = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_cur_scope->__pyx_v_obj);
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":599
+  /* "promise/promise.pyx":603
  * 
  * 
  * cdef Promise _try_convert_to_promise(object obj):             # <<<<<<<<<<<<<<
@@ -16549,7 +16525,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":623
+/* "promise/promise.pyx":627
  * 
  * 
  * cdef bint is_future_like(object type_):             # <<<<<<<<<<<<<<
@@ -16569,23 +16545,23 @@ static int __pyx_f_7promise_7promise_is_future_like(PyObject *__pyx_v_type_) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("is_future_like", 0);
 
-  /* "promise/promise.pyx":624
+  /* "promise/promise.pyx":628
  * 
  * cdef bint is_future_like(object type_):
  *     return hasattr(type_, "add_done_callback") and callable(type_.add_done_callback)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_2 = __Pyx_HasAttr(__pyx_v_type_, __pyx_n_u_add_done_callback); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 624, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_HasAttr(__pyx_v_type_, __pyx_n_u_add_done_callback); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 628, __pyx_L1_error)
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
   } else {
     __pyx_t_1 = __pyx_t_3;
     goto __pyx_L3_bool_binop_done;
   }
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_type_, __pyx_n_s_add_done_callback); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 624, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_type_, __pyx_n_s_add_done_callback); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 628, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyCallable_Check(__pyx_t_4); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 624, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyCallable_Check(__pyx_t_4); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 628, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = (__pyx_t_3 != 0);
   __pyx_t_1 = __pyx_t_2;
@@ -16593,7 +16569,7 @@ static int __pyx_f_7promise_7promise_is_future_like(PyObject *__pyx_v_type_) {
   __pyx_r = __pyx_t_1;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":623
+  /* "promise/promise.pyx":627
  * 
  * 
  * cdef bint is_future_like(object type_):             # <<<<<<<<<<<<<<
@@ -16611,7 +16587,7 @@ static int __pyx_f_7promise_7promise_is_future_like(PyObject *__pyx_v_type_) {
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":631
+/* "promise/promise.pyx":635
  * 
  * 
  * def _process_future_result(resolve, reject):             # <<<<<<<<<<<<<<
@@ -16654,11 +16630,11 @@ static PyObject *__pyx_pw_7promise_7promise_9_process_future_result(PyObject *__
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_reject)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_process_future_result", 1, 2, 2, 1); __PYX_ERR(0, 631, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_process_future_result", 1, 2, 2, 1); __PYX_ERR(0, 635, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_process_future_result") < 0)) __PYX_ERR(0, 631, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_process_future_result") < 0)) __PYX_ERR(0, 635, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -16671,7 +16647,7 @@ static PyObject *__pyx_pw_7promise_7promise_9_process_future_result(PyObject *__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_process_future_result", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 631, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_process_future_result", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 635, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise._process_future_result", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -16684,7 +16660,7 @@ static PyObject *__pyx_pw_7promise_7promise_9_process_future_result(PyObject *__
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":632
+/* "promise/promise.pyx":636
  * 
  * def _process_future_result(resolve, reject):
  *     def handle_future_result(future):             # <<<<<<<<<<<<<<
@@ -16739,7 +16715,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
   __pyx_outer_scope = (struct __pyx_obj_7promise_7promise___pyx_scope_struct_7__process_future_result *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "promise/promise.pyx":633
+  /* "promise/promise.pyx":637
  * def _process_future_result(resolve, reject):
  *     def handle_future_result(future):
  *         try:             # <<<<<<<<<<<<<<
@@ -16755,15 +16731,15 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "promise/promise.pyx":634
+      /* "promise/promise.pyx":638
  *     def handle_future_result(future):
  *         try:
  *             resolve(future.result())             # <<<<<<<<<<<<<<
  *         except Exception as e:
  *             tb = exc_info()[2]
  */
-      if (unlikely(!__pyx_cur_scope->__pyx_v_resolve)) { __Pyx_RaiseClosureNameError("resolve"); __PYX_ERR(0, 634, __pyx_L3_error) }
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_future, __pyx_n_s_result); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 634, __pyx_L3_error)
+      if (unlikely(!__pyx_cur_scope->__pyx_v_resolve)) { __Pyx_RaiseClosureNameError("resolve"); __PYX_ERR(0, 638, __pyx_L3_error) }
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_future, __pyx_n_s_result); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 638, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_7 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -16777,7 +16753,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
       }
       __pyx_t_5 = (__pyx_t_7) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 634, __pyx_L3_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 638, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_INCREF(__pyx_cur_scope->__pyx_v_resolve);
@@ -16794,12 +16770,12 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
       __pyx_t_4 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_7, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 634, __pyx_L3_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 638, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "promise/promise.pyx":633
+      /* "promise/promise.pyx":637
  * def _process_future_result(resolve, reject):
  *     def handle_future_result(future):
  *         try:             # <<<<<<<<<<<<<<
@@ -16817,7 +16793,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "promise/promise.pyx":635
+    /* "promise/promise.pyx":639
  *         try:
  *             resolve(future.result())
  *         except Exception as e:             # <<<<<<<<<<<<<<
@@ -16827,7 +16803,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
     __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_8) {
       __Pyx_AddTraceback("promise.promise._process_future_result.handle_future_result", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_6, &__pyx_t_5) < 0) __PYX_ERR(0, 635, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_6, &__pyx_t_5) < 0) __PYX_ERR(0, 639, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_5);
@@ -16835,14 +16811,14 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
       __pyx_v_e = __pyx_t_6;
       /*try:*/ {
 
-        /* "promise/promise.pyx":636
+        /* "promise/promise.pyx":640
  *             resolve(future.result())
  *         except Exception as e:
  *             tb = exc_info()[2]             # <<<<<<<<<<<<<<
  *             reject(e, tb)
  * 
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_exc_info); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 636, __pyx_L14_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_exc_info); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 640, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_9);
         __pyx_t_10 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_9))) {
@@ -16856,23 +16832,23 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
         }
         __pyx_t_7 = (__pyx_t_10) ? __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_10) : __Pyx_PyObject_CallNoArg(__pyx_t_9);
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 636, __pyx_L14_error)
+        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 640, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_7, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 636, __pyx_L14_error)
+        __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_7, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 640, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __pyx_v_tb = __pyx_t_9;
         __pyx_t_9 = 0;
 
-        /* "promise/promise.pyx":637
+        /* "promise/promise.pyx":641
  *         except Exception as e:
  *             tb = exc_info()[2]
  *             reject(e, tb)             # <<<<<<<<<<<<<<
  * 
  *     return handle_future_result
  */
-        if (unlikely(!__pyx_cur_scope->__pyx_v_reject)) { __Pyx_RaiseClosureNameError("reject"); __PYX_ERR(0, 637, __pyx_L14_error) }
+        if (unlikely(!__pyx_cur_scope->__pyx_v_reject)) { __Pyx_RaiseClosureNameError("reject"); __PYX_ERR(0, 641, __pyx_L14_error) }
         __Pyx_INCREF(__pyx_cur_scope->__pyx_v_reject);
         __pyx_t_7 = __pyx_cur_scope->__pyx_v_reject; __pyx_t_10 = NULL;
         __pyx_t_8 = 0;
@@ -16889,7 +16865,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_7)) {
           PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_e, __pyx_v_tb};
-          __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 637, __pyx_L14_error)
+          __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 641, __pyx_L14_error)
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_GOTREF(__pyx_t_9);
         } else
@@ -16897,13 +16873,13 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
           PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_e, __pyx_v_tb};
-          __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 637, __pyx_L14_error)
+          __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 641, __pyx_L14_error)
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_GOTREF(__pyx_t_9);
         } else
         #endif
         {
-          __pyx_t_11 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 637, __pyx_L14_error)
+          __pyx_t_11 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 641, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_11);
           if (__pyx_t_10) {
             __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -16914,7 +16890,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
           __Pyx_INCREF(__pyx_v_tb);
           __Pyx_GIVEREF(__pyx_v_tb);
           PyTuple_SET_ITEM(__pyx_t_11, 1+__pyx_t_8, __pyx_v_tb);
-          __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_11, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 637, __pyx_L14_error)
+          __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_11, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 641, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
@@ -16922,7 +16898,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
 
-      /* "promise/promise.pyx":635
+      /* "promise/promise.pyx":639
  *         try:
  *             resolve(future.result())
  *         except Exception as e:             # <<<<<<<<<<<<<<
@@ -16981,7 +16957,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "promise/promise.pyx":633
+    /* "promise/promise.pyx":637
  * def _process_future_result(resolve, reject):
  *     def handle_future_result(future):
  *         try:             # <<<<<<<<<<<<<<
@@ -17001,7 +16977,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
     __pyx_L8_try_end:;
   }
 
-  /* "promise/promise.pyx":632
+  /* "promise/promise.pyx":636
  * 
  * def _process_future_result(resolve, reject):
  *     def handle_future_result(future):             # <<<<<<<<<<<<<<
@@ -17030,7 +17006,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":631
+/* "promise/promise.pyx":635
  * 
  * 
  * def _process_future_result(resolve, reject):             # <<<<<<<<<<<<<<
@@ -17052,7 +17028,7 @@ static PyObject *__pyx_pf_7promise_7promise_8_process_future_result(CYTHON_UNUSE
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7promise_7promise___pyx_scope_struct_7__process_future_result *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 631, __pyx_L1_error)
+    __PYX_ERR(0, 635, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -17063,19 +17039,19 @@ static PyObject *__pyx_pf_7promise_7promise_8_process_future_result(CYTHON_UNUSE
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_reject);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_reject);
 
-  /* "promise/promise.pyx":632
+  /* "promise/promise.pyx":636
  * 
  * def _process_future_result(resolve, reject):
  *     def handle_future_result(future):             # <<<<<<<<<<<<<<
  *         try:
  *             resolve(future.result())
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_22_process_future_result_1handle_future_result, 0, __pyx_n_s_process_future_result_locals_ha, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 632, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_22_process_future_result_1handle_future_result, 0, __pyx_n_s_process_future_result_locals_ha, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 636, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_handle_future_result = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":639
+  /* "promise/promise.pyx":643
  *             reject(e, tb)
  * 
  *     return handle_future_result             # <<<<<<<<<<<<<<
@@ -17087,7 +17063,7 @@ static PyObject *__pyx_pf_7promise_7promise_8_process_future_result(CYTHON_UNUSE
   __pyx_r = __pyx_v_handle_future_result;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":631
+  /* "promise/promise.pyx":635
  * 
  * 
  * def _process_future_result(resolve, reject):             # <<<<<<<<<<<<<<
@@ -17109,7 +17085,7 @@ static PyObject *__pyx_pf_7promise_7promise_8_process_future_result(CYTHON_UNUSE
 }
 static PyObject *__pyx_gb_7promise_7promise_12generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "promise/promise.pyx":642
+/* "promise/promise.pyx":646
  * 
  * 
  * def iterate_promise(promise: Promise) -> object:             # <<<<<<<<<<<<<<
@@ -17127,7 +17103,7 @@ static PyObject *__pyx_pw_7promise_7promise_11iterate_promise(PyObject *__pyx_se
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("iterate_promise (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_promise), __pyx_ptype_7promise_7promise_Promise, 1, "promise", 0))) __PYX_ERR(0, 642, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_promise), __pyx_ptype_7promise_7promise_Promise, 1, "promise", 0))) __PYX_ERR(0, 646, __pyx_L1_error)
   __pyx_r = __pyx_pf_7promise_7promise_10iterate_promise(__pyx_self, ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_promise));
 
   /* function exit code */
@@ -17151,7 +17127,7 @@ static PyObject *__pyx_pf_7promise_7promise_10iterate_promise(CYTHON_UNUSED PyOb
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7promise_7promise___pyx_scope_struct_8_iterate_promise *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 642, __pyx_L1_error)
+    __PYX_ERR(0, 646, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -17159,7 +17135,7 @@ static PyObject *__pyx_pf_7promise_7promise_10iterate_promise(CYTHON_UNUSED PyOb
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_promise);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_promise);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_7promise_7promise_12generator, __pyx_codeobj__19, (PyObject *) __pyx_cur_scope, __pyx_n_s_iterate_promise, __pyx_n_s_iterate_promise, __pyx_n_s_promise_promise); if (unlikely(!gen)) __PYX_ERR(0, 642, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_7promise_7promise_12generator, __pyx_codeobj__19, (PyObject *) __pyx_cur_scope, __pyx_n_s_iterate_promise, __pyx_n_s_iterate_promise, __pyx_n_s_promise_promise); if (unlikely(!gen)) __PYX_ERR(0, 646, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -17195,30 +17171,30 @@ static PyObject *__pyx_gb_7promise_7promise_12generator(__pyx_CoroutineObject *_
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 642, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 646, __pyx_L1_error)
 
-  /* "promise/promise.pyx":643
+  /* "promise/promise.pyx":647
  * 
  * def iterate_promise(promise: Promise) -> object:
  *     if not promise.is_fulfilled:             # <<<<<<<<<<<<<<
  *         yield from promise.get_future()
  *     assert promise.is_fulfilled
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_promise), __pyx_n_s_is_fulfilled); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 643, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_promise), __pyx_n_s_is_fulfilled); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 647, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 643, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 647, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = ((!__pyx_t_2) != 0);
   if (__pyx_t_3) {
 
-    /* "promise/promise.pyx":644
+    /* "promise/promise.pyx":648
  * def iterate_promise(promise: Promise) -> object:
  *     if not promise.is_fulfilled:
  *         yield from promise.get_future()             # <<<<<<<<<<<<<<
  *     assert promise.is_fulfilled
  *     return promise.get()
  */
-    __pyx_t_1 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_cur_scope->__pyx_v_promise->__pyx_vtab)->get_future(__pyx_cur_scope->__pyx_v_promise, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 644, __pyx_L1_error)
+    __pyx_t_1 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_cur_scope->__pyx_v_promise->__pyx_vtab)->get_future(__pyx_cur_scope->__pyx_v_promise, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 648, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __Pyx_Generator_Yield_From(__pyx_generator, __pyx_t_1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -17231,16 +17207,16 @@ static PyObject *__pyx_gb_7promise_7promise_12generator(__pyx_CoroutineObject *_
       __pyx_generator->resume_label = 1;
       return __pyx_r;
       __pyx_L5_resume_from_yield_from:;
-      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 644, __pyx_L1_error)
+      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 648, __pyx_L1_error)
     } else {
       PyObject* exc_type = __Pyx_PyErr_Occurred();
       if (exc_type) {
         if (likely(exc_type == PyExc_StopIteration || (exc_type != PyExc_GeneratorExit && __Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration)))) PyErr_Clear();
-        else __PYX_ERR(0, 644, __pyx_L1_error)
+        else __PYX_ERR(0, 648, __pyx_L1_error)
       }
     }
 
-    /* "promise/promise.pyx":643
+    /* "promise/promise.pyx":647
  * 
  * def iterate_promise(promise: Promise) -> object:
  *     if not promise.is_fulfilled:             # <<<<<<<<<<<<<<
@@ -17249,7 +17225,7 @@ static PyObject *__pyx_gb_7promise_7promise_12generator(__pyx_CoroutineObject *_
  */
   }
 
-  /* "promise/promise.pyx":645
+  /* "promise/promise.pyx":649
  *     if not promise.is_fulfilled:
  *         yield from promise.get_future()
  *     assert promise.is_fulfilled             # <<<<<<<<<<<<<<
@@ -17257,31 +17233,31 @@ static PyObject *__pyx_gb_7promise_7promise_12generator(__pyx_CoroutineObject *_
  */
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_promise), __pyx_n_s_is_fulfilled); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 645, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_promise), __pyx_n_s_is_fulfilled); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 649, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 645, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 649, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (unlikely(!__pyx_t_3)) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 645, __pyx_L1_error)
+      __PYX_ERR(0, 649, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "promise/promise.pyx":646
+  /* "promise/promise.pyx":650
  *         yield from promise.get_future()
  *     assert promise.is_fulfilled
  *     return promise.get()             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_cur_scope->__pyx_v_promise->__pyx_vtab)->get(__pyx_cur_scope->__pyx_v_promise, 0, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 646, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_cur_scope->__pyx_v_promise->__pyx_vtab)->get(__pyx_cur_scope->__pyx_v_promise, 0, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 650, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = NULL; __Pyx_ReturnWithStopIteration(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   goto __pyx_L0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "promise/promise.pyx":642
+  /* "promise/promise.pyx":646
  * 
  * 
  * def iterate_promise(promise: Promise) -> object:             # <<<<<<<<<<<<<<
@@ -19306,16 +19282,29 @@ static int __pyx_setprop_7promise_7promise_7Promise__traceback(PyObject *o, PyOb
 static PyObject *__pyx_specialmethod___pyx_pw_7promise_7promise_7Promise_9__await__(PyObject *self, CYTHON_UNUSED PyObject *arg) {return __pyx_pw_7promise_7promise_7Promise_9__await__(self);}
 
 static PyMethodDef __pyx_methods_7promise_7promise_Promise[] = {
+  {"get_scheduler", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_3get_scheduler, METH_NOARGS, 0},
+  {"get_future", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_5get_future, METH_NOARGS, 0},
   {"__await__", (PyCFunction)__pyx_specialmethod___pyx_pw_7promise_7promise_7Promise_9__await__, METH_NOARGS|METH_COEXIST, 0},
+  {"_target", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_11_target, METH_NOARGS, 0},
   {"wait", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_13wait, METH_VARARGS|METH_KEYWORDS, 0},
+  {"_wait", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_15_wait, METH_VARARGS|METH_KEYWORDS, 0},
+  {"get", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_17get, METH_VARARGS|METH_KEYWORDS, 0},
+  {"catch", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_21catch, METH_O, 0},
+  {"do_resolve", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_23do_resolve, METH_O, 0},
+  {"do_reject", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_25do_reject, METH_VARARGS|METH_KEYWORDS, 0},
+  {"then", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_27then, METH_VARARGS|METH_KEYWORDS, 0},
+  {"done", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_29done, METH_VARARGS|METH_KEYWORDS, 0},
+  {"done_all", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_31done_all, METH_VARARGS|METH_KEYWORDS, 0},
+  {"then_all", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_33then_all, METH_VARARGS|METH_KEYWORDS, 0},
   {"reject", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_35reject, METH_VARARGS|METH_KEYWORDS, 0},
   {"resolve", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_37resolve, METH_VARARGS|METH_KEYWORDS, 0},
   {"promisify", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_39promisify, METH_VARARGS|METH_KEYWORDS, 0},
   {"safe", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_41safe, METH_VARARGS|METH_KEYWORDS, 0},
   {"all", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_43all, METH_VARARGS|METH_KEYWORDS, 0},
-  {"for_dict", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_45for_dict, METH_VARARGS|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_47__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_49__setstate_cython__, METH_O, 0},
+  {"is_thenable", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_45is_thenable, METH_VARARGS|METH_KEYWORDS, 0},
+  {"for_dict", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_47for_dict, METH_VARARGS|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_49__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_51__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
@@ -21011,10 +21000,7 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_AssertionError, __pyx_k_AssertionError, sizeof(__pyx_k_AssertionError), 0, 0, 1, 1},
   {&__pyx_n_s_Box, __pyx_k_Box, sizeof(__pyx_k_Box), 0, 0, 1, 1},
-  {&__pyx_n_s_Box___reduce_cython, __pyx_k_Box___reduce_cython, sizeof(__pyx_k_Box___reduce_cython), 0, 0, 1, 1},
-  {&__pyx_n_s_Box___setstate_cython, __pyx_k_Box___setstate_cython, sizeof(__pyx_k_Box___setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_DEFAULT_TIMEOUT, __pyx_k_DEFAULT_TIMEOUT, sizeof(__pyx_k_DEFAULT_TIMEOUT), 0, 0, 1, 1},
-  {&__pyx_n_u_Exception, __pyx_k_Exception, sizeof(__pyx_k_Exception), 0, 1, 0, 1},
   {&__pyx_n_s_Future, __pyx_k_Future, sizeof(__pyx_k_Future), 0, 0, 1, 1},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0x20, __pyx_k_Incompatible_checksums_s_vs_0x20, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x20), 0, 0, 1, 0},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0x47, __pyx_k_Incompatible_checksums_s_vs_0x47, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x47), 0, 0, 1, 0},
@@ -21022,44 +21008,18 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0xb5, __pyx_k_Incompatible_checksums_s_vs_0xb5, sizeof(__pyx_k_Incompatible_checksums_s_vs_0xb5), 0, 0, 1, 0},
   {&__pyx_n_s_MAX_LENGTH, __pyx_k_MAX_LENGTH, sizeof(__pyx_k_MAX_LENGTH), 0, 0, 1, 1},
   {&__pyx_n_s_PartialSettlePromise, __pyx_k_PartialSettlePromise, sizeof(__pyx_k_PartialSettlePromise), 0, 0, 1, 1},
-  {&__pyx_n_s_PartialSettlePromise___reduce_cy, __pyx_k_PartialSettlePromise___reduce_cy, sizeof(__pyx_k_PartialSettlePromise___reduce_cy), 0, 0, 1, 1},
-  {&__pyx_n_s_PartialSettlePromise___setstate, __pyx_k_PartialSettlePromise___setstate, sizeof(__pyx_k_PartialSettlePromise___setstate), 0, 0, 1, 1},
   {&__pyx_n_s_PickleError, __pyx_k_PickleError, sizeof(__pyx_k_PickleError), 0, 0, 1, 1},
   {&__pyx_n_s_Promise, __pyx_k_Promise, sizeof(__pyx_k_Promise), 0, 0, 1, 1},
-  {&__pyx_n_u_Promise, __pyx_k_Promise, sizeof(__pyx_k_Promise), 0, 1, 0, 1},
-  {&__pyx_n_s_Promise___reduce_cython, __pyx_k_Promise___reduce_cython, sizeof(__pyx_k_Promise___reduce_cython), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise___setstate_cython, __pyx_k_Promise___setstate_cython, sizeof(__pyx_k_Promise___setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_Promise__resolve_from_executor_l, __pyx_k_Promise__resolve_from_executor_l, sizeof(__pyx_k_Promise__resolve_from_executor_l), 0, 0, 1, 1},
   {&__pyx_n_s_Promise__resolve_from_executor_l_2, __pyx_k_Promise__resolve_from_executor_l_2, sizeof(__pyx_k_Promise__resolve_from_executor_l_2), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise__target, __pyx_k_Promise__target, sizeof(__pyx_k_Promise__target), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise__wait, __pyx_k_Promise__wait, sizeof(__pyx_k_Promise__wait), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise_all, __pyx_k_Promise_all, sizeof(__pyx_k_Promise_all), 0, 0, 1, 1},
   {&__pyx_kp_u_Promise_at_following, __pyx_k_Promise_at_following, sizeof(__pyx_k_Promise_at_following), 0, 1, 0, 0},
   {&__pyx_kp_u_Promise_at_fulfilled_with, __pyx_k_Promise_at_fulfilled_with, sizeof(__pyx_k_Promise_at_fulfilled_with), 0, 1, 0, 0},
   {&__pyx_kp_u_Promise_at_pending, __pyx_k_Promise_at_pending, sizeof(__pyx_k_Promise_at_pending), 0, 1, 0, 0},
   {&__pyx_kp_u_Promise_at_rejected_with, __pyx_k_Promise_at_rejected_with, sizeof(__pyx_k_Promise_at_rejected_with), 0, 1, 0, 0},
-  {&__pyx_n_s_Promise_catch, __pyx_k_Promise_catch, sizeof(__pyx_k_Promise_catch), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise_do_reject, __pyx_k_Promise_do_reject, sizeof(__pyx_k_Promise_do_reject), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise_do_resolve, __pyx_k_Promise_do_resolve, sizeof(__pyx_k_Promise_do_resolve), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise_done, __pyx_k_Promise_done, sizeof(__pyx_k_Promise_done), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise_done_all, __pyx_k_Promise_done_all, sizeof(__pyx_k_Promise_done_all), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise_for_dict, __pyx_k_Promise_for_dict, sizeof(__pyx_k_Promise_for_dict), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise_get, __pyx_k_Promise_get, sizeof(__pyx_k_Promise_get), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise_get_future, __pyx_k_Promise_get_future, sizeof(__pyx_k_Promise_get_future), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise_get_scheduler, __pyx_k_Promise_get_scheduler, sizeof(__pyx_k_Promise_get_scheduler), 0, 0, 1, 1},
   {&__pyx_kp_u_Promise_is_self, __pyx_k_Promise_is_self, sizeof(__pyx_k_Promise_is_self), 0, 1, 0, 0},
-  {&__pyx_n_s_Promise_promisify, __pyx_k_Promise_promisify, sizeof(__pyx_k_Promise_promisify), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise_reject, __pyx_k_Promise_reject, sizeof(__pyx_k_Promise_reject), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise_resolve, __pyx_k_Promise_resolve, sizeof(__pyx_k_Promise_resolve), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise_safe, __pyx_k_Promise_safe, sizeof(__pyx_k_Promise_safe), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise_then, __pyx_k_Promise_then, sizeof(__pyx_k_Promise_then), 0, 0, 1, 1},
-  {&__pyx_n_s_Promise_then_all, __pyx_k_Promise_then_all, sizeof(__pyx_k_Promise_then_all), 0, 0, 1, 1},
   {&__pyx_kp_u_Promise_unknown, __pyx_k_Promise_unknown, sizeof(__pyx_k_Promise_unknown), 0, 1, 0, 0},
-  {&__pyx_n_s_Promise_wait, __pyx_k_Promise_wait, sizeof(__pyx_k_Promise_wait), 0, 0, 1, 1},
   {&__pyx_kp_u_Should_not_be_following, __pyx_k_Should_not_be_following, sizeof(__pyx_k_Should_not_be_following), 0, 1, 0, 0},
   {&__pyx_n_s_TryCatchResult, __pyx_k_TryCatchResult, sizeof(__pyx_k_TryCatchResult), 0, 0, 1, 1},
-  {&__pyx_n_s_TryCatchResult___reduce_cython, __pyx_k_TryCatchResult___reduce_cython, sizeof(__pyx_k_TryCatchResult___reduce_cython), 0, 0, 1, 1},
-  {&__pyx_n_s_TryCatchResult___setstate_cython, __pyx_k_TryCatchResult___setstate_cython, sizeof(__pyx_k_TryCatchResult___setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
   {&__pyx_n_s_add_done_callback, __pyx_k_add_done_callback, sizeof(__pyx_k_add_done_callback), 0, 0, 1, 1},
   {&__pyx_n_u_add_done_callback, __pyx_k_add_done_callback, sizeof(__pyx_k_add_done_callback), 0, 1, 0, 1},
@@ -21076,7 +21036,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_close, __pyx_k_close, sizeof(__pyx_k_close), 0, 0, 1, 1},
   {&__pyx_n_s_default_scheduler, __pyx_k_default_scheduler, sizeof(__pyx_k_default_scheduler), 0, 0, 1, 1},
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
-  {&__pyx_n_s_dict_2, __pyx_k_dict_2, sizeof(__pyx_k_dict_2), 0, 0, 1, 1},
   {&__pyx_n_s_dict_type, __pyx_k_dict_type, sizeof(__pyx_k_dict_type), 0, 0, 1, 1},
   {&__pyx_n_s_did_fulfill, __pyx_k_did_fulfill, sizeof(__pyx_k_did_fulfill), 0, 0, 1, 1},
   {&__pyx_n_s_did_reject, __pyx_k_did_reject, sizeof(__pyx_k_did_reject), 0, 0, 1, 1},
@@ -21123,8 +21082,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
   {&__pyx_n_s_obj, __pyx_k_obj, sizeof(__pyx_k_obj), 0, 0, 1, 1},
-  {&__pyx_n_u_object, __pyx_k_object, sizeof(__pyx_k_object), 0, 1, 0, 1},
-  {&__pyx_n_s_on_rejection, __pyx_k_on_rejection, sizeof(__pyx_k_on_rejection), 0, 0, 1, 1},
   {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
   {&__pyx_n_s_process_future_result, __pyx_k_process_future_result, sizeof(__pyx_k_process_future_result), 0, 0, 1, 1},
   {&__pyx_n_s_process_future_result_locals_ha, __pyx_k_process_future_result_locals_ha, sizeof(__pyx_k_process_future_result_locals_ha), 0, 0, 1, 1},
@@ -21157,20 +21114,17 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_resolve, __pyx_k_resolve, sizeof(__pyx_k_resolve), 0, 0, 1, 1},
   {&__pyx_n_s_resolved_values, __pyx_k_resolved_values, sizeof(__pyx_k_resolved_values), 0, 0, 1, 1},
   {&__pyx_n_s_result, __pyx_k_result, sizeof(__pyx_k_result), 0, 0, 1, 1},
-  {&__pyx_n_s_return, __pyx_k_return, sizeof(__pyx_k_return), 0, 0, 1, 1},
   {&__pyx_n_s_safe, __pyx_k_safe, sizeof(__pyx_k_safe), 0, 0, 1, 1},
   {&__pyx_n_s_safe_locals_wrapper, __pyx_k_safe_locals_wrapper, sizeof(__pyx_k_safe_locals_wrapper), 0, 0, 1, 1},
   {&__pyx_n_s_safe_locals_wrapper_locals_lambd, __pyx_k_safe_locals_wrapper_locals_lambd, sizeof(__pyx_k_safe_locals_wrapper_locals_lambd), 0, 0, 1, 1},
   {&__pyx_n_s_safe_resolved_promise, __pyx_k_safe_resolved_promise, sizeof(__pyx_k_safe_resolved_promise), 0, 0, 1, 1},
   {&__pyx_n_s_scheduler, __pyx_k_scheduler, sizeof(__pyx_k_scheduler), 0, 0, 1, 1},
-  {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
   {&__pyx_n_s_send, __pyx_k_send, sizeof(__pyx_k_send), 0, 0, 1, 1},
   {&__pyx_n_s_set_default_scheduler, __pyx_k_set_default_scheduler, sizeof(__pyx_k_set_default_scheduler), 0, 0, 1, 1},
   {&__pyx_n_s_set_exception, __pyx_k_set_exception, sizeof(__pyx_k_set_exception), 0, 0, 1, 1},
   {&__pyx_n_s_set_result, __pyx_k_set_result, sizeof(__pyx_k_set_result), 0, 0, 1, 1},
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
-  {&__pyx_n_s_state, __pyx_k_state, sizeof(__pyx_k_state), 0, 0, 1, 1},
   {&__pyx_n_s_staticmethod, __pyx_k_staticmethod, sizeof(__pyx_k_staticmethod), 0, 0, 1, 1},
   {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
   {&__pyx_n_u_success, __pyx_k_success, sizeof(__pyx_k_success), 0, 1, 0, 1},
@@ -21185,7 +21139,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_traceback, __pyx_k_traceback, sizeof(__pyx_k_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_try_convert_to_promise_locals_e, __pyx_k_try_convert_to_promise_locals_e, sizeof(__pyx_k_try_convert_to_promise_locals_e), 0, 0, 1, 1},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
-  {&__pyx_n_s_use_setstate, __pyx_k_use_setstate, sizeof(__pyx_k_use_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_value, __pyx_k_value, sizeof(__pyx_k_value), 0, 0, 1, 1},
   {&__pyx_n_s_values, __pyx_k_values, sizeof(__pyx_k_values), 0, 0, 1, 1},
   {&__pyx_n_s_wait, __pyx_k_wait, sizeof(__pyx_k_wait), 0, 0, 1, 1},
@@ -21203,7 +21156,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_AssertionError = __Pyx_GetBuiltinName(__pyx_n_s_AssertionError); if (!__pyx_builtin_AssertionError) __PYX_ERR(0, 281, __pyx_L1_error)
   __pyx_builtin_hex = __Pyx_GetBuiltinName(__pyx_n_s_hex); if (!__pyx_builtin_hex) __PYX_ERR(0, 383, __pyx_L1_error)
   __pyx_builtin_id = __Pyx_GetBuiltinName(__pyx_n_s_id); if (!__pyx_builtin_id) __PYX_ERR(0, 383, __pyx_L1_error)
-  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 578, __pyx_L1_error)
+  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 582, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -21287,62 +21240,41 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__11);
   __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_wrapper, 557, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 557, __pyx_L1_error)
 
-  /* "promise/promise.pyx":577
+  /* "promise/promise.pyx":581
  *             return Promise.resolve(dict_type())
  * 
  *         def handle_success(resolved_values):             # <<<<<<<<<<<<<<
  *             return dict_type(zip(m.keys(), resolved_values))
  * 
  */
-  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_n_s_resolved_values); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 577, __pyx_L1_error)
+  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_n_s_resolved_values); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 581, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
-  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_handle_success, 577, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 577, __pyx_L1_error)
+  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_handle_success, 581, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 581, __pyx_L1_error)
 
-  /* "promise/promise.pyx":610
+  /* "promise/promise.pyx":614
  * 
  *     if is_future_like(type_):
  *         def executor(resolve, reject):             # <<<<<<<<<<<<<<
  *             if obj.done():
  *                 _process_future_result(resolve, reject)(obj)
  */
-  __pyx_tuple__15 = PyTuple_Pack(2, __pyx_n_s_resolve, __pyx_n_s_reject); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 610, __pyx_L1_error)
+  __pyx_tuple__15 = PyTuple_Pack(2, __pyx_n_s_resolve, __pyx_n_s_reject); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 614, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_executor, 610, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 610, __pyx_L1_error)
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_executor, 614, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 614, __pyx_L1_error)
 
-  /* "promise/promise.pyx":632
+  /* "promise/promise.pyx":636
  * 
  * def _process_future_result(resolve, reject):
  *     def handle_future_result(future):             # <<<<<<<<<<<<<<
  *         try:
  *             resolve(future.result())
  */
-  __pyx_tuple__17 = PyTuple_Pack(3, __pyx_n_s_future, __pyx_n_s_e, __pyx_n_s_tb); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 632, __pyx_L1_error)
+  __pyx_tuple__17 = PyTuple_Pack(3, __pyx_n_s_future, __pyx_n_s_e, __pyx_n_s_tb); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 636, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
-  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_handle_future_result, 632, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 632, __pyx_L1_error)
-
-  /* "(tree fragment)":1
- * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     cdef tuple state
- *     cdef object _dict
- */
-  __pyx_tuple__20 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_state, __pyx_n_s_dict_2, __pyx_n_s_use_setstate); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__20);
-  __Pyx_GIVEREF(__pyx_tuple__20);
-  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(1, 1, __pyx_L1_error)
-
-  /* "(tree fragment)":16
- *     else:
- *         return __pyx_unpickle_Box, (type(self), 0x2063c16, state)
- * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_unpickle_Box__set_state(self, __pyx_state)
- */
-  __pyx_tuple__22 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(1, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__22);
-  __Pyx_GIVEREF(__pyx_tuple__22);
-  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_handle_future_result, 636, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 636, __pyx_L1_error)
 
   /* "promise/promise.pyx":27
  * 
@@ -21351,7 +21283,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     return async_instance
  * 
  */
-  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_get_async_instance, 27, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_get_async_instance, 27, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 27, __pyx_L1_error)
 
   /* "promise/promise.pyx":31
  * 
@@ -21360,7 +21292,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     return default_scheduler
  * 
  */
-  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_get_default_scheduler, 31, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_get_default_scheduler, 31, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 31, __pyx_L1_error)
 
   /* "promise/promise.pyx":35
  * 
@@ -21369,88 +21301,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     global default_scheduler
  *     default_scheduler = scheduler
  */
-  __pyx_tuple__26 = PyTuple_Pack(1, __pyx_n_s_scheduler); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 35, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__26);
-  __Pyx_GIVEREF(__pyx_tuple__26);
-  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_set_default_scheduler, 35, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 35, __pyx_L1_error)
-
-  /* "(tree fragment)":1
- * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     cdef tuple state
- *     cdef object _dict
- */
-  __pyx_tuple__28 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_state, __pyx_n_s_dict_2, __pyx_n_s_use_setstate); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__28);
-  __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(1, 1, __pyx_L1_error)
-
-  /* "(tree fragment)":16
- *     else:
- *         return __pyx_unpickle_TryCatchResult, (type(self), 0x47960a2, state)
- * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_unpickle_TryCatchResult__set_state(self, __pyx_state)
- */
-  __pyx_tuple__30 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(1, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__30);
-  __Pyx_GIVEREF(__pyx_tuple__30);
-  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(1, 16, __pyx_L1_error)
-
-  /* "(tree fragment)":1
- * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     cdef tuple state
- *     cdef object _dict
- */
-  __pyx_tuple__32 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_state, __pyx_n_s_dict_2, __pyx_n_s_use_setstate); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__32);
-  __Pyx_GIVEREF(__pyx_tuple__32);
-  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(1, 1, __pyx_L1_error)
-
-  /* "(tree fragment)":16
- *     else:
- *         return __pyx_unpickle_PartialSettlePromise, (type(self), 0xb5dc62b, state)
- * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_unpickle_PartialSettlePromise__set_state(self, __pyx_state)
- */
-  __pyx_tuple__34 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(1, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__34);
-  __Pyx_GIVEREF(__pyx_tuple__34);
-  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(1, 16, __pyx_L1_error)
-
-  /* "promise/promise.pyx":99
- *             self._resolve_from_executor(executor)
- * 
- *     cpdef Scheduler get_scheduler(self):             # <<<<<<<<<<<<<<
- *         if self._scheduler is not None:
- *             return self._scheduler
- */
-  __pyx_tuple__36 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 99, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__36);
-  __Pyx_GIVEREF(__pyx_tuple__36);
-  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_get_scheduler, 99, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 99, __pyx_L1_error)
-
-  /* "promise/promise.pyx":104
- *         return default_scheduler
- * 
- *     cpdef object get_future(self):             # <<<<<<<<<<<<<<
- *         cdef object fut
- *         if not self._future:
- */
-  __pyx_tuple__38 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__38);
-  __Pyx_GIVEREF(__pyx_tuple__38);
-  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_get_future, 104, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 104, __pyx_L1_error)
-
-  /* "promise/promise.pyx":310
- *         return index
- * 
- *     cpdef Promise _target(self):             # <<<<<<<<<<<<<<
- *         cdef Promise ret = self
- *         while ret._is_following:
- */
-  __pyx_tuple__40 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 310, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__40);
-  __Pyx_GIVEREF(__pyx_tuple__40);
-  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_target, 310, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 310, __pyx_L1_error)
+  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_n_s_scheduler); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__22);
+  __Pyx_GIVEREF(__pyx_tuple__22);
+  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_set_default_scheduler, 35, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 35, __pyx_L1_error)
 
   /* "promise/promise.pyx":361
  * 
@@ -21459,118 +21313,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         promise._wait(timeout)
  * 
  */
-  __pyx_tuple__42 = PyTuple_Pack(2, __pyx_n_s_promise, __pyx_n_s_timeout); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 361, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__42);
-  __Pyx_GIVEREF(__pyx_tuple__42);
-  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_wait_2, 361, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 361, __pyx_L1_error)
-
-  /* "promise/promise.pyx":364
- *         promise._wait(timeout)
- * 
- *     cpdef void _wait(self, object timeout = None):             # <<<<<<<<<<<<<<
- *         async_instance.wait(self, timeout)
- * 
- */
-  __pyx_tuple__44 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_timeout); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(0, 364, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__44);
-  __Pyx_GIVEREF(__pyx_tuple__44);
-  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_wait, 364, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 364, __pyx_L1_error)
-
-  /* "promise/promise.pyx":367
- *         async_instance.wait(self, timeout)
- * 
- *     cpdef object get(self, object timeout = None):             # <<<<<<<<<<<<<<
- *         self._wait(timeout or DEFAULT_TIMEOUT)
- *         return self._target_settled_value(raise_=True)
- */
-  __pyx_tuple__46 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_timeout); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(0, 367, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__46);
-  __Pyx_GIVEREF(__pyx_tuple__46);
-  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__46, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_get, 367, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 367, __pyx_L1_error)
-
-  /* "promise/promise.pyx":421
- *         return self._is_rejected()
- * 
- *     cpdef Promise catch(self, on_rejection):             # <<<<<<<<<<<<<<
- *         return self.then(None, on_rejection)
- * 
- */
-  __pyx_tuple__48 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_on_rejection); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(0, 421, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__48);
-  __Pyx_GIVEREF(__pyx_tuple__48);
-  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__48, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_catch, 421, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 421, __pyx_L1_error)
-
-  /* "promise/promise.pyx":452
- *         return promise
- * 
- *     cpdef void do_resolve(self, object value):             # <<<<<<<<<<<<<<
- *         self._resolve_callback(value)
- * 
- */
-  __pyx_tuple__50 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_value); if (unlikely(!__pyx_tuple__50)) __PYX_ERR(0, 452, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__50);
-  __Pyx_GIVEREF(__pyx_tuple__50);
-  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_do_resolve, 452, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(0, 452, __pyx_L1_error)
-
-  /* "promise/promise.pyx":457
- *     fulfill = do_resolve
- * 
- *     cpdef void do_reject(self, Exception reason, object traceback = None):             # <<<<<<<<<<<<<<
- *         self._reject_callback(reason, traceback)
- * 
- */
-  __pyx_tuple__52 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_reason, __pyx_n_s_traceback); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(0, 457, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__52);
-  __Pyx_GIVEREF(__pyx_tuple__52);
-  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__52, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_do_reject, 457, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 457, __pyx_L1_error)
-
-  /* "promise/promise.pyx":460
- *         self._reject_callback(reason, traceback)
- * 
- *     cpdef Promise then(self, object did_fulfill = None, object did_reject = None):             # <<<<<<<<<<<<<<
- *         return self._then(did_fulfill, did_reject)
- * 
- */
-  __pyx_tuple__54 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_did_fulfill, __pyx_n_s_did_reject); if (unlikely(!__pyx_tuple__54)) __PYX_ERR(0, 460, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__54);
-  __Pyx_GIVEREF(__pyx_tuple__54);
-  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__54, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_then, 460, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(0, 460, __pyx_L1_error)
-
-  /* "promise/promise.pyx":463
- *         return self._then(did_fulfill, did_reject)
- * 
- *     cpdef void done(self, did_fulfill=None, did_reject=None):             # <<<<<<<<<<<<<<
- *         cdef Promise promise = self._then(did_fulfill, did_reject)
- *         promise._is_final = True
- */
-  __pyx_tuple__56 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_did_fulfill, __pyx_n_s_did_reject); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(0, 463, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__56);
-  __Pyx_GIVEREF(__pyx_tuple__56);
-  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_done, 463, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(0, 463, __pyx_L1_error)
-
-  /* "promise/promise.pyx":467
- *         promise._is_final = True
- * 
- *     cpdef void done_all(self, handlers=None):             # <<<<<<<<<<<<<<
- *         cdef int i
- *         cdef list handler_list
- */
-  __pyx_tuple__58 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_handlers); if (unlikely(!__pyx_tuple__58)) __PYX_ERR(0, 467, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__58);
-  __Pyx_GIVEREF(__pyx_tuple__58);
-  __pyx_codeobj__59 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__58, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_done_all, 467, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__59)) __PYX_ERR(0, 467, __pyx_L1_error)
-
-  /* "promise/promise.pyx":488
- *                 self.done(handler)
- * 
- *     cpdef list then_all(self, handlers=None):             # <<<<<<<<<<<<<<
- *         cdef int i
- * 
- */
-  __pyx_tuple__60 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_handlers); if (unlikely(!__pyx_tuple__60)) __PYX_ERR(0, 488, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__60);
-  __Pyx_GIVEREF(__pyx_tuple__60);
-  __pyx_codeobj__61 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__60, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_then_all, 488, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__61)) __PYX_ERR(0, 488, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_n_s_promise, __pyx_n_s_timeout); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 361, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__24);
+  __Pyx_GIVEREF(__pyx_tuple__24);
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_wait_2, 361, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 361, __pyx_L1_error)
 
   /* "promise/promise.pyx":518
  * 
@@ -21579,10 +21325,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return Promise.c_reject(obj)
  * 
  */
-  __pyx_tuple__62 = PyTuple_Pack(1, __pyx_n_s_obj); if (unlikely(!__pyx_tuple__62)) __PYX_ERR(0, 518, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__62);
-  __Pyx_GIVEREF(__pyx_tuple__62);
-  __pyx_codeobj__63 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__62, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_reject, 518, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__63)) __PYX_ERR(0, 518, __pyx_L1_error)
+  __pyx_tuple__26 = PyTuple_Pack(1, __pyx_n_s_obj); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 518, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__26);
+  __Pyx_GIVEREF(__pyx_tuple__26);
+  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_reject, 518, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 518, __pyx_L1_error)
 
   /* "promise/promise.pyx":533
  * 
@@ -21591,10 +21337,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return Promise.c_resolve(obj)
  * 
  */
-  __pyx_tuple__64 = PyTuple_Pack(1, __pyx_n_s_obj); if (unlikely(!__pyx_tuple__64)) __PYX_ERR(0, 533, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__64);
-  __Pyx_GIVEREF(__pyx_tuple__64);
-  __pyx_codeobj__65 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__64, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_resolve, 533, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__65)) __PYX_ERR(0, 533, __pyx_L1_error)
+  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_n_s_obj); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 533, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__28);
+  __Pyx_GIVEREF(__pyx_tuple__28);
+  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_resolve, 533, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 533, __pyx_L1_error)
 
   /* "promise/promise.pyx":539
  * 
@@ -21603,10 +21349,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         @wraps(f)
  *         def wrapper(*args, **kwargs):
  */
-  __pyx_tuple__66 = PyTuple_Pack(3, __pyx_n_s_f, __pyx_n_s_wrapper, __pyx_n_s_wrapper); if (unlikely(!__pyx_tuple__66)) __PYX_ERR(0, 539, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__66);
-  __Pyx_GIVEREF(__pyx_tuple__66);
-  __pyx_codeobj__67 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__66, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_promisify, 539, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__67)) __PYX_ERR(0, 539, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(3, __pyx_n_s_f, __pyx_n_s_wrapper, __pyx_n_s_wrapper); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 539, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__30);
+  __Pyx_GIVEREF(__pyx_tuple__30);
+  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_promisify, 539, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 539, __pyx_L1_error)
 
   /* "promise/promise.pyx":552
  * 
@@ -21615,10 +21361,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         if not Promise._safe_resolved_promise.value:
  *             Promise._safe_resolved_promise.value = Promise.resolve(None)
  */
-  __pyx_tuple__68 = PyTuple_Pack(3, __pyx_n_s_fn, __pyx_n_s_wrapper, __pyx_n_s_wrapper); if (unlikely(!__pyx_tuple__68)) __PYX_ERR(0, 552, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__68);
-  __Pyx_GIVEREF(__pyx_tuple__68);
-  __pyx_codeobj__69 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__68, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_safe, 552, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__69)) __PYX_ERR(0, 552, __pyx_L1_error)
+  __pyx_tuple__32 = PyTuple_Pack(3, __pyx_n_s_fn, __pyx_n_s_wrapper, __pyx_n_s_wrapper); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 552, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__32);
+  __Pyx_GIVEREF(__pyx_tuple__32);
+  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_safe, 552, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 552, __pyx_L1_error)
 
   /* "promise/promise.pyx":567
  * 
@@ -21627,101 +21373,92 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return Promise._all(promises)
  * 
  */
-  __pyx_tuple__70 = PyTuple_Pack(1, __pyx_n_s_promises); if (unlikely(!__pyx_tuple__70)) __PYX_ERR(0, 567, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__70);
-  __Pyx_GIVEREF(__pyx_tuple__70);
-  __pyx_codeobj__71 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__70, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_all, 567, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__71)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_tuple__34 = PyTuple_Pack(1, __pyx_n_s_promises); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__34);
+  __Pyx_GIVEREF(__pyx_tuple__34);
+  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_all, 567, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 567, __pyx_L1_error)
 
   /* "promise/promise.pyx":571
+ * 
+ *     @staticmethod
+ *     def is_thenable(obj) -> bool:             # <<<<<<<<<<<<<<
+ *         return _is_thenable(obj)
+ * 
+ */
+  __pyx_tuple__36 = PyTuple_Pack(1, __pyx_n_s_obj); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 571, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__36);
+  __Pyx_GIVEREF(__pyx_tuple__36);
+  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_is_thenable, 571, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 571, __pyx_L1_error)
+
+  /* "promise/promise.pyx":575
  * 
  *     @staticmethod
  *     def for_dict(m):             # <<<<<<<<<<<<<<
  *         dict_type = type(m)
  * 
  */
-  __pyx_tuple__72 = PyTuple_Pack(4, __pyx_n_s_m, __pyx_n_s_dict_type, __pyx_n_s_handle_success, __pyx_n_s_handle_success); if (unlikely(!__pyx_tuple__72)) __PYX_ERR(0, 571, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__72);
-  __Pyx_GIVEREF(__pyx_tuple__72);
-  __pyx_codeobj__73 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__72, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_for_dict, 571, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__73)) __PYX_ERR(0, 571, __pyx_L1_error)
+  __pyx_tuple__38 = PyTuple_Pack(4, __pyx_n_s_m, __pyx_n_s_dict_type, __pyx_n_s_handle_success, __pyx_n_s_handle_success); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 575, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__38);
+  __Pyx_GIVEREF(__pyx_tuple__38);
+  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_for_dict, 575, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 575, __pyx_L1_error)
 
-  /* "(tree fragment)":1
- * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     cdef tuple state
- *     cdef object _dict
- */
-  __pyx_tuple__74 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_state, __pyx_n_s_dict_2, __pyx_n_s_use_setstate); if (unlikely(!__pyx_tuple__74)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__74);
-  __Pyx_GIVEREF(__pyx_tuple__74);
-  __pyx_codeobj__75 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__74, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__75)) __PYX_ERR(1, 1, __pyx_L1_error)
-
-  /* "(tree fragment)":16
- *     else:
- *         return __pyx_unpickle_Promise, (type(self), 0xb499ce5, state)
- * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_unpickle_Promise__set_state(self, __pyx_state)
- */
-  __pyx_tuple__76 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__76)) __PYX_ERR(1, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__76);
-  __Pyx_GIVEREF(__pyx_tuple__76);
-  __pyx_codeobj__77 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__76, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__77)) __PYX_ERR(1, 16, __pyx_L1_error)
-
-  /* "promise/promise.pyx":595
+  /* "promise/promise.pyx":599
  * 
  * 
  * def is_thenable(obj):             # <<<<<<<<<<<<<<
  *     return _is_thenable(obj)
  * 
  */
-  __pyx_tuple__78 = PyTuple_Pack(1, __pyx_n_s_obj); if (unlikely(!__pyx_tuple__78)) __PYX_ERR(0, 595, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__78);
-  __Pyx_GIVEREF(__pyx_tuple__78);
-  __pyx_codeobj__79 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__78, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_is_thenable, 595, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__79)) __PYX_ERR(0, 595, __pyx_L1_error)
+  __pyx_tuple__40 = PyTuple_Pack(1, __pyx_n_s_obj); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 599, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__40);
+  __Pyx_GIVEREF(__pyx_tuple__40);
+  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_is_thenable, 599, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 599, __pyx_L1_error)
 
-  /* "promise/promise.pyx":631
+  /* "promise/promise.pyx":635
  * 
  * 
  * def _process_future_result(resolve, reject):             # <<<<<<<<<<<<<<
  *     def handle_future_result(future):
  *         try:
  */
-  __pyx_tuple__80 = PyTuple_Pack(4, __pyx_n_s_resolve, __pyx_n_s_reject, __pyx_n_s_handle_future_result, __pyx_n_s_handle_future_result); if (unlikely(!__pyx_tuple__80)) __PYX_ERR(0, 631, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__80);
-  __Pyx_GIVEREF(__pyx_tuple__80);
-  __pyx_codeobj__81 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__80, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_process_future_result, 631, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__81)) __PYX_ERR(0, 631, __pyx_L1_error)
+  __pyx_tuple__42 = PyTuple_Pack(4, __pyx_n_s_resolve, __pyx_n_s_reject, __pyx_n_s_handle_future_result, __pyx_n_s_handle_future_result); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 635, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__42);
+  __Pyx_GIVEREF(__pyx_tuple__42);
+  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_process_future_result, 635, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 635, __pyx_L1_error)
 
-  /* "promise/promise.pyx":642
+  /* "promise/promise.pyx":646
  * 
  * 
  * def iterate_promise(promise: Promise) -> object:             # <<<<<<<<<<<<<<
  *     if not promise.is_fulfilled:
  *         yield from promise.get_future()
  */
-  __pyx_tuple__82 = PyTuple_Pack(1, __pyx_n_s_promise); if (unlikely(!__pyx_tuple__82)) __PYX_ERR(0, 642, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__82);
-  __Pyx_GIVEREF(__pyx_tuple__82);
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__82, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_iterate_promise, 642, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 642, __pyx_L1_error)
+  __pyx_tuple__44 = PyTuple_Pack(1, __pyx_n_s_promise); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(0, 646, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__44);
+  __Pyx_GIVEREF(__pyx_tuple__44);
+  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_iterate_promise, 646, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 646, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Box(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_tuple__83 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__83)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__83);
-  __Pyx_GIVEREF(__pyx_tuple__83);
-  __pyx_codeobj__84 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__83, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Box, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__84)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __pyx_tuple__85 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__85)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__85);
-  __Pyx_GIVEREF(__pyx_tuple__85);
-  __pyx_codeobj__86 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__85, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_TryCatchResult, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__86)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __pyx_tuple__87 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__87)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__87);
-  __Pyx_GIVEREF(__pyx_tuple__87);
-  __pyx_codeobj__88 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__87, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_PartialSettleProm, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__88)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __pyx_tuple__89 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__89)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__89);
-  __Pyx_GIVEREF(__pyx_tuple__89);
-  __pyx_codeobj__90 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__89, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Promise, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__90)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__45 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__45);
+  __Pyx_GIVEREF(__pyx_tuple__45);
+  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Box, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__47 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__47);
+  __Pyx_GIVEREF(__pyx_tuple__47);
+  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_TryCatchResult, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__49 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__49);
+  __Pyx_GIVEREF(__pyx_tuple__49);
+  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_PartialSettleProm, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__51 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__51);
+  __Pyx_GIVEREF(__pyx_tuple__51);
+  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__51, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Promise, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -21928,7 +21665,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_7promise_7promise___pyx_scope_struct_4_wrapper.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_7promise_7promise___pyx_scope_struct_4_wrapper = &__pyx_type_7promise_7promise___pyx_scope_struct_4_wrapper;
-  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_5_for_dict) < 0) __PYX_ERR(0, 571, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_5_for_dict) < 0) __PYX_ERR(0, 575, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7promise_7promise___pyx_scope_struct_5_for_dict.tp_print = 0;
   #endif
@@ -21936,7 +21673,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_7promise_7promise___pyx_scope_struct_5_for_dict.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_7promise_7promise___pyx_scope_struct_5_for_dict = &__pyx_type_7promise_7promise___pyx_scope_struct_5_for_dict;
-  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise) < 0) __PYX_ERR(0, 599, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise) < 0) __PYX_ERR(0, 603, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise.tp_print = 0;
   #endif
@@ -21944,7 +21681,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise = &__pyx_type_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise;
-  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_7__process_future_result) < 0) __PYX_ERR(0, 631, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_7__process_future_result) < 0) __PYX_ERR(0, 635, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7promise_7promise___pyx_scope_struct_7__process_future_result.tp_print = 0;
   #endif
@@ -21952,7 +21689,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_7promise_7promise___pyx_scope_struct_7__process_future_result.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_7promise_7promise___pyx_scope_struct_7__process_future_result = &__pyx_type_7promise_7promise___pyx_scope_struct_7__process_future_result;
-  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_8_iterate_promise) < 0) __PYX_ERR(0, 642, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_8_iterate_promise) < 0) __PYX_ERR(0, 646, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7promise_7promise___pyx_scope_struct_8_iterate_promise.tp_print = 0;
   #endif
@@ -22396,29 +22133,6 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "(tree fragment)":1
- * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     cdef tuple state
- *     cdef object _dict
- */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_3Box_1__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Box___reduce_cython, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__21)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Box->tp_dict, __pyx_n_s_reduce_cython, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Box);
-
-  /* "(tree fragment)":16
- *     else:
- *         return __pyx_unpickle_Box, (type(self), 0x2063c16, state)
- * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_unpickle_Box__set_state(self, __pyx_state)
- */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_3Box_3__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Box___setstate_cython, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Box->tp_dict, __pyx_n_s_setstate_cython, __pyx_t_1) < 0) __PYX_ERR(1, 16, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Box);
-
   /* "promise/promise.pyx":27
  * 
  * 
@@ -22426,7 +22140,7 @@ if (!__Pyx_RefNanny) {
  *     return async_instance
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_1get_async_instance, 0, __pyx_n_s_get_async_instance, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_1get_async_instance, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_async_instance, __pyx_t_1) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -22438,7 +22152,7 @@ if (!__Pyx_RefNanny) {
  *     return default_scheduler
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_3get_default_scheduler, 0, __pyx_n_s_get_default_scheduler, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_3get_default_scheduler, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_default_scheduler, __pyx_t_1) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -22450,95 +22164,10 @@ if (!__Pyx_RefNanny) {
  *     global default_scheduler
  *     default_scheduler = scheduler
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_5set_default_scheduler, 0, __pyx_n_s_set_default_scheduler, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__27)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_5set_default_scheduler, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_default_scheduler, __pyx_t_1) < 0) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "(tree fragment)":1
- * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     cdef tuple state
- *     cdef object _dict
- */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_14TryCatchResult_1__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_TryCatchResult___reduce_cython, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_TryCatchResult->tp_dict, __pyx_n_s_reduce_cython, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_TryCatchResult);
-
-  /* "(tree fragment)":16
- *     else:
- *         return __pyx_unpickle_TryCatchResult, (type(self), 0x47960a2, state)
- * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_unpickle_TryCatchResult__set_state(self, __pyx_state)
- */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_14TryCatchResult_3__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_TryCatchResult___setstate_cython, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__31)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_TryCatchResult->tp_dict, __pyx_n_s_setstate_cython, __pyx_t_1) < 0) __PYX_ERR(1, 16, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_TryCatchResult);
-
-  /* "(tree fragment)":1
- * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     cdef tuple state
- *     cdef object _dict
- */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_20PartialSettlePromise_1__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PartialSettlePromise___reduce_cy, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__33)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_PartialSettlePromise->tp_dict, __pyx_n_s_reduce_cython, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_PartialSettlePromise);
-
-  /* "(tree fragment)":16
- *     else:
- *         return __pyx_unpickle_PartialSettlePromise, (type(self), 0xb5dc62b, state)
- * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_unpickle_PartialSettlePromise__set_state(self, __pyx_state)
- */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_20PartialSettlePromise_3__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PartialSettlePromise___setstate, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_PartialSettlePromise->tp_dict, __pyx_n_s_setstate_cython, __pyx_t_1) < 0) __PYX_ERR(1, 16, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_PartialSettlePromise);
-
-  /* "promise/promise.pyx":99
- *             self._resolve_from_executor(executor)
- * 
- *     cpdef Scheduler get_scheduler(self):             # <<<<<<<<<<<<<<
- *         if self._scheduler is not None:
- *             return self._scheduler
- */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_3get_scheduler, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_get_scheduler, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_get_scheduler, __pyx_t_1) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
-
-  /* "promise/promise.pyx":104
- *         return default_scheduler
- * 
- *     cpdef object get_future(self):             # <<<<<<<<<<<<<<
- *         cdef object fut
- *         if not self._future:
- */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_5get_future, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_get_future, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__39)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_get_future, __pyx_t_1) < 0) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
-
-  /* "promise/promise.pyx":310
- *         return index
- * 
- *     cpdef Promise _target(self):             # <<<<<<<<<<<<<<
- *         cdef Promise ret = self
- *         while ret._is_following:
- */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_11_target, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise__target, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__41)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_target, __pyx_t_1) < 0) __PYX_ERR(0, 310, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
   /* "promise/promise.pyx":361
  * 
@@ -22547,7 +22176,7 @@ if (!__Pyx_RefNanny) {
  *         promise._wait(timeout)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_13wait, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_wait, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 361, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_13wait, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 361, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_wait_2, __pyx_t_1) < 0) __PYX_ERR(0, 361, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -22569,58 +22198,6 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":364
- *         promise._wait(timeout)
- * 
- *     cpdef void _wait(self, object timeout = None):             # <<<<<<<<<<<<<<
- *         async_instance.wait(self, timeout)
- * 
- */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_15_wait, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise__wait, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__45)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 364, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_wait, __pyx_t_2) < 0) __PYX_ERR(0, 364, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
-
-  /* "promise/promise.pyx":367
- *         async_instance.wait(self, timeout)
- * 
- *     cpdef object get(self, object timeout = None):             # <<<<<<<<<<<<<<
- *         self._wait(timeout or DEFAULT_TIMEOUT)
- *         return self._target_settled_value(raise_=True)
- */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_17get, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_get, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__47)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 367, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_get, __pyx_t_2) < 0) __PYX_ERR(0, 367, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
-
-  /* "promise/promise.pyx":421
- *         return self._is_rejected()
- * 
- *     cpdef Promise catch(self, on_rejection):             # <<<<<<<<<<<<<<
- *         return self.then(None, on_rejection)
- * 
- */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_21catch, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_catch, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__49)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 421, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_catch, __pyx_t_2) < 0) __PYX_ERR(0, 421, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
-
-  /* "promise/promise.pyx":452
- *         return promise
- * 
- *     cpdef void do_resolve(self, object value):             # <<<<<<<<<<<<<<
- *         self._resolve_callback(value)
- * 
- */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_23do_resolve, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_do_resolve, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__51)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 452, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_do_resolve, __pyx_t_2) < 0) __PYX_ERR(0, 452, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
-
   /* "promise/promise.pyx":455
  *         self._resolve_callback(value)
  * 
@@ -22634,71 +22211,6 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":457
- *     fulfill = do_resolve
- * 
- *     cpdef void do_reject(self, Exception reason, object traceback = None):             # <<<<<<<<<<<<<<
- *         self._reject_callback(reason, traceback)
- * 
- */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_25do_reject, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_do_reject, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__53)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 457, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_do_reject, __pyx_t_2) < 0) __PYX_ERR(0, 457, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
-
-  /* "promise/promise.pyx":460
- *         self._reject_callback(reason, traceback)
- * 
- *     cpdef Promise then(self, object did_fulfill = None, object did_reject = None):             # <<<<<<<<<<<<<<
- *         return self._then(did_fulfill, did_reject)
- * 
- */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_27then, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_then, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__55)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 460, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_then, __pyx_t_2) < 0) __PYX_ERR(0, 460, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
-
-  /* "promise/promise.pyx":463
- *         return self._then(did_fulfill, did_reject)
- * 
- *     cpdef void done(self, did_fulfill=None, did_reject=None):             # <<<<<<<<<<<<<<
- *         cdef Promise promise = self._then(did_fulfill, did_reject)
- *         promise._is_final = True
- */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_29done, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_done, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__57)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 463, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_done, __pyx_t_2) < 0) __PYX_ERR(0, 463, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
-
-  /* "promise/promise.pyx":467
- *         promise._is_final = True
- * 
- *     cpdef void done_all(self, handlers=None):             # <<<<<<<<<<<<<<
- *         cdef int i
- *         cdef list handler_list
- */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_31done_all, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_done_all, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__59)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 467, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_done_all, __pyx_t_2) < 0) __PYX_ERR(0, 467, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
-
-  /* "promise/promise.pyx":488
- *                 self.done(handler)
- * 
- *     cpdef list then_all(self, handlers=None):             # <<<<<<<<<<<<<<
- *         cdef int i
- * 
- */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_33then_all, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_then_all, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__61)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 488, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_then_all, __pyx_t_2) < 0) __PYX_ERR(0, 488, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
-
   /* "promise/promise.pyx":518
  * 
  *     @staticmethod
@@ -22706,16 +22218,10 @@ if (!__Pyx_RefNanny) {
  *         return Promise.c_reject(obj)
  * 
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 518, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_35reject, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 518, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_obj, __pyx_n_u_Exception) < 0) __PYX_ERR(0, 518, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_return, __pyx_n_u_Promise) < 0) __PYX_ERR(0, 518, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_35reject, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_reject, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__63)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 518, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_1, __pyx_t_2);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_reject, __pyx_t_2) < 0) __PYX_ERR(0, 518, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_reject, __pyx_t_1) < 0) __PYX_ERR(0, 518, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
   /* "promise/promise.pyx":517
@@ -22725,13 +22231,13 @@ if (!__Pyx_RefNanny) {
  *     def reject(obj: Exception) -> Promise:
  *         return Promise.c_reject(obj)
  */
-  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_reject); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 518, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 517, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_reject); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 518, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_reject, __pyx_t_2) < 0) __PYX_ERR(0, 518, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 517, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_reject, __pyx_t_1) < 0) __PYX_ERR(0, 518, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
   /* "promise/promise.pyx":521
@@ -22741,10 +22247,10 @@ if (!__Pyx_RefNanny) {
  * 
  *     @staticmethod
  */
-  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_reject); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 521, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_rejected, __pyx_t_2) < 0) __PYX_ERR(0, 521, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_reject); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 521, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_rejected, __pyx_t_1) < 0) __PYX_ERR(0, 521, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
   /* "promise/promise.pyx":533
@@ -22754,13 +22260,8 @@ if (!__Pyx_RefNanny) {
  *         return Promise.c_resolve(obj)
  * 
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 533, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_return, __pyx_n_u_Promise) < 0) __PYX_ERR(0, 533, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_37resolve, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_resolve, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__65)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 533, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_37resolve, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 533, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_1, __pyx_t_2);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_resolve, __pyx_t_1) < 0) __PYX_ERR(0, 533, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
@@ -22803,7 +22304,7 @@ if (!__Pyx_RefNanny) {
  *         @wraps(f)
  *         def wrapper(*args, **kwargs):
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_39promisify, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_promisify, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__67)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 539, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_39promisify, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 539, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_promisify, __pyx_t_2) < 0) __PYX_ERR(0, 539, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -22845,7 +22346,7 @@ if (!__Pyx_RefNanny) {
  *         if not Promise._safe_resolved_promise.value:
  *             Promise._safe_resolved_promise.value = Promise.resolve(None)
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_41safe, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_safe, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__69)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 552, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_41safe, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 552, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_safe, __pyx_t_1) < 0) __PYX_ERR(0, 552, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -22874,15 +22375,10 @@ if (!__Pyx_RefNanny) {
  *         return Promise._all(promises)
  * 
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_43all, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 567, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_return, __pyx_n_u_Promise) < 0) __PYX_ERR(0, 567, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_43all, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_all, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__71)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 567, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_1, __pyx_t_2);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_all, __pyx_t_2) < 0) __PYX_ERR(0, 567, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_all, __pyx_t_1) < 0) __PYX_ERR(0, 567, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
   /* "promise/promise.pyx":566
@@ -22892,142 +22388,142 @@ if (!__Pyx_RefNanny) {
  *     def all(promises) -> Promise:
  *         return Promise._all(promises)
  */
-  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_all); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 567, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 566, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_all); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 567, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_all, __pyx_t_2) < 0) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 566, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_all, __pyx_t_1) < 0) __PYX_ERR(0, 567, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
   /* "promise/promise.pyx":571
  * 
  *     @staticmethod
- *     def for_dict(m):             # <<<<<<<<<<<<<<
- *         dict_type = type(m)
+ *     def is_thenable(obj) -> bool:             # <<<<<<<<<<<<<<
+ *         return _is_thenable(obj)
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_45for_dict, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_for_dict, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__73)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 571, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_for_dict, __pyx_t_2) < 0) __PYX_ERR(0, 571, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_45is_thenable, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 571, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_is_thenable, __pyx_t_1) < 0) __PYX_ERR(0, 571, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
   /* "promise/promise.pyx":570
  *         return Promise._all(promises)
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
+ *     def is_thenable(obj) -> bool:
+ *         return _is_thenable(obj)
+ */
+  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_is_thenable); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 571, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_is_thenable, __pyx_t_2) < 0) __PYX_ERR(0, 571, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
+
+  /* "promise/promise.pyx":575
+ * 
+ *     @staticmethod
+ *     def for_dict(m):             # <<<<<<<<<<<<<<
+ *         dict_type = type(m)
+ * 
+ */
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_47for_dict, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 575, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_for_dict, __pyx_t_2) < 0) __PYX_ERR(0, 575, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
+
+  /* "promise/promise.pyx":574
+ *         return _is_thenable(obj)
+ * 
+ *     @staticmethod             # <<<<<<<<<<<<<<
  *     def for_dict(m):
  *         dict_type = type(m)
  */
-  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_for_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 571, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_for_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 575, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 574, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_for_dict, __pyx_t_1) < 0) __PYX_ERR(0, 571, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_for_dict, __pyx_t_1) < 0) __PYX_ERR(0, 575, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "(tree fragment)":1
- * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     cdef tuple state
- *     cdef object _dict
- */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_47__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise___reduce_cython, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__75)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_reduce_cython, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
-
-  /* "(tree fragment)":16
- *     else:
- *         return __pyx_unpickle_Promise, (type(self), 0xb499ce5, state)
- * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_unpickle_Promise__set_state(self, __pyx_state)
- */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_49__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise___setstate_cython, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__77)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_setstate_cython, __pyx_t_1) < 0) __PYX_ERR(1, 16, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
-
-  /* "promise/promise.pyx":595
+  /* "promise/promise.pyx":599
  * 
  * 
  * def is_thenable(obj):             # <<<<<<<<<<<<<<
  *     return _is_thenable(obj)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7is_thenable, 0, __pyx_n_s_is_thenable, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__79)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 595, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7is_thenable, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 599, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_is_thenable, __pyx_t_1) < 0) __PYX_ERR(0, 595, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_is_thenable, __pyx_t_1) < 0) __PYX_ERR(0, 599, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":627
+  /* "promise/promise.pyx":631
  * 
  * 
  * promisify = Promise.promisify             # <<<<<<<<<<<<<<
  * promise_for_dict = Promise.for_dict
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_promisify); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 627, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_promisify); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 631, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_promisify, __pyx_t_1) < 0) __PYX_ERR(0, 627, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_promisify, __pyx_t_1) < 0) __PYX_ERR(0, 631, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":628
+  /* "promise/promise.pyx":632
  * 
  * promisify = Promise.promisify
  * promise_for_dict = Promise.for_dict             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_for_dict); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 628, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_for_dict); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 632, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_promise_for_dict, __pyx_t_1) < 0) __PYX_ERR(0, 628, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_promise_for_dict, __pyx_t_1) < 0) __PYX_ERR(0, 632, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":631
+  /* "promise/promise.pyx":635
  * 
  * 
  * def _process_future_result(resolve, reject):             # <<<<<<<<<<<<<<
  *     def handle_future_result(future):
  *         try:
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_9_process_future_result, 0, __pyx_n_s_process_future_result, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__81)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 631, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_9_process_future_result, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_process_future_result, __pyx_t_1) < 0) __PYX_ERR(0, 631, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_process_future_result, __pyx_t_1) < 0) __PYX_ERR(0, 635, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":642
+  /* "promise/promise.pyx":646
  * 
  * 
  * def iterate_promise(promise: Promise) -> object:             # <<<<<<<<<<<<<<
  *     if not promise.is_fulfilled:
  *         yield from promise.get_future()
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 642, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_11iterate_promise, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 646, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_promise, __pyx_n_u_Promise) < 0) __PYX_ERR(0, 642, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_return, __pyx_n_u_object) < 0) __PYX_ERR(0, 642, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_11iterate_promise, 0, __pyx_n_s_iterate_promise, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 642, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_2, __pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_iterate_promise, __pyx_t_1) < 0) __PYX_ERR(0, 646, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_iterate_promise, __pyx_t_2) < 0) __PYX_ERR(0, 642, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Box(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_14__pyx_unpickle_Box, 0, __pyx_n_s_pyx_unpickle_Box, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__84)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_Box, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_14__pyx_unpickle_Box, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_Box, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "(tree fragment)":11
  *         __pyx_unpickle_Box__set_state(<Box> __pyx_result, __pyx_state)
@@ -23036,20 +22532,20 @@ if (!__Pyx_RefNanny) {
  *     __pyx_result.value = __pyx_state[0]
  *     if len(__pyx_state) > 1 and hasattr(__pyx_result, '__dict__'):
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_16__pyx_unpickle_TryCatchResult, 0, __pyx_n_s_pyx_unpickle_TryCatchResult, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__86)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_TryCatchResult, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_16__pyx_unpickle_TryCatchResult, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_TryCatchResult, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_PartialSettlePromise(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_18__pyx_unpickle_PartialSettlePromise, 0, __pyx_n_s_pyx_unpickle_PartialSettleProm, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__88)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_PartialSettleProm, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_18__pyx_unpickle_PartialSettlePromise, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_PartialSettleProm, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "(tree fragment)":11
  *         __pyx_unpickle_PartialSettlePromise__set_state(<PartialSettlePromise> __pyx_result, __pyx_state)
@@ -23058,20 +22554,20 @@ if (!__Pyx_RefNanny) {
  *     __pyx_result.handler = __pyx_state[0]; __pyx_result.promise = __pyx_state[1]; __pyx_result.target = __pyx_state[2]; __pyx_result.traceback = __pyx_state[3]; __pyx_result.value = __pyx_state[4]
  *     if len(__pyx_state) > 5 and hasattr(__pyx_result, '__dict__'):
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_20__pyx_unpickle_Promise, 0, __pyx_n_s_pyx_unpickle_Promise, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__90)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_Promise, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_20__pyx_unpickle_Promise, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_Promise, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "promise/promise.pyx":1
  * cimport cython             # <<<<<<<<<<<<<<
  * 
  * from asyncio import Future, ensure_future
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /*--- Wrapped vars code ---*/
 
