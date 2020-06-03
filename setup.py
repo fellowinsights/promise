@@ -1,4 +1,4 @@
-import sys
+import sys, os
 from setuptools import setup, find_packages
 from distutils.core import Extension
 
@@ -28,12 +28,15 @@ ext_modules = [
 if USE_CYTHON:
     from Cython.Build import cythonize
 
+    do_profile = bool(os.getenv("PROFILE"))
     ext_modules = cythonize(
         ext_modules,
         compiler_directives={
             "language_level": "3",
             "warn.unused": True,
             "warn.unused_result": True,
+            "linetrace": do_profile,
+            "profile": do_profile,
         },
     )
 
