@@ -218,10 +218,10 @@ cdef class Async:
             data = self.local.data = LocalData(self.trampoline_enabled)
         return data
 
-    cdef void enable_trampoline(self):
+    cpdef void enable_trampoline(self):
         self._data().enable_trampoline()
 
-    cdef void disable_trampoline(self):
+    cpdef void disable_trampoline(self):
         self._data().disable_trampoline()
 
     cdef bint have_items_queued(self):

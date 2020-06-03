@@ -41,8 +41,8 @@ cdef class Async:
     cdef bint trampoline_enabled
 
     cdef LocalData _data(self)
-    cdef void enable_trampoline(self)
-    cdef void disable_trampoline(self)
+    cpdef void enable_trampoline(self)
+    cpdef void disable_trampoline(self)
     cdef bint have_items_queued(self)
     cdef void _async_invoke_later(self, SchedulerFn fn, Scheduler scheduler)
     cdef void _async_invoke(self, SchedulerFn fn, Scheduler scheduler)

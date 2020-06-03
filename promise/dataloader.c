@@ -1376,8 +1376,8 @@ static struct __pyx_vtabstruct_7promise_6async__LocalData *__pyx_vtabptr_7promis
 
 struct __pyx_vtabstruct_7promise_6async__Async {
   struct __pyx_obj_7promise_6async__LocalData *(*_data)(struct __pyx_obj_7promise_6async__Async *);
-  void (*enable_trampoline)(struct __pyx_obj_7promise_6async__Async *);
-  void (*disable_trampoline)(struct __pyx_obj_7promise_6async__Async *);
+  void (*enable_trampoline)(struct __pyx_obj_7promise_6async__Async *, int __pyx_skip_dispatch);
+  void (*disable_trampoline)(struct __pyx_obj_7promise_6async__Async *, int __pyx_skip_dispatch);
   int (*have_items_queued)(struct __pyx_obj_7promise_6async__Async *);
   void (*_async_invoke_later)(struct __pyx_obj_7promise_6async__Async *, struct __pyx_obj_7promise_10schedulers_4base_SchedulerFn *, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *);
   void (*_async_invoke)(struct __pyx_obj_7promise_6async__Async *, struct __pyx_obj_7promise_10schedulers_4base_SchedulerFn *, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *);

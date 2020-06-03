@@ -1382,8 +1382,8 @@ static void __pyx_f_7promise_6async__9LocalData_reset(struct __pyx_obj_7promise_
 
 struct __pyx_vtabstruct_7promise_6async__Async {
   struct __pyx_obj_7promise_6async__LocalData *(*_data)(struct __pyx_obj_7promise_6async__Async *);
-  void (*enable_trampoline)(struct __pyx_obj_7promise_6async__Async *);
-  void (*disable_trampoline)(struct __pyx_obj_7promise_6async__Async *);
+  void (*enable_trampoline)(struct __pyx_obj_7promise_6async__Async *, int __pyx_skip_dispatch);
+  void (*disable_trampoline)(struct __pyx_obj_7promise_6async__Async *, int __pyx_skip_dispatch);
   int (*have_items_queued)(struct __pyx_obj_7promise_6async__Async *);
   void (*_async_invoke_later)(struct __pyx_obj_7promise_6async__Async *, struct __pyx_obj_7promise_10schedulers_4base_SchedulerFn *, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *);
   void (*_async_invoke)(struct __pyx_obj_7promise_6async__Async *, struct __pyx_obj_7promise_10schedulers_4base_SchedulerFn *, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *);
@@ -1402,8 +1402,8 @@ struct __pyx_vtabstruct_7promise_6async__Async {
 };
 static struct __pyx_vtabstruct_7promise_6async__Async *__pyx_vtabptr_7promise_6async__Async;
 static struct __pyx_obj_7promise_6async__LocalData *__pyx_f_7promise_6async__5Async__data(struct __pyx_obj_7promise_6async__Async *);
-static void __pyx_f_7promise_6async__5Async_enable_trampoline(struct __pyx_obj_7promise_6async__Async *);
-static void __pyx_f_7promise_6async__5Async_disable_trampoline(struct __pyx_obj_7promise_6async__Async *);
+static void __pyx_f_7promise_6async__5Async_enable_trampoline(struct __pyx_obj_7promise_6async__Async *, int __pyx_skip_dispatch);
+static void __pyx_f_7promise_6async__5Async_disable_trampoline(struct __pyx_obj_7promise_6async__Async *, int __pyx_skip_dispatch);
 static int __pyx_f_7promise_6async__5Async_have_items_queued(struct __pyx_obj_7promise_6async__Async *);
 static void __pyx_f_7promise_6async__5Async__async_invoke_later(struct __pyx_obj_7promise_6async__Async *, struct __pyx_obj_7promise_10schedulers_4base_SchedulerFn *, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *);
 static void __pyx_f_7promise_6async__5Async__async_invoke(struct __pyx_obj_7promise_6async__Async *, struct __pyx_obj_7promise_10schedulers_4base_SchedulerFn *, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *);
@@ -1972,8 +1972,8 @@ static void __pyx_f_7promise_6async__9LocalData_drain_queues(struct __pyx_obj_7p
 static void __pyx_f_7promise_6async__9LocalData_queue_tick(struct __pyx_obj_7promise_6async__LocalData *__pyx_v_self, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_v_scheduler); /* proto*/
 static void __pyx_f_7promise_6async__9LocalData_reset(struct __pyx_obj_7promise_6async__LocalData *__pyx_v_self); /* proto*/
 static struct __pyx_obj_7promise_6async__LocalData *__pyx_f_7promise_6async__5Async__data(struct __pyx_obj_7promise_6async__Async *__pyx_v_self); /* proto*/
-static void __pyx_f_7promise_6async__5Async_enable_trampoline(struct __pyx_obj_7promise_6async__Async *__pyx_v_self); /* proto*/
-static void __pyx_f_7promise_6async__5Async_disable_trampoline(struct __pyx_obj_7promise_6async__Async *__pyx_v_self); /* proto*/
+static void __pyx_f_7promise_6async__5Async_enable_trampoline(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, CYTHON_UNUSED int __pyx_skip_dispatch); /* proto*/
+static void __pyx_f_7promise_6async__5Async_disable_trampoline(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, CYTHON_UNUSED int __pyx_skip_dispatch); /* proto*/
 static int __pyx_f_7promise_6async__5Async_have_items_queued(struct __pyx_obj_7promise_6async__Async *__pyx_v_self); /* proto*/
 static void __pyx_f_7promise_6async__5Async__async_invoke_later(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, struct __pyx_obj_7promise_10schedulers_4base_SchedulerFn *__pyx_v_fn, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_v_scheduler); /* proto*/
 static void __pyx_f_7promise_6async__5Async__async_invoke(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, struct __pyx_obj_7promise_10schedulers_4base_SchedulerFn *__pyx_v_fn, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_v_scheduler); /* proto*/
@@ -2093,7 +2093,9 @@ static const char __pyx_k_PromiseContainer[] = "PromiseContainer";
 static const char __pyx_k_SettlePromisesFn[] = "SettlePromisesFn";
 static const char __pyx_k_Async_fatal_error[] = "Async.fatal_error";
 static const char __pyx_k_FunctionContainer[] = "FunctionContainer";
+static const char __pyx_k_enable_trampoline[] = "enable_trampoline";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
+static const char __pyx_k_disable_trampoline[] = "disable_trampoline";
 static const char __pyx_k_promise_async__pyx[] = "promise/async_.pyx";
 static const char __pyx_k_pyx_unpickle_Async[] = "__pyx_unpickle_Async";
 static const char __pyx_k_pyx_unpickle_Queue[] = "__pyx_unpickle_Queue";
@@ -2106,8 +2108,10 @@ static const char __pyx_k_Unexpected_queue_item[] = "Unexpected queue item: {}";
 static const char __pyx_k_pyx_unpickle_LocalData[] = "__pyx_unpickle_LocalData";
 static const char __pyx_k_pyx_unpickle_QueueItem[] = "__pyx_unpickle_QueueItem";
 static const char __pyx_k_Async___setstate_cython[] = "Async.__setstate_cython__";
+static const char __pyx_k_Async_enable_trampoline[] = "Async.enable_trampoline";
 static const char __pyx_k_Queue___setstate_cython[] = "Queue.__setstate_cython__";
 static const char __pyx_k_RaiseFn___reduce_cython[] = "RaiseFn.__reduce_cython__";
+static const char __pyx_k_Async_disable_trampoline[] = "Async.disable_trampoline";
 static const char __pyx_k_TEST_have_drained_queues[] = "_TEST_have_drained_queues";
 static const char __pyx_k_LocalData___reduce_cython[] = "LocalData.__reduce_cython__";
 static const char __pyx_k_QueueItem___reduce_cython[] = "QueueItem.__reduce_cython__";
@@ -2139,6 +2143,8 @@ static PyObject *__pyx_n_s_Async;
 static PyObject *__pyx_n_s_Async__TEST_have_drained_queues;
 static PyObject *__pyx_n_s_Async___reduce_cython;
 static PyObject *__pyx_n_s_Async___setstate_cython;
+static PyObject *__pyx_n_s_Async_disable_trampoline;
+static PyObject *__pyx_n_s_Async_enable_trampoline;
 static PyObject *__pyx_n_s_Async_fatal_error;
 static PyObject *__pyx_n_s_DrainQueuesFn;
 static PyObject *__pyx_n_s_DrainQueuesFn___reduce_cython;
@@ -2185,6 +2191,8 @@ static PyObject *__pyx_n_u_data;
 static PyObject *__pyx_n_s_deque;
 static PyObject *__pyx_n_s_dict;
 static PyObject *__pyx_n_s_dict_2;
+static PyObject *__pyx_n_s_disable_trampoline;
+static PyObject *__pyx_n_s_enable_trampoline;
 static PyObject *__pyx_n_s_fatal_error;
 static PyObject *__pyx_n_s_format;
 static PyObject *__pyx_n_s_getstate;
@@ -2258,10 +2266,12 @@ static int __pyx_pf_7promise_6async__9LocalData_12normal_queue_4__del__(struct _
 static PyObject *__pyx_pf_7promise_6async__9LocalData_4__reduce_cython__(struct __pyx_obj_7promise_6async__LocalData *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7promise_6async__9LocalData_6__setstate_cython__(struct __pyx_obj_7promise_6async__LocalData *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
 static int __pyx_pf_7promise_6async__5Async___init__(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, int __pyx_v_trampoline_enabled); /* proto */
-static PyObject *__pyx_pf_7promise_6async__5Async_2fatal_error(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, PyObject *__pyx_v_reason, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_v_scheduler); /* proto */
-static PyObject *__pyx_pf_7promise_6async__5Async_4_TEST_have_drained_queues(struct __pyx_obj_7promise_6async__Async *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7promise_6async__5Async_6__reduce_cython__(struct __pyx_obj_7promise_6async__Async *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7promise_6async__5Async_8__setstate_cython__(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_7promise_6async__5Async_2enable_trampoline(struct __pyx_obj_7promise_6async__Async *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7promise_6async__5Async_4disable_trampoline(struct __pyx_obj_7promise_6async__Async *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7promise_6async__5Async_6fatal_error(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, PyObject *__pyx_v_reason, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_v_scheduler); /* proto */
+static PyObject *__pyx_pf_7promise_6async__5Async_8_TEST_have_drained_queues(struct __pyx_obj_7promise_6async__Async *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7promise_6async__5Async_10__reduce_cython__(struct __pyx_obj_7promise_6async__Async *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7promise_6async__5Async_12__setstate_cython__(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_7promise_6async____pyx_unpickle_QueueItem(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_7promise_6async__2__pyx_unpickle_Queue(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_7promise_6async__4__pyx_unpickle_FunctionContainer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
@@ -2318,6 +2328,8 @@ static PyObject *__pyx_tuple__53;
 static PyObject *__pyx_tuple__55;
 static PyObject *__pyx_tuple__57;
 static PyObject *__pyx_tuple__59;
+static PyObject *__pyx_tuple__61;
+static PyObject *__pyx_tuple__63;
 static PyObject *__pyx_codeobj__2;
 static PyObject *__pyx_codeobj__4;
 static PyObject *__pyx_codeobj__6;
@@ -2348,6 +2360,8 @@ static PyObject *__pyx_codeobj__54;
 static PyObject *__pyx_codeobj__56;
 static PyObject *__pyx_codeobj__58;
 static PyObject *__pyx_codeobj__60;
+static PyObject *__pyx_codeobj__62;
+static PyObject *__pyx_codeobj__64;
 /* Late includes */
 
 /* "(tree fragment)":1
@@ -7592,7 +7606,7 @@ static struct __pyx_obj_7promise_6async__LocalData *__pyx_f_7promise_6async__5As
  *             data = self.local.data = LocalData(self.trampoline_enabled)
  *         return data             # <<<<<<<<<<<<<<
  * 
- *     cdef void enable_trampoline(self):
+ *     cpdef void enable_trampoline(self):
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
   __Pyx_INCREF(((PyObject *)__pyx_v_data));
@@ -7623,12 +7637,13 @@ static struct __pyx_obj_7promise_6async__LocalData *__pyx_f_7promise_6async__5As
 /* "promise/async_.pyx":221
  *         return data
  * 
- *     cdef void enable_trampoline(self):             # <<<<<<<<<<<<<<
+ *     cpdef void enable_trampoline(self):             # <<<<<<<<<<<<<<
  *         self._data().enable_trampoline()
  * 
  */
 
-static void __pyx_f_7promise_6async__5Async_enable_trampoline(struct __pyx_obj_7promise_6async__Async *__pyx_v_self) {
+static PyObject *__pyx_pw_7promise_6async__5Async_3enable_trampoline(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static void __pyx_f_7promise_6async__5Async_enable_trampoline(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, CYTHON_UNUSED int __pyx_skip_dispatch) {
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   int __pyx_lineno = 0;
@@ -7638,10 +7653,10 @@ static void __pyx_f_7promise_6async__5Async_enable_trampoline(struct __pyx_obj_7
 
   /* "promise/async_.pyx":222
  * 
- *     cdef void enable_trampoline(self):
+ *     cpdef void enable_trampoline(self):
  *         self._data().enable_trampoline()             # <<<<<<<<<<<<<<
  * 
- *     cdef void disable_trampoline(self):
+ *     cpdef void disable_trampoline(self):
  */
   __pyx_t_1 = ((PyObject *)__pyx_f_7promise_6async__5Async__data(__pyx_v_self)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -7651,7 +7666,7 @@ static void __pyx_f_7promise_6async__5Async_enable_trampoline(struct __pyx_obj_7
   /* "promise/async_.pyx":221
  *         return data
  * 
- *     cdef void enable_trampoline(self):             # <<<<<<<<<<<<<<
+ *     cpdef void enable_trampoline(self):             # <<<<<<<<<<<<<<
  *         self._data().enable_trampoline()
  * 
  */
@@ -7665,15 +7680,56 @@ static void __pyx_f_7promise_6async__5Async_enable_trampoline(struct __pyx_obj_7
   __Pyx_RefNannyFinishContext();
 }
 
+/* Python wrapper */
+static PyObject *__pyx_pw_7promise_6async__5Async_3enable_trampoline(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_6async__5Async_3enable_trampoline = {"enable_trampoline", (PyCFunction)__pyx_pw_7promise_6async__5Async_3enable_trampoline, METH_NOARGS, 0};
+static PyObject *__pyx_pw_7promise_6async__5Async_3enable_trampoline(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("enable_trampoline (wrapper)", 0);
+  __pyx_r = __pyx_pf_7promise_6async__5Async_2enable_trampoline(((struct __pyx_obj_7promise_6async__Async *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_7promise_6async__5Async_2enable_trampoline(struct __pyx_obj_7promise_6async__Async *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("enable_trampoline", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_7promise_6async__5Async_enable_trampoline(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("promise.async_.Async.enable_trampoline", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
 /* "promise/async_.pyx":224
  *         self._data().enable_trampoline()
  * 
- *     cdef void disable_trampoline(self):             # <<<<<<<<<<<<<<
+ *     cpdef void disable_trampoline(self):             # <<<<<<<<<<<<<<
  *         self._data().disable_trampoline()
  * 
  */
 
-static void __pyx_f_7promise_6async__5Async_disable_trampoline(struct __pyx_obj_7promise_6async__Async *__pyx_v_self) {
+static PyObject *__pyx_pw_7promise_6async__5Async_5disable_trampoline(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static void __pyx_f_7promise_6async__5Async_disable_trampoline(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, CYTHON_UNUSED int __pyx_skip_dispatch) {
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   int __pyx_lineno = 0;
@@ -7683,7 +7739,7 @@ static void __pyx_f_7promise_6async__5Async_disable_trampoline(struct __pyx_obj_
 
   /* "promise/async_.pyx":225
  * 
- *     cdef void disable_trampoline(self):
+ *     cpdef void disable_trampoline(self):
  *         self._data().disable_trampoline()             # <<<<<<<<<<<<<<
  * 
  *     cdef bint have_items_queued(self):
@@ -7696,7 +7752,7 @@ static void __pyx_f_7promise_6async__5Async_disable_trampoline(struct __pyx_obj_
   /* "promise/async_.pyx":224
  *         self._data().enable_trampoline()
  * 
- *     cdef void disable_trampoline(self):             # <<<<<<<<<<<<<<
+ *     cpdef void disable_trampoline(self):             # <<<<<<<<<<<<<<
  *         self._data().disable_trampoline()
  * 
  */
@@ -7708,6 +7764,46 @@ static void __pyx_f_7promise_6async__5Async_disable_trampoline(struct __pyx_obj_
   __Pyx_WriteUnraisable("promise.async_.Async.disable_trampoline", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_7promise_6async__5Async_5disable_trampoline(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_6async__5Async_5disable_trampoline = {"disable_trampoline", (PyCFunction)__pyx_pw_7promise_6async__5Async_5disable_trampoline, METH_NOARGS, 0};
+static PyObject *__pyx_pw_7promise_6async__5Async_5disable_trampoline(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("disable_trampoline (wrapper)", 0);
+  __pyx_r = __pyx_pf_7promise_6async__5Async_4disable_trampoline(((struct __pyx_obj_7promise_6async__Async *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_7promise_6async__5Async_4disable_trampoline(struct __pyx_obj_7promise_6async__Async *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("disable_trampoline", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_7promise_6async__5Async_disable_trampoline(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("promise.async_.Async.disable_trampoline", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
 }
 
 /* "promise/async_.pyx":227
@@ -8036,7 +8132,7 @@ static void __pyx_f_7promise_6async__5Async_throw_later(struct __pyx_obj_7promis
  * 
  */
 
-static PyObject *__pyx_pw_7promise_6async__5Async_3fatal_error(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_7promise_6async__5Async_7fatal_error(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static void __pyx_f_7promise_6async__5Async_fatal_error(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, PyObject *__pyx_v_reason, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_v_scheduler, CYTHON_UNUSED int __pyx_skip_dispatch) {
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8075,9 +8171,9 @@ static void __pyx_f_7promise_6async__5Async_fatal_error(struct __pyx_obj_7promis
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_6async__5Async_3fatal_error(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_6async__5Async_3fatal_error = {"fatal_error", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_6async__5Async_3fatal_error, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_7promise_6async__5Async_3fatal_error(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7promise_6async__5Async_7fatal_error(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_6async__5Async_7fatal_error = {"fatal_error", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_6async__5Async_7fatal_error, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7promise_6async__5Async_7fatal_error(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_reason = 0;
   struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_v_scheduler = 0;
   int __pyx_lineno = 0;
@@ -8134,7 +8230,7 @@ static PyObject *__pyx_pw_7promise_6async__5Async_3fatal_error(PyObject *__pyx_v
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_reason), (&((PyTypeObject*)PyExc_Exception)[0]), 1, "reason", 0))) __PYX_ERR(0, 248, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_scheduler), __pyx_ptype_7promise_10schedulers_4base_Scheduler, 1, "scheduler", 0))) __PYX_ERR(0, 248, __pyx_L1_error)
-  __pyx_r = __pyx_pf_7promise_6async__5Async_2fatal_error(((struct __pyx_obj_7promise_6async__Async *)__pyx_v_self), __pyx_v_reason, __pyx_v_scheduler);
+  __pyx_r = __pyx_pf_7promise_6async__5Async_6fatal_error(((struct __pyx_obj_7promise_6async__Async *)__pyx_v_self), __pyx_v_reason, __pyx_v_scheduler);
 
   /* function exit code */
   goto __pyx_L0;
@@ -8145,7 +8241,7 @@ static PyObject *__pyx_pw_7promise_6async__5Async_3fatal_error(PyObject *__pyx_v
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_6async__5Async_2fatal_error(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, PyObject *__pyx_v_reason, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_v_scheduler) {
+static PyObject *__pyx_pf_7promise_6async__5Async_6fatal_error(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, PyObject *__pyx_v_reason, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_v_scheduler) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8459,7 +8555,7 @@ static void __pyx_f_7promise_6async__5Async_reset(struct __pyx_obj_7promise_6asy
  *         return self._data().have_drained_queues
  */
 
-static PyObject *__pyx_pw_7promise_6async__5Async_5_TEST_have_drained_queues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_7promise_6async__5Async_9_TEST_have_drained_queues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
 static int __pyx_f_7promise_6async__5Async__TEST_have_drained_queues(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, CYTHON_UNUSED int __pyx_skip_dispatch) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
@@ -8498,20 +8594,20 @@ static int __pyx_f_7promise_6async__5Async__TEST_have_drained_queues(struct __py
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_6async__5Async_5_TEST_have_drained_queues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_6async__5Async_5_TEST_have_drained_queues = {"_TEST_have_drained_queues", (PyCFunction)__pyx_pw_7promise_6async__5Async_5_TEST_have_drained_queues, METH_NOARGS, 0};
-static PyObject *__pyx_pw_7promise_6async__5Async_5_TEST_have_drained_queues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_7promise_6async__5Async_9_TEST_have_drained_queues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_6async__5Async_9_TEST_have_drained_queues = {"_TEST_have_drained_queues", (PyCFunction)__pyx_pw_7promise_6async__5Async_9_TEST_have_drained_queues, METH_NOARGS, 0};
+static PyObject *__pyx_pw_7promise_6async__5Async_9_TEST_have_drained_queues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_TEST_have_drained_queues (wrapper)", 0);
-  __pyx_r = __pyx_pf_7promise_6async__5Async_4_TEST_have_drained_queues(((struct __pyx_obj_7promise_6async__Async *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7promise_6async__5Async_8_TEST_have_drained_queues(((struct __pyx_obj_7promise_6async__Async *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_6async__5Async_4_TEST_have_drained_queues(struct __pyx_obj_7promise_6async__Async *__pyx_v_self) {
+static PyObject *__pyx_pf_7promise_6async__5Async_8_TEST_have_drained_queues(struct __pyx_obj_7promise_6async__Async *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8544,20 +8640,20 @@ static PyObject *__pyx_pf_7promise_6async__5Async_4_TEST_have_drained_queues(str
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_6async__5Async_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_6async__5Async_7__reduce_cython__ = {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_6async__5Async_7__reduce_cython__, METH_NOARGS, 0};
-static PyObject *__pyx_pw_7promise_6async__5Async_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_7promise_6async__5Async_11__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_6async__5Async_11__reduce_cython__ = {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_6async__5Async_11__reduce_cython__, METH_NOARGS, 0};
+static PyObject *__pyx_pw_7promise_6async__5Async_11__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7promise_6async__5Async_6__reduce_cython__(((struct __pyx_obj_7promise_6async__Async *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7promise_6async__5Async_10__reduce_cython__(((struct __pyx_obj_7promise_6async__Async *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_6async__5Async_6__reduce_cython__(struct __pyx_obj_7promise_6async__Async *__pyx_v_self) {
+static PyObject *__pyx_pf_7promise_6async__5Async_10__reduce_cython__(struct __pyx_obj_7promise_6async__Async *__pyx_v_self) {
   PyObject *__pyx_v_state = 0;
   PyObject *__pyx_v__dict = 0;
   int __pyx_v_use_setstate;
@@ -8785,20 +8881,20 @@ static PyObject *__pyx_pf_7promise_6async__5Async_6__reduce_cython__(struct __py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_6async__5Async_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_6async__5Async_9__setstate_cython__ = {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_6async__5Async_9__setstate_cython__, METH_O, 0};
-static PyObject *__pyx_pw_7promise_6async__5Async_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_7promise_6async__5Async_13__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_6async__5Async_13__setstate_cython__ = {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_6async__5Async_13__setstate_cython__, METH_O, 0};
+static PyObject *__pyx_pw_7promise_6async__5Async_13__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7promise_6async__5Async_8__setstate_cython__(((struct __pyx_obj_7promise_6async__Async *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_7promise_6async__5Async_12__setstate_cython__(((struct __pyx_obj_7promise_6async__Async *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_6async__5Async_8__setstate_cython__(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_7promise_6async__5Async_12__setstate_cython__(struct __pyx_obj_7promise_6async__Async *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -12887,8 +12983,8 @@ static int __pyx_tp_clear_7promise_6async__Async(PyObject *o) {
 }
 
 static PyMethodDef __pyx_methods_7promise_6async__Async[] = {
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_6async__5Async_7__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_6async__5Async_9__setstate_cython__, METH_O, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_6async__5Async_11__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_6async__5Async_13__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
@@ -13592,6 +13688,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_Async__TEST_have_drained_queues, __pyx_k_Async__TEST_have_drained_queues, sizeof(__pyx_k_Async__TEST_have_drained_queues), 0, 0, 1, 1},
   {&__pyx_n_s_Async___reduce_cython, __pyx_k_Async___reduce_cython, sizeof(__pyx_k_Async___reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_Async___setstate_cython, __pyx_k_Async___setstate_cython, sizeof(__pyx_k_Async___setstate_cython), 0, 0, 1, 1},
+  {&__pyx_n_s_Async_disable_trampoline, __pyx_k_Async_disable_trampoline, sizeof(__pyx_k_Async_disable_trampoline), 0, 0, 1, 1},
+  {&__pyx_n_s_Async_enable_trampoline, __pyx_k_Async_enable_trampoline, sizeof(__pyx_k_Async_enable_trampoline), 0, 0, 1, 1},
   {&__pyx_n_s_Async_fatal_error, __pyx_k_Async_fatal_error, sizeof(__pyx_k_Async_fatal_error), 0, 0, 1, 1},
   {&__pyx_n_s_DrainQueuesFn, __pyx_k_DrainQueuesFn, sizeof(__pyx_k_DrainQueuesFn), 0, 0, 1, 1},
   {&__pyx_n_s_DrainQueuesFn___reduce_cython, __pyx_k_DrainQueuesFn___reduce_cython, sizeof(__pyx_k_DrainQueuesFn___reduce_cython), 0, 0, 1, 1},
@@ -13638,6 +13736,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_deque, __pyx_k_deque, sizeof(__pyx_k_deque), 0, 0, 1, 1},
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
   {&__pyx_n_s_dict_2, __pyx_k_dict_2, sizeof(__pyx_k_dict_2), 0, 0, 1, 1},
+  {&__pyx_n_s_disable_trampoline, __pyx_k_disable_trampoline, sizeof(__pyx_k_disable_trampoline), 0, 0, 1, 1},
+  {&__pyx_n_s_enable_trampoline, __pyx_k_enable_trampoline, sizeof(__pyx_k_enable_trampoline), 0, 0, 1, 1},
   {&__pyx_n_s_fatal_error, __pyx_k_fatal_error, sizeof(__pyx_k_fatal_error), 0, 0, 1, 1},
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
@@ -13873,6 +13973,30 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__33);
   __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(1, 16, __pyx_L1_error)
 
+  /* "promise/async_.pyx":221
+ *         return data
+ * 
+ *     cpdef void enable_trampoline(self):             # <<<<<<<<<<<<<<
+ *         self._data().enable_trampoline()
+ * 
+ */
+  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__35);
+  __Pyx_GIVEREF(__pyx_tuple__35);
+  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_async__pyx, __pyx_n_s_enable_trampoline, 221, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 221, __pyx_L1_error)
+
+  /* "promise/async_.pyx":224
+ *         self._data().enable_trampoline()
+ * 
+ *     cpdef void disable_trampoline(self):             # <<<<<<<<<<<<<<
+ *         self._data().disable_trampoline()
+ * 
+ */
+  __pyx_tuple__37 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__37);
+  __Pyx_GIVEREF(__pyx_tuple__37);
+  __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_async__pyx, __pyx_n_s_disable_trampoline, 224, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(0, 224, __pyx_L1_error)
+
   /* "promise/async_.pyx":248
  *         self._data().throw_later(reason, scheduler)
  * 
@@ -13880,10 +14004,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         self._data().fatal_error(reason, scheduler)
  * 
  */
-  __pyx_tuple__35 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_reason, __pyx_n_s_scheduler); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 248, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__35);
-  __Pyx_GIVEREF(__pyx_tuple__35);
-  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_async__pyx, __pyx_n_s_fatal_error, 248, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_tuple__39 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_reason, __pyx_n_s_scheduler); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__39);
+  __Pyx_GIVEREF(__pyx_tuple__39);
+  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_async__pyx, __pyx_n_s_fatal_error, 248, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(0, 248, __pyx_L1_error)
 
   /* "promise/async_.pyx":269
  *         self._data().reset()
@@ -13891,20 +14015,20 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     cpdef bint _TEST_have_drained_queues(self):             # <<<<<<<<<<<<<<
  *         return self._data().have_drained_queues
  */
-  __pyx_tuple__37 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 269, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__37);
-  __Pyx_GIVEREF(__pyx_tuple__37);
-  __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_async__pyx, __pyx_n_s_TEST_have_drained_queues, 269, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_tuple__41 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__41);
+  __Pyx_GIVEREF(__pyx_tuple__41);
+  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__41, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_async__pyx, __pyx_n_s_TEST_have_drained_queues, 269, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 269, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     cdef tuple state
  *     cdef object _dict
  */
-  __pyx_tuple__39 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_state, __pyx_n_s_dict_2, __pyx_n_s_use_setstate); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__39);
-  __Pyx_GIVEREF(__pyx_tuple__39);
-  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__43 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_state, __pyx_n_s_dict_2, __pyx_n_s_use_setstate); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__43);
+  __Pyx_GIVEREF(__pyx_tuple__43);
+  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__43, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(1, 1, __pyx_L1_error)
 
   /* "(tree fragment)":16
  *     else:
@@ -13912,52 +14036,52 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_Async__set_state(self, __pyx_state)
  */
-  __pyx_tuple__41 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(1, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__41);
-  __Pyx_GIVEREF(__pyx_tuple__41);
-  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__41, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __pyx_tuple__45 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__45);
+  __Pyx_GIVEREF(__pyx_tuple__45);
+  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(1, 16, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_QueueItem(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_tuple__43 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__43);
-  __Pyx_GIVEREF(__pyx_tuple__43);
-  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__43, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_QueueItem, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __pyx_tuple__45 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__45);
-  __Pyx_GIVEREF(__pyx_tuple__45);
-  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Queue, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(1, 1, __pyx_L1_error)
   __pyx_tuple__47 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__47);
   __Pyx_GIVEREF(__pyx_tuple__47);
-  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_FunctionContainer, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_QueueItem, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(1, 1, __pyx_L1_error)
   __pyx_tuple__49 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__49);
   __Pyx_GIVEREF(__pyx_tuple__49);
-  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_PromiseContainer, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Queue, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(1, 1, __pyx_L1_error)
   __pyx_tuple__51 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__51);
   __Pyx_GIVEREF(__pyx_tuple__51);
-  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__51, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_SettlePromisesFn, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__51, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_FunctionContainer, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(1, 1, __pyx_L1_error)
   __pyx_tuple__53 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__53)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__53);
   __Pyx_GIVEREF(__pyx_tuple__53);
-  __pyx_codeobj__54 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__53, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_RaiseFn, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__54)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_codeobj__54 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__53, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_PromiseContainer, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__54)) __PYX_ERR(1, 1, __pyx_L1_error)
   __pyx_tuple__55 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__55)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__55);
   __Pyx_GIVEREF(__pyx_tuple__55);
-  __pyx_codeobj__56 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__55, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_DrainQueuesFn, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__56)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_codeobj__56 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__55, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_SettlePromisesFn, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__56)) __PYX_ERR(1, 1, __pyx_L1_error)
   __pyx_tuple__57 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__57)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__57);
   __Pyx_GIVEREF(__pyx_tuple__57);
-  __pyx_codeobj__58 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__57, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_LocalData, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__58)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_codeobj__58 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__57, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_RaiseFn, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__58)) __PYX_ERR(1, 1, __pyx_L1_error)
   __pyx_tuple__59 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__59)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__59);
   __Pyx_GIVEREF(__pyx_tuple__59);
-  __pyx_codeobj__60 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__59, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Async, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__60)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_codeobj__60 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__59, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_DrainQueuesFn, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__60)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__61 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__61)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__61);
+  __Pyx_GIVEREF(__pyx_tuple__61);
+  __pyx_codeobj__62 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__61, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_LocalData, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__62)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__63 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__63)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__63);
+  __Pyx_GIVEREF(__pyx_tuple__63);
+  __pyx_codeobj__64 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__63, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Async, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__64)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -14075,8 +14199,8 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_ptype_7promise_6async__LocalData = &__pyx_type_7promise_6async__LocalData;
   __pyx_vtabptr_7promise_6async__Async = &__pyx_vtable_7promise_6async__Async;
   __pyx_vtable_7promise_6async__Async._data = (struct __pyx_obj_7promise_6async__LocalData *(*)(struct __pyx_obj_7promise_6async__Async *))__pyx_f_7promise_6async__5Async__data;
-  __pyx_vtable_7promise_6async__Async.enable_trampoline = (void (*)(struct __pyx_obj_7promise_6async__Async *))__pyx_f_7promise_6async__5Async_enable_trampoline;
-  __pyx_vtable_7promise_6async__Async.disable_trampoline = (void (*)(struct __pyx_obj_7promise_6async__Async *))__pyx_f_7promise_6async__5Async_disable_trampoline;
+  __pyx_vtable_7promise_6async__Async.enable_trampoline = (void (*)(struct __pyx_obj_7promise_6async__Async *, int __pyx_skip_dispatch))__pyx_f_7promise_6async__5Async_enable_trampoline;
+  __pyx_vtable_7promise_6async__Async.disable_trampoline = (void (*)(struct __pyx_obj_7promise_6async__Async *, int __pyx_skip_dispatch))__pyx_f_7promise_6async__5Async_disable_trampoline;
   __pyx_vtable_7promise_6async__Async.have_items_queued = (int (*)(struct __pyx_obj_7promise_6async__Async *))__pyx_f_7promise_6async__5Async_have_items_queued;
   __pyx_vtable_7promise_6async__Async._async_invoke_later = (void (*)(struct __pyx_obj_7promise_6async__Async *, struct __pyx_obj_7promise_10schedulers_4base_SchedulerFn *, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *))__pyx_f_7promise_6async__5Async__async_invoke_later;
   __pyx_vtable_7promise_6async__Async._async_invoke = (void (*)(struct __pyx_obj_7promise_6async__Async *, struct __pyx_obj_7promise_10schedulers_4base_SchedulerFn *, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *))__pyx_f_7promise_6async__5Async__async_invoke;
@@ -14693,6 +14817,32 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_6async__LocalData);
 
+  /* "promise/async_.pyx":221
+ *         return data
+ * 
+ *     cpdef void enable_trampoline(self):             # <<<<<<<<<<<<<<
+ *         self._data().enable_trampoline()
+ * 
+ */
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__5Async_3enable_trampoline, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Async_enable_trampoline, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__36)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_6async__Async->tp_dict, __pyx_n_s_enable_trampoline, __pyx_t_1) < 0) __PYX_ERR(0, 221, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  PyType_Modified(__pyx_ptype_7promise_6async__Async);
+
+  /* "promise/async_.pyx":224
+ *         self._data().enable_trampoline()
+ * 
+ *     cpdef void disable_trampoline(self):             # <<<<<<<<<<<<<<
+ *         self._data().disable_trampoline()
+ * 
+ */
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__5Async_5disable_trampoline, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Async_disable_trampoline, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__38)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_6async__Async->tp_dict, __pyx_n_s_disable_trampoline, __pyx_t_1) < 0) __PYX_ERR(0, 224, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  PyType_Modified(__pyx_ptype_7promise_6async__Async);
+
   /* "promise/async_.pyx":248
  *         self._data().throw_later(reason, scheduler)
  * 
@@ -14700,7 +14850,7 @@ if (!__Pyx_RefNanny) {
  *         self._data().fatal_error(reason, scheduler)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__5Async_3fatal_error, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Async_fatal_error, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__36)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__5Async_7fatal_error, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Async_fatal_error, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__40)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_6async__Async->tp_dict, __pyx_n_s_fatal_error, __pyx_t_1) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -14712,7 +14862,7 @@ if (!__Pyx_RefNanny) {
  *     cpdef bint _TEST_have_drained_queues(self):             # <<<<<<<<<<<<<<
  *         return self._data().have_drained_queues
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__5Async_5_TEST_have_drained_queues, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Async__TEST_have_drained_queues, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__38)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__5Async_9_TEST_have_drained_queues, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Async__TEST_have_drained_queues, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_6async__Async->tp_dict, __pyx_n_s_TEST_have_drained_queues, __pyx_t_1) < 0) __PYX_ERR(0, 269, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -14723,7 +14873,7 @@ if (!__Pyx_RefNanny) {
  *     cdef tuple state
  *     cdef object _dict
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__5Async_7__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Async___reduce_cython, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__40)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__5Async_11__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Async___reduce_cython, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_6async__Async->tp_dict, __pyx_n_s_reduce_cython, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -14735,7 +14885,7 @@ if (!__Pyx_RefNanny) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_Async__set_state(self, __pyx_state)
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__5Async_9__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Async___setstate_cython, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__5Async_13__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Async___setstate_cython, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_6async__Async->tp_dict, __pyx_n_s_setstate_cython, __pyx_t_1) < 0) __PYX_ERR(1, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -14746,7 +14896,7 @@ if (!__Pyx_RefNanny) {
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__1__pyx_unpickle_QueueItem, 0, __pyx_n_s_pyx_unpickle_QueueItem, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__1__pyx_unpickle_QueueItem, 0, __pyx_n_s_pyx_unpickle_QueueItem, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_QueueItem, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -14758,7 +14908,7 @@ if (!__Pyx_RefNanny) {
  *     if len(__pyx_state) > 0 and hasattr(__pyx_result, '__dict__'):
  *         __pyx_result.__dict__.update(__pyx_state[0])
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__3__pyx_unpickle_Queue, 0, __pyx_n_s_pyx_unpickle_Queue, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__3__pyx_unpickle_Queue, 0, __pyx_n_s_pyx_unpickle_Queue, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_Queue, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -14768,7 +14918,7 @@ if (!__Pyx_RefNanny) {
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__5__pyx_unpickle_FunctionContainer, 0, __pyx_n_s_pyx_unpickle_FunctionContainer, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__5__pyx_unpickle_FunctionContainer, 0, __pyx_n_s_pyx_unpickle_FunctionContainer, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_FunctionContainer, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -14780,7 +14930,7 @@ if (!__Pyx_RefNanny) {
  *     __pyx_result.fn = __pyx_state[0]
  *     if len(__pyx_state) > 1 and hasattr(__pyx_result, '__dict__'):
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__7__pyx_unpickle_PromiseContainer, 0, __pyx_n_s_pyx_unpickle_PromiseContainer, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__7__pyx_unpickle_PromiseContainer, 0, __pyx_n_s_pyx_unpickle_PromiseContainer, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__54)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_PromiseContainer, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -14790,7 +14940,7 @@ if (!__Pyx_RefNanny) {
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__9__pyx_unpickle_SettlePromisesFn, 0, __pyx_n_s_pyx_unpickle_SettlePromisesFn, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__9__pyx_unpickle_SettlePromisesFn, 0, __pyx_n_s_pyx_unpickle_SettlePromisesFn, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__56)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_SettlePromisesFn, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -14802,7 +14952,7 @@ if (!__Pyx_RefNanny) {
  *     __pyx_result.promise = __pyx_state[0]
  *     if len(__pyx_state) > 1 and hasattr(__pyx_result, '__dict__'):
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__11__pyx_unpickle_RaiseFn, 0, __pyx_n_s_pyx_unpickle_RaiseFn, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__54)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__11__pyx_unpickle_RaiseFn, 0, __pyx_n_s_pyx_unpickle_RaiseFn, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__58)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_RaiseFn, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -14812,7 +14962,7 @@ if (!__Pyx_RefNanny) {
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__13__pyx_unpickle_DrainQueuesFn, 0, __pyx_n_s_pyx_unpickle_DrainQueuesFn, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__56)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__13__pyx_unpickle_DrainQueuesFn, 0, __pyx_n_s_pyx_unpickle_DrainQueuesFn, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__60)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_DrainQueuesFn, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -14824,7 +14974,7 @@ if (!__Pyx_RefNanny) {
  *     __pyx_result.localdata = __pyx_state[0]
  *     if len(__pyx_state) > 1 and hasattr(__pyx_result, '__dict__'):
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__15__pyx_unpickle_LocalData, 0, __pyx_n_s_pyx_unpickle_LocalData, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__58)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__15__pyx_unpickle_LocalData, 0, __pyx_n_s_pyx_unpickle_LocalData, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__62)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_LocalData, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -14834,7 +14984,7 @@ if (!__Pyx_RefNanny) {
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__17__pyx_unpickle_Async, 0, __pyx_n_s_pyx_unpickle_Async, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__60)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_6async__17__pyx_unpickle_Async, 0, __pyx_n_s_pyx_unpickle_Async, NULL, __pyx_n_s_promise_async, __pyx_d, ((PyObject *)__pyx_codeobj__64)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_Async, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
