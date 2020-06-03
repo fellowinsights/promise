@@ -1257,7 +1257,7 @@ struct __pyx_obj_7promise_7promise_PartialSettlePromise {
 };
 
 
-/* "promise/promise.pyx":343
+/* "promise/promise.pyx":339
  *             self._length = 0
  * 
  *     cdef void _resolve_from_executor(self, executor):             # <<<<<<<<<<<<<<
@@ -1270,7 +1270,7 @@ struct __pyx_obj_7promise_7promise___pyx_scope_struct___resolve_from_executor {
 };
 
 
-/* "promise/promise.pyx":539
+/* "promise/promise.pyx":535
  * 
  *     @staticmethod
  *     def promisify(f):             # <<<<<<<<<<<<<<
@@ -1283,7 +1283,7 @@ struct __pyx_obj_7promise_7promise___pyx_scope_struct_1_promisify {
 };
 
 
-/* "promise/promise.pyx":541
+/* "promise/promise.pyx":537
  *     def promisify(f):
  *         @wraps(f)
  *         def wrapper(*args, **kwargs):             # <<<<<<<<<<<<<<
@@ -1298,7 +1298,7 @@ struct __pyx_obj_7promise_7promise___pyx_scope_struct_2_wrapper {
 };
 
 
-/* "promise/promise.pyx":552
+/* "promise/promise.pyx":548
  * 
  *     @staticmethod
  *     def safe(fn):             # <<<<<<<<<<<<<<
@@ -1311,7 +1311,7 @@ struct __pyx_obj_7promise_7promise___pyx_scope_struct_3_safe {
 };
 
 
-/* "promise/promise.pyx":557
+/* "promise/promise.pyx":553
  * 
  *         @wraps(fn)
  *         def wrapper(*args, **kwargs):             # <<<<<<<<<<<<<<
@@ -1326,7 +1326,7 @@ struct __pyx_obj_7promise_7promise___pyx_scope_struct_4_wrapper {
 };
 
 
-/* "promise/promise.pyx":575
+/* "promise/promise.pyx":571
  * 
  *     @staticmethod
  *     def for_dict(m):             # <<<<<<<<<<<<<<
@@ -1340,7 +1340,7 @@ struct __pyx_obj_7promise_7promise___pyx_scope_struct_5_for_dict {
 };
 
 
-/* "promise/promise.pyx":603
+/* "promise/promise.pyx":599
  * 
  * 
  * cdef Promise _try_convert_to_promise(object obj):             # <<<<<<<<<<<<<<
@@ -1353,7 +1353,7 @@ struct __pyx_obj_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promis
 };
 
 
-/* "promise/promise.pyx":635
+/* "promise/promise.pyx":631
  * 
  * 
  * def _process_future_result(resolve, reject):             # <<<<<<<<<<<<<<
@@ -1367,7 +1367,7 @@ struct __pyx_obj_7promise_7promise___pyx_scope_struct_7__process_future_result {
 };
 
 
-/* "promise/promise.pyx":646
+/* "promise/promise.pyx":642
  * 
  * 
  * def iterate_promise(promise: Promise) -> object:             # <<<<<<<<<<<<<<
@@ -1524,7 +1524,7 @@ static struct __pyx_vtabstruct_7promise_10schedulers_9immediate_ImmediateSchedul
  * 
  * 
  * cdef class Promise:             # <<<<<<<<<<<<<<
- *     def __init__(self, executor=None, scheduler=None):
+ *     def __cinit__(self, executor=None, Scheduler scheduler=None):
  *         self._state = State.PENDING
  */
 
@@ -1879,6 +1879,12 @@ static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
 static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
     Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
 
+/* ArgTypeTest.proto */
+#define __Pyx_ArgTypeTest(obj, type, none_allowed, name, exact)\
+    ((likely((Py_TYPE(obj) == type) | (none_allowed && (obj == Py_None)))) ? 1 :\
+        __Pyx__ArgTypeTest(obj, type, name, exact))
+static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact);
+
 /* WriteUnraisableException.proto */
 static void __Pyx_WriteUnraisable(const char *name, int clineno,
                                   int lineno, const char *filename,
@@ -1989,12 +1995,6 @@ static PyObject *__Pyx_CyFunction_New(PyMethodDef *ml,
                                       PyObject *closure,
                                       PyObject *module, PyObject *globals,
                                       PyObject* code);
-
-/* ArgTypeTest.proto */
-#define __Pyx_ArgTypeTest(obj, type, none_allowed, name, exact)\
-    ((likely((Py_TYPE(obj) == type) | (none_allowed && (obj == Py_None)))) ? 1 :\
-        __Pyx__ArgTypeTest(obj, type, name, exact))
-static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact);
 
 /* None.proto */
 static CYTHON_INLINE void __Pyx_RaiseUnboundLocalError(const char *varname);
@@ -2210,19 +2210,19 @@ static void __Pyx_AddTraceback(const char *funcname, int c_line,
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
 
 /* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_enum____pyx_t_7promise_7promise_State(enum __pyx_t_7promise_7promise_State value);
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
 /* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_enum____pyx_t_7promise_7promise_State(enum __pyx_t_7promise_7promise_State value);
+
+/* CIntFromPy.proto */
+static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE enum __pyx_t_7promise_7promise_State __Pyx_PyInt_As_enum____pyx_t_7promise_7promise_State(PyObject *);
-
-/* CIntFromPy.proto */
-static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
 
 /* FastTypeChecks.proto */
 #if CYTHON_COMPILING_IN_CPYTHON
@@ -2346,7 +2346,6 @@ static int __pyx_f_7promise_7promise_is_future_like(PyObject *); /*proto*/
 static PyObject *__pyx_f_7promise_7promise___pyx_unpickle_Box__set_state(struct __pyx_obj_7promise_7promise_Box *, PyObject *); /*proto*/
 static PyObject *__pyx_f_7promise_7promise___pyx_unpickle_TryCatchResult__set_state(struct __pyx_obj_7promise_7promise_TryCatchResult *, PyObject *); /*proto*/
 static PyObject *__pyx_f_7promise_7promise___pyx_unpickle_PartialSettlePromise__set_state(struct __pyx_obj_7promise_7promise_PartialSettlePromise *, PyObject *); /*proto*/
-static PyObject *__pyx_f_7promise_7promise___pyx_unpickle_Promise__set_state(struct __pyx_obj_7promise_7promise_Promise *, PyObject *); /*proto*/
 #define __Pyx_MODULE_NAME "promise.promise"
 extern int __pyx_module_is_main_promise__promise;
 int __pyx_module_is_main_promise__promise = 0;
@@ -2382,6 +2381,7 @@ static const char __pyx_k_keys[] = "keys";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_safe[] = "safe";
+static const char __pyx_k_self[] = "self";
 static const char __pyx_k_send[] = "send";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_then[] = "then";
@@ -2390,19 +2390,23 @@ static const char __pyx_k_catch[] = "catch";
 static const char __pyx_k_class[] = "__class__";
 static const char __pyx_k_close[] = "close";
 static const char __pyx_k_range[] = "range";
+static const char __pyx_k_state[] = "state";
 static const char __pyx_k_throw[] = "throw";
 static const char __pyx_k_value[] = "value";
 static const char __pyx_k_wraps[] = "wraps";
 static const char __pyx_k_Future[] = "Future";
+static const char __pyx_k_dict_2[] = "_dict";
 static const char __pyx_k_format[] = "format";
 static const char __pyx_k_future[] = "future";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_kwargs[] = "kwargs";
+static const char __pyx_k_object[] = "object";
 static const char __pyx_k_pickle[] = "pickle";
 static const char __pyx_k_reason[] = "reason";
 static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_reject[] = "reject";
 static const char __pyx_k_result[] = "result";
+static const char __pyx_k_return[] = "return";
 static const char __pyx_k_target[] = "_target";
 static const char __pyx_k_update[] = "update";
 static const char __pyx_k_values[] = "values";
@@ -2429,6 +2433,7 @@ static const char __pyx_k_pyx_type[] = "__pyx_type";
 static const char __pyx_k_rejected[] = "rejected";
 static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_then_all[] = "then_all";
+static const char __pyx_k_Exception[] = "Exception";
 static const char __pyx_k_TypeError[] = "TypeError";
 static const char __pyx_k_dict_type[] = "dict_type";
 static const char __pyx_k_do_reject[] = "do_reject";
@@ -2447,88 +2452,146 @@ static const char __pyx_k_pyx_result[] = "__pyx_result";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_set_result[] = "set_result";
 static const char __pyx_k_PickleError[] = "PickleError";
+static const char __pyx_k_Promise_all[] = "Promise.all";
+static const char __pyx_k_Promise_get[] = "Promise.get";
 static const char __pyx_k_did_fulfill[] = "did_fulfill";
 static const char __pyx_k_is_thenable[] = "is_thenable";
 static const char __pyx_k_iscoroutine[] = "iscoroutine";
+static const char __pyx_k_Promise_done[] = "Promise.done";
+static const char __pyx_k_Promise_safe[] = "Promise.safe";
+static const char __pyx_k_Promise_then[] = "Promise.then";
+static const char __pyx_k_Promise_wait[] = "Promise.wait";
 static const char __pyx_k_is_fulfilled[] = "is_fulfilled";
+static const char __pyx_k_on_rejection[] = "on_rejection";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_staticmethod[] = "staticmethod";
 static const char __pyx_k_stringsource[] = "stringsource";
+static const char __pyx_k_use_setstate[] = "use_setstate";
+static const char __pyx_k_Promise__wait[] = "Promise._wait";
+static const char __pyx_k_Promise_catch[] = "Promise.catch";
 static const char __pyx_k_asyncio_tasks[] = "asyncio.tasks";
 static const char __pyx_k_ensure_future[] = "ensure_future";
 static const char __pyx_k_get_scheduler[] = "get_scheduler";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_set_exception[] = "set_exception";
 static const char __pyx_k_AssertionError[] = "AssertionError";
+static const char __pyx_k_Promise_reject[] = "Promise.reject";
 static const char __pyx_k_TryCatchResult[] = "TryCatchResult";
 static const char __pyx_k_async_instance[] = "async_instance";
 static const char __pyx_k_handle_success[] = "handle_success";
 static const char __pyx_k_with_traceback[] = "with_traceback";
 static const char __pyx_k_DEFAULT_TIMEOUT[] = "DEFAULT_TIMEOUT";
+static const char __pyx_k_Promise__target[] = "Promise._target";
 static const char __pyx_k_Promise_is_self[] = "Promise is self";
+static const char __pyx_k_Promise_resolve[] = "Promise.resolve";
 static const char __pyx_k_Promise_unknown[] = "<Promise unknown>";
 static const char __pyx_k_iterate_promise[] = "iterate_promise";
 static const char __pyx_k_promise_promise[] = "promise.promise";
 static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
 static const char __pyx_k_resolved_values[] = "resolved_values";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
+static const char __pyx_k_Promise_done_all[] = "Promise.done_all";
+static const char __pyx_k_Promise_for_dict[] = "Promise.for_dict";
+static const char __pyx_k_Promise_then_all[] = "Promise.then_all";
 static const char __pyx_k_promise_for_dict[] = "promise_for_dict";
 static const char __pyx_k_pyx_unpickle_Box[] = "__pyx_unpickle_Box";
+static const char __pyx_k_Promise_do_reject[] = "Promise.do_reject";
+static const char __pyx_k_Promise_promisify[] = "Promise.promisify";
 static const char __pyx_k_add_done_callback[] = "add_done_callback";
 static const char __pyx_k_default_scheduler[] = "default_scheduler";
 static const char __pyx_k_Promise_at_pending[] = "<Promise at {} pending>";
+static const char __pyx_k_Promise_do_resolve[] = "Promise.do_resolve";
+static const char __pyx_k_Promise_get_future[] = "Promise.get_future";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_get_async_instance[] = "get_async_instance";
+static const char __pyx_k_Box___reduce_cython[] = "Box.__reduce_cython__";
+static const char __pyx_k_Promise_is_thenable[] = "Promise.is_thenable";
 static const char __pyx_k_promise_promise_pyx[] = "promise/promise.pyx";
 static const char __pyx_k_safe_locals_wrapper[] = "safe.<locals>.wrapper";
 static const char __pyx_k_PartialSettlePromise[] = "PartialSettlePromise";
 static const char __pyx_k_Promise_at_following[] = "<Promise at {} following {}>";
 static const char __pyx_k_handle_future_result[] = "handle_future_result";
-static const char __pyx_k_pyx_unpickle_Promise[] = "__pyx_unpickle_Promise";
+static const char __pyx_k_Box___setstate_cython[] = "Box.__setstate_cython__";
+static const char __pyx_k_Promise_get_scheduler[] = "Promise.get_scheduler";
 static const char __pyx_k_get_default_scheduler[] = "get_default_scheduler";
 static const char __pyx_k_process_future_result[] = "_process_future_result";
 static const char __pyx_k_safe_resolved_promise[] = "_safe_resolved_promise";
 static const char __pyx_k_set_default_scheduler[] = "set_default_scheduler";
+static const char __pyx_k_Promise___reduce_cython[] = "Promise.__reduce_cython__";
 static const char __pyx_k_Should_not_be_following[] = "Should not be following";
 static const char __pyx_k_Promise_at_rejected_with[] = "<Promise at {} rejected with {}>";
 static const char __pyx_k_promisify_locals_wrapper[] = "promisify.<locals>.wrapper";
+static const char __pyx_k_Promise___setstate_cython[] = "Promise.__setstate_cython__";
 static const char __pyx_k_Promise_at_fulfilled_with[] = "<Promise at {} fulfilled with {}>";
 static const char __pyx_k_pyx_unpickle_TryCatchResult[] = "__pyx_unpickle_TryCatchResult";
+static const char __pyx_k_TryCatchResult___reduce_cython[] = "TryCatchResult.__reduce_cython__";
 static const char __pyx_k_for_dict_locals_handle_success[] = "for_dict.<locals>.handle_success";
 static const char __pyx_k_pyx_unpickle_PartialSettleProm[] = "__pyx_unpickle_PartialSettlePromise";
+static const char __pyx_k_PartialSettlePromise___setstate[] = "PartialSettlePromise.__setstate_cython__";
 static const char __pyx_k_process_future_result_locals_ha[] = "_process_future_result.<locals>.handle_future_result";
 static const char __pyx_k_promisify_locals_wrapper_locals[] = "promisify.<locals>.wrapper.<locals>.executor";
 static const char __pyx_k_try_convert_to_promise_locals_e[] = "_try_convert_to_promise.<locals>.executor";
 static const char __pyx_k_Incompatible_checksums_s_vs_0x20[] = "Incompatible checksums (%s vs 0x2063c16 = (value))";
 static const char __pyx_k_Incompatible_checksums_s_vs_0x47[] = "Incompatible checksums (%s vs 0x47960a2 = (exc, tb, value))";
-static const char __pyx_k_Incompatible_checksums_s_vs_0xb4[] = "Incompatible checksums (%s vs 0xb499ce5 = (_fulfillment_handler0, _fulfillment_handlers, _future, _is_async_guaranteed, _is_bound, _is_final, _is_following, _is_waiting, _length, _promise0, _promises, _rejection_handler0, _rejection_handlers, _scheduler, _state, _traceback))";
 static const char __pyx_k_Incompatible_checksums_s_vs_0xb5[] = "Incompatible checksums (%s vs 0xb5dc62b = (handler, promise, target, traceback, value))";
+static const char __pyx_k_PartialSettlePromise___reduce_cy[] = "PartialSettlePromise.__reduce_cython__";
 static const char __pyx_k_Promise__resolve_from_executor_l[] = "Promise._resolve_from_executor.<locals>.resolve";
+static const char __pyx_k_TryCatchResult___setstate_cython[] = "TryCatchResult.__setstate_cython__";
+static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 static const char __pyx_k_safe_locals_wrapper_locals_lambd[] = "safe.<locals>.wrapper.<locals>.<lambda>";
 static const char __pyx_k_Promise__resolve_from_executor_l_2[] = "Promise._resolve_from_executor.<locals>.reject";
 static PyObject *__pyx_n_s_AssertionError;
 static PyObject *__pyx_n_s_Box;
+static PyObject *__pyx_n_s_Box___reduce_cython;
+static PyObject *__pyx_n_s_Box___setstate_cython;
 static PyObject *__pyx_n_s_DEFAULT_TIMEOUT;
+static PyObject *__pyx_n_u_Exception;
 static PyObject *__pyx_n_s_Future;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x20;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x47;
-static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0xb4;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0xb5;
 static PyObject *__pyx_n_s_MAX_LENGTH;
 static PyObject *__pyx_n_s_PartialSettlePromise;
+static PyObject *__pyx_n_s_PartialSettlePromise___reduce_cy;
+static PyObject *__pyx_n_s_PartialSettlePromise___setstate;
 static PyObject *__pyx_n_s_PickleError;
 static PyObject *__pyx_n_s_Promise;
+static PyObject *__pyx_n_u_Promise;
+static PyObject *__pyx_n_s_Promise___reduce_cython;
+static PyObject *__pyx_n_s_Promise___setstate_cython;
 static PyObject *__pyx_n_s_Promise__resolve_from_executor_l;
 static PyObject *__pyx_n_s_Promise__resolve_from_executor_l_2;
+static PyObject *__pyx_n_s_Promise__target;
+static PyObject *__pyx_n_s_Promise__wait;
+static PyObject *__pyx_n_s_Promise_all;
 static PyObject *__pyx_kp_u_Promise_at_following;
 static PyObject *__pyx_kp_u_Promise_at_fulfilled_with;
 static PyObject *__pyx_kp_u_Promise_at_pending;
 static PyObject *__pyx_kp_u_Promise_at_rejected_with;
+static PyObject *__pyx_n_s_Promise_catch;
+static PyObject *__pyx_n_s_Promise_do_reject;
+static PyObject *__pyx_n_s_Promise_do_resolve;
+static PyObject *__pyx_n_s_Promise_done;
+static PyObject *__pyx_n_s_Promise_done_all;
+static PyObject *__pyx_n_s_Promise_for_dict;
+static PyObject *__pyx_n_s_Promise_get;
+static PyObject *__pyx_n_s_Promise_get_future;
+static PyObject *__pyx_n_s_Promise_get_scheduler;
 static PyObject *__pyx_kp_u_Promise_is_self;
+static PyObject *__pyx_n_s_Promise_is_thenable;
+static PyObject *__pyx_n_s_Promise_promisify;
+static PyObject *__pyx_n_s_Promise_reject;
+static PyObject *__pyx_n_s_Promise_resolve;
+static PyObject *__pyx_n_s_Promise_safe;
+static PyObject *__pyx_n_s_Promise_then;
+static PyObject *__pyx_n_s_Promise_then_all;
 static PyObject *__pyx_kp_u_Promise_unknown;
+static PyObject *__pyx_n_s_Promise_wait;
 static PyObject *__pyx_kp_u_Should_not_be_following;
 static PyObject *__pyx_n_s_TryCatchResult;
+static PyObject *__pyx_n_s_TryCatchResult___reduce_cython;
+static PyObject *__pyx_n_s_TryCatchResult___setstate_cython;
 static PyObject *__pyx_n_s_TypeError;
 static PyObject *__pyx_n_s_add_done_callback;
 static PyObject *__pyx_n_u_add_done_callback;
@@ -2545,6 +2608,7 @@ static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_close;
 static PyObject *__pyx_n_s_default_scheduler;
 static PyObject *__pyx_n_s_dict;
+static PyObject *__pyx_n_s_dict_2;
 static PyObject *__pyx_n_s_dict_type;
 static PyObject *__pyx_n_s_did_fulfill;
 static PyObject *__pyx_n_s_did_reject;
@@ -2590,7 +2654,10 @@ static PyObject *__pyx_n_s_m;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_new;
+static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
 static PyObject *__pyx_n_s_obj;
+static PyObject *__pyx_n_u_object;
+static PyObject *__pyx_n_s_on_rejection;
 static PyObject *__pyx_n_s_pickle;
 static PyObject *__pyx_n_s_process_future_result;
 static PyObject *__pyx_n_s_process_future_result_locals_ha;
@@ -2610,7 +2677,6 @@ static PyObject *__pyx_n_s_pyx_state;
 static PyObject *__pyx_n_s_pyx_type;
 static PyObject *__pyx_n_s_pyx_unpickle_Box;
 static PyObject *__pyx_n_s_pyx_unpickle_PartialSettleProm;
-static PyObject *__pyx_n_s_pyx_unpickle_Promise;
 static PyObject *__pyx_n_s_pyx_unpickle_TryCatchResult;
 static PyObject *__pyx_n_s_pyx_vtable;
 static PyObject *__pyx_n_s_range;
@@ -2623,17 +2689,20 @@ static PyObject *__pyx_n_s_rejected;
 static PyObject *__pyx_n_s_resolve;
 static PyObject *__pyx_n_s_resolved_values;
 static PyObject *__pyx_n_s_result;
+static PyObject *__pyx_n_s_return;
 static PyObject *__pyx_n_s_safe;
 static PyObject *__pyx_n_s_safe_locals_wrapper;
 static PyObject *__pyx_n_s_safe_locals_wrapper_locals_lambd;
 static PyObject *__pyx_n_s_safe_resolved_promise;
 static PyObject *__pyx_n_s_scheduler;
+static PyObject *__pyx_n_s_self;
 static PyObject *__pyx_n_s_send;
 static PyObject *__pyx_n_s_set_default_scheduler;
 static PyObject *__pyx_n_s_set_exception;
 static PyObject *__pyx_n_s_set_result;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
+static PyObject *__pyx_n_s_state;
 static PyObject *__pyx_n_s_staticmethod;
 static PyObject *__pyx_kp_s_stringsource;
 static PyObject *__pyx_n_u_success;
@@ -2648,6 +2717,7 @@ static PyObject *__pyx_n_s_timeout;
 static PyObject *__pyx_n_s_traceback;
 static PyObject *__pyx_n_s_try_convert_to_promise_locals_e;
 static PyObject *__pyx_n_s_update;
+static PyObject *__pyx_n_s_use_setstate;
 static PyObject *__pyx_n_s_value;
 static PyObject *__pyx_n_s_values;
 static PyObject *__pyx_n_s_wait;
@@ -2683,42 +2753,43 @@ static int __pyx_pf_7promise_7promise_20PartialSettlePromise_9traceback_2__set__
 static int __pyx_pf_7promise_7promise_20PartialSettlePromise_9traceback_4__del__(struct __pyx_obj_7promise_7promise_PartialSettlePromise *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_20PartialSettlePromise___reduce_cython__(struct __pyx_obj_7promise_7promise_PartialSettlePromise *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_20PartialSettlePromise_2__setstate_cython__(struct __pyx_obj_7promise_7promise_PartialSettlePromise *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
-static int __pyx_pf_7promise_7promise_7Promise___init__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_executor, PyObject *__pyx_v_scheduler); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_2get_scheduler(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_4get_future(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_6__iter__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_8__await__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_10_target(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
+static int __pyx_pf_7promise_7promise_7Promise___cinit__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_executor, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_v_scheduler); /* proto */
+static int __pyx_pf_7promise_7promise_7Promise_2__init__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_executor, CYTHON_UNUSED PyObject *__pyx_v_scheduler); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_4get_scheduler(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_6get_future(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_8__iter__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_10__await__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_12_target(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_22_resolve_from_executor_resolve(PyObject *__pyx_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_22_resolve_from_executor_2reject(PyObject *__pyx_self, PyObject *__pyx_v_reason, PyObject *__pyx_v_traceback); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_12wait(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_promise, PyObject *__pyx_v_timeout); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_14_wait(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_timeout); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_16get(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_timeout); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_14wait(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_promise, PyObject *__pyx_v_timeout); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_16_wait(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_timeout); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_18get(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_timeout); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_5value___get__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_6reason___get__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_20__repr__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_10is_pending___get__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_12is_fulfilled___get__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_11is_rejected___get__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_20catch(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_on_rejection); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_22do_resolve(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_24do_reject(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_reason, PyObject *__pyx_v_traceback); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_26then(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_did_fulfill, PyObject *__pyx_v_did_reject); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_28done(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_did_fulfill, PyObject *__pyx_v_did_reject); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_30done_all(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_handlers); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_32then_all(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_handlers); /* proto */
-static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7Promise_34reject(PyObject *__pyx_v_obj); /* proto */
-static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7Promise_36resolve(PyObject *__pyx_v_obj); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_22catch(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_on_rejection); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_24do_resolve(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_26do_reject(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_reason, PyObject *__pyx_v_traceback); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_28then(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_did_fulfill, PyObject *__pyx_v_did_reject); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_30done(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_did_fulfill, PyObject *__pyx_v_did_reject); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_32done_all(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_handlers); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_34then_all(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_handlers); /* proto */
+static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7Promise_36reject(PyObject *__pyx_v_obj); /* proto */
+static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7Promise_38resolve(PyObject *__pyx_v_obj); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_9promisify_7wrapper_executor(PyObject *__pyx_self, PyObject *__pyx_v_resolve, CYTHON_UNUSED PyObject *__pyx_v_reject); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_9promisify_wrapper(PyObject *__pyx_self, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_38promisify(PyObject *__pyx_v_f); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_40promisify(PyObject *__pyx_v_f); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_v); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_4safe_wrapper(PyObject *__pyx_self, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_40safe(PyObject *__pyx_v_fn); /* proto */
-static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7Promise_42all(PyObject *__pyx_v_promises); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_44is_thenable(PyObject *__pyx_v_obj); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_42safe(PyObject *__pyx_v_fn); /* proto */
+static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7Promise_44all(PyObject *__pyx_v_promises); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_46is_thenable(PyObject *__pyx_v_obj); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_8for_dict_handle_success(PyObject *__pyx_self, PyObject *__pyx_v_resolved_values); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_46for_dict(PyObject *__pyx_v_m); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_48for_dict(PyObject *__pyx_v_m); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_6_state___get__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
 static int __pyx_pf_7promise_7promise_7Promise_6_state_2__set__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_7Promise_13_is_following___get__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
@@ -2728,8 +2799,8 @@ static int __pyx_pf_7promise_7promise_7Promise_20_is_async_guaranteed_2__set__(s
 static PyObject *__pyx_pf_7promise_7promise_7Promise_10_traceback___get__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
 static int __pyx_pf_7promise_7promise_7Promise_10_traceback_2__set__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static int __pyx_pf_7promise_7promise_7Promise_10_traceback_4__del__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_48__reduce_cython__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_7Promise_50__setstate_cython__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_50__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7promise_7promise_7Promise_52__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_6is_thenable(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_obj); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(PyObject *__pyx_self, PyObject *__pyx_v_resolve, PyObject *__pyx_v_reject); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_future_result(PyObject *__pyx_self, PyObject *__pyx_v_future); /* proto */
@@ -2738,7 +2809,6 @@ static PyObject *__pyx_pf_7promise_7promise_10iterate_promise(CYTHON_UNUSED PyOb
 static PyObject *__pyx_pf_7promise_7promise_13__pyx_unpickle_Box(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_15__pyx_unpickle_TryCatchResult(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_7promise_7promise_17__pyx_unpickle_PartialSettlePromise(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_7promise_7promise_19__pyx_unpickle_Promise(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_tp_new_7promise_7promise_Promise(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_7promise_7promise_Box(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_7promise_7promise_TryCatchResult(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -2754,7 +2824,6 @@ static PyObject *__pyx_tp_new_7promise_7promise___pyx_scope_struct_7__process_fu
 static PyObject *__pyx_tp_new_7promise_7promise___pyx_scope_struct_8_iterate_promise(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_int_33963030;
 static PyObject *__pyx_int_75063458;
-static PyObject *__pyx_int_189373669;
 static PyObject *__pyx_int_190694955;
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
@@ -2765,10 +2834,11 @@ static PyObject *__pyx_tuple__9;
 static PyObject *__pyx_tuple__11;
 static PyObject *__pyx_tuple__13;
 static PyObject *__pyx_tuple__15;
+static PyObject *__pyx_tuple__16;
 static PyObject *__pyx_tuple__17;
+static PyObject *__pyx_tuple__19;
 static PyObject *__pyx_tuple__22;
 static PyObject *__pyx_tuple__24;
-static PyObject *__pyx_tuple__26;
 static PyObject *__pyx_tuple__28;
 static PyObject *__pyx_tuple__30;
 static PyObject *__pyx_tuple__32;
@@ -2778,23 +2848,42 @@ static PyObject *__pyx_tuple__38;
 static PyObject *__pyx_tuple__40;
 static PyObject *__pyx_tuple__42;
 static PyObject *__pyx_tuple__44;
-static PyObject *__pyx_tuple__45;
-static PyObject *__pyx_tuple__47;
-static PyObject *__pyx_tuple__49;
-static PyObject *__pyx_tuple__51;
+static PyObject *__pyx_tuple__46;
+static PyObject *__pyx_tuple__48;
+static PyObject *__pyx_tuple__50;
+static PyObject *__pyx_tuple__52;
+static PyObject *__pyx_tuple__54;
+static PyObject *__pyx_tuple__56;
+static PyObject *__pyx_tuple__58;
+static PyObject *__pyx_tuple__60;
+static PyObject *__pyx_tuple__62;
+static PyObject *__pyx_tuple__64;
+static PyObject *__pyx_tuple__66;
+static PyObject *__pyx_tuple__68;
+static PyObject *__pyx_tuple__70;
+static PyObject *__pyx_tuple__72;
+static PyObject *__pyx_tuple__74;
+static PyObject *__pyx_tuple__76;
+static PyObject *__pyx_tuple__78;
+static PyObject *__pyx_tuple__80;
+static PyObject *__pyx_tuple__82;
+static PyObject *__pyx_tuple__84;
+static PyObject *__pyx_tuple__86;
+static PyObject *__pyx_tuple__87;
+static PyObject *__pyx_tuple__89;
+static PyObject *__pyx_tuple__91;
 static PyObject *__pyx_codeobj__3;
 static PyObject *__pyx_codeobj__5;
 static PyObject *__pyx_codeobj__8;
 static PyObject *__pyx_codeobj__10;
 static PyObject *__pyx_codeobj__12;
 static PyObject *__pyx_codeobj__14;
-static PyObject *__pyx_codeobj__16;
 static PyObject *__pyx_codeobj__18;
-static PyObject *__pyx_codeobj__19;
 static PyObject *__pyx_codeobj__20;
 static PyObject *__pyx_codeobj__21;
 static PyObject *__pyx_codeobj__23;
 static PyObject *__pyx_codeobj__25;
+static PyObject *__pyx_codeobj__26;
 static PyObject *__pyx_codeobj__27;
 static PyObject *__pyx_codeobj__29;
 static PyObject *__pyx_codeobj__31;
@@ -2804,10 +2893,30 @@ static PyObject *__pyx_codeobj__37;
 static PyObject *__pyx_codeobj__39;
 static PyObject *__pyx_codeobj__41;
 static PyObject *__pyx_codeobj__43;
-static PyObject *__pyx_codeobj__46;
-static PyObject *__pyx_codeobj__48;
-static PyObject *__pyx_codeobj__50;
-static PyObject *__pyx_codeobj__52;
+static PyObject *__pyx_codeobj__45;
+static PyObject *__pyx_codeobj__47;
+static PyObject *__pyx_codeobj__49;
+static PyObject *__pyx_codeobj__51;
+static PyObject *__pyx_codeobj__53;
+static PyObject *__pyx_codeobj__55;
+static PyObject *__pyx_codeobj__57;
+static PyObject *__pyx_codeobj__59;
+static PyObject *__pyx_codeobj__61;
+static PyObject *__pyx_codeobj__63;
+static PyObject *__pyx_codeobj__65;
+static PyObject *__pyx_codeobj__67;
+static PyObject *__pyx_codeobj__69;
+static PyObject *__pyx_codeobj__71;
+static PyObject *__pyx_codeobj__73;
+static PyObject *__pyx_codeobj__75;
+static PyObject *__pyx_codeobj__77;
+static PyObject *__pyx_codeobj__79;
+static PyObject *__pyx_codeobj__81;
+static PyObject *__pyx_codeobj__83;
+static PyObject *__pyx_codeobj__85;
+static PyObject *__pyx_codeobj__88;
+static PyObject *__pyx_codeobj__90;
+static PyObject *__pyx_codeobj__92;
 /* Late includes */
 
 /* "promise/promise.pyx":24
@@ -2913,6 +3022,7 @@ static int __pyx_pf_7promise_7promise_3Box_5value_4__del__(struct __pyx_obj_7pro
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_3Box_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_3Box_1__reduce_cython__ = {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_7promise_3Box_1__reduce_cython__, METH_NOARGS, 0};
 static PyObject *__pyx_pw_7promise_7promise_3Box_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -3148,6 +3258,7 @@ static PyObject *__pyx_pf_7promise_7promise_3Box___reduce_cython__(struct __pyx_
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_3Box_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_3Box_3__setstate_cython__ = {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_7promise_3Box_3__setstate_cython__, METH_O, 0};
 static PyObject *__pyx_pw_7promise_7promise_3Box_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -3381,6 +3492,7 @@ static PyObject *__pyx_pf_7promise_7promise_4set_default_scheduler(CYTHON_UNUSED
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_14TryCatchResult_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_14TryCatchResult_1__reduce_cython__ = {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_7promise_14TryCatchResult_1__reduce_cython__, METH_NOARGS, 0};
 static PyObject *__pyx_pw_7promise_7promise_14TryCatchResult_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -3640,6 +3752,7 @@ static PyObject *__pyx_pf_7promise_7promise_14TryCatchResult___reduce_cython__(s
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_14TryCatchResult_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_14TryCatchResult_3__setstate_cython__ = {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_7promise_14TryCatchResult_3__setstate_cython__, METH_O, 0};
 static PyObject *__pyx_pw_7promise_7promise_14TryCatchResult_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -4586,6 +4699,7 @@ static int __pyx_pf_7promise_7promise_20PartialSettlePromise_9traceback_4__del__
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_20PartialSettlePromise_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_20PartialSettlePromise_1__reduce_cython__ = {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_7promise_20PartialSettlePromise_1__reduce_cython__, METH_NOARGS, 0};
 static PyObject *__pyx_pw_7promise_7promise_20PartialSettlePromise_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -4865,6 +4979,7 @@ static PyObject *__pyx_pf_7promise_7promise_20PartialSettlePromise___reduce_cyth
 
 /* Python wrapper */
 static PyObject *__pyx_pw_7promise_7promise_20PartialSettlePromise_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_20PartialSettlePromise_3__setstate_cython__ = {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_7promise_20PartialSettlePromise_3__setstate_cython__, METH_O, 0};
 static PyObject *__pyx_pw_7promise_7promise_20PartialSettlePromise_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -4918,27 +5033,27 @@ static PyObject *__pyx_pf_7promise_7promise_20PartialSettlePromise_2__setstate_c
 /* "promise/promise.pyx":78
  * 
  * cdef class Promise:
- *     def __init__(self, executor=None, scheduler=None):             # <<<<<<<<<<<<<<
+ *     def __cinit__(self, executor=None, Scheduler scheduler=None):             # <<<<<<<<<<<<<<
  *         self._state = State.PENDING
  *         self._length = 0
  */
 
 /* Python wrapper */
-static int __pyx_pw_7promise_7promise_7Promise_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_7promise_7promise_7Promise_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_executor = 0;
-  PyObject *__pyx_v_scheduler = 0;
+static int __pyx_pw_7promise_7promise_7Promise_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_7promise_7promise_7Promise_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  CYTHON_UNUSED PyObject *__pyx_v_executor = 0;
+  struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_v_scheduler = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__init__ (wrapper)", 0);
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_executor,&__pyx_n_s_scheduler,0};
     PyObject* values[2] = {0,0};
     values[0] = ((PyObject *)Py_None);
-    values[1] = ((PyObject *)Py_None);
+    values[1] = (PyObject *)((struct __pyx_obj_7promise_10schedulers_4base_Scheduler *)Py_None);
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
@@ -4965,7 +5080,7 @@ static int __pyx_pw_7promise_7promise_7Promise_1__init__(PyObject *__pyx_v_self,
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 78, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 78, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -4978,37 +5093,40 @@ static int __pyx_pw_7promise_7promise_7Promise_1__init__(PyObject *__pyx_v_self,
       }
     }
     __pyx_v_executor = values[0];
-    __pyx_v_scheduler = values[1];
+    __pyx_v_scheduler = ((struct __pyx_obj_7promise_10schedulers_4base_Scheduler *)values[1]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 78, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 78, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("promise.promise.Promise.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("promise.promise.Promise.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise___init__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_executor, __pyx_v_scheduler);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_scheduler), __pyx_ptype_7promise_10schedulers_4base_Scheduler, 1, "scheduler", 0))) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise___cinit__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_executor, __pyx_v_scheduler);
 
   /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = -1;
+  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_7promise_7promise_7Promise___init__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_executor, PyObject *__pyx_v_scheduler) {
+static int __pyx_pf_7promise_7promise_7Promise___cinit__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_executor, struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_v_scheduler) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  int __pyx_t_2;
-  int __pyx_t_3;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__init__", 0);
+  __Pyx_RefNannySetupContext("__cinit__", 0);
 
   /* "promise/promise.pyx":79
  * cdef class Promise:
- *     def __init__(self, executor=None, scheduler=None):
+ *     def __cinit__(self, executor=None, Scheduler scheduler=None):
  *         self._state = State.PENDING             # <<<<<<<<<<<<<<
  *         self._length = 0
  *         self._is_final = \
@@ -5016,7 +5134,7 @@ static int __pyx_pf_7promise_7promise_7Promise___init__(struct __pyx_obj_7promis
   __pyx_v_self->_state = __pyx_e_7promise_7promise_PENDING;
 
   /* "promise/promise.pyx":80
- *     def __init__(self, executor=None, scheduler=None):
+ *     def __cinit__(self, executor=None, Scheduler scheduler=None):
  *         self._state = State.PENDING
  *         self._length = 0             # <<<<<<<<<<<<<<
  *         self._is_final = \
@@ -5056,7 +5174,7 @@ static int __pyx_pf_7promise_7promise_7Promise___init__(struct __pyx_obj_7promis
  *             self._is_following = \
  *             self._is_async_guaranteed = \             # <<<<<<<<<<<<<<
  *             self._is_waiting = False
- *         self._fulfillment_handler0 = \
+ *         self._scheduler = scheduler
  */
   __pyx_v_self->_is_async_guaranteed = 0;
 
@@ -5064,97 +5182,32 @@ static int __pyx_pf_7promise_7promise_7Promise___init__(struct __pyx_obj_7promis
  *             self._is_following = \
  *             self._is_async_guaranteed = \
  *             self._is_waiting = False             # <<<<<<<<<<<<<<
- *         self._fulfillment_handler0 = \
- *             self._rejection_handler0 = \
+ *         self._scheduler = scheduler
+ *         self._promises = []
  */
   __pyx_v_self->_is_waiting = 0;
 
   /* "promise/promise.pyx":86
  *             self._is_async_guaranteed = \
  *             self._is_waiting = False
- *         self._fulfillment_handler0 = \             # <<<<<<<<<<<<<<
- *             self._rejection_handler0 = \
- *             self._promise0 = \
- */
-  __Pyx_INCREF(Py_None);
-  __Pyx_GIVEREF(Py_None);
-  __Pyx_GOTREF(__pyx_v_self->_fulfillment_handler0);
-  __Pyx_DECREF(__pyx_v_self->_fulfillment_handler0);
-  __pyx_v_self->_fulfillment_handler0 = Py_None;
-
-  /* "promise/promise.pyx":87
- *             self._is_waiting = False
- *         self._fulfillment_handler0 = \
- *             self._rejection_handler0 = \             # <<<<<<<<<<<<<<
- *             self._promise0 = \
- *             self._future = \
- */
-  __Pyx_INCREF(Py_None);
-  __Pyx_GIVEREF(Py_None);
-  __Pyx_GOTREF(__pyx_v_self->_rejection_handler0);
-  __Pyx_DECREF(__pyx_v_self->_rejection_handler0);
-  __pyx_v_self->_rejection_handler0 = Py_None;
-
-  /* "promise/promise.pyx":88
- *         self._fulfillment_handler0 = \
- *             self._rejection_handler0 = \
- *             self._promise0 = \             # <<<<<<<<<<<<<<
- *             self._future = \
- *             self._traceback = None
- */
-  __Pyx_INCREF(Py_None);
-  __Pyx_GIVEREF(Py_None);
-  __Pyx_GOTREF(__pyx_v_self->_promise0);
-  __Pyx_DECREF(((PyObject *)__pyx_v_self->_promise0));
-  __pyx_v_self->_promise0 = ((struct __pyx_obj_7promise_7promise_Promise *)Py_None);
-
-  /* "promise/promise.pyx":89
- *             self._rejection_handler0 = \
- *             self._promise0 = \
- *             self._future = \             # <<<<<<<<<<<<<<
- *             self._traceback = None
- *         self._scheduler = scheduler
- */
-  __Pyx_INCREF(Py_None);
-  __Pyx_GIVEREF(Py_None);
-  __Pyx_GOTREF(__pyx_v_self->_future);
-  __Pyx_DECREF(__pyx_v_self->_future);
-  __pyx_v_self->_future = Py_None;
-
-  /* "promise/promise.pyx":90
- *             self._promise0 = \
- *             self._future = \
- *             self._traceback = None             # <<<<<<<<<<<<<<
- *         self._scheduler = scheduler
- *         self._promises = []
- */
-  __Pyx_INCREF(Py_None);
-  __Pyx_GIVEREF(Py_None);
-  __Pyx_GOTREF(__pyx_v_self->_traceback);
-  __Pyx_DECREF(__pyx_v_self->_traceback);
-  __pyx_v_self->_traceback = Py_None;
-
-  /* "promise/promise.pyx":91
- *             self._future = \
- *             self._traceback = None
  *         self._scheduler = scheduler             # <<<<<<<<<<<<<<
  *         self._promises = []
  *         self._rejection_handlers = []
  */
-  __Pyx_INCREF(__pyx_v_scheduler);
-  __Pyx_GIVEREF(__pyx_v_scheduler);
+  __Pyx_INCREF(((PyObject *)__pyx_v_scheduler));
+  __Pyx_GIVEREF(((PyObject *)__pyx_v_scheduler));
   __Pyx_GOTREF(__pyx_v_self->_scheduler);
   __Pyx_DECREF(__pyx_v_self->_scheduler);
-  __pyx_v_self->_scheduler = __pyx_v_scheduler;
+  __pyx_v_self->_scheduler = ((PyObject *)__pyx_v_scheduler);
 
-  /* "promise/promise.pyx":92
- *             self._traceback = None
+  /* "promise/promise.pyx":87
+ *             self._is_waiting = False
  *         self._scheduler = scheduler
  *         self._promises = []             # <<<<<<<<<<<<<<
  *         self._rejection_handlers = []
  *         self._fulfillment_handlers = []
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->_promises);
@@ -5162,14 +5215,14 @@ static int __pyx_pf_7promise_7promise_7Promise___init__(struct __pyx_obj_7promis
   __pyx_v_self->_promises = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":93
+  /* "promise/promise.pyx":88
  *         self._scheduler = scheduler
  *         self._promises = []
  *         self._rejection_handlers = []             # <<<<<<<<<<<<<<
  *         self._fulfillment_handlers = []
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->_rejection_handlers);
@@ -5177,14 +5230,14 @@ static int __pyx_pf_7promise_7promise_7Promise___init__(struct __pyx_obj_7promis
   __pyx_v_self->_rejection_handlers = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":94
+  /* "promise/promise.pyx":89
  *         self._promises = []
  *         self._rejection_handlers = []
  *         self._fulfillment_handlers = []             # <<<<<<<<<<<<<<
  * 
- *         if executor is not None:
+ *     def __init__(self, executor=None, scheduler=None):
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->_fulfillment_handlers);
@@ -5192,39 +5245,10 @@ static int __pyx_pf_7promise_7promise_7Promise___init__(struct __pyx_obj_7promis
   __pyx_v_self->_fulfillment_handlers = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":96
- *         self._fulfillment_handlers = []
- * 
- *         if executor is not None:             # <<<<<<<<<<<<<<
- *             self._resolve_from_executor(executor)
- * 
- */
-  __pyx_t_2 = (__pyx_v_executor != Py_None);
-  __pyx_t_3 = (__pyx_t_2 != 0);
-  if (__pyx_t_3) {
-
-    /* "promise/promise.pyx":97
- * 
- *         if executor is not None:
- *             self._resolve_from_executor(executor)             # <<<<<<<<<<<<<<
- * 
- *     cpdef Scheduler get_scheduler(self):
- */
-    ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_resolve_from_executor(__pyx_v_self, __pyx_v_executor);
-
-    /* "promise/promise.pyx":96
- *         self._fulfillment_handlers = []
- * 
- *         if executor is not None:             # <<<<<<<<<<<<<<
- *             self._resolve_from_executor(executor)
- * 
- */
-  }
-
   /* "promise/promise.pyx":78
  * 
  * cdef class Promise:
- *     def __init__(self, executor=None, scheduler=None):             # <<<<<<<<<<<<<<
+ *     def __cinit__(self, executor=None, Scheduler scheduler=None):             # <<<<<<<<<<<<<<
  *         self._state = State.PENDING
  *         self._length = 0
  */
@@ -5234,14 +5258,144 @@ static int __pyx_pf_7promise_7promise_7Promise___init__(struct __pyx_obj_7promis
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("promise.promise.Promise.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("promise.promise.Promise.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":99
+/* "promise/promise.pyx":91
+ *         self._fulfillment_handlers = []
+ * 
+ *     def __init__(self, executor=None, scheduler=None):             # <<<<<<<<<<<<<<
+ *         if executor is not None:
+ *             self._resolve_from_executor(executor)
+ */
+
+/* Python wrapper */
+static int __pyx_pw_7promise_7promise_7Promise_3__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_7promise_7promise_7Promise_3__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_executor = 0;
+  CYTHON_UNUSED PyObject *__pyx_v_scheduler = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__init__ (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_executor,&__pyx_n_s_scheduler,0};
+    PyObject* values[2] = {0,0};
+    values[0] = ((PyObject *)Py_None);
+    values[1] = ((PyObject *)Py_None);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_executor);
+          if (value) { values[0] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_scheduler);
+          if (value) { values[1] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 91, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_executor = values[0];
+    __pyx_v_scheduler = values[1];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 91, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("promise.promise.Promise.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return -1;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_2__init__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_executor, __pyx_v_scheduler);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_7promise_7promise_7Promise_2__init__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_executor, CYTHON_UNUSED PyObject *__pyx_v_scheduler) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  __Pyx_RefNannySetupContext("__init__", 0);
+
+  /* "promise/promise.pyx":92
+ * 
+ *     def __init__(self, executor=None, scheduler=None):
+ *         if executor is not None:             # <<<<<<<<<<<<<<
+ *             self._resolve_from_executor(executor)
+ * 
+ */
+  __pyx_t_1 = (__pyx_v_executor != Py_None);
+  __pyx_t_2 = (__pyx_t_1 != 0);
+  if (__pyx_t_2) {
+
+    /* "promise/promise.pyx":93
+ *     def __init__(self, executor=None, scheduler=None):
+ *         if executor is not None:
+ *             self._resolve_from_executor(executor)             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef Scheduler get_scheduler(self):
+ */
+    ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_resolve_from_executor(__pyx_v_self, __pyx_v_executor);
+
+    /* "promise/promise.pyx":92
+ * 
+ *     def __init__(self, executor=None, scheduler=None):
+ *         if executor is not None:             # <<<<<<<<<<<<<<
+ *             self._resolve_from_executor(executor)
+ * 
+ */
+  }
+
+  /* "promise/promise.pyx":91
+ *         self._fulfillment_handlers = []
+ * 
+ *     def __init__(self, executor=None, scheduler=None):             # <<<<<<<<<<<<<<
+ *         if executor is not None:
+ *             self._resolve_from_executor(executor)
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "promise/promise.pyx":95
  *             self._resolve_from_executor(executor)
  * 
  *     cpdef Scheduler get_scheduler(self):             # <<<<<<<<<<<<<<
@@ -5249,7 +5403,7 @@ static int __pyx_pf_7promise_7promise_7Promise___init__(struct __pyx_obj_7promis
  *             return self._scheduler
  */
 
-static PyObject *__pyx_pw_7promise_7promise_7Promise_3get_scheduler(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_5get_scheduler(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
 static struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_f_7promise_7promise_7Promise_get_scheduler(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, int __pyx_skip_dispatch) {
   struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -5272,9 +5426,9 @@ static struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_f_7promise_
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_scheduler); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_scheduler); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_3get_scheduler)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_5get_scheduler)) {
         __Pyx_XDECREF(((PyObject *)__pyx_r));
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -5289,10 +5443,10 @@ static struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_f_7promise_
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_7promise_10schedulers_4base_Scheduler))))) __PYX_ERR(0, 99, __pyx_L1_error)
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_7promise_10schedulers_4base_Scheduler))))) __PYX_ERR(0, 95, __pyx_L1_error)
         __pyx_r = ((struct __pyx_obj_7promise_10schedulers_4base_Scheduler *)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5311,7 +5465,7 @@ static struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_f_7promise_
     #endif
   }
 
-  /* "promise/promise.pyx":100
+  /* "promise/promise.pyx":96
  * 
  *     cpdef Scheduler get_scheduler(self):
  *         if self._scheduler is not None:             # <<<<<<<<<<<<<<
@@ -5322,7 +5476,7 @@ static struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_f_7promise_
   __pyx_t_6 = (__pyx_t_5 != 0);
   if (__pyx_t_6) {
 
-    /* "promise/promise.pyx":101
+    /* "promise/promise.pyx":97
  *     cpdef Scheduler get_scheduler(self):
  *         if self._scheduler is not None:
  *             return self._scheduler             # <<<<<<<<<<<<<<
@@ -5330,12 +5484,12 @@ static struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_f_7promise_
  * 
  */
     __Pyx_XDECREF(((PyObject *)__pyx_r));
-    if (!(likely(((__pyx_v_self->_scheduler) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_self->_scheduler, __pyx_ptype_7promise_10schedulers_4base_Scheduler))))) __PYX_ERR(0, 101, __pyx_L1_error)
+    if (!(likely(((__pyx_v_self->_scheduler) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_self->_scheduler, __pyx_ptype_7promise_10schedulers_4base_Scheduler))))) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_INCREF(__pyx_v_self->_scheduler);
     __pyx_r = ((struct __pyx_obj_7promise_10schedulers_4base_Scheduler *)__pyx_v_self->_scheduler);
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":100
+    /* "promise/promise.pyx":96
  * 
  *     cpdef Scheduler get_scheduler(self):
  *         if self._scheduler is not None:             # <<<<<<<<<<<<<<
@@ -5344,7 +5498,7 @@ static struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_f_7promise_
  */
   }
 
-  /* "promise/promise.pyx":102
+  /* "promise/promise.pyx":98
  *         if self._scheduler is not None:
  *             return self._scheduler
  *         return default_scheduler             # <<<<<<<<<<<<<<
@@ -5356,7 +5510,7 @@ static struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_f_7promise_
   __pyx_r = __pyx_v_7promise_7promise_default_scheduler;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":99
+  /* "promise/promise.pyx":95
  *             self._resolve_from_executor(executor)
  * 
  *     cpdef Scheduler get_scheduler(self):             # <<<<<<<<<<<<<<
@@ -5379,19 +5533,20 @@ static struct __pyx_obj_7promise_10schedulers_4base_Scheduler *__pyx_f_7promise_
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_3get_scheduler(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_3get_scheduler(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_5get_scheduler(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_5get_scheduler = {"get_scheduler", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_5get_scheduler, METH_NOARGS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_5get_scheduler(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_scheduler (wrapper)", 0);
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_2get_scheduler(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_4get_scheduler(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_2get_scheduler(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_4get_scheduler(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5400,7 +5555,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_2get_scheduler(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_scheduler", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_7promise_7promise_7Promise_get_scheduler(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7promise_7promise_7Promise_get_scheduler(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5417,7 +5572,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_2get_scheduler(struct __pyx
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":104
+/* "promise/promise.pyx":100
  *         return default_scheduler
  * 
  *     cpdef object get_future(self):             # <<<<<<<<<<<<<<
@@ -5425,7 +5580,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_2get_scheduler(struct __pyx
  *         if not self._future:
  */
 
-static PyObject *__pyx_pw_7promise_7promise_7Promise_5get_future(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_7get_future(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
 static PyObject *__pyx_f_7promise_7promise_7Promise_get_future(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, int __pyx_skip_dispatch) {
   PyObject *__pyx_v_fut = 0;
   PyObject *__pyx_r = NULL;
@@ -5450,9 +5605,9 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get_future(struct __pyx_obj_
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_future); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_future); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_5get_future)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_7get_future)) {
         __Pyx_XDECREF(__pyx_r);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -5467,7 +5622,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get_future(struct __pyx_obj_
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_r = __pyx_t_2;
@@ -5488,25 +5643,25 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get_future(struct __pyx_obj_
     #endif
   }
 
-  /* "promise/promise.pyx":106
+  /* "promise/promise.pyx":102
  *     cpdef object get_future(self):
  *         cdef object fut
  *         if not self._future:             # <<<<<<<<<<<<<<
  *             fut = self._future = Future()
  *             self._then(fut.set_result, fut.set_exception)
  */
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_self->_future); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_self->_future); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 102, __pyx_L1_error)
   __pyx_t_6 = ((!__pyx_t_5) != 0);
   if (__pyx_t_6) {
 
-    /* "promise/promise.pyx":107
+    /* "promise/promise.pyx":103
  *         cdef object fut
  *         if not self._future:
  *             fut = self._future = Future()             # <<<<<<<<<<<<<<
  *             self._then(fut.set_result, fut.set_exception)
  *         return self._future
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Future); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Future); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_3 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -5520,7 +5675,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get_future(struct __pyx_obj_
     }
     __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_INCREF(__pyx_t_1);
@@ -5532,27 +5687,27 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get_future(struct __pyx_obj_
     __pyx_v_self->_future = __pyx_t_1;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "promise/promise.pyx":108
+    /* "promise/promise.pyx":104
  *         if not self._future:
  *             fut = self._future = Future()
  *             self._then(fut.set_result, fut.set_exception)             # <<<<<<<<<<<<<<
  *         return self._future
  * 
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_fut, __pyx_n_s_set_result); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_fut, __pyx_n_s_set_result); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_fut, __pyx_n_s_set_exception); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 108, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_fut, __pyx_n_s_set_exception); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_7.__pyx_n = 2;
     __pyx_t_7.did_fulfill = __pyx_t_1;
     __pyx_t_7.did_reject = __pyx_t_2;
-    __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_then(__pyx_v_self, &__pyx_t_7)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 108, __pyx_L1_error)
+    __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_then(__pyx_v_self, &__pyx_t_7)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "promise/promise.pyx":106
+    /* "promise/promise.pyx":102
  *     cpdef object get_future(self):
  *         cdef object fut
  *         if not self._future:             # <<<<<<<<<<<<<<
@@ -5561,7 +5716,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get_future(struct __pyx_obj_
  */
   }
 
-  /* "promise/promise.pyx":109
+  /* "promise/promise.pyx":105
  *             fut = self._future = Future()
  *             self._then(fut.set_result, fut.set_exception)
  *         return self._future             # <<<<<<<<<<<<<<
@@ -5573,7 +5728,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get_future(struct __pyx_obj_
   __pyx_r = __pyx_v_self->_future;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":104
+  /* "promise/promise.pyx":100
  *         return default_scheduler
  * 
  *     cpdef object get_future(self):             # <<<<<<<<<<<<<<
@@ -5597,19 +5752,20 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get_future(struct __pyx_obj_
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_5get_future(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_5get_future(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_7get_future(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_7get_future = {"get_future", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_7get_future, METH_NOARGS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_7get_future(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_future (wrapper)", 0);
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_4get_future(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_6get_future(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_4get_future(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_6get_future(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5618,7 +5774,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_4get_future(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_future", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_7promise_7promise_7Promise_get_future(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_7promise_7promise_7Promise_get_future(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5635,7 +5791,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_4get_future(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":111
+/* "promise/promise.pyx":107
  *         return self._future
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -5644,19 +5800,19 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_4get_future(struct __pyx_ob
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_7__iter__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_7__iter__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_9__iter__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_9__iter__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__iter__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_6__iter__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_8__iter__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_6__iter__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_8__iter__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5668,7 +5824,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_6__iter__(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__iter__", 0);
 
-  /* "promise/promise.pyx":112
+  /* "promise/promise.pyx":108
  * 
  *     def __iter__(self):
  *         return iterate_promise(self._target())             # <<<<<<<<<<<<<<
@@ -5676,9 +5832,9 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_6__iter__(struct __pyx_obj_
  *     def __await__(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_iterate_promise); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_iterate_promise); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 108, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target(__pyx_v_self, 0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target(__pyx_v_self, 0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 108, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -5693,14 +5849,14 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_6__iter__(struct __pyx_obj_
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":111
+  /* "promise/promise.pyx":107
  *         return self._future
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -5722,7 +5878,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_6__iter__(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":114
+/* "promise/promise.pyx":110
  *         return iterate_promise(self._target())
  * 
  *     def __await__(self):             # <<<<<<<<<<<<<<
@@ -5731,19 +5887,19 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_6__iter__(struct __pyx_obj_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_9__await__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_9__await__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_11__await__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_11__await__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__await__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_8__await__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_10__await__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_8__await__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_10__await__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5754,7 +5910,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8__await__(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__await__", 0);
 
-  /* "promise/promise.pyx":115
+  /* "promise/promise.pyx":111
  * 
  *     def __await__(self):
  *         return self.__iter__()             # <<<<<<<<<<<<<<
@@ -5762,7 +5918,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8__await__(struct __pyx_obj
  *     cdef void _resolve_callback(self, object value):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_iter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_iter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -5776,14 +5932,14 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8__await__(struct __pyx_obj
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":114
+  /* "promise/promise.pyx":110
  *         return iterate_promise(self._target())
  * 
  *     def __await__(self):             # <<<<<<<<<<<<<<
@@ -5804,7 +5960,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8__await__(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":117
+/* "promise/promise.pyx":113
  *         return self.__iter__()
  * 
  *     cdef void _resolve_callback(self, object value):             # <<<<<<<<<<<<<<
@@ -5831,7 +5987,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_resolve_callback", 0);
 
-  /* "promise/promise.pyx":120
+  /* "promise/promise.pyx":116
  *         cdef int len, i
  * 
  *         if value is self:             # <<<<<<<<<<<<<<
@@ -5842,20 +5998,20 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "promise/promise.pyx":121
+    /* "promise/promise.pyx":117
  * 
  *         if value is self:
  *             self._reject_callback(TypeError("Promise is self"))             # <<<<<<<<<<<<<<
  *             return
  *         if not _is_thenable(value):
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 121, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (!(likely(__Pyx_PyException_Check(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 121, __pyx_L1_error)
+    if (!(likely(__Pyx_PyException_Check(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 117, __pyx_L1_error)
     ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_reject_callback(__pyx_v_self, ((PyObject*)__pyx_t_3), NULL);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "promise/promise.pyx":122
+    /* "promise/promise.pyx":118
  *         if value is self:
  *             self._reject_callback(TypeError("Promise is self"))
  *             return             # <<<<<<<<<<<<<<
@@ -5864,7 +6020,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
  */
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":120
+    /* "promise/promise.pyx":116
  *         cdef int len, i
  * 
  *         if value is self:             # <<<<<<<<<<<<<<
@@ -5873,7 +6029,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
  */
   }
 
-  /* "promise/promise.pyx":123
+  /* "promise/promise.pyx":119
  *             self._reject_callback(TypeError("Promise is self"))
  *             return
  *         if not _is_thenable(value):             # <<<<<<<<<<<<<<
@@ -5883,7 +6039,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
   __pyx_t_2 = ((!(__pyx_f_7promise_7promise__is_thenable(__pyx_v_value) != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "promise/promise.pyx":124
+    /* "promise/promise.pyx":120
  *             return
  *         if not _is_thenable(value):
  *             self._fulfill(value)             # <<<<<<<<<<<<<<
@@ -5892,7 +6048,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
  */
     ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_fulfill(__pyx_v_self, __pyx_v_value);
 
-    /* "promise/promise.pyx":125
+    /* "promise/promise.pyx":121
  *         if not _is_thenable(value):
  *             self._fulfill(value)
  *             return             # <<<<<<<<<<<<<<
@@ -5901,7 +6057,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
  */
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":123
+    /* "promise/promise.pyx":119
  *             self._reject_callback(TypeError("Promise is self"))
  *             return
  *         if not _is_thenable(value):             # <<<<<<<<<<<<<<
@@ -5910,22 +6066,22 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
  */
   }
 
-  /* "promise/promise.pyx":127
+  /* "promise/promise.pyx":123
  *             return
  * 
  *         cdef Promise promise = _try_convert_to_promise(value)._target()             # <<<<<<<<<<<<<<
  *         if promise is self:
  *             self._reject(TypeError("Promise is self"))
  */
-  __pyx_t_3 = ((PyObject *)__pyx_f_7promise_7promise__try_convert_to_promise(__pyx_v_value)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_3 = ((PyObject *)__pyx_f_7promise_7promise__try_convert_to_promise(__pyx_v_value)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_3)->__pyx_vtab)->_target(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_3), 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_3)->__pyx_vtab)->_target(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_3), 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_promise = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "promise/promise.pyx":128
+  /* "promise/promise.pyx":124
  * 
  *         cdef Promise promise = _try_convert_to_promise(value)._target()
  *         if promise is self:             # <<<<<<<<<<<<<<
@@ -5936,20 +6092,20 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "promise/promise.pyx":129
+    /* "promise/promise.pyx":125
  *         cdef Promise promise = _try_convert_to_promise(value)._target()
  *         if promise is self:
  *             self._reject(TypeError("Promise is self"))             # <<<<<<<<<<<<<<
  *             return
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (!(likely(__Pyx_PyException_Check(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 129, __pyx_L1_error)
+    if (!(likely(__Pyx_PyException_Check(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 125, __pyx_L1_error)
     ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_reject(__pyx_v_self, ((PyObject*)__pyx_t_4), NULL);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "promise/promise.pyx":130
+    /* "promise/promise.pyx":126
  *         if promise is self:
  *             self._reject(TypeError("Promise is self"))
  *             return             # <<<<<<<<<<<<<<
@@ -5958,7 +6114,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
  */
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":128
+    /* "promise/promise.pyx":124
  * 
  *         cdef Promise promise = _try_convert_to_promise(value)._target()
  *         if promise is self:             # <<<<<<<<<<<<<<
@@ -5967,7 +6123,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
  */
   }
 
-  /* "promise/promise.pyx":132
+  /* "promise/promise.pyx":128
  *             return
  * 
  *         if promise._state == State.PENDING:             # <<<<<<<<<<<<<<
@@ -5977,7 +6133,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
   switch (__pyx_v_promise->_state) {
     case __pyx_e_7promise_7promise_PENDING:
 
-    /* "promise/promise.pyx":133
+    /* "promise/promise.pyx":129
  * 
  *         if promise._state == State.PENDING:
  *             len = self._length             # <<<<<<<<<<<<<<
@@ -5987,7 +6143,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
     __pyx_t_5 = __pyx_v_self->_length;
     __pyx_v_len = __pyx_t_5;
 
-    /* "promise/promise.pyx":134
+    /* "promise/promise.pyx":130
  *         if promise._state == State.PENDING:
  *             len = self._length
  *             if len > 0:             # <<<<<<<<<<<<<<
@@ -5997,7 +6153,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
     __pyx_t_1 = ((__pyx_v_len > 0) != 0);
     if (__pyx_t_1) {
 
-      /* "promise/promise.pyx":135
+      /* "promise/promise.pyx":131
  *             len = self._length
  *             if len > 0:
  *                 promise._migrate_callback0(self)             # <<<<<<<<<<<<<<
@@ -6006,7 +6162,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
  */
       ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_promise->__pyx_vtab)->_migrate_callback0(__pyx_v_promise, __pyx_v_self);
 
-      /* "promise/promise.pyx":134
+      /* "promise/promise.pyx":130
  *         if promise._state == State.PENDING:
  *             len = self._length
  *             if len > 0:             # <<<<<<<<<<<<<<
@@ -6015,7 +6171,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
  */
     }
 
-    /* "promise/promise.pyx":136
+    /* "promise/promise.pyx":132
  *             if len > 0:
  *                 promise._migrate_callback0(self)
  *             for i in range(1, len):             # <<<<<<<<<<<<<<
@@ -6027,7 +6183,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
     for (__pyx_t_7 = 1; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_v_i = __pyx_t_7;
 
-      /* "promise/promise.pyx":137
+      /* "promise/promise.pyx":133
  *                 promise._migrate_callback0(self)
  *             for i in range(1, len):
  *                 promise._migrate_callback_at(self, i)             # <<<<<<<<<<<<<<
@@ -6037,7 +6193,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
       ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_promise->__pyx_vtab)->_migrate_callback_at(__pyx_v_promise, __pyx_v_self, __pyx_v_i);
     }
 
-    /* "promise/promise.pyx":138
+    /* "promise/promise.pyx":134
  *             for i in range(1, len):
  *                 promise._migrate_callback_at(self, i)
  *             self._is_following = True             # <<<<<<<<<<<<<<
@@ -6046,7 +6202,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
  */
     __pyx_v_self->_is_following = 1;
 
-    /* "promise/promise.pyx":139
+    /* "promise/promise.pyx":135
  *                 promise._migrate_callback_at(self, i)
  *             self._is_following = True
  *             self._length = 0             # <<<<<<<<<<<<<<
@@ -6055,7 +6211,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
  */
     __pyx_v_self->_length = 0;
 
-    /* "promise/promise.pyx":140
+    /* "promise/promise.pyx":136
  *             self._is_following = True
  *             self._length = 0
  *             self._set_followee(promise)             # <<<<<<<<<<<<<<
@@ -6064,7 +6220,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
  */
     ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_set_followee(__pyx_v_self, __pyx_v_promise);
 
-    /* "promise/promise.pyx":132
+    /* "promise/promise.pyx":128
  *             return
  * 
  *         if promise._state == State.PENDING:             # <<<<<<<<<<<<<<
@@ -6074,19 +6230,19 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
     break;
     case __pyx_e_7promise_7promise_FULFILLED:
 
-    /* "promise/promise.pyx":142
+    /* "promise/promise.pyx":138
  *             self._set_followee(promise)
  *         elif promise._state == State.FULFILLED:
  *             self._fulfill(promise._target_settled_value())             # <<<<<<<<<<<<<<
  *         elif promise._state == State.REJECTED:
  *             self._reject(
  */
-    __pyx_t_4 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_promise->__pyx_vtab)->_target_settled_value(__pyx_v_promise, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __pyx_t_4 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_promise->__pyx_vtab)->_target_settled_value(__pyx_v_promise, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 138, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_fulfill(__pyx_v_self, __pyx_t_4);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "promise/promise.pyx":141
+    /* "promise/promise.pyx":137
  *             self._length = 0
  *             self._set_followee(promise)
  *         elif promise._state == State.FULFILLED:             # <<<<<<<<<<<<<<
@@ -6096,23 +6252,23 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
     break;
     case __pyx_e_7promise_7promise_REJECTED:
 
-    /* "promise/promise.pyx":145
+    /* "promise/promise.pyx":141
  *         elif promise._state == State.REJECTED:
  *             self._reject(
  *                 promise._target_settled_value(), promise._target()._traceback             # <<<<<<<<<<<<<<
  *             )
  * 
  */
-    __pyx_t_4 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_promise->__pyx_vtab)->_target_settled_value(__pyx_v_promise, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __pyx_t_4 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_promise->__pyx_vtab)->_target_settled_value(__pyx_v_promise, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 141, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (!(likely(__Pyx_PyException_Check(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 145, __pyx_L1_error)
-    __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_promise->__pyx_vtab)->_target(__pyx_v_promise, 0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
+    if (!(likely(__Pyx_PyException_Check(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 141, __pyx_L1_error)
+    __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_promise->__pyx_vtab)->_target(__pyx_v_promise, 0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 141, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_8 = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_3)->_traceback;
     __Pyx_INCREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "promise/promise.pyx":144
+    /* "promise/promise.pyx":140
  *             self._fulfill(promise._target_settled_value())
  *         elif promise._state == State.REJECTED:
  *             self._reject(             # <<<<<<<<<<<<<<
@@ -6125,7 +6281,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "promise/promise.pyx":143
+    /* "promise/promise.pyx":139
  *         elif promise._state == State.FULFILLED:
  *             self._fulfill(promise._target_settled_value())
  *         elif promise._state == State.REJECTED:             # <<<<<<<<<<<<<<
@@ -6136,7 +6292,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
     default: break;
   }
 
-  /* "promise/promise.pyx":117
+  /* "promise/promise.pyx":113
  *         return self.__iter__()
  * 
  *     cdef void _resolve_callback(self, object value):             # <<<<<<<<<<<<<<
@@ -6156,7 +6312,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_callback(struct __pyx_ob
   __Pyx_RefNannyFinishContext();
 }
 
-/* "promise/promise.pyx":148
+/* "promise/promise.pyx":144
  *             )
  * 
  *     cdef object _settled_value(self, bint raise_ = False):             # <<<<<<<<<<<<<<
@@ -6183,7 +6339,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__settled_value(struct __pyx_
     }
   }
 
-  /* "promise/promise.pyx":149
+  /* "promise/promise.pyx":145
  * 
  *     cdef object _settled_value(self, bint raise_ = False):
  *         assert not self._is_following             # <<<<<<<<<<<<<<
@@ -6194,12 +6350,12 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__settled_value(struct __pyx_
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((!(__pyx_v_self->_is_following != 0)) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 149, __pyx_L1_error)
+      __PYX_ERR(0, 145, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "promise/promise.pyx":150
+  /* "promise/promise.pyx":146
  *     cdef object _settled_value(self, bint raise_ = False):
  *         assert not self._is_following
  *         if self._state == State.FULFILLED:             # <<<<<<<<<<<<<<
@@ -6209,7 +6365,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__settled_value(struct __pyx_
   switch (__pyx_v_self->_state) {
     case __pyx_e_7promise_7promise_FULFILLED:
 
-    /* "promise/promise.pyx":151
+    /* "promise/promise.pyx":147
  *         assert not self._is_following
  *         if self._state == State.FULFILLED:
  *             return self._rejection_handler0             # <<<<<<<<<<<<<<
@@ -6221,7 +6377,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__settled_value(struct __pyx_
     __pyx_r = __pyx_v_self->_rejection_handler0;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":150
+    /* "promise/promise.pyx":146
  *     cdef object _settled_value(self, bint raise_ = False):
  *         assert not self._is_following
  *         if self._state == State.FULFILLED:             # <<<<<<<<<<<<<<
@@ -6231,7 +6387,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__settled_value(struct __pyx_
     break;
     case __pyx_e_7promise_7promise_REJECTED:
 
-    /* "promise/promise.pyx":153
+    /* "promise/promise.pyx":149
  *             return self._rejection_handler0
  *         elif self._state == State.REJECTED:
  *             if raise_:             # <<<<<<<<<<<<<<
@@ -6241,7 +6397,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__settled_value(struct __pyx_
     __pyx_t_1 = (__pyx_v_raise_ != 0);
     if (unlikely(__pyx_t_1)) {
 
-      /* "promise/promise.pyx":154
+      /* "promise/promise.pyx":150
  *         elif self._state == State.REJECTED:
  *             if raise_:
  *                 raise_val = self._fulfillment_handler0             # <<<<<<<<<<<<<<
@@ -6253,14 +6409,14 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__settled_value(struct __pyx_
       __pyx_v_raise_val = __pyx_t_2;
       __pyx_t_2 = 0;
 
-      /* "promise/promise.pyx":155
+      /* "promise/promise.pyx":151
  *             if raise_:
  *                 raise_val = self._fulfillment_handler0
  *                 raise raise_val.with_traceback(self._traceback)             # <<<<<<<<<<<<<<
  *             return self._fulfillment_handler0
  *         return None
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_raise_val, __pyx_n_s_with_traceback); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_raise_val, __pyx_n_s_with_traceback); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 151, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_4 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -6274,14 +6430,14 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__settled_value(struct __pyx_
       }
       __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_self->_traceback) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_self->_traceback);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 155, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 155, __pyx_L1_error)
+      __PYX_ERR(0, 151, __pyx_L1_error)
 
-      /* "promise/promise.pyx":153
+      /* "promise/promise.pyx":149
  *             return self._rejection_handler0
  *         elif self._state == State.REJECTED:
  *             if raise_:             # <<<<<<<<<<<<<<
@@ -6290,7 +6446,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__settled_value(struct __pyx_
  */
     }
 
-    /* "promise/promise.pyx":156
+    /* "promise/promise.pyx":152
  *                 raise_val = self._fulfillment_handler0
  *                 raise raise_val.with_traceback(self._traceback)
  *             return self._fulfillment_handler0             # <<<<<<<<<<<<<<
@@ -6302,7 +6458,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__settled_value(struct __pyx_
     __pyx_r = __pyx_v_self->_fulfillment_handler0;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":152
+    /* "promise/promise.pyx":148
  *         if self._state == State.FULFILLED:
  *             return self._rejection_handler0
  *         elif self._state == State.REJECTED:             # <<<<<<<<<<<<<<
@@ -6313,7 +6469,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__settled_value(struct __pyx_
     default: break;
   }
 
-  /* "promise/promise.pyx":157
+  /* "promise/promise.pyx":153
  *                 raise raise_val.with_traceback(self._traceback)
  *             return self._fulfillment_handler0
  *         return None             # <<<<<<<<<<<<<<
@@ -6324,7 +6480,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__settled_value(struct __pyx_
   __pyx_r = Py_None; __Pyx_INCREF(Py_None);
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":148
+  /* "promise/promise.pyx":144
  *             )
  * 
  *     cdef object _settled_value(self, bint raise_ = False):             # <<<<<<<<<<<<<<
@@ -6346,7 +6502,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__settled_value(struct __pyx_
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":159
+/* "promise/promise.pyx":155
  *         return None
  * 
  *     cdef void _fulfill(self, object value):             # <<<<<<<<<<<<<<
@@ -6364,7 +6520,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill(struct __pyx_obj_7promis
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_fulfill", 0);
 
-  /* "promise/promise.pyx":160
+  /* "promise/promise.pyx":156
  * 
  *     cdef void _fulfill(self, object value):
  *         if value is self:             # <<<<<<<<<<<<<<
@@ -6375,20 +6531,20 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill(struct __pyx_obj_7promis
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "promise/promise.pyx":161
+    /* "promise/promise.pyx":157
  *     cdef void _fulfill(self, object value):
  *         if value is self:
  *             self._reject(TypeError("Promise is self"))             # <<<<<<<<<<<<<<
  *             return
  *         self._state = State.FULFILLED
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (!(likely(__Pyx_PyException_Check(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 161, __pyx_L1_error)
+    if (!(likely(__Pyx_PyException_Check(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 157, __pyx_L1_error)
     ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_reject(__pyx_v_self, ((PyObject*)__pyx_t_3), NULL);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "promise/promise.pyx":162
+    /* "promise/promise.pyx":158
  *         if value is self:
  *             self._reject(TypeError("Promise is self"))
  *             return             # <<<<<<<<<<<<<<
@@ -6397,7 +6553,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill(struct __pyx_obj_7promis
  */
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":160
+    /* "promise/promise.pyx":156
  * 
  *     cdef void _fulfill(self, object value):
  *         if value is self:             # <<<<<<<<<<<<<<
@@ -6406,7 +6562,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill(struct __pyx_obj_7promis
  */
   }
 
-  /* "promise/promise.pyx":163
+  /* "promise/promise.pyx":159
  *             self._reject(TypeError("Promise is self"))
  *             return
  *         self._state = State.FULFILLED             # <<<<<<<<<<<<<<
@@ -6415,7 +6571,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill(struct __pyx_obj_7promis
  */
   __pyx_v_self->_state = __pyx_e_7promise_7promise_FULFILLED;
 
-  /* "promise/promise.pyx":164
+  /* "promise/promise.pyx":160
  *             return
  *         self._state = State.FULFILLED
  *         self._rejection_handler0 = value             # <<<<<<<<<<<<<<
@@ -6428,7 +6584,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill(struct __pyx_obj_7promis
   __Pyx_DECREF(__pyx_v_self->_rejection_handler0);
   __pyx_v_self->_rejection_handler0 = __pyx_v_value;
 
-  /* "promise/promise.pyx":166
+  /* "promise/promise.pyx":162
  *         self._rejection_handler0 = value
  * 
  *         if self._length > 0:             # <<<<<<<<<<<<<<
@@ -6438,7 +6594,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill(struct __pyx_obj_7promis
   __pyx_t_2 = ((__pyx_v_self->_length > 0) != 0);
   if (__pyx_t_2) {
 
-    /* "promise/promise.pyx":167
+    /* "promise/promise.pyx":163
  * 
  *         if self._length > 0:
  *             if self._is_async_guaranteed:             # <<<<<<<<<<<<<<
@@ -6448,7 +6604,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill(struct __pyx_obj_7promis
     __pyx_t_2 = (__pyx_v_self->_is_async_guaranteed != 0);
     if (__pyx_t_2) {
 
-      /* "promise/promise.pyx":168
+      /* "promise/promise.pyx":164
  *         if self._length > 0:
  *             if self._is_async_guaranteed:
  *                 self._settle_promises()             # <<<<<<<<<<<<<<
@@ -6457,7 +6613,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill(struct __pyx_obj_7promis
  */
       ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_settle_promises(__pyx_v_self);
 
-      /* "promise/promise.pyx":167
+      /* "promise/promise.pyx":163
  * 
  *         if self._length > 0:
  *             if self._is_async_guaranteed:             # <<<<<<<<<<<<<<
@@ -6467,7 +6623,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill(struct __pyx_obj_7promis
       goto __pyx_L5;
     }
 
-    /* "promise/promise.pyx":170
+    /* "promise/promise.pyx":166
  *                 self._settle_promises()
  *             else:
  *                 async_instance.settle_promises(self)             # <<<<<<<<<<<<<<
@@ -6479,7 +6635,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill(struct __pyx_obj_7promis
     }
     __pyx_L5:;
 
-    /* "promise/promise.pyx":166
+    /* "promise/promise.pyx":162
  *         self._rejection_handler0 = value
  * 
  *         if self._length > 0:             # <<<<<<<<<<<<<<
@@ -6488,7 +6644,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill(struct __pyx_obj_7promis
  */
   }
 
-  /* "promise/promise.pyx":159
+  /* "promise/promise.pyx":155
  *         return None
  * 
  *     cdef void _fulfill(self, object value):             # <<<<<<<<<<<<<<
@@ -6505,7 +6661,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill(struct __pyx_obj_7promis
   __Pyx_RefNannyFinishContext();
 }
 
-/* "promise/promise.pyx":172
+/* "promise/promise.pyx":168
  *                 async_instance.settle_promises(self)
  * 
  *     cdef void _reject(self, Exception reason, object traceback = None):             # <<<<<<<<<<<<<<
@@ -6528,7 +6684,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
     }
   }
 
-  /* "promise/promise.pyx":173
+  /* "promise/promise.pyx":169
  * 
  *     cdef void _reject(self, Exception reason, object traceback = None):
  *         self._state = State.REJECTED             # <<<<<<<<<<<<<<
@@ -6537,7 +6693,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
  */
   __pyx_v_self->_state = __pyx_e_7promise_7promise_REJECTED;
 
-  /* "promise/promise.pyx":174
+  /* "promise/promise.pyx":170
  *     cdef void _reject(self, Exception reason, object traceback = None):
  *         self._state = State.REJECTED
  *         self._fulfillment_handler0 = reason             # <<<<<<<<<<<<<<
@@ -6550,7 +6706,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
   __Pyx_DECREF(__pyx_v_self->_fulfillment_handler0);
   __pyx_v_self->_fulfillment_handler0 = __pyx_v_reason;
 
-  /* "promise/promise.pyx":175
+  /* "promise/promise.pyx":171
  *         self._state = State.REJECTED
  *         self._fulfillment_handler0 = reason
  *         self._traceback = traceback             # <<<<<<<<<<<<<<
@@ -6563,7 +6719,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
   __Pyx_DECREF(__pyx_v_self->_traceback);
   __pyx_v_self->_traceback = __pyx_v_traceback;
 
-  /* "promise/promise.pyx":177
+  /* "promise/promise.pyx":173
  *         self._traceback = traceback
  * 
  *         if self._is_final:             # <<<<<<<<<<<<<<
@@ -6573,7 +6729,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
   __pyx_t_1 = (__pyx_v_self->_is_final != 0);
   if (__pyx_t_1) {
 
-    /* "promise/promise.pyx":178
+    /* "promise/promise.pyx":174
  * 
  *         if self._is_final:
  *             assert self._length == 0             # <<<<<<<<<<<<<<
@@ -6584,24 +6740,24 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
     if (unlikely(!Py_OptimizeFlag)) {
       if (unlikely(!((__pyx_v_self->_length == 0) != 0))) {
         PyErr_SetNone(PyExc_AssertionError);
-        __PYX_ERR(0, 178, __pyx_L1_error)
+        __PYX_ERR(0, 174, __pyx_L1_error)
       }
     }
     #endif
 
-    /* "promise/promise.pyx":179
+    /* "promise/promise.pyx":175
  *         if self._is_final:
  *             assert self._length == 0
  *             async_instance.fatal_error(reason, self.get_scheduler())             # <<<<<<<<<<<<<<
  *             return
  * 
  */
-    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->get_scheduler(__pyx_v_self, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->get_scheduler(__pyx_v_self, 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 175, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     ((struct __pyx_vtabstruct_7promise_6async__Async *)__pyx_v_7promise_7promise_async_instance->__pyx_vtab)->fatal_error(__pyx_v_7promise_7promise_async_instance, __pyx_v_reason, ((struct __pyx_obj_7promise_10schedulers_4base_Scheduler *)__pyx_t_2), 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "promise/promise.pyx":180
+    /* "promise/promise.pyx":176
  *             assert self._length == 0
  *             async_instance.fatal_error(reason, self.get_scheduler())
  *             return             # <<<<<<<<<<<<<<
@@ -6610,7 +6766,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
  */
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":177
+    /* "promise/promise.pyx":173
  *         self._traceback = traceback
  * 
  *         if self._is_final:             # <<<<<<<<<<<<<<
@@ -6619,7 +6775,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
  */
   }
 
-  /* "promise/promise.pyx":182
+  /* "promise/promise.pyx":178
  *             return
  * 
  *         if self._length > 0:             # <<<<<<<<<<<<<<
@@ -6629,7 +6785,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
   __pyx_t_1 = ((__pyx_v_self->_length > 0) != 0);
   if (__pyx_t_1) {
 
-    /* "promise/promise.pyx":183
+    /* "promise/promise.pyx":179
  * 
  *         if self._length > 0:
  *             async_instance.settle_promises(self)             # <<<<<<<<<<<<<<
@@ -6638,7 +6794,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
  */
     ((struct __pyx_vtabstruct_7promise_6async__Async *)__pyx_v_7promise_7promise_async_instance->__pyx_vtab)->settle_promises(__pyx_v_7promise_7promise_async_instance, __pyx_v_self);
 
-    /* "promise/promise.pyx":182
+    /* "promise/promise.pyx":178
  *             return
  * 
  *         if self._length > 0:             # <<<<<<<<<<<<<<
@@ -6647,7 +6803,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
  */
   }
 
-  /* "promise/promise.pyx":185
+  /* "promise/promise.pyx":181
  *             async_instance.settle_promises(self)
  * 
  *         if self._is_async_guaranteed:             # <<<<<<<<<<<<<<
@@ -6657,7 +6813,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
   __pyx_t_1 = (__pyx_v_self->_is_async_guaranteed != 0);
   if (__pyx_t_1) {
 
-    /* "promise/promise.pyx":186
+    /* "promise/promise.pyx":182
  * 
  *         if self._is_async_guaranteed:
  *             self._settle_promises()             # <<<<<<<<<<<<<<
@@ -6666,7 +6822,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
  */
     ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_settle_promises(__pyx_v_self);
 
-    /* "promise/promise.pyx":185
+    /* "promise/promise.pyx":181
  *             async_instance.settle_promises(self)
  * 
  *         if self._is_async_guaranteed:             # <<<<<<<<<<<<<<
@@ -6676,7 +6832,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
     goto __pyx_L5;
   }
 
-  /* "promise/promise.pyx":188
+  /* "promise/promise.pyx":184
  *             self._settle_promises()
  *         else:
  *             async_instance.settle_promises(self)             # <<<<<<<<<<<<<<
@@ -6688,7 +6844,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
   }
   __pyx_L5:;
 
-  /* "promise/promise.pyx":172
+  /* "promise/promise.pyx":168
  *                 async_instance.settle_promises(self)
  * 
  *     cdef void _reject(self, Exception reason, object traceback = None):             # <<<<<<<<<<<<<<
@@ -6705,7 +6861,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
   __Pyx_RefNannyFinishContext();
 }
 
-/* "promise/promise.pyx":190
+/* "promise/promise.pyx":186
  *             async_instance.settle_promises(self)
  * 
  *     cdef void _reject_callback(             # <<<<<<<<<<<<<<
@@ -6715,7 +6871,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject(struct __pyx_obj_7promise
 
 static void __pyx_f_7promise_7promise_7Promise__reject_callback(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_reason, struct __pyx_opt_args_7promise_7promise_7Promise__reject_callback *__pyx_optional_args) {
 
-  /* "promise/promise.pyx":193
+  /* "promise/promise.pyx":189
  *             self,
  *             Exception reason,
  *             object traceback = None             # <<<<<<<<<<<<<<
@@ -6732,7 +6888,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject_callback(struct __pyx_obj
     }
   }
 
-  /* "promise/promise.pyx":195
+  /* "promise/promise.pyx":191
  *             object traceback = None
  *     ):
  *         self._reject(reason, traceback)             # <<<<<<<<<<<<<<
@@ -6743,7 +6899,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject_callback(struct __pyx_obj
   __pyx_t_1.traceback = __pyx_v_traceback;
   ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_reject(__pyx_v_self, __pyx_v_reason, &__pyx_t_1); 
 
-  /* "promise/promise.pyx":190
+  /* "promise/promise.pyx":186
  *             async_instance.settle_promises(self)
  * 
  *     cdef void _reject_callback(             # <<<<<<<<<<<<<<
@@ -6755,7 +6911,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject_callback(struct __pyx_obj
   __Pyx_RefNannyFinishContext();
 }
 
-/* "promise/promise.pyx":197
+/* "promise/promise.pyx":193
  *         self._reject(reason, traceback)
  * 
  *     cdef void _clear_callback_data_index_at(self, int index):             # <<<<<<<<<<<<<<
@@ -6770,7 +6926,7 @@ static void __pyx_f_7promise_7promise_7Promise__clear_callback_data_index_at(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_clear_callback_data_index_at", 0);
 
-  /* "promise/promise.pyx":198
+  /* "promise/promise.pyx":194
  * 
  *     cdef void _clear_callback_data_index_at(self, int index):
  *         assert not self._is_following             # <<<<<<<<<<<<<<
@@ -6781,12 +6937,12 @@ static void __pyx_f_7promise_7promise_7Promise__clear_callback_data_index_at(str
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((!(__pyx_v_self->_is_following != 0)) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 198, __pyx_L1_error)
+      __PYX_ERR(0, 194, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "promise/promise.pyx":199
+  /* "promise/promise.pyx":195
  *     cdef void _clear_callback_data_index_at(self, int index):
  *         assert not self._is_following
  *         assert index >= 0             # <<<<<<<<<<<<<<
@@ -6797,12 +6953,12 @@ static void __pyx_f_7promise_7promise_7Promise__clear_callback_data_index_at(str
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_index >= 0) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 199, __pyx_L1_error)
+      __PYX_ERR(0, 195, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "promise/promise.pyx":200
+  /* "promise/promise.pyx":196
  *         assert not self._is_following
  *         assert index >= 0
  *         self._promises[index] = None             # <<<<<<<<<<<<<<
@@ -6811,11 +6967,11 @@ static void __pyx_f_7promise_7promise_7Promise__clear_callback_data_index_at(str
  */
   if (unlikely(__pyx_v_self->_promises == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 200, __pyx_L1_error)
+    __PYX_ERR(0, 196, __pyx_L1_error)
   }
-  if (unlikely(__Pyx_SetItemInt(__pyx_v_self->_promises, __pyx_v_index, Py_None, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 200, __pyx_L1_error)
+  if (unlikely(__Pyx_SetItemInt(__pyx_v_self->_promises, __pyx_v_index, Py_None, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 196, __pyx_L1_error)
 
-  /* "promise/promise.pyx":201
+  /* "promise/promise.pyx":197
  *         assert index >= 0
  *         self._promises[index] = None
  *         self._rejection_handlers[index] = None             # <<<<<<<<<<<<<<
@@ -6824,11 +6980,11 @@ static void __pyx_f_7promise_7promise_7Promise__clear_callback_data_index_at(str
  */
   if (unlikely(__pyx_v_self->_rejection_handlers == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 201, __pyx_L1_error)
+    __PYX_ERR(0, 197, __pyx_L1_error)
   }
-  if (unlikely(__Pyx_SetItemInt(__pyx_v_self->_rejection_handlers, __pyx_v_index, Py_None, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 201, __pyx_L1_error)
+  if (unlikely(__Pyx_SetItemInt(__pyx_v_self->_rejection_handlers, __pyx_v_index, Py_None, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 197, __pyx_L1_error)
 
-  /* "promise/promise.pyx":202
+  /* "promise/promise.pyx":198
  *         self._promises[index] = None
  *         self._rejection_handlers[index] = None
  *         self._fulfillment_handlers[index] = None             # <<<<<<<<<<<<<<
@@ -6837,11 +6993,11 @@ static void __pyx_f_7promise_7promise_7Promise__clear_callback_data_index_at(str
  */
   if (unlikely(__pyx_v_self->_fulfillment_handlers == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 202, __pyx_L1_error)
+    __PYX_ERR(0, 198, __pyx_L1_error)
   }
-  if (unlikely(__Pyx_SetItemInt(__pyx_v_self->_fulfillment_handlers, __pyx_v_index, Py_None, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
+  if (unlikely(__Pyx_SetItemInt(__pyx_v_self->_fulfillment_handlers, __pyx_v_index, Py_None, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 198, __pyx_L1_error)
 
-  /* "promise/promise.pyx":197
+  /* "promise/promise.pyx":193
  *         self._reject(reason, traceback)
  * 
  *     cdef void _clear_callback_data_index_at(self, int index):             # <<<<<<<<<<<<<<
@@ -6857,7 +7013,7 @@ static void __pyx_f_7promise_7promise_7Promise__clear_callback_data_index_at(str
   __Pyx_RefNannyFinishContext();
 }
 
-/* "promise/promise.pyx":204
+/* "promise/promise.pyx":200
  *         self._fulfillment_handlers[index] = None
  * 
  *     cdef void _fulfill_promises(self, int length, object value):             # <<<<<<<<<<<<<<
@@ -6879,7 +7035,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill_promises(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_fulfill_promises", 0);
 
-  /* "promise/promise.pyx":208
+  /* "promise/promise.pyx":204
  *         cdef int i
  * 
  *         for i in range(length - 1):             # <<<<<<<<<<<<<<
@@ -6891,7 +7047,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill_promises(struct __pyx_ob
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "promise/promise.pyx":209
+    /* "promise/promise.pyx":205
  * 
  *         for i in range(length - 1):
  *             handler = self._fulfillment_handlers[i]             # <<<<<<<<<<<<<<
@@ -6900,14 +7056,14 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill_promises(struct __pyx_ob
  */
     if (unlikely(__pyx_v_self->_fulfillment_handlers == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 209, __pyx_L1_error)
+      __PYX_ERR(0, 205, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->_fulfillment_handlers, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 209, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->_fulfillment_handlers, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_XDECREF_SET(__pyx_v_handler, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "promise/promise.pyx":210
+    /* "promise/promise.pyx":206
  *         for i in range(length - 1):
  *             handler = self._fulfillment_handlers[i]
  *             promise = self._promises[i]             # <<<<<<<<<<<<<<
@@ -6916,15 +7072,15 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill_promises(struct __pyx_ob
  */
     if (unlikely(__pyx_v_self->_promises == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 210, __pyx_L1_error)
+      __PYX_ERR(0, 206, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->_promises, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 210, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->_promises, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 206, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 210, __pyx_L1_error)
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 206, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_promise, ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "promise/promise.pyx":211
+    /* "promise/promise.pyx":207
  *             handler = self._fulfillment_handlers[i]
  *             promise = self._promises[i]
  *             self._clear_callback_data_index_at(i)             # <<<<<<<<<<<<<<
@@ -6933,7 +7089,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill_promises(struct __pyx_ob
  */
     ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_clear_callback_data_index_at(__pyx_v_self, __pyx_v_i);
 
-    /* "promise/promise.pyx":212
+    /* "promise/promise.pyx":208
  *             promise = self._promises[i]
  *             self._clear_callback_data_index_at(i)
  *             self._settle_promise(promise, handler, value, None)             # <<<<<<<<<<<<<<
@@ -6943,7 +7099,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill_promises(struct __pyx_ob
     ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_settle_promise(__pyx_v_self, __pyx_v_promise, __pyx_v_handler, __pyx_v_value, Py_None);
   }
 
-  /* "promise/promise.pyx":204
+  /* "promise/promise.pyx":200
  *         self._fulfillment_handlers[index] = None
  * 
  *     cdef void _fulfill_promises(self, int length, object value):             # <<<<<<<<<<<<<<
@@ -6962,7 +7118,7 @@ static void __pyx_f_7promise_7promise_7Promise__fulfill_promises(struct __pyx_ob
   __Pyx_RefNannyFinishContext();
 }
 
-/* "promise/promise.pyx":214
+/* "promise/promise.pyx":210
  *             self._settle_promise(promise, handler, value, None)
  * 
  *     cdef void _reject_promises(self, int length, Exception reason):             # <<<<<<<<<<<<<<
@@ -6984,7 +7140,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject_promises(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_reject_promises", 0);
 
-  /* "promise/promise.pyx":218
+  /* "promise/promise.pyx":214
  *         cdef int i
  * 
  *         for i in range(length - 1):             # <<<<<<<<<<<<<<
@@ -6996,7 +7152,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject_promises(struct __pyx_obj
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "promise/promise.pyx":219
+    /* "promise/promise.pyx":215
  * 
  *         for i in range(length - 1):
  *             handler = self._rejection_handlers[i]             # <<<<<<<<<<<<<<
@@ -7005,14 +7161,14 @@ static void __pyx_f_7promise_7promise_7Promise__reject_promises(struct __pyx_obj
  */
     if (unlikely(__pyx_v_self->_rejection_handlers == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 219, __pyx_L1_error)
+      __PYX_ERR(0, 215, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->_rejection_handlers, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 219, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->_rejection_handlers, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 215, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_XDECREF_SET(__pyx_v_handler, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "promise/promise.pyx":220
+    /* "promise/promise.pyx":216
  *         for i in range(length - 1):
  *             handler = self._rejection_handlers[i]
  *             promise = self._promises[i]             # <<<<<<<<<<<<<<
@@ -7021,15 +7177,15 @@ static void __pyx_f_7promise_7promise_7Promise__reject_promises(struct __pyx_obj
  */
     if (unlikely(__pyx_v_self->_promises == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 220, __pyx_L1_error)
+      __PYX_ERR(0, 216, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->_promises, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 220, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->_promises, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 216, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 220, __pyx_L1_error)
+    if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 216, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_promise, ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "promise/promise.pyx":221
+    /* "promise/promise.pyx":217
  *             handler = self._rejection_handlers[i]
  *             promise = self._promises[i]
  *             self._clear_callback_data_index_at(i)             # <<<<<<<<<<<<<<
@@ -7038,7 +7194,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject_promises(struct __pyx_obj
  */
     ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_clear_callback_data_index_at(__pyx_v_self, __pyx_v_i);
 
-    /* "promise/promise.pyx":222
+    /* "promise/promise.pyx":218
  *             promise = self._promises[i]
  *             self._clear_callback_data_index_at(i)
  *             self._settle_promise(promise, handler, reason, None)             # <<<<<<<<<<<<<<
@@ -7048,7 +7204,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject_promises(struct __pyx_obj
     ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_settle_promise(__pyx_v_self, __pyx_v_promise, __pyx_v_handler, __pyx_v_reason, Py_None);
   }
 
-  /* "promise/promise.pyx":214
+  /* "promise/promise.pyx":210
  *             self._settle_promise(promise, handler, value, None)
  * 
  *     cdef void _reject_promises(self, int length, Exception reason):             # <<<<<<<<<<<<<<
@@ -7067,7 +7223,7 @@ static void __pyx_f_7promise_7promise_7Promise__reject_promises(struct __pyx_obj
   __Pyx_RefNannyFinishContext();
 }
 
-/* "promise/promise.pyx":224
+/* "promise/promise.pyx":220
  *             self._settle_promise(promise, handler, reason, None)
  * 
  *     cdef void _settle_promise(self, Promise promise, handler, value, traceback):             # <<<<<<<<<<<<<<
@@ -7090,7 +7246,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_settle_promise", 0);
 
-  /* "promise/promise.pyx":225
+  /* "promise/promise.pyx":221
  * 
  *     cdef void _settle_promise(self, Promise promise, handler, value, traceback):
  *         assert not self._is_following             # <<<<<<<<<<<<<<
@@ -7101,12 +7257,12 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((!(__pyx_v_self->_is_following != 0)) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 225, __pyx_L1_error)
+      __PYX_ERR(0, 221, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "promise/promise.pyx":226
+  /* "promise/promise.pyx":222
  *     cdef void _settle_promise(self, Promise promise, handler, value, traceback):
  *         assert not self._is_following
  *         cdef bint is_promise = isinstance(promise, Promise), \             # <<<<<<<<<<<<<<
@@ -7116,7 +7272,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
   __pyx_t_1 = __Pyx_TypeCheck(((PyObject *)__pyx_v_promise), __pyx_ptype_7promise_7promise_Promise); 
   __pyx_v_is_promise = __pyx_t_1;
 
-  /* "promise/promise.pyx":227
+  /* "promise/promise.pyx":223
  *         assert not self._is_following
  *         cdef bint is_promise = isinstance(promise, Promise), \
  *             async_guaranteed = self._is_async_guaranteed             # <<<<<<<<<<<<<<
@@ -7126,18 +7282,18 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
   __pyx_t_1 = __pyx_v_self->_is_async_guaranteed;
   __pyx_v_async_guaranteed = __pyx_t_1;
 
-  /* "promise/promise.pyx":229
+  /* "promise/promise.pyx":225
  *             async_guaranteed = self._is_async_guaranteed
  * 
  *         if callable(handler):             # <<<<<<<<<<<<<<
  *             if not is_promise:
  *                 handler(value)
  */
-  __pyx_t_1 = __Pyx_PyCallable_Check(__pyx_v_handler); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 229, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyCallable_Check(__pyx_v_handler); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 225, __pyx_L1_error)
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "promise/promise.pyx":230
+    /* "promise/promise.pyx":226
  * 
  *         if callable(handler):
  *             if not is_promise:             # <<<<<<<<<<<<<<
@@ -7147,7 +7303,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
     __pyx_t_2 = ((!(__pyx_v_is_promise != 0)) != 0);
     if (__pyx_t_2) {
 
-      /* "promise/promise.pyx":231
+      /* "promise/promise.pyx":227
  *         if callable(handler):
  *             if not is_promise:
  *                 handler(value)             # <<<<<<<<<<<<<<
@@ -7167,12 +7323,12 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
       }
       __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_v_value) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_value);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 231, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "promise/promise.pyx":230
+      /* "promise/promise.pyx":226
  * 
  *         if callable(handler):
  *             if not is_promise:             # <<<<<<<<<<<<<<
@@ -7182,7 +7338,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
       goto __pyx_L4;
     }
 
-    /* "promise/promise.pyx":233
+    /* "promise/promise.pyx":229
  *                 handler(value)
  *             else:
  *                 if async_guaranteed:             # <<<<<<<<<<<<<<
@@ -7193,7 +7349,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
       __pyx_t_2 = (__pyx_v_async_guaranteed != 0);
       if (__pyx_t_2) {
 
-        /* "promise/promise.pyx":234
+        /* "promise/promise.pyx":230
  *             else:
  *                 if async_guaranteed:
  *                     promise._is_async_guaranteed = True             # <<<<<<<<<<<<<<
@@ -7202,7 +7358,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
  */
         __pyx_v_promise->_is_async_guaranteed = 1;
 
-        /* "promise/promise.pyx":233
+        /* "promise/promise.pyx":229
  *                 handler(value)
  *             else:
  *                 if async_guaranteed:             # <<<<<<<<<<<<<<
@@ -7211,7 +7367,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
  */
       }
 
-      /* "promise/promise.pyx":235
+      /* "promise/promise.pyx":231
  *                 if async_guaranteed:
  *                     promise._is_async_guaranteed = True
  *                 self._settle_promise_from_handler(             # <<<<<<<<<<<<<<
@@ -7222,7 +7378,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
     }
     __pyx_L4:;
 
-    /* "promise/promise.pyx":229
+    /* "promise/promise.pyx":225
  *             async_guaranteed = self._is_async_guaranteed
  * 
  *         if callable(handler):             # <<<<<<<<<<<<<<
@@ -7232,7 +7388,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
     goto __pyx_L3;
   }
 
-  /* "promise/promise.pyx":238
+  /* "promise/promise.pyx":234
  *                     handler, value, promise,
  *                 )
  *         elif is_promise:             # <<<<<<<<<<<<<<
@@ -7242,7 +7398,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
   __pyx_t_2 = (__pyx_v_is_promise != 0);
   if (__pyx_t_2) {
 
-    /* "promise/promise.pyx":239
+    /* "promise/promise.pyx":235
  *                 )
  *         elif is_promise:
  *             if async_guaranteed:             # <<<<<<<<<<<<<<
@@ -7252,7 +7408,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
     __pyx_t_2 = (__pyx_v_async_guaranteed != 0);
     if (__pyx_t_2) {
 
-      /* "promise/promise.pyx":240
+      /* "promise/promise.pyx":236
  *         elif is_promise:
  *             if async_guaranteed:
  *                 promise._is_async_guaranteed = True             # <<<<<<<<<<<<<<
@@ -7261,7 +7417,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
  */
       __pyx_v_promise->_is_async_guaranteed = 1;
 
-      /* "promise/promise.pyx":239
+      /* "promise/promise.pyx":235
  *                 )
  *         elif is_promise:
  *             if async_guaranteed:             # <<<<<<<<<<<<<<
@@ -7270,7 +7426,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
  */
     }
 
-    /* "promise/promise.pyx":241
+    /* "promise/promise.pyx":237
  *             if async_guaranteed:
  *                 promise._is_async_guaranteed = True
  *             if self._state == State.FULFILLED:             # <<<<<<<<<<<<<<
@@ -7280,7 +7436,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
     __pyx_t_2 = ((__pyx_v_self->_state == __pyx_e_7promise_7promise_FULFILLED) != 0);
     if (__pyx_t_2) {
 
-      /* "promise/promise.pyx":242
+      /* "promise/promise.pyx":238
  *                 promise._is_async_guaranteed = True
  *             if self._state == State.FULFILLED:
  *                 promise._fulfill(value)             # <<<<<<<<<<<<<<
@@ -7289,7 +7445,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
  */
       ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_promise->__pyx_vtab)->_fulfill(__pyx_v_promise, __pyx_v_value);
 
-      /* "promise/promise.pyx":241
+      /* "promise/promise.pyx":237
  *             if async_guaranteed:
  *                 promise._is_async_guaranteed = True
  *             if self._state == State.FULFILLED:             # <<<<<<<<<<<<<<
@@ -7299,7 +7455,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
       goto __pyx_L7;
     }
 
-    /* "promise/promise.pyx":244
+    /* "promise/promise.pyx":240
  *                 promise._fulfill(value)
  *             else:
  *                 promise._reject(value, self._traceback)             # <<<<<<<<<<<<<<
@@ -7307,7 +7463,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
  *     cdef void _settle_promise0(self, handler, value, traceback):
  */
     /*else*/ {
-      if (!(likely(__Pyx_PyException_Check(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 244, __pyx_L1_error)
+      if (!(likely(__Pyx_PyException_Check(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 240, __pyx_L1_error)
       __pyx_t_3 = __pyx_v_self->_traceback;
       __Pyx_INCREF(__pyx_t_3);
       __pyx_t_6.__pyx_n = 1;
@@ -7317,7 +7473,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
     }
     __pyx_L7:;
 
-    /* "promise/promise.pyx":238
+    /* "promise/promise.pyx":234
  *                     handler, value, promise,
  *                 )
  *         elif is_promise:             # <<<<<<<<<<<<<<
@@ -7327,7 +7483,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
   }
   __pyx_L3:;
 
-  /* "promise/promise.pyx":224
+  /* "promise/promise.pyx":220
  *             self._settle_promise(promise, handler, reason, None)
  * 
  *     cdef void _settle_promise(self, Promise promise, handler, value, traceback):             # <<<<<<<<<<<<<<
@@ -7346,7 +7502,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise(struct __pyx_obj_
   __Pyx_RefNannyFinishContext();
 }
 
-/* "promise/promise.pyx":246
+/* "promise/promise.pyx":242
  *                 promise._reject(value, self._traceback)
  * 
  *     cdef void _settle_promise0(self, handler, value, traceback):             # <<<<<<<<<<<<<<
@@ -7360,7 +7516,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise0(struct __pyx_obj
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("_settle_promise0", 0);
 
-  /* "promise/promise.pyx":247
+  /* "promise/promise.pyx":243
  * 
  *     cdef void _settle_promise0(self, handler, value, traceback):
  *         cdef Promise promise = self._promise0             # <<<<<<<<<<<<<<
@@ -7372,7 +7528,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise0(struct __pyx_obj
   __pyx_v_promise = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":248
+  /* "promise/promise.pyx":244
  *     cdef void _settle_promise0(self, handler, value, traceback):
  *         cdef Promise promise = self._promise0
  *         self._promise0 = None             # <<<<<<<<<<<<<<
@@ -7385,7 +7541,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise0(struct __pyx_obj
   __Pyx_DECREF(((PyObject *)__pyx_v_self->_promise0));
   __pyx_v_self->_promise0 = ((struct __pyx_obj_7promise_7promise_Promise *)Py_None);
 
-  /* "promise/promise.pyx":249
+  /* "promise/promise.pyx":245
  *         cdef Promise promise = self._promise0
  *         self._promise0 = None
  *         self._settle_promise(promise, handler, value, traceback)             # <<<<<<<<<<<<<<
@@ -7394,7 +7550,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise0(struct __pyx_obj
  */
   ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_settle_promise(__pyx_v_self, __pyx_v_promise, __pyx_v_handler, __pyx_v_value, __pyx_v_traceback);
 
-  /* "promise/promise.pyx":246
+  /* "promise/promise.pyx":242
  *                 promise._reject(value, self._traceback)
  * 
  *     cdef void _settle_promise0(self, handler, value, traceback):             # <<<<<<<<<<<<<<
@@ -7407,7 +7563,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise0(struct __pyx_obj
   __Pyx_RefNannyFinishContext();
 }
 
-/* "promise/promise.pyx":251
+/* "promise/promise.pyx":247
  *         self._settle_promise(promise, handler, value, traceback)
  * 
  *     cdef void _settle_promise_from_handler(self, handler, value, Promise promise):             # <<<<<<<<<<<<<<
@@ -7428,19 +7584,19 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise_from_handler(CYTH
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_settle_promise_from_handler", 0);
 
-  /* "promise/promise.pyx":252
+  /* "promise/promise.pyx":248
  * 
  *     cdef void _settle_promise_from_handler(self, handler, value, Promise promise):
  *         cdef TryCatchResult result = try_catch(handler, value)             # <<<<<<<<<<<<<<
  * 
  *         if result.exc is not None:
  */
-  __pyx_t_1 = ((PyObject *)__pyx_f_7promise_7promise_try_catch(__pyx_v_handler, __pyx_v_value)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 252, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7promise_7promise_try_catch(__pyx_v_handler, __pyx_v_value)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_result = ((struct __pyx_obj_7promise_7promise_TryCatchResult *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":254
+  /* "promise/promise.pyx":250
  *         cdef TryCatchResult result = try_catch(handler, value)
  * 
  *         if result.exc is not None:             # <<<<<<<<<<<<<<
@@ -7451,7 +7607,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise_from_handler(CYTH
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
 
-    /* "promise/promise.pyx":255
+    /* "promise/promise.pyx":251
  * 
  *         if result.exc is not None:
  *             promise._reject_callback(result.exc, result.tb)             # <<<<<<<<<<<<<<
@@ -7468,7 +7624,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise_from_handler(CYTH
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "promise/promise.pyx":254
+    /* "promise/promise.pyx":250
  *         cdef TryCatchResult result = try_catch(handler, value)
  * 
  *         if result.exc is not None:             # <<<<<<<<<<<<<<
@@ -7478,7 +7634,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise_from_handler(CYTH
     goto __pyx_L3;
   }
 
-  /* "promise/promise.pyx":257
+  /* "promise/promise.pyx":253
  *             promise._reject_callback(result.exc, result.tb)
  *         else:
  *             promise._resolve_callback(result.value)             # <<<<<<<<<<<<<<
@@ -7493,7 +7649,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise_from_handler(CYTH
   }
   __pyx_L3:;
 
-  /* "promise/promise.pyx":251
+  /* "promise/promise.pyx":247
  *         self._settle_promise(promise, handler, value, traceback)
  * 
  *     cdef void _settle_promise_from_handler(self, handler, value, Promise promise):             # <<<<<<<<<<<<<<
@@ -7512,7 +7668,7 @@ static void __pyx_f_7promise_7promise_7Promise__settle_promise_from_handler(CYTH
   __Pyx_RefNannyFinishContext();
 }
 
-/* "promise/promise.pyx":259
+/* "promise/promise.pyx":255
  *             promise._resolve_callback(result.value)
  * 
  *     cdef void _migrate_callback0(self, Promise follower):             # <<<<<<<<<<<<<<
@@ -7531,7 +7687,7 @@ static void __pyx_f_7promise_7promise_7Promise__migrate_callback0(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_migrate_callback0", 0);
 
-  /* "promise/promise.pyx":261
+  /* "promise/promise.pyx":257
  *     cdef void _migrate_callback0(self, Promise follower):
  *         self._add_callbacks(
  *             follower._fulfillment_handler0,             # <<<<<<<<<<<<<<
@@ -7541,7 +7697,7 @@ static void __pyx_f_7promise_7promise_7Promise__migrate_callback0(struct __pyx_o
   __pyx_t_1 = __pyx_v_follower->_fulfillment_handler0;
   __Pyx_INCREF(__pyx_t_1);
 
-  /* "promise/promise.pyx":262
+  /* "promise/promise.pyx":258
  *         self._add_callbacks(
  *             follower._fulfillment_handler0,
  *             follower._rejection_handler0,             # <<<<<<<<<<<<<<
@@ -7551,7 +7707,7 @@ static void __pyx_f_7promise_7promise_7Promise__migrate_callback0(struct __pyx_o
   __pyx_t_2 = __pyx_v_follower->_rejection_handler0;
   __Pyx_INCREF(__pyx_t_2);
 
-  /* "promise/promise.pyx":263
+  /* "promise/promise.pyx":259
  *             follower._fulfillment_handler0,
  *             follower._rejection_handler0,
  *             follower._promise0,             # <<<<<<<<<<<<<<
@@ -7561,19 +7717,19 @@ static void __pyx_f_7promise_7promise_7Promise__migrate_callback0(struct __pyx_o
   __pyx_t_3 = ((PyObject *)__pyx_v_follower->_promise0);
   __Pyx_INCREF(__pyx_t_3);
 
-  /* "promise/promise.pyx":260
+  /* "promise/promise.pyx":256
  * 
  *     cdef void _migrate_callback0(self, Promise follower):
  *         self._add_callbacks(             # <<<<<<<<<<<<<<
  *             follower._fulfillment_handler0,
  *             follower._rejection_handler0,
  */
-  __pyx_t_4 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_add_callbacks(__pyx_v_self, __pyx_t_1, __pyx_t_2, ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_3)); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 260, __pyx_L1_error)
+  __pyx_t_4 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_add_callbacks(__pyx_v_self, __pyx_t_1, __pyx_t_2, ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_3)); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 256, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "promise/promise.pyx":259
+  /* "promise/promise.pyx":255
  *             promise._resolve_callback(result.value)
  * 
  *     cdef void _migrate_callback0(self, Promise follower):             # <<<<<<<<<<<<<<
@@ -7592,7 +7748,7 @@ static void __pyx_f_7promise_7promise_7Promise__migrate_callback0(struct __pyx_o
   __Pyx_RefNannyFinishContext();
 }
 
-/* "promise/promise.pyx":266
+/* "promise/promise.pyx":262
  *         )
  * 
  *     cdef void _migrate_callback_at(self, Promise follower, int index):             # <<<<<<<<<<<<<<
@@ -7611,7 +7767,7 @@ static void __pyx_f_7promise_7promise_7Promise__migrate_callback_at(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_migrate_callback_at", 0);
 
-  /* "promise/promise.pyx":268
+  /* "promise/promise.pyx":264
  *     cdef void _migrate_callback_at(self, Promise follower, int index):
  *         self._add_callbacks(
  *             follower._fulfillment_handlers[index],             # <<<<<<<<<<<<<<
@@ -7620,12 +7776,12 @@ static void __pyx_f_7promise_7promise_7Promise__migrate_callback_at(struct __pyx
  */
   if (unlikely(__pyx_v_follower->_fulfillment_handlers == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 268, __pyx_L1_error)
+    __PYX_ERR(0, 264, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_follower->_fulfillment_handlers, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_follower->_fulfillment_handlers, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "promise/promise.pyx":269
+  /* "promise/promise.pyx":265
  *         self._add_callbacks(
  *             follower._fulfillment_handlers[index],
  *             follower._rejection_handlers[index],             # <<<<<<<<<<<<<<
@@ -7634,12 +7790,12 @@ static void __pyx_f_7promise_7promise_7Promise__migrate_callback_at(struct __pyx
  */
   if (unlikely(__pyx_v_follower->_rejection_handlers == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 269, __pyx_L1_error)
+    __PYX_ERR(0, 265, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_follower->_rejection_handlers, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_follower->_rejection_handlers, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "promise/promise.pyx":270
+  /* "promise/promise.pyx":266
  *             follower._fulfillment_handlers[index],
  *             follower._rejection_handlers[index],
  *             follower._promises[index],             # <<<<<<<<<<<<<<
@@ -7648,25 +7804,25 @@ static void __pyx_f_7promise_7promise_7Promise__migrate_callback_at(struct __pyx
  */
   if (unlikely(__pyx_v_follower->_promises == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 270, __pyx_L1_error)
+    __PYX_ERR(0, 266, __pyx_L1_error)
   }
-  __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_follower->_promises, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 270, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_follower->_promises, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 270, __pyx_L1_error)
+  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 266, __pyx_L1_error)
 
-  /* "promise/promise.pyx":267
+  /* "promise/promise.pyx":263
  * 
  *     cdef void _migrate_callback_at(self, Promise follower, int index):
  *         self._add_callbacks(             # <<<<<<<<<<<<<<
  *             follower._fulfillment_handlers[index],
  *             follower._rejection_handlers[index],
  */
-  __pyx_t_4 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_add_callbacks(__pyx_v_self, __pyx_t_1, __pyx_t_2, ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_3)); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 267, __pyx_L1_error)
+  __pyx_t_4 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_add_callbacks(__pyx_v_self, __pyx_t_1, __pyx_t_2, ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_3)); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "promise/promise.pyx":266
+  /* "promise/promise.pyx":262
  *         )
  * 
  *     cdef void _migrate_callback_at(self, Promise follower, int index):             # <<<<<<<<<<<<<<
@@ -7685,7 +7841,7 @@ static void __pyx_f_7promise_7promise_7Promise__migrate_callback_at(struct __pyx
   __Pyx_RefNannyFinishContext();
 }
 
-/* "promise/promise.pyx":273
+/* "promise/promise.pyx":269
  *         )
  * 
  *     cdef int _add_callbacks(self, fulfill, reject, Promise promise) except -1:             # <<<<<<<<<<<<<<
@@ -7708,7 +7864,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_add_callbacks", 0);
 
-  /* "promise/promise.pyx":274
+  /* "promise/promise.pyx":270
  * 
  *     cdef int _add_callbacks(self, fulfill, reject, Promise promise) except -1:
  *         assert not self._is_following, "Should not be following"             # <<<<<<<<<<<<<<
@@ -7719,12 +7875,12 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((!(__pyx_v_self->_is_following != 0)) != 0))) {
       PyErr_SetObject(PyExc_AssertionError, __pyx_kp_u_Should_not_be_following);
-      __PYX_ERR(0, 274, __pyx_L1_error)
+      __PYX_ERR(0, 270, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "promise/promise.pyx":275
+  /* "promise/promise.pyx":271
  *     cdef int _add_callbacks(self, fulfill, reject, Promise promise) except -1:
  *         assert not self._is_following, "Should not be following"
  *         cdef int index = self._length % _MAX_LENGTH, \             # <<<<<<<<<<<<<<
@@ -7733,11 +7889,11 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
   if (unlikely(__pyx_v_7promise_7promise__MAX_LENGTH == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 275, __pyx_L1_error)
+    __PYX_ERR(0, 271, __pyx_L1_error)
   }
   __pyx_v_index = __Pyx_mod_int(__pyx_v_self->_length, __pyx_v_7promise_7promise__MAX_LENGTH);
 
-  /* "promise/promise.pyx":276
+  /* "promise/promise.pyx":272
  *         assert not self._is_following, "Should not be following"
  *         cdef int index = self._length % _MAX_LENGTH, \
  *                 idx = index - 1             # <<<<<<<<<<<<<<
@@ -7746,7 +7902,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
   __pyx_v_idx = (__pyx_v_index - 1);
 
-  /* "promise/promise.pyx":277
+  /* "promise/promise.pyx":273
  *         cdef int index = self._length % _MAX_LENGTH, \
  *                 idx = index - 1
  *         self._length = index             # <<<<<<<<<<<<<<
@@ -7755,7 +7911,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
   __pyx_v_self->_length = __pyx_v_index;
 
-  /* "promise/promise.pyx":279
+  /* "promise/promise.pyx":275
  *         self._length = index
  * 
  *         if index == 0:             # <<<<<<<<<<<<<<
@@ -7765,7 +7921,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
   __pyx_t_1 = ((__pyx_v_index == 0) != 0);
   if (__pyx_t_1) {
 
-    /* "promise/promise.pyx":280
+    /* "promise/promise.pyx":276
  * 
  *         if index == 0:
  *             if self._promise0 is not None:             # <<<<<<<<<<<<<<
@@ -7776,7 +7932,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
     __pyx_t_2 = (__pyx_t_1 != 0);
     if (__pyx_t_2) {
 
-      /* "promise/promise.pyx":281
+      /* "promise/promise.pyx":277
  *         if index == 0:
  *             if self._promise0 is not None:
  *                 PyErr_SetString(AssertionError, "Exceeded promise MAX_LENGTH")             # <<<<<<<<<<<<<<
@@ -7785,7 +7941,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
       PyErr_SetString(__pyx_builtin_AssertionError, ((char *)"Exceeded promise MAX_LENGTH"));
 
-      /* "promise/promise.pyx":282
+      /* "promise/promise.pyx":278
  *             if self._promise0 is not None:
  *                 PyErr_SetString(AssertionError, "Exceeded promise MAX_LENGTH")
  *                 return -1             # <<<<<<<<<<<<<<
@@ -7795,7 +7951,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
       __pyx_r = -1;
       goto __pyx_L0;
 
-      /* "promise/promise.pyx":280
+      /* "promise/promise.pyx":276
  * 
  *         if index == 0:
  *             if self._promise0 is not None:             # <<<<<<<<<<<<<<
@@ -7804,7 +7960,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
     }
 
-    /* "promise/promise.pyx":284
+    /* "promise/promise.pyx":280
  *                 return -1
  * 
  *             self._promise0 = promise             # <<<<<<<<<<<<<<
@@ -7817,18 +7973,18 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
     __Pyx_DECREF(((PyObject *)__pyx_v_self->_promise0));
     __pyx_v_self->_promise0 = __pyx_v_promise;
 
-    /* "promise/promise.pyx":285
+    /* "promise/promise.pyx":281
  * 
  *             self._promise0 = promise
  *             if callable(fulfill):             # <<<<<<<<<<<<<<
  *                 self._fulfillment_handler0 = fulfill
  *             if callable(reject):
  */
-    __pyx_t_2 = __Pyx_PyCallable_Check(__pyx_v_fulfill); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 285, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyCallable_Check(__pyx_v_fulfill); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 281, __pyx_L1_error)
     __pyx_t_1 = (__pyx_t_2 != 0);
     if (__pyx_t_1) {
 
-      /* "promise/promise.pyx":286
+      /* "promise/promise.pyx":282
  *             self._promise0 = promise
  *             if callable(fulfill):
  *                 self._fulfillment_handler0 = fulfill             # <<<<<<<<<<<<<<
@@ -7841,7 +7997,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
       __Pyx_DECREF(__pyx_v_self->_fulfillment_handler0);
       __pyx_v_self->_fulfillment_handler0 = __pyx_v_fulfill;
 
-      /* "promise/promise.pyx":285
+      /* "promise/promise.pyx":281
  * 
  *             self._promise0 = promise
  *             if callable(fulfill):             # <<<<<<<<<<<<<<
@@ -7850,18 +8006,18 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
     }
 
-    /* "promise/promise.pyx":287
+    /* "promise/promise.pyx":283
  *             if callable(fulfill):
  *                 self._fulfillment_handler0 = fulfill
  *             if callable(reject):             # <<<<<<<<<<<<<<
  *                 self._rejection_handler0 = reject
  *         else:
  */
-    __pyx_t_1 = __Pyx_PyCallable_Check(__pyx_v_reject); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 287, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCallable_Check(__pyx_v_reject); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 283, __pyx_L1_error)
     __pyx_t_2 = (__pyx_t_1 != 0);
     if (__pyx_t_2) {
 
-      /* "promise/promise.pyx":288
+      /* "promise/promise.pyx":284
  *                 self._fulfillment_handler0 = fulfill
  *             if callable(reject):
  *                 self._rejection_handler0 = reject             # <<<<<<<<<<<<<<
@@ -7874,7 +8030,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
       __Pyx_DECREF(__pyx_v_self->_rejection_handler0);
       __pyx_v_self->_rejection_handler0 = __pyx_v_reject;
 
-      /* "promise/promise.pyx":287
+      /* "promise/promise.pyx":283
  *             if callable(fulfill):
  *                 self._fulfillment_handler0 = fulfill
  *             if callable(reject):             # <<<<<<<<<<<<<<
@@ -7883,7 +8039,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
     }
 
-    /* "promise/promise.pyx":279
+    /* "promise/promise.pyx":275
  *         self._length = index
  * 
  *         if index == 0:             # <<<<<<<<<<<<<<
@@ -7893,7 +8049,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
     goto __pyx_L3;
   }
 
-  /* "promise/promise.pyx":290
+  /* "promise/promise.pyx":286
  *                 self._rejection_handler0 = reject
  *         else:
  *             if idx >= len(self._promises):             # <<<<<<<<<<<<<<
@@ -7905,14 +8061,14 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
     __Pyx_INCREF(__pyx_t_3);
     if (unlikely(__pyx_t_3 == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 290, __pyx_L1_error)
+      __PYX_ERR(0, 286, __pyx_L1_error)
     }
-    __pyx_t_4 = PyList_GET_SIZE(__pyx_t_3); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 290, __pyx_L1_error)
+    __pyx_t_4 = PyList_GET_SIZE(__pyx_t_3); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 286, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_2 = ((__pyx_v_idx >= __pyx_t_4) != 0);
     if (__pyx_t_2) {
 
-      /* "promise/promise.pyx":291
+      /* "promise/promise.pyx":287
  *         else:
  *             if idx >= len(self._promises):
  *                 self._promises.append(None)             # <<<<<<<<<<<<<<
@@ -7921,11 +8077,11 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
       if (unlikely(__pyx_v_self->_promises == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-        __PYX_ERR(0, 291, __pyx_L1_error)
+        __PYX_ERR(0, 287, __pyx_L1_error)
       }
-      __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_self->_promises, Py_None); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 291, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_self->_promises, Py_None); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 287, __pyx_L1_error)
 
-      /* "promise/promise.pyx":292
+      /* "promise/promise.pyx":288
  *             if idx >= len(self._promises):
  *                 self._promises.append(None)
  *                 self._fulfillment_handlers.append(None)             # <<<<<<<<<<<<<<
@@ -7934,11 +8090,11 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
       if (unlikely(__pyx_v_self->_fulfillment_handlers == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-        __PYX_ERR(0, 292, __pyx_L1_error)
+        __PYX_ERR(0, 288, __pyx_L1_error)
       }
-      __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_self->_fulfillment_handlers, Py_None); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 292, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_self->_fulfillment_handlers, Py_None); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 288, __pyx_L1_error)
 
-      /* "promise/promise.pyx":293
+      /* "promise/promise.pyx":289
  *                 self._promises.append(None)
  *                 self._fulfillment_handlers.append(None)
  *                 self._rejection_handlers.append(None)             # <<<<<<<<<<<<<<
@@ -7947,11 +8103,11 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
       if (unlikely(__pyx_v_self->_rejection_handlers == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-        __PYX_ERR(0, 293, __pyx_L1_error)
+        __PYX_ERR(0, 289, __pyx_L1_error)
       }
-      __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_self->_rejection_handlers, Py_None); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 293, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_self->_rejection_handlers, Py_None); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 289, __pyx_L1_error)
 
-      /* "promise/promise.pyx":290
+      /* "promise/promise.pyx":286
  *                 self._rejection_handler0 = reject
  *         else:
  *             if idx >= len(self._promises):             # <<<<<<<<<<<<<<
@@ -7961,7 +8117,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
       goto __pyx_L7;
     }
 
-    /* "promise/promise.pyx":295
+    /* "promise/promise.pyx":291
  *                 self._rejection_handlers.append(None)
  *             else:
  *                 if self._promises[idx] is not None:             # <<<<<<<<<<<<<<
@@ -7971,16 +8127,16 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
     /*else*/ {
       if (unlikely(__pyx_v_self->_promises == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 295, __pyx_L1_error)
+        __PYX_ERR(0, 291, __pyx_L1_error)
       }
-      __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_self->_promises, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_self->_promises, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 291, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_2 = (__pyx_t_3 != Py_None);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_1 = (__pyx_t_2 != 0);
       if (__pyx_t_1) {
 
-        /* "promise/promise.pyx":296
+        /* "promise/promise.pyx":292
  *             else:
  *                 if self._promises[idx] is not None:
  *                     PyErr_SetString(             # <<<<<<<<<<<<<<
@@ -7989,7 +8145,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
         PyErr_SetString(__pyx_builtin_AssertionError, ((char *)"Exceeded promise MAX_LENGTH"));
 
-        /* "promise/promise.pyx":299
+        /* "promise/promise.pyx":295
  *                         AssertionError, "Exceeded promise MAX_LENGTH"
  *                     )
  *                     return -1             # <<<<<<<<<<<<<<
@@ -7999,7 +8155,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
         __pyx_r = -1;
         goto __pyx_L0;
 
-        /* "promise/promise.pyx":295
+        /* "promise/promise.pyx":291
  *                 self._rejection_handlers.append(None)
  *             else:
  *                 if self._promises[idx] is not None:             # <<<<<<<<<<<<<<
@@ -8010,7 +8166,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
     }
     __pyx_L7:;
 
-    /* "promise/promise.pyx":301
+    /* "promise/promise.pyx":297
  *                     return -1
  * 
  *             self._promises[idx] = promise             # <<<<<<<<<<<<<<
@@ -8019,22 +8175,22 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
     if (unlikely(__pyx_v_self->_promises == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 301, __pyx_L1_error)
+      __PYX_ERR(0, 297, __pyx_L1_error)
     }
-    if (unlikely(__Pyx_SetItemInt(__pyx_v_self->_promises, __pyx_v_idx, ((PyObject *)__pyx_v_promise), int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 301, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(__pyx_v_self->_promises, __pyx_v_idx, ((PyObject *)__pyx_v_promise), int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 297, __pyx_L1_error)
 
-    /* "promise/promise.pyx":302
+    /* "promise/promise.pyx":298
  * 
  *             self._promises[idx] = promise
  *             if callable(fulfill):             # <<<<<<<<<<<<<<
  *                 self._fulfillment_handlers[idx] = fulfill
  *             if callable(reject):
  */
-    __pyx_t_1 = __Pyx_PyCallable_Check(__pyx_v_fulfill); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 302, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCallable_Check(__pyx_v_fulfill); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 298, __pyx_L1_error)
     __pyx_t_2 = (__pyx_t_1 != 0);
     if (__pyx_t_2) {
 
-      /* "promise/promise.pyx":303
+      /* "promise/promise.pyx":299
  *             self._promises[idx] = promise
  *             if callable(fulfill):
  *                 self._fulfillment_handlers[idx] = fulfill             # <<<<<<<<<<<<<<
@@ -8043,11 +8199,11 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
       if (unlikely(__pyx_v_self->_fulfillment_handlers == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 303, __pyx_L1_error)
+        __PYX_ERR(0, 299, __pyx_L1_error)
       }
-      if (unlikely(__Pyx_SetItemInt(__pyx_v_self->_fulfillment_handlers, __pyx_v_idx, __pyx_v_fulfill, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 303, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_v_self->_fulfillment_handlers, __pyx_v_idx, __pyx_v_fulfill, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 299, __pyx_L1_error)
 
-      /* "promise/promise.pyx":302
+      /* "promise/promise.pyx":298
  * 
  *             self._promises[idx] = promise
  *             if callable(fulfill):             # <<<<<<<<<<<<<<
@@ -8056,18 +8212,18 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
     }
 
-    /* "promise/promise.pyx":304
+    /* "promise/promise.pyx":300
  *             if callable(fulfill):
  *                 self._fulfillment_handlers[idx] = fulfill
  *             if callable(reject):             # <<<<<<<<<<<<<<
  *                 self._rejection_handlers[idx] = reject
  * 
  */
-    __pyx_t_2 = __Pyx_PyCallable_Check(__pyx_v_reject); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 304, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyCallable_Check(__pyx_v_reject); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 300, __pyx_L1_error)
     __pyx_t_1 = (__pyx_t_2 != 0);
     if (__pyx_t_1) {
 
-      /* "promise/promise.pyx":305
+      /* "promise/promise.pyx":301
  *                 self._fulfillment_handlers[idx] = fulfill
  *             if callable(reject):
  *                 self._rejection_handlers[idx] = reject             # <<<<<<<<<<<<<<
@@ -8076,11 +8232,11 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
       if (unlikely(__pyx_v_self->_rejection_handlers == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 305, __pyx_L1_error)
+        __PYX_ERR(0, 301, __pyx_L1_error)
       }
-      if (unlikely(__Pyx_SetItemInt(__pyx_v_self->_rejection_handlers, __pyx_v_idx, __pyx_v_reject, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 305, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_v_self->_rejection_handlers, __pyx_v_idx, __pyx_v_reject, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 301, __pyx_L1_error)
 
-      /* "promise/promise.pyx":304
+      /* "promise/promise.pyx":300
  *             if callable(fulfill):
  *                 self._fulfillment_handlers[idx] = fulfill
  *             if callable(reject):             # <<<<<<<<<<<<<<
@@ -8091,7 +8247,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
   }
   __pyx_L3:;
 
-  /* "promise/promise.pyx":307
+  /* "promise/promise.pyx":303
  *                 self._rejection_handlers[idx] = reject
  * 
  *         self._length = index + 1             # <<<<<<<<<<<<<<
@@ -8100,7 +8256,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  */
   __pyx_v_self->_length = (__pyx_v_index + 1);
 
-  /* "promise/promise.pyx":308
+  /* "promise/promise.pyx":304
  * 
  *         self._length = index + 1
  *         return index             # <<<<<<<<<<<<<<
@@ -8110,7 +8266,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
   __pyx_r = __pyx_v_index;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":273
+  /* "promise/promise.pyx":269
  *         )
  * 
  *     cdef int _add_callbacks(self, fulfill, reject, Promise promise) except -1:             # <<<<<<<<<<<<<<
@@ -8128,7 +8284,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":310
+/* "promise/promise.pyx":306
  *         return index
  * 
  *     cpdef Promise _target(self):             # <<<<<<<<<<<<<<
@@ -8136,7 +8292,7 @@ static int __pyx_f_7promise_7promise_7Promise__add_callbacks(struct __pyx_obj_7p
  *         while ret._is_following:
  */
 
-static PyObject *__pyx_pw_7promise_7promise_7Promise_11_target(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_13_target(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
 static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Promise__target(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, int __pyx_skip_dispatch) {
   struct __pyx_obj_7promise_7promise_Promise *__pyx_v_ret = 0;
   struct __pyx_obj_7promise_7promise_Promise *__pyx_r = NULL;
@@ -8159,9 +8315,9 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_target); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_target); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 306, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_11_target)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_13_target)) {
         __Pyx_XDECREF(((PyObject *)__pyx_r));
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -8176,10 +8332,10 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 310, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 306, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 310, __pyx_L1_error)
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 306, __pyx_L1_error)
         __pyx_r = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -8198,7 +8354,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     #endif
   }
 
-  /* "promise/promise.pyx":311
+  /* "promise/promise.pyx":307
  * 
  *     cpdef Promise _target(self):
  *         cdef Promise ret = self             # <<<<<<<<<<<<<<
@@ -8208,7 +8364,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   __pyx_v_ret = __pyx_v_self;
 
-  /* "promise/promise.pyx":312
+  /* "promise/promise.pyx":308
  *     cpdef Promise _target(self):
  *         cdef Promise ret = self
  *         while ret._is_following:             # <<<<<<<<<<<<<<
@@ -8219,20 +8375,20 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     __pyx_t_5 = (__pyx_v_ret->_is_following != 0);
     if (!__pyx_t_5) break;
 
-    /* "promise/promise.pyx":313
+    /* "promise/promise.pyx":309
  *         cdef Promise ret = self
  *         while ret._is_following:
  *             ret = ret._followee()             # <<<<<<<<<<<<<<
  *         return ret
  * 
  */
-    __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_ret->__pyx_vtab)->_followee(__pyx_v_ret)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
+    __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_ret->__pyx_vtab)->_followee(__pyx_v_ret)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF_SET(__pyx_v_ret, ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1));
     __pyx_t_1 = 0;
   }
 
-  /* "promise/promise.pyx":314
+  /* "promise/promise.pyx":310
  *         while ret._is_following:
  *             ret = ret._followee()
  *         return ret             # <<<<<<<<<<<<<<
@@ -8244,7 +8400,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   __pyx_r = __pyx_v_ret;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":310
+  /* "promise/promise.pyx":306
  *         return index
  * 
  *     cpdef Promise _target(self):             # <<<<<<<<<<<<<<
@@ -8268,19 +8424,20 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_11_target(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_11_target(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_13_target(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_13_target = {"_target", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_13_target, METH_NOARGS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_13_target(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_target (wrapper)", 0);
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_10_target(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_12_target(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_10_target(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_12_target(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8289,7 +8446,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_10_target(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_target", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_7promise_7promise_7Promise__target(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7promise_7promise_7Promise__target(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -8306,7 +8463,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_10_target(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":316
+/* "promise/promise.pyx":312
  *         return ret
  * 
  *     cdef Promise _followee(self):             # <<<<<<<<<<<<<<
@@ -8324,7 +8481,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_followee", 0);
 
-  /* "promise/promise.pyx":317
+  /* "promise/promise.pyx":313
  * 
  *     cdef Promise _followee(self):
  *         assert self._is_following             # <<<<<<<<<<<<<<
@@ -8335,12 +8492,12 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!(__pyx_v_self->_is_following != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 317, __pyx_L1_error)
+      __PYX_ERR(0, 313, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "promise/promise.pyx":318
+  /* "promise/promise.pyx":314
  *     cdef Promise _followee(self):
  *         assert self._is_following
  *         assert isinstance(self._rejection_handler0, Promise)             # <<<<<<<<<<<<<<
@@ -8355,12 +8512,12 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (unlikely(!(__pyx_t_2 != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 318, __pyx_L1_error)
+      __PYX_ERR(0, 314, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "promise/promise.pyx":319
+  /* "promise/promise.pyx":315
  *         assert self._is_following
  *         assert isinstance(self._rejection_handler0, Promise)
  *         return self._rejection_handler0             # <<<<<<<<<<<<<<
@@ -8368,12 +8525,12 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
  *     cdef void _set_followee(self, Promise promise):
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  if (!(likely(((__pyx_v_self->_rejection_handler0) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_self->_rejection_handler0, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 319, __pyx_L1_error)
+  if (!(likely(((__pyx_v_self->_rejection_handler0) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_self->_rejection_handler0, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 315, __pyx_L1_error)
   __Pyx_INCREF(__pyx_v_self->_rejection_handler0);
   __pyx_r = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self->_rejection_handler0);
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":316
+  /* "promise/promise.pyx":312
  *         return ret
  * 
  *     cdef Promise _followee(self):             # <<<<<<<<<<<<<<
@@ -8392,7 +8549,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":321
+/* "promise/promise.pyx":317
  *         return self._rejection_handler0
  * 
  *     cdef void _set_followee(self, Promise promise):             # <<<<<<<<<<<<<<
@@ -8409,7 +8566,7 @@ static void __pyx_f_7promise_7promise_7Promise__set_followee(struct __pyx_obj_7p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_set_followee", 0);
 
-  /* "promise/promise.pyx":322
+  /* "promise/promise.pyx":318
  * 
  *     cdef void _set_followee(self, Promise promise):
  *         assert self._is_following             # <<<<<<<<<<<<<<
@@ -8420,12 +8577,12 @@ static void __pyx_f_7promise_7promise_7Promise__set_followee(struct __pyx_obj_7p
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!(__pyx_v_self->_is_following != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 322, __pyx_L1_error)
+      __PYX_ERR(0, 318, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "promise/promise.pyx":323
+  /* "promise/promise.pyx":319
  *     cdef void _set_followee(self, Promise promise):
  *         assert self._is_following
  *         assert not isinstance(self._rejection_handler0, Promise)             # <<<<<<<<<<<<<<
@@ -8440,12 +8597,12 @@ static void __pyx_f_7promise_7promise_7Promise__set_followee(struct __pyx_obj_7p
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (unlikely(!((!(__pyx_t_2 != 0)) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 323, __pyx_L1_error)
+      __PYX_ERR(0, 319, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "promise/promise.pyx":324
+  /* "promise/promise.pyx":320
  *         assert self._is_following
  *         assert not isinstance(self._rejection_handler0, Promise)
  *         self._rejection_handler0 = promise             # <<<<<<<<<<<<<<
@@ -8458,7 +8615,7 @@ static void __pyx_f_7promise_7promise_7Promise__set_followee(struct __pyx_obj_7p
   __Pyx_DECREF(__pyx_v_self->_rejection_handler0);
   __pyx_v_self->_rejection_handler0 = ((PyObject *)__pyx_v_promise);
 
-  /* "promise/promise.pyx":321
+  /* "promise/promise.pyx":317
  *         return self._rejection_handler0
  * 
  *     cdef void _set_followee(self, Promise promise):             # <<<<<<<<<<<<<<
@@ -8475,7 +8632,7 @@ static void __pyx_f_7promise_7promise_7Promise__set_followee(struct __pyx_obj_7p
   __Pyx_RefNannyFinishContext();
 }
 
-/* "promise/promise.pyx":326
+/* "promise/promise.pyx":322
  *         self._rejection_handler0 = promise
  * 
  *     cdef public void _settle_promises(self):             # <<<<<<<<<<<<<<
@@ -8497,7 +8654,7 @@ void __pyx_f_7promise_7promise_7Promise__settle_promises(struct __pyx_obj_7promi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_settle_promises", 0);
 
-  /* "promise/promise.pyx":328
+  /* "promise/promise.pyx":324
  *     cdef public void _settle_promises(self):
  *         cdef:
  *             int length = self._length             # <<<<<<<<<<<<<<
@@ -8507,7 +8664,7 @@ void __pyx_f_7promise_7promise_7Promise__settle_promises(struct __pyx_obj_7promi
   __pyx_t_1 = __pyx_v_self->_length;
   __pyx_v_length = __pyx_t_1;
 
-  /* "promise/promise.pyx":330
+  /* "promise/promise.pyx":326
  *             int length = self._length
  *             object value, reason
  *         if length > 0:             # <<<<<<<<<<<<<<
@@ -8517,7 +8674,7 @@ void __pyx_f_7promise_7promise_7Promise__settle_promises(struct __pyx_obj_7promi
   __pyx_t_2 = ((__pyx_v_length > 0) != 0);
   if (__pyx_t_2) {
 
-    /* "promise/promise.pyx":331
+    /* "promise/promise.pyx":327
  *             object value, reason
  *         if length > 0:
  *             if self._state == State.REJECTED:             # <<<<<<<<<<<<<<
@@ -8527,7 +8684,7 @@ void __pyx_f_7promise_7promise_7Promise__settle_promises(struct __pyx_obj_7promi
     __pyx_t_2 = ((__pyx_v_self->_state == __pyx_e_7promise_7promise_REJECTED) != 0);
     if (__pyx_t_2) {
 
-      /* "promise/promise.pyx":332
+      /* "promise/promise.pyx":328
  *         if length > 0:
  *             if self._state == State.REJECTED:
  *                 reason = self._fulfillment_handler0             # <<<<<<<<<<<<<<
@@ -8539,7 +8696,7 @@ void __pyx_f_7promise_7promise_7Promise__settle_promises(struct __pyx_obj_7promi
       __pyx_v_reason = __pyx_t_3;
       __pyx_t_3 = 0;
 
-      /* "promise/promise.pyx":333
+      /* "promise/promise.pyx":329
  *             if self._state == State.REJECTED:
  *                 reason = self._fulfillment_handler0
  *                 traceback = self._traceback             # <<<<<<<<<<<<<<
@@ -8551,7 +8708,7 @@ void __pyx_f_7promise_7promise_7Promise__settle_promises(struct __pyx_obj_7promi
       __pyx_v_traceback = __pyx_t_3;
       __pyx_t_3 = 0;
 
-      /* "promise/promise.pyx":334
+      /* "promise/promise.pyx":330
  *                 reason = self._fulfillment_handler0
  *                 traceback = self._traceback
  *                 self._settle_promise0(self._rejection_handler0, reason, traceback)             # <<<<<<<<<<<<<<
@@ -8563,17 +8720,17 @@ void __pyx_f_7promise_7promise_7Promise__settle_promises(struct __pyx_obj_7promi
       ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_settle_promise0(__pyx_v_self, __pyx_t_3, __pyx_v_reason, __pyx_v_traceback);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "promise/promise.pyx":335
+      /* "promise/promise.pyx":331
  *                 traceback = self._traceback
  *                 self._settle_promise0(self._rejection_handler0, reason, traceback)
  *                 self._reject_promises(length, reason)             # <<<<<<<<<<<<<<
  *             else:
  *                 value = self._rejection_handler0
  */
-      if (!(likely(__Pyx_PyException_Check(__pyx_v_reason))||((__pyx_v_reason) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_v_reason)->tp_name), 0))) __PYX_ERR(0, 335, __pyx_L1_error)
+      if (!(likely(__Pyx_PyException_Check(__pyx_v_reason))||((__pyx_v_reason) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_v_reason)->tp_name), 0))) __PYX_ERR(0, 331, __pyx_L1_error)
       ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_reject_promises(__pyx_v_self, __pyx_v_length, ((PyObject*)__pyx_v_reason));
 
-      /* "promise/promise.pyx":331
+      /* "promise/promise.pyx":327
  *             object value, reason
  *         if length > 0:
  *             if self._state == State.REJECTED:             # <<<<<<<<<<<<<<
@@ -8583,7 +8740,7 @@ void __pyx_f_7promise_7promise_7Promise__settle_promises(struct __pyx_obj_7promi
       goto __pyx_L4;
     }
 
-    /* "promise/promise.pyx":337
+    /* "promise/promise.pyx":333
  *                 self._reject_promises(length, reason)
  *             else:
  *                 value = self._rejection_handler0             # <<<<<<<<<<<<<<
@@ -8596,7 +8753,7 @@ void __pyx_f_7promise_7promise_7Promise__settle_promises(struct __pyx_obj_7promi
       __pyx_v_value = __pyx_t_3;
       __pyx_t_3 = 0;
 
-      /* "promise/promise.pyx":338
+      /* "promise/promise.pyx":334
  *             else:
  *                 value = self._rejection_handler0
  *                 self._settle_promise0(self._fulfillment_handler0, value, None)             # <<<<<<<<<<<<<<
@@ -8608,7 +8765,7 @@ void __pyx_f_7promise_7promise_7Promise__settle_promises(struct __pyx_obj_7promi
       ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_settle_promise0(__pyx_v_self, __pyx_t_3, __pyx_v_value, Py_None);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "promise/promise.pyx":339
+      /* "promise/promise.pyx":335
  *                 value = self._rejection_handler0
  *                 self._settle_promise0(self._fulfillment_handler0, value, None)
  *                 self._fulfill_promises(length, value)             # <<<<<<<<<<<<<<
@@ -8619,7 +8776,7 @@ void __pyx_f_7promise_7promise_7Promise__settle_promises(struct __pyx_obj_7promi
     }
     __pyx_L4:;
 
-    /* "promise/promise.pyx":341
+    /* "promise/promise.pyx":337
  *                 self._fulfill_promises(length, value)
  * 
  *             self._length = 0             # <<<<<<<<<<<<<<
@@ -8628,7 +8785,7 @@ void __pyx_f_7promise_7promise_7Promise__settle_promises(struct __pyx_obj_7promi
  */
     __pyx_v_self->_length = 0;
 
-    /* "promise/promise.pyx":330
+    /* "promise/promise.pyx":326
  *             int length = self._length
  *             object value, reason
  *         if length > 0:             # <<<<<<<<<<<<<<
@@ -8637,7 +8794,7 @@ void __pyx_f_7promise_7promise_7Promise__settle_promises(struct __pyx_obj_7promi
  */
   }
 
-  /* "promise/promise.pyx":326
+  /* "promise/promise.pyx":322
  *         self._rejection_handler0 = promise
  * 
  *     cdef public void _settle_promises(self):             # <<<<<<<<<<<<<<
@@ -8657,7 +8814,7 @@ void __pyx_f_7promise_7promise_7Promise__settle_promises(struct __pyx_obj_7promi
   __Pyx_RefNannyFinishContext();
 }
 
-/* "promise/promise.pyx":344
+/* "promise/promise.pyx":340
  * 
  *     cdef void _resolve_from_executor(self, executor):
  *         def resolve(value):             # <<<<<<<<<<<<<<
@@ -8691,17 +8848,17 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_22_resolve_from_executor_re
   __pyx_outer_scope = (struct __pyx_obj_7promise_7promise___pyx_scope_struct___resolve_from_executor *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "promise/promise.pyx":345
+  /* "promise/promise.pyx":341
  *     cdef void _resolve_from_executor(self, executor):
  *         def resolve(value):
  *             self._resolve_callback(value)             # <<<<<<<<<<<<<<
  * 
  *         def reject(reason, traceback=None):
  */
-  if (unlikely(!__pyx_cur_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 345, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 341, __pyx_L1_error) }
   ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_cur_scope->__pyx_v_self->__pyx_vtab)->_resolve_callback(__pyx_cur_scope->__pyx_v_self, __pyx_v_value);
 
-  /* "promise/promise.pyx":344
+  /* "promise/promise.pyx":340
  * 
  *     cdef void _resolve_from_executor(self, executor):
  *         def resolve(value):             # <<<<<<<<<<<<<<
@@ -8721,7 +8878,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_22_resolve_from_executor_re
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":347
+/* "promise/promise.pyx":343
  *             self._resolve_callback(value)
  * 
  *         def reject(reason, traceback=None):             # <<<<<<<<<<<<<<
@@ -8769,7 +8926,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_22_resolve_from_executor_3r
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "reject") < 0)) __PYX_ERR(0, 347, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "reject") < 0)) __PYX_ERR(0, 343, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -8785,7 +8942,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_22_resolve_from_executor_3r
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("reject", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 347, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("reject", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 343, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise._resolve_from_executor.reject", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8811,20 +8968,20 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_22_resolve_from_executor_2r
   __pyx_outer_scope = (struct __pyx_obj_7promise_7promise___pyx_scope_struct___resolve_from_executor *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "promise/promise.pyx":348
+  /* "promise/promise.pyx":344
  * 
  *         def reject(reason, traceback=None):
  *             self._reject_callback(reason, traceback)             # <<<<<<<<<<<<<<
  * 
  *         error = traceback = None
  */
-  if (unlikely(!__pyx_cur_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 348, __pyx_L1_error) }
-  if (!(likely(__Pyx_PyException_Check(__pyx_v_reason))||((__pyx_v_reason) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_v_reason)->tp_name), 0))) __PYX_ERR(0, 348, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 344, __pyx_L1_error) }
+  if (!(likely(__Pyx_PyException_Check(__pyx_v_reason))||((__pyx_v_reason) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_v_reason)->tp_name), 0))) __PYX_ERR(0, 344, __pyx_L1_error)
   __pyx_t_1.__pyx_n = 1;
   __pyx_t_1.traceback = __pyx_v_traceback;
   ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_cur_scope->__pyx_v_self->__pyx_vtab)->_reject_callback(__pyx_cur_scope->__pyx_v_self, ((PyObject*)__pyx_v_reason), &__pyx_t_1); 
 
-  /* "promise/promise.pyx":347
+  /* "promise/promise.pyx":343
  *             self._resolve_callback(value)
  * 
  *         def reject(reason, traceback=None):             # <<<<<<<<<<<<<<
@@ -8844,7 +9001,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_22_resolve_from_executor_2r
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":343
+/* "promise/promise.pyx":339
  *             self._length = 0
  * 
  *     cdef void _resolve_from_executor(self, executor):             # <<<<<<<<<<<<<<
@@ -8889,7 +9046,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7promise_7promise___pyx_scope_struct___resolve_from_executor *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 343, __pyx_L1_error)
+    __PYX_ERR(0, 339, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -8897,32 +9054,32 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
 
-  /* "promise/promise.pyx":344
+  /* "promise/promise.pyx":340
  * 
  *     cdef void _resolve_from_executor(self, executor):
  *         def resolve(value):             # <<<<<<<<<<<<<<
  *             self._resolve_callback(value)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_22_resolve_from_executor_1resolve, 0, __pyx_n_s_Promise__resolve_from_executor_l, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_22_resolve_from_executor_1resolve, 0, __pyx_n_s_Promise__resolve_from_executor_l, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 340, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_resolve = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":347
+  /* "promise/promise.pyx":343
  *             self._resolve_callback(value)
  * 
  *         def reject(reason, traceback=None):             # <<<<<<<<<<<<<<
  *             self._reject_callback(reason, traceback)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_22_resolve_from_executor_3reject, 0, __pyx_n_s_Promise__resolve_from_executor_l_2, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__5)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_22_resolve_from_executor_3reject, 0, __pyx_n_s_Promise__resolve_from_executor_l_2, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__5)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 343, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__6);
   __pyx_v_reject = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":350
+  /* "promise/promise.pyx":346
  *             self._reject_callback(reason, traceback)
  * 
  *         error = traceback = None             # <<<<<<<<<<<<<<
@@ -8934,7 +9091,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
   __Pyx_INCREF(Py_None);
   __pyx_v_traceback = Py_None;
 
-  /* "promise/promise.pyx":351
+  /* "promise/promise.pyx":347
  * 
  *         error = traceback = None
  *         try:             # <<<<<<<<<<<<<<
@@ -8950,7 +9107,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
     __Pyx_XGOTREF(__pyx_t_4);
     /*try:*/ {
 
-      /* "promise/promise.pyx":352
+      /* "promise/promise.pyx":348
  *         error = traceback = None
  *         try:
  *             executor(resolve, reject)             # <<<<<<<<<<<<<<
@@ -8973,7 +9130,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_resolve, __pyx_v_reject};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L3_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L3_error)
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_1);
       } else
@@ -8981,13 +9138,13 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_resolve, __pyx_v_reject};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L3_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L3_error)
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_1);
       } else
       #endif
       {
-        __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 352, __pyx_L3_error)
+        __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 348, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_8);
         if (__pyx_t_6) {
           __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -8998,14 +9155,14 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
         __Pyx_INCREF(__pyx_v_reject);
         __Pyx_GIVEREF(__pyx_v_reject);
         PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_v_reject);
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L3_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "promise/promise.pyx":351
+      /* "promise/promise.pyx":347
  * 
  *         error = traceback = None
  *         try:             # <<<<<<<<<<<<<<
@@ -9023,7 +9180,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "promise/promise.pyx":353
+    /* "promise/promise.pyx":349
  *         try:
  *             executor(resolve, reject)
  *         except Exception as e:             # <<<<<<<<<<<<<<
@@ -9033,7 +9190,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
     __pyx_t_7 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_7) {
       __Pyx_AddTraceback("promise.promise.Promise._resolve_from_executor", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_5, &__pyx_t_8) < 0) __PYX_ERR(0, 353, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_5, &__pyx_t_8) < 0) __PYX_ERR(0, 349, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_8);
@@ -9041,14 +9198,14 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
       __pyx_v_e = __pyx_t_5;
       /*try:*/ {
 
-        /* "promise/promise.pyx":354
+        /* "promise/promise.pyx":350
  *             executor(resolve, reject)
  *         except Exception as e:
  *             traceback = exc_info()[2]             # <<<<<<<<<<<<<<
  *             error = e
  * 
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_exc_info); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 354, __pyx_L14_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_exc_info); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 350, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_9);
         __pyx_t_10 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_9))) {
@@ -9062,16 +9219,16 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
         }
         __pyx_t_6 = (__pyx_t_10) ? __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_10) : __Pyx_PyObject_CallNoArg(__pyx_t_9);
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 354, __pyx_L14_error)
+        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 350, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_6, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 354, __pyx_L14_error)
+        __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_6, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 350, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF_SET(__pyx_v_traceback, __pyx_t_9);
         __pyx_t_9 = 0;
 
-        /* "promise/promise.pyx":355
+        /* "promise/promise.pyx":351
  *         except Exception as e:
  *             traceback = exc_info()[2]
  *             error = e             # <<<<<<<<<<<<<<
@@ -9082,7 +9239,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
         __Pyx_DECREF_SET(__pyx_v_error, __pyx_v_e);
       }
 
-      /* "promise/promise.pyx":353
+      /* "promise/promise.pyx":349
  *         try:
  *             executor(resolve, reject)
  *         except Exception as e:             # <<<<<<<<<<<<<<
@@ -9140,7 +9297,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "promise/promise.pyx":351
+    /* "promise/promise.pyx":347
  * 
  *         error = traceback = None
  *         try:             # <<<<<<<<<<<<<<
@@ -9160,7 +9317,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
     __pyx_L8_try_end:;
   }
 
-  /* "promise/promise.pyx":357
+  /* "promise/promise.pyx":353
  *             error = e
  * 
  *         if error is not None:             # <<<<<<<<<<<<<<
@@ -9171,19 +9328,19 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
   __pyx_t_20 = (__pyx_t_19 != 0);
   if (__pyx_t_20) {
 
-    /* "promise/promise.pyx":358
+    /* "promise/promise.pyx":354
  * 
  *         if error is not None:
  *             self._reject_callback(error, traceback)             # <<<<<<<<<<<<<<
  * 
  *     @staticmethod
  */
-    if (!(likely(__Pyx_PyException_Check(__pyx_v_error))||((__pyx_v_error) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_v_error)->tp_name), 0))) __PYX_ERR(0, 358, __pyx_L1_error)
+    if (!(likely(__Pyx_PyException_Check(__pyx_v_error))||((__pyx_v_error) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "Exception", Py_TYPE(__pyx_v_error)->tp_name), 0))) __PYX_ERR(0, 354, __pyx_L1_error)
     __pyx_t_21.__pyx_n = 1;
     __pyx_t_21.traceback = __pyx_v_traceback;
     ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_cur_scope->__pyx_v_self->__pyx_vtab)->_reject_callback(__pyx_cur_scope->__pyx_v_self, ((PyObject*)__pyx_v_error), &__pyx_t_21); 
 
-    /* "promise/promise.pyx":357
+    /* "promise/promise.pyx":353
  *             error = e
  * 
  *         if error is not None:             # <<<<<<<<<<<<<<
@@ -9192,7 +9349,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
  */
   }
 
-  /* "promise/promise.pyx":343
+  /* "promise/promise.pyx":339
  *             self._length = 0
  * 
  *     cdef void _resolve_from_executor(self, executor):             # <<<<<<<<<<<<<<
@@ -9220,7 +9377,7 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
   __Pyx_RefNannyFinishContext();
 }
 
-/* "promise/promise.pyx":361
+/* "promise/promise.pyx":357
  * 
  *     @staticmethod
  *     def wait(Promise promise, object timeout = None):             # <<<<<<<<<<<<<<
@@ -9229,9 +9386,9 @@ static void __pyx_f_7promise_7promise_7Promise__resolve_from_executor(struct __p
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_13wait(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_13wait = {"wait", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_13wait, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_7promise_7promise_7Promise_13wait(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_15wait(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_15wait = {"wait", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_15wait, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_15wait(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   struct __pyx_obj_7promise_7promise_Promise *__pyx_v_promise = 0;
   PyObject *__pyx_v_timeout = 0;
   int __pyx_lineno = 0;
@@ -9268,7 +9425,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_13wait(CYTHON_UNUSED PyObje
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "wait") < 0)) __PYX_ERR(0, 361, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "wait") < 0)) __PYX_ERR(0, 357, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -9284,14 +9441,14 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_13wait(CYTHON_UNUSED PyObje
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("wait", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 361, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("wait", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 357, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.wait", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_promise), __pyx_ptype_7promise_7promise_Promise, 1, "promise", 0))) __PYX_ERR(0, 361, __pyx_L1_error)
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_12wait(__pyx_v_promise, __pyx_v_timeout);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_promise), __pyx_ptype_7promise_7promise_Promise, 1, "promise", 0))) __PYX_ERR(0, 357, __pyx_L1_error)
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_14wait(__pyx_v_promise, __pyx_v_timeout);
 
   /* function exit code */
   goto __pyx_L0;
@@ -9302,13 +9459,13 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_13wait(CYTHON_UNUSED PyObje
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_12wait(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_promise, PyObject *__pyx_v_timeout) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_14wait(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_promise, PyObject *__pyx_v_timeout) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   struct __pyx_opt_args_7promise_7promise_7Promise__wait __pyx_t_1;
   __Pyx_RefNannySetupContext("wait", 0);
 
-  /* "promise/promise.pyx":362
+  /* "promise/promise.pyx":358
  *     @staticmethod
  *     def wait(Promise promise, object timeout = None):
  *         promise._wait(timeout)             # <<<<<<<<<<<<<<
@@ -9319,7 +9476,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_12wait(struct __pyx_obj_7pr
   __pyx_t_1.timeout = __pyx_v_timeout;
   ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_promise->__pyx_vtab)->_wait(__pyx_v_promise, 0, &__pyx_t_1); 
 
-  /* "promise/promise.pyx":361
+  /* "promise/promise.pyx":357
  * 
  *     @staticmethod
  *     def wait(Promise promise, object timeout = None):             # <<<<<<<<<<<<<<
@@ -9334,7 +9491,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_12wait(struct __pyx_obj_7pr
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":364
+/* "promise/promise.pyx":360
  *         promise._wait(timeout)
  * 
  *     cpdef void _wait(self, object timeout = None):             # <<<<<<<<<<<<<<
@@ -9342,7 +9499,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_12wait(struct __pyx_obj_7pr
  * 
  */
 
-static PyObject *__pyx_pw_7promise_7promise_7Promise_15_wait(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_17_wait(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static void __pyx_f_7promise_7promise_7Promise__wait(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, int __pyx_skip_dispatch, struct __pyx_opt_args_7promise_7promise_7Promise__wait *__pyx_optional_args) {
   PyObject *__pyx_v_timeout = ((PyObject *)Py_None);
   __Pyx_RefNannyDeclarations
@@ -9369,9 +9526,9 @@ static void __pyx_f_7promise_7promise_7Promise__wait(struct __pyx_obj_7promise_7
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_wait); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_wait); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 360, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_15_wait)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_17_wait)) {
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -9385,7 +9542,7 @@ static void __pyx_f_7promise_7promise_7Promise__wait(struct __pyx_obj_7promise_7
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_timeout) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_timeout);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 364, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 360, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -9405,7 +9562,7 @@ static void __pyx_f_7promise_7promise_7Promise__wait(struct __pyx_obj_7promise_7
     #endif
   }
 
-  /* "promise/promise.pyx":365
+  /* "promise/promise.pyx":361
  * 
  *     cpdef void _wait(self, object timeout = None):
  *         async_instance.wait(self, timeout)             # <<<<<<<<<<<<<<
@@ -9416,7 +9573,7 @@ static void __pyx_f_7promise_7promise_7Promise__wait(struct __pyx_obj_7promise_7
   __pyx_t_5.timeout = __pyx_v_timeout;
   ((struct __pyx_vtabstruct_7promise_6async__Async *)__pyx_v_7promise_7promise_async_instance->__pyx_vtab)->wait(__pyx_v_7promise_7promise_async_instance, __pyx_v_self, &__pyx_t_5); 
 
-  /* "promise/promise.pyx":364
+  /* "promise/promise.pyx":360
  *         promise._wait(timeout)
  * 
  *     cpdef void _wait(self, object timeout = None):             # <<<<<<<<<<<<<<
@@ -9437,8 +9594,9 @@ static void __pyx_f_7promise_7promise_7Promise__wait(struct __pyx_obj_7promise_7
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_15_wait(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_15_wait(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_17_wait(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_17_wait = {"_wait", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_17_wait, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_17_wait(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_timeout = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -9468,7 +9626,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_15_wait(PyObject *__pyx_v_s
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_wait") < 0)) __PYX_ERR(0, 364, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_wait") < 0)) __PYX_ERR(0, 360, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -9482,20 +9640,20 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_15_wait(PyObject *__pyx_v_s
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_wait", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 364, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_wait", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 360, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise._wait", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_14_wait(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_timeout);
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_16_wait(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_timeout);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_14_wait(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_timeout) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_16_wait(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_timeout) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   struct __pyx_opt_args_7promise_7promise_7Promise__wait __pyx_t_1;
@@ -9508,7 +9666,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_14_wait(struct __pyx_obj_7p
   __pyx_t_1.__pyx_n = 1;
   __pyx_t_1.timeout = __pyx_v_timeout;
   __pyx_vtabptr_7promise_7promise_Promise->_wait(__pyx_v_self, 1, &__pyx_t_1); 
-  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 364, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 360, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -9525,7 +9683,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_14_wait(struct __pyx_obj_7p
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":367
+/* "promise/promise.pyx":363
  *         async_instance.wait(self, timeout)
  * 
  *     cpdef object get(self, object timeout = None):             # <<<<<<<<<<<<<<
@@ -9533,7 +9691,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_14_wait(struct __pyx_obj_7p
  *         return self._target_settled_value(raise_=True)
  */
 
-static PyObject *__pyx_pw_7promise_7promise_7Promise_17get(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_19get(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static PyObject *__pyx_f_7promise_7promise_7Promise_get(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, int __pyx_skip_dispatch, struct __pyx_opt_args_7promise_7promise_7Promise_get *__pyx_optional_args) {
   PyObject *__pyx_v_timeout = ((PyObject *)Py_None);
   PyObject *__pyx_r = NULL;
@@ -9563,9 +9721,9 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get(struct __pyx_obj_7promis
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 367, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_17get)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_19get)) {
         __Pyx_XDECREF(__pyx_r);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -9580,7 +9738,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get(struct __pyx_obj_7promis
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_timeout) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_timeout);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 367, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 363, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_r = __pyx_t_2;
@@ -9601,21 +9759,21 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get(struct __pyx_obj_7promis
     #endif
   }
 
-  /* "promise/promise.pyx":368
+  /* "promise/promise.pyx":364
  * 
  *     cpdef object get(self, object timeout = None):
  *         self._wait(timeout or DEFAULT_TIMEOUT)             # <<<<<<<<<<<<<<
  *         return self._target_settled_value(raise_=True)
  * 
  */
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_timeout); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 368, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_timeout); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 364, __pyx_L1_error)
   if (!__pyx_t_5) {
   } else {
     __Pyx_INCREF(__pyx_v_timeout);
     __pyx_t_1 = __pyx_v_timeout;
     goto __pyx_L3_bool_binop_done;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_DEFAULT_TIMEOUT); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 368, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_DEFAULT_TIMEOUT); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 364, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_t_2);
   __pyx_t_1 = __pyx_t_2;
@@ -9626,7 +9784,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get(struct __pyx_obj_7promis
   ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_wait(__pyx_v_self, 0, &__pyx_t_6); 
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":369
+  /* "promise/promise.pyx":365
  *     cpdef object get(self, object timeout = None):
  *         self._wait(timeout or DEFAULT_TIMEOUT)
  *         return self._target_settled_value(raise_=True)             # <<<<<<<<<<<<<<
@@ -9636,13 +9794,13 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get(struct __pyx_obj_7promis
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_7.__pyx_n = 1;
   __pyx_t_7.raise_ = 1;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target_settled_value(__pyx_v_self, &__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target_settled_value(__pyx_v_self, &__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 365, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":367
+  /* "promise/promise.pyx":363
  *         async_instance.wait(self, timeout)
  * 
  *     cpdef object get(self, object timeout = None):             # <<<<<<<<<<<<<<
@@ -9665,8 +9823,9 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_get(struct __pyx_obj_7promis
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_17get(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_17get(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_19get(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_19get = {"get", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_19get, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_19get(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_timeout = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -9696,7 +9855,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_17get(PyObject *__pyx_v_sel
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get") < 0)) __PYX_ERR(0, 367, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get") < 0)) __PYX_ERR(0, 363, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -9710,20 +9869,20 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_17get(PyObject *__pyx_v_sel
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 367, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 363, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.get", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_16get(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_timeout);
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_18get(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_timeout);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_16get(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_timeout) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_18get(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_timeout) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -9735,7 +9894,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_16get(struct __pyx_obj_7pro
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2.__pyx_n = 1;
   __pyx_t_2.timeout = __pyx_v_timeout;
-  __pyx_t_1 = __pyx_vtabptr_7promise_7promise_Promise->get(__pyx_v_self, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 367, __pyx_L1_error)
+  __pyx_t_1 = __pyx_vtabptr_7promise_7promise_Promise->get(__pyx_v_self, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -9752,7 +9911,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_16get(struct __pyx_obj_7pro
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":371
+/* "promise/promise.pyx":367
  *         return self._target_settled_value(raise_=True)
  * 
  *     cdef object _target_settled_value(self, bint raise_ = False):             # <<<<<<<<<<<<<<
@@ -9777,7 +9936,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__target_settled_value(struct
     }
   }
 
-  /* "promise/promise.pyx":372
+  /* "promise/promise.pyx":368
  * 
  *     cdef object _target_settled_value(self, bint raise_ = False):
  *         return self._target()._settled_value(raise_)             # <<<<<<<<<<<<<<
@@ -9785,18 +9944,18 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__target_settled_value(struct
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target(__pyx_v_self, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target(__pyx_v_self, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 368, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3.__pyx_n = 1;
   __pyx_t_3.raise_ = __pyx_v_raise_;
-  __pyx_t_2 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1)->__pyx_vtab)->_settled_value(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1), &__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __pyx_t_2 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1)->__pyx_vtab)->_settled_value(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1), &__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 368, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":371
+  /* "promise/promise.pyx":367
  *         return self._target_settled_value(raise_=True)
  * 
  *     cdef object _target_settled_value(self, bint raise_ = False):             # <<<<<<<<<<<<<<
@@ -9816,7 +9975,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise__target_settled_value(struct
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":375
+/* "promise/promise.pyx":371
  * 
  *     @property
  *     def value(self):             # <<<<<<<<<<<<<<
@@ -9846,7 +10005,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_5value___get__(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "promise/promise.pyx":376
+  /* "promise/promise.pyx":372
  *     @property
  *     def value(self):
  *         return self._target_settled_value()             # <<<<<<<<<<<<<<
@@ -9854,13 +10013,13 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_5value___get__(struct __pyx
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target_settled_value(__pyx_v_self, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 376, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target_settled_value(__pyx_v_self, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 372, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":375
+  /* "promise/promise.pyx":371
  * 
  *     @property
  *     def value(self):             # <<<<<<<<<<<<<<
@@ -9879,7 +10038,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_5value___get__(struct __pyx
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":379
+/* "promise/promise.pyx":375
  * 
  *     @property
  *     def reason(self):             # <<<<<<<<<<<<<<
@@ -9909,7 +10068,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_6reason___get__(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "promise/promise.pyx":380
+  /* "promise/promise.pyx":376
  *     @property
  *     def reason(self):
  *         return self._target_settled_value()             # <<<<<<<<<<<<<<
@@ -9917,13 +10076,13 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_6reason___get__(struct __py
  *     def __repr__(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target_settled_value(__pyx_v_self, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 380, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target_settled_value(__pyx_v_self, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 376, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":379
+  /* "promise/promise.pyx":375
  * 
  *     @property
  *     def reason(self):             # <<<<<<<<<<<<<<
@@ -9942,7 +10101,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_6reason___get__(struct __py
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":382
+/* "promise/promise.pyx":378
  *         return self._target_settled_value()
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -9951,19 +10110,19 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_6reason___get__(struct __py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_19__repr__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_19__repr__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_21__repr__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_21__repr__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__repr__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_18__repr__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_20__repr__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_20__repr__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
   PyObject *__pyx_v_hex_id = NULL;
   enum __pyx_t_7promise_7promise_State __pyx_v_state;
   PyObject *__pyx_r = NULL;
@@ -9981,22 +10140,22 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "promise/promise.pyx":383
+  /* "promise/promise.pyx":379
  * 
  *     def __repr__(self):
  *         hex_id = hex(id(self))             # <<<<<<<<<<<<<<
  *         if self._is_following:
  *             return "<Promise at {} following {}>".format(hex_id, self._target())
  */
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_id, ((PyObject *)__pyx_v_self)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 383, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_id, ((PyObject *)__pyx_v_self)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 379, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_hex, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 383, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_hex, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 379, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_hex_id = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "promise/promise.pyx":384
+  /* "promise/promise.pyx":380
  *     def __repr__(self):
  *         hex_id = hex(id(self))
  *         if self._is_following:             # <<<<<<<<<<<<<<
@@ -10006,7 +10165,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
   __pyx_t_3 = (__pyx_v_self->_is_following != 0);
   if (__pyx_t_3) {
 
-    /* "promise/promise.pyx":385
+    /* "promise/promise.pyx":381
  *         hex_id = hex(id(self))
  *         if self._is_following:
  *             return "<Promise at {} following {}>".format(hex_id, self._target())             # <<<<<<<<<<<<<<
@@ -10014,9 +10173,9 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
  *         if state == State.PENDING:
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Promise_at_following, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 385, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Promise_at_following, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 381, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target(__pyx_v_self, 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 385, __pyx_L1_error)
+    __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target(__pyx_v_self, 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 381, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -10033,7 +10192,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_hex_id, __pyx_t_4};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 385, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 381, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -10042,14 +10201,14 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_hex_id, __pyx_t_4};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 385, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 381, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 385, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 381, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_5) {
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -10060,7 +10219,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 385, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 381, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -10069,7 +10228,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":384
+    /* "promise/promise.pyx":380
  *     def __repr__(self):
  *         hex_id = hex(id(self))
  *         if self._is_following:             # <<<<<<<<<<<<<<
@@ -10078,7 +10237,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
  */
   }
 
-  /* "promise/promise.pyx":386
+  /* "promise/promise.pyx":382
  *         if self._is_following:
  *             return "<Promise at {} following {}>".format(hex_id, self._target())
  *         state = self._state             # <<<<<<<<<<<<<<
@@ -10088,7 +10247,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
   __pyx_t_8 = __pyx_v_self->_state;
   __pyx_v_state = __pyx_t_8;
 
-  /* "promise/promise.pyx":387
+  /* "promise/promise.pyx":383
  *             return "<Promise at {} following {}>".format(hex_id, self._target())
  *         state = self._state
  *         if state == State.PENDING:             # <<<<<<<<<<<<<<
@@ -10098,7 +10257,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
   switch (__pyx_v_state) {
     case __pyx_e_7promise_7promise_PENDING:
 
-    /* "promise/promise.pyx":388
+    /* "promise/promise.pyx":384
  *         state = self._state
  *         if state == State.PENDING:
  *             return "<Promise at {} pending>".format(hex_id)             # <<<<<<<<<<<<<<
@@ -10106,7 +10265,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
  *             return "<Promise at {} fulfilled with {}>".format(
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Promise_at_pending, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 388, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Promise_at_pending, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 384, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_7 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -10120,14 +10279,14 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
     }
     __pyx_t_2 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_7, __pyx_v_hex_id) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_hex_id);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 388, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 384, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":387
+    /* "promise/promise.pyx":383
  *             return "<Promise at {} following {}>".format(hex_id, self._target())
  *         state = self._state
  *         if state == State.PENDING:             # <<<<<<<<<<<<<<
@@ -10137,7 +10296,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
     break;
     case __pyx_e_7promise_7promise_FULFILLED:
 
-    /* "promise/promise.pyx":390
+    /* "promise/promise.pyx":386
  *             return "<Promise at {} pending>".format(hex_id)
  *         elif state == State.FULFILLED:
  *             return "<Promise at {} fulfilled with {}>".format(             # <<<<<<<<<<<<<<
@@ -10145,10 +10304,10 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
  *             )
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Promise_at_fulfilled_with, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 390, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Promise_at_fulfilled_with, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 386, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
 
-    /* "promise/promise.pyx":391
+    /* "promise/promise.pyx":387
  *         elif state == State.FULFILLED:
  *             return "<Promise at {} fulfilled with {}>".format(
  *                 hex_id, repr(self._rejection_handler0)             # <<<<<<<<<<<<<<
@@ -10157,7 +10316,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
  */
     __pyx_t_7 = __pyx_v_self->_rejection_handler0;
     __Pyx_INCREF(__pyx_t_7);
-    __pyx_t_4 = PyObject_Repr(__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 391, __pyx_L1_error)
+    __pyx_t_4 = PyObject_Repr(__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 387, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = NULL;
@@ -10175,7 +10334,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_v_hex_id, __pyx_t_4};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 390, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 386, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -10184,14 +10343,14 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_v_hex_id, __pyx_t_4};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 390, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 386, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 390, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 386, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       if (__pyx_t_7) {
         __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -10202,7 +10361,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_6, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 390, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 386, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
@@ -10211,7 +10370,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":389
+    /* "promise/promise.pyx":385
  *         if state == State.PENDING:
  *             return "<Promise at {} pending>".format(hex_id)
  *         elif state == State.FULFILLED:             # <<<<<<<<<<<<<<
@@ -10221,7 +10380,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
     break;
     case __pyx_e_7promise_7promise_REJECTED:
 
-    /* "promise/promise.pyx":394
+    /* "promise/promise.pyx":390
  *             )
  *         elif state == State.REJECTED:
  *             return "<Promise at {} rejected with {}>".format(             # <<<<<<<<<<<<<<
@@ -10229,10 +10388,10 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
  *             )
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Promise_at_rejected_with, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 394, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Promise_at_rejected_with, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 390, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
 
-    /* "promise/promise.pyx":395
+    /* "promise/promise.pyx":391
  *         elif state == State.REJECTED:
  *             return "<Promise at {} rejected with {}>".format(
  *                 hex_id, repr(self._fulfillment_handler0)             # <<<<<<<<<<<<<<
@@ -10241,7 +10400,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
  */
     __pyx_t_5 = __pyx_v_self->_fulfillment_handler0;
     __Pyx_INCREF(__pyx_t_5);
-    __pyx_t_4 = PyObject_Repr(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 395, __pyx_L1_error)
+    __pyx_t_4 = PyObject_Repr(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 391, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -10259,7 +10418,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_hex_id, __pyx_t_4};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 394, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 390, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -10268,14 +10427,14 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_hex_id, __pyx_t_4};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 394, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 390, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 394, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 390, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_5) {
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -10286,7 +10445,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 394, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 390, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -10295,7 +10454,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":393
+    /* "promise/promise.pyx":389
  *                 hex_id, repr(self._rejection_handler0)
  *             )
  *         elif state == State.REJECTED:             # <<<<<<<<<<<<<<
@@ -10306,7 +10465,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
     default: break;
   }
 
-  /* "promise/promise.pyx":398
+  /* "promise/promise.pyx":394
  *             )
  * 
  *         return "<Promise unknown>"             # <<<<<<<<<<<<<<
@@ -10318,7 +10477,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
   __pyx_r = __pyx_kp_u_Promise_unknown;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":382
+  /* "promise/promise.pyx":378
  *         return self._target_settled_value()
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -10342,7 +10501,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_18__repr__(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":400
+/* "promise/promise.pyx":396
  *         return "<Promise unknown>"
  * 
  *     cdef bint _is_pending(self):             # <<<<<<<<<<<<<<
@@ -10359,20 +10518,20 @@ static int __pyx_f_7promise_7promise_7Promise__is_pending(struct __pyx_obj_7prom
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_is_pending", 0);
 
-  /* "promise/promise.pyx":401
+  /* "promise/promise.pyx":397
  * 
  *     cdef bint _is_pending(self):
  *         return self._target()._state == State.PENDING             # <<<<<<<<<<<<<<
  * 
  *     cdef bint _is_fulfilled(self):
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target(__pyx_v_self, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 401, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target(__pyx_v_self, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 397, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = (((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1)->_state == __pyx_e_7promise_7promise_PENDING);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":400
+  /* "promise/promise.pyx":396
  *         return "<Promise unknown>"
  * 
  *     cdef bint _is_pending(self):             # <<<<<<<<<<<<<<
@@ -10390,7 +10549,7 @@ static int __pyx_f_7promise_7promise_7Promise__is_pending(struct __pyx_obj_7prom
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":403
+/* "promise/promise.pyx":399
  *         return self._target()._state == State.PENDING
  * 
  *     cdef bint _is_fulfilled(self):             # <<<<<<<<<<<<<<
@@ -10407,20 +10566,20 @@ static int __pyx_f_7promise_7promise_7Promise__is_fulfilled(struct __pyx_obj_7pr
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_is_fulfilled", 0);
 
-  /* "promise/promise.pyx":404
+  /* "promise/promise.pyx":400
  * 
  *     cdef bint _is_fulfilled(self):
  *         return self._target()._state == State.FULFILLED             # <<<<<<<<<<<<<<
  * 
  *     cdef bint _is_rejected(self):
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target(__pyx_v_self, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 404, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target(__pyx_v_self, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = (((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1)->_state == __pyx_e_7promise_7promise_FULFILLED);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":403
+  /* "promise/promise.pyx":399
  *         return self._target()._state == State.PENDING
  * 
  *     cdef bint _is_fulfilled(self):             # <<<<<<<<<<<<<<
@@ -10438,7 +10597,7 @@ static int __pyx_f_7promise_7promise_7Promise__is_fulfilled(struct __pyx_obj_7pr
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":406
+/* "promise/promise.pyx":402
  *         return self._target()._state == State.FULFILLED
  * 
  *     cdef bint _is_rejected(self):             # <<<<<<<<<<<<<<
@@ -10455,20 +10614,20 @@ static int __pyx_f_7promise_7promise_7Promise__is_rejected(struct __pyx_obj_7pro
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_is_rejected", 0);
 
-  /* "promise/promise.pyx":407
+  /* "promise/promise.pyx":403
  * 
  *     cdef bint _is_rejected(self):
  *         return self._target()._state == State.REJECTED             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target(__pyx_v_self, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 407, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target(__pyx_v_self, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 403, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = (((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1)->_state == __pyx_e_7promise_7promise_REJECTED);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":406
+  /* "promise/promise.pyx":402
  *         return self._target()._state == State.FULFILLED
  * 
  *     cdef bint _is_rejected(self):             # <<<<<<<<<<<<<<
@@ -10486,7 +10645,7 @@ static int __pyx_f_7promise_7promise_7Promise__is_rejected(struct __pyx_obj_7pro
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":410
+/* "promise/promise.pyx":406
  * 
  *     @property
  *     def is_pending(self):             # <<<<<<<<<<<<<<
@@ -10516,7 +10675,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_10is_pending___get__(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "promise/promise.pyx":411
+  /* "promise/promise.pyx":407
  *     @property
  *     def is_pending(self):
  *         return self._is_pending()             # <<<<<<<<<<<<<<
@@ -10524,13 +10683,13 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_10is_pending___get__(struct
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_is_pending(__pyx_v_self)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 411, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_is_pending(__pyx_v_self)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 407, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":410
+  /* "promise/promise.pyx":406
  * 
  *     @property
  *     def is_pending(self):             # <<<<<<<<<<<<<<
@@ -10549,7 +10708,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_10is_pending___get__(struct
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":414
+/* "promise/promise.pyx":410
  * 
  *     @property
  *     def is_fulfilled(self):             # <<<<<<<<<<<<<<
@@ -10579,7 +10738,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_12is_fulfilled___get__(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "promise/promise.pyx":415
+  /* "promise/promise.pyx":411
  *     @property
  *     def is_fulfilled(self):
  *         return self._is_fulfilled()             # <<<<<<<<<<<<<<
@@ -10587,13 +10746,13 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_12is_fulfilled___get__(stru
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_is_fulfilled(__pyx_v_self)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 415, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_is_fulfilled(__pyx_v_self)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 411, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":414
+  /* "promise/promise.pyx":410
  * 
  *     @property
  *     def is_fulfilled(self):             # <<<<<<<<<<<<<<
@@ -10612,7 +10771,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_12is_fulfilled___get__(stru
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":418
+/* "promise/promise.pyx":414
  * 
  *     @property
  *     def is_rejected(self):             # <<<<<<<<<<<<<<
@@ -10642,7 +10801,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_11is_rejected___get__(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "promise/promise.pyx":419
+  /* "promise/promise.pyx":415
  *     @property
  *     def is_rejected(self):
  *         return self._is_rejected()             # <<<<<<<<<<<<<<
@@ -10650,13 +10809,13 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_11is_rejected___get__(struc
  *     cpdef Promise catch(self, on_rejection):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_is_rejected(__pyx_v_self)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 419, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_is_rejected(__pyx_v_self)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 415, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":418
+  /* "promise/promise.pyx":414
  * 
  *     @property
  *     def is_rejected(self):             # <<<<<<<<<<<<<<
@@ -10675,7 +10834,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_11is_rejected___get__(struc
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":421
+/* "promise/promise.pyx":417
  *         return self._is_rejected()
  * 
  *     cpdef Promise catch(self, on_rejection):             # <<<<<<<<<<<<<<
@@ -10683,7 +10842,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_11is_rejected___get__(struc
  * 
  */
 
-static PyObject *__pyx_pw_7promise_7promise_7Promise_21catch(PyObject *__pyx_v_self, PyObject *__pyx_v_on_rejection); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_23catch(PyObject *__pyx_v_self, PyObject *__pyx_v_on_rejection); /*proto*/
 static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Promise_catch(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_on_rejection, int __pyx_skip_dispatch) {
   struct __pyx_obj_7promise_7promise_Promise *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -10705,9 +10864,9 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_catch); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_catch); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 417, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_21catch)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_23catch)) {
         __Pyx_XDECREF(((PyObject *)__pyx_r));
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -10722,10 +10881,10 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_on_rejection) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_on_rejection);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 421, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 417, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 421, __pyx_L1_error)
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 417, __pyx_L1_error)
         __pyx_r = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -10744,7 +10903,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     #endif
   }
 
-  /* "promise/promise.pyx":422
+  /* "promise/promise.pyx":418
  * 
  *     cpdef Promise catch(self, on_rejection):
  *         return self.then(None, on_rejection)             # <<<<<<<<<<<<<<
@@ -10755,13 +10914,13 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   __pyx_t_5.__pyx_n = 2;
   __pyx_t_5.did_fulfill = Py_None;
   __pyx_t_5.did_reject = __pyx_v_on_rejection;
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->then(__pyx_v_self, 0, &__pyx_t_5)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 422, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->then(__pyx_v_self, 0, &__pyx_t_5)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 418, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":421
+  /* "promise/promise.pyx":417
  *         return self._is_rejected()
  * 
  *     cpdef Promise catch(self, on_rejection):             # <<<<<<<<<<<<<<
@@ -10784,19 +10943,20 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_21catch(PyObject *__pyx_v_self, PyObject *__pyx_v_on_rejection); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_21catch(PyObject *__pyx_v_self, PyObject *__pyx_v_on_rejection) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_23catch(PyObject *__pyx_v_self, PyObject *__pyx_v_on_rejection); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_23catch = {"catch", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_23catch, METH_O, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_23catch(PyObject *__pyx_v_self, PyObject *__pyx_v_on_rejection) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("catch (wrapper)", 0);
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_20catch(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), ((PyObject *)__pyx_v_on_rejection));
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_22catch(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), ((PyObject *)__pyx_v_on_rejection));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_20catch(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_on_rejection) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_22catch(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_on_rejection) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -10805,7 +10965,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_20catch(struct __pyx_obj_7p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("catch", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_7promise_7promise_7Promise_catch(__pyx_v_self, __pyx_v_on_rejection, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7promise_7promise_7Promise_catch(__pyx_v_self, __pyx_v_on_rejection, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 417, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -10822,7 +10982,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_20catch(struct __pyx_obj_7p
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":424
+/* "promise/promise.pyx":420
  *         return self.then(None, on_rejection)
  * 
  *     cdef Promise _then(self, did_fulfill=None, did_reject=None):             # <<<<<<<<<<<<<<
@@ -10859,31 +11019,31 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     }
   }
 
-  /* "promise/promise.pyx":426
+  /* "promise/promise.pyx":422
  *     cdef Promise _then(self, did_fulfill=None, did_reject=None):
  *         cdef:
  *             Promise promise = Promise(), \             # <<<<<<<<<<<<<<
  *                 target = self._target()
  *             State state = target._state
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_7promise_7promise_Promise)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_7promise_7promise_Promise)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 422, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_promise = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":427
+  /* "promise/promise.pyx":423
  *         cdef:
  *             Promise promise = Promise(), \
  *                 target = self._target()             # <<<<<<<<<<<<<<
  *             State state = target._state
  *             PartialSettlePromise fn
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target(__pyx_v_self, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_target(__pyx_v_self, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 423, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_target = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":428
+  /* "promise/promise.pyx":424
  *             Promise promise = Promise(), \
  *                 target = self._target()
  *             State state = target._state             # <<<<<<<<<<<<<<
@@ -10893,7 +11053,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   __pyx_t_2 = __pyx_v_target->_state;
   __pyx_v_state = __pyx_t_2;
 
-  /* "promise/promise.pyx":431
+  /* "promise/promise.pyx":427
  *             PartialSettlePromise fn
  * 
  *         if state == State.PENDING:             # <<<<<<<<<<<<<<
@@ -10903,16 +11063,16 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   __pyx_t_3 = ((__pyx_v_state == __pyx_e_7promise_7promise_PENDING) != 0);
   if (__pyx_t_3) {
 
-    /* "promise/promise.pyx":432
+    /* "promise/promise.pyx":428
  * 
  *         if state == State.PENDING:
  *             target._add_callbacks(did_fulfill, did_reject, promise)             # <<<<<<<<<<<<<<
  *         else:
  *             traceback = None
  */
-    __pyx_t_4 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_target->__pyx_vtab)->_add_callbacks(__pyx_v_target, __pyx_v_did_fulfill, __pyx_v_did_reject, __pyx_v_promise); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 432, __pyx_L1_error)
+    __pyx_t_4 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_target->__pyx_vtab)->_add_callbacks(__pyx_v_target, __pyx_v_did_fulfill, __pyx_v_did_reject, __pyx_v_promise); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 428, __pyx_L1_error)
 
-    /* "promise/promise.pyx":431
+    /* "promise/promise.pyx":427
  *             PartialSettlePromise fn
  * 
  *         if state == State.PENDING:             # <<<<<<<<<<<<<<
@@ -10922,7 +11082,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     goto __pyx_L3;
   }
 
-  /* "promise/promise.pyx":434
+  /* "promise/promise.pyx":430
  *             target._add_callbacks(did_fulfill, did_reject, promise)
  *         else:
  *             traceback = None             # <<<<<<<<<<<<<<
@@ -10933,7 +11093,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     __Pyx_INCREF(Py_None);
     __pyx_v_traceback = Py_None;
 
-    /* "promise/promise.pyx":435
+    /* "promise/promise.pyx":431
  *         else:
  *             traceback = None
  *             if state == State.FULFILLED:             # <<<<<<<<<<<<<<
@@ -10943,7 +11103,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     switch (__pyx_v_state) {
       case __pyx_e_7promise_7promise_FULFILLED:
 
-      /* "promise/promise.pyx":436
+      /* "promise/promise.pyx":432
  *             traceback = None
  *             if state == State.FULFILLED:
  *                 value = target._rejection_handler0             # <<<<<<<<<<<<<<
@@ -10955,7 +11115,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
       __pyx_v_value = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "promise/promise.pyx":437
+      /* "promise/promise.pyx":433
  *             if state == State.FULFILLED:
  *                 value = target._rejection_handler0
  *                 handler = did_fulfill             # <<<<<<<<<<<<<<
@@ -10965,7 +11125,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
       __Pyx_INCREF(__pyx_v_did_fulfill);
       __pyx_v_handler = __pyx_v_did_fulfill;
 
-      /* "promise/promise.pyx":435
+      /* "promise/promise.pyx":431
  *         else:
  *             traceback = None
  *             if state == State.FULFILLED:             # <<<<<<<<<<<<<<
@@ -10975,7 +11135,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
       break;
       case __pyx_e_7promise_7promise_REJECTED:
 
-      /* "promise/promise.pyx":439
+      /* "promise/promise.pyx":435
  *                 handler = did_fulfill
  *             elif state == State.REJECTED:
  *                 value = target._fulfillment_handler0             # <<<<<<<<<<<<<<
@@ -10987,7 +11147,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
       __pyx_v_value = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "promise/promise.pyx":440
+      /* "promise/promise.pyx":436
  *             elif state == State.REJECTED:
  *                 value = target._fulfillment_handler0
  *                 handler = did_reject             # <<<<<<<<<<<<<<
@@ -10997,7 +11157,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
       __Pyx_INCREF(__pyx_v_did_reject);
       __pyx_v_handler = __pyx_v_did_reject;
 
-      /* "promise/promise.pyx":438
+      /* "promise/promise.pyx":434
  *                 value = target._rejection_handler0
  *                 handler = did_fulfill
  *             elif state == State.REJECTED:             # <<<<<<<<<<<<<<
@@ -11008,19 +11168,19 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
       default: break;
     }
 
-    /* "promise/promise.pyx":442
+    /* "promise/promise.pyx":438
  *                 handler = did_reject
  * 
  *             fn = PartialSettlePromise()             # <<<<<<<<<<<<<<
  *             fn.target = target
  *             fn.promise = promise
  */
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_7promise_7promise_PartialSettlePromise)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_7promise_7promise_PartialSettlePromise)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 438, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_fn = ((struct __pyx_obj_7promise_7promise_PartialSettlePromise *)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "promise/promise.pyx":443
+    /* "promise/promise.pyx":439
  * 
  *             fn = PartialSettlePromise()
  *             fn.target = target             # <<<<<<<<<<<<<<
@@ -11033,7 +11193,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     __Pyx_DECREF(((PyObject *)__pyx_v_fn->target));
     __pyx_v_fn->target = __pyx_v_target;
 
-    /* "promise/promise.pyx":444
+    /* "promise/promise.pyx":440
  *             fn = PartialSettlePromise()
  *             fn.target = target
  *             fn.promise = promise             # <<<<<<<<<<<<<<
@@ -11046,35 +11206,35 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     __Pyx_DECREF(((PyObject *)__pyx_v_fn->promise));
     __pyx_v_fn->promise = __pyx_v_promise;
 
-    /* "promise/promise.pyx":445
+    /* "promise/promise.pyx":441
  *             fn.target = target
  *             fn.promise = promise
  *             fn.handler = handler             # <<<<<<<<<<<<<<
  *             fn.value = value
  *             fn.traceback = traceback
  */
-    if (unlikely(!__pyx_v_handler)) { __Pyx_RaiseUnboundLocalError("handler"); __PYX_ERR(0, 445, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_handler)) { __Pyx_RaiseUnboundLocalError("handler"); __PYX_ERR(0, 441, __pyx_L1_error) }
     __Pyx_INCREF(__pyx_v_handler);
     __Pyx_GIVEREF(__pyx_v_handler);
     __Pyx_GOTREF(__pyx_v_fn->handler);
     __Pyx_DECREF(__pyx_v_fn->handler);
     __pyx_v_fn->handler = __pyx_v_handler;
 
-    /* "promise/promise.pyx":446
+    /* "promise/promise.pyx":442
  *             fn.promise = promise
  *             fn.handler = handler
  *             fn.value = value             # <<<<<<<<<<<<<<
  *             fn.traceback = traceback
  *             async_instance.invoke(fn, promise.get_scheduler())
  */
-    if (unlikely(!__pyx_v_value)) { __Pyx_RaiseUnboundLocalError("value"); __PYX_ERR(0, 446, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_value)) { __Pyx_RaiseUnboundLocalError("value"); __PYX_ERR(0, 442, __pyx_L1_error) }
     __Pyx_INCREF(__pyx_v_value);
     __Pyx_GIVEREF(__pyx_v_value);
     __Pyx_GOTREF(__pyx_v_fn->value);
     __Pyx_DECREF(__pyx_v_fn->value);
     __pyx_v_fn->value = __pyx_v_value;
 
-    /* "promise/promise.pyx":447
+    /* "promise/promise.pyx":443
  *             fn.handler = handler
  *             fn.value = value
  *             fn.traceback = traceback             # <<<<<<<<<<<<<<
@@ -11087,21 +11247,21 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     __Pyx_DECREF(__pyx_v_fn->traceback);
     __pyx_v_fn->traceback = __pyx_v_traceback;
 
-    /* "promise/promise.pyx":448
+    /* "promise/promise.pyx":444
  *             fn.value = value
  *             fn.traceback = traceback
  *             async_instance.invoke(fn, promise.get_scheduler())             # <<<<<<<<<<<<<<
  * 
  *         return promise
  */
-    __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_promise->__pyx_vtab)->get_scheduler(__pyx_v_promise, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 448, __pyx_L1_error)
+    __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_promise->__pyx_vtab)->get_scheduler(__pyx_v_promise, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 444, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     ((struct __pyx_vtabstruct_7promise_6async__Async *)__pyx_v_7promise_7promise_async_instance->__pyx_vtab)->invoke(__pyx_v_7promise_7promise_async_instance, ((struct __pyx_obj_7promise_10schedulers_4base_SchedulerFn *)__pyx_v_fn), ((struct __pyx_obj_7promise_10schedulers_4base_Scheduler *)__pyx_t_1));
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
   __pyx_L3:;
 
-  /* "promise/promise.pyx":450
+  /* "promise/promise.pyx":446
  *             async_instance.invoke(fn, promise.get_scheduler())
  * 
  *         return promise             # <<<<<<<<<<<<<<
@@ -11113,7 +11273,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   __pyx_r = __pyx_v_promise;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":424
+  /* "promise/promise.pyx":420
  *         return self.then(None, on_rejection)
  * 
  *     cdef Promise _then(self, did_fulfill=None, did_reject=None):             # <<<<<<<<<<<<<<
@@ -11138,7 +11298,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":452
+/* "promise/promise.pyx":448
  *         return promise
  * 
  *     cpdef void do_resolve(self, object value):             # <<<<<<<<<<<<<<
@@ -11146,7 +11306,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
  * 
  */
 
-static PyObject *__pyx_pw_7promise_7promise_7Promise_23do_resolve(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_25do_resolve(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
 static void __pyx_f_7promise_7promise_7Promise_do_resolve(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_value, int __pyx_skip_dispatch) {
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -11166,9 +11326,9 @@ static void __pyx_f_7promise_7promise_7Promise_do_resolve(struct __pyx_obj_7prom
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_do_resolve); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 452, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_do_resolve); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 448, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_23do_resolve)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_25do_resolve)) {
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -11182,7 +11342,7 @@ static void __pyx_f_7promise_7promise_7Promise_do_resolve(struct __pyx_obj_7prom
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_value) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_value);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 452, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 448, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -11202,7 +11362,7 @@ static void __pyx_f_7promise_7promise_7Promise_do_resolve(struct __pyx_obj_7prom
     #endif
   }
 
-  /* "promise/promise.pyx":453
+  /* "promise/promise.pyx":449
  * 
  *     cpdef void do_resolve(self, object value):
  *         self._resolve_callback(value)             # <<<<<<<<<<<<<<
@@ -11211,7 +11371,7 @@ static void __pyx_f_7promise_7promise_7Promise_do_resolve(struct __pyx_obj_7prom
  */
   ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_resolve_callback(__pyx_v_self, __pyx_v_value);
 
-  /* "promise/promise.pyx":452
+  /* "promise/promise.pyx":448
  *         return promise
  * 
  *     cpdef void do_resolve(self, object value):             # <<<<<<<<<<<<<<
@@ -11232,19 +11392,20 @@ static void __pyx_f_7promise_7promise_7Promise_do_resolve(struct __pyx_obj_7prom
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_23do_resolve(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_23do_resolve(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_25do_resolve(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_25do_resolve = {"do_resolve", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_25do_resolve, METH_O, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_25do_resolve(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("do_resolve (wrapper)", 0);
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_22do_resolve(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_24do_resolve(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_22do_resolve(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_value) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_24do_resolve(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -11253,7 +11414,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_22do_resolve(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("do_resolve", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_7promise_7promise_7Promise_do_resolve(__pyx_v_self, __pyx_v_value, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 452, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_7promise_7promise_7Promise_do_resolve(__pyx_v_self, __pyx_v_value, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 448, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -11270,7 +11431,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_22do_resolve(struct __pyx_o
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":457
+/* "promise/promise.pyx":453
  *     fulfill = do_resolve
  * 
  *     cpdef void do_reject(self, Exception reason, object traceback = None):             # <<<<<<<<<<<<<<
@@ -11278,7 +11439,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_22do_resolve(struct __pyx_o
  * 
  */
 
-static PyObject *__pyx_pw_7promise_7promise_7Promise_25do_reject(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_27do_reject(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static void __pyx_f_7promise_7promise_7Promise_do_reject(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_reason, int __pyx_skip_dispatch, struct __pyx_opt_args_7promise_7promise_7Promise_do_reject *__pyx_optional_args) {
   PyObject *__pyx_v_traceback = ((PyObject *)Py_None);
   __Pyx_RefNannyDeclarations
@@ -11307,9 +11468,9 @@ static void __pyx_f_7promise_7promise_7Promise_do_reject(struct __pyx_obj_7promi
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_do_reject); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_do_reject); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 453, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_25do_reject)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_27do_reject)) {
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
         __pyx_t_5 = 0;
@@ -11326,7 +11487,7 @@ static void __pyx_f_7promise_7promise_7Promise_do_reject(struct __pyx_obj_7promi
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_reason, __pyx_v_traceback};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 457, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 453, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
@@ -11334,13 +11495,13 @@ static void __pyx_f_7promise_7promise_7Promise_do_reject(struct __pyx_obj_7promi
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_reason, __pyx_v_traceback};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 457, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 453, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
         #endif
         {
-          __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 457, __pyx_L1_error)
+          __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 453, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
           if (__pyx_t_4) {
             __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -11351,7 +11512,7 @@ static void __pyx_f_7promise_7promise_7Promise_do_reject(struct __pyx_obj_7promi
           __Pyx_INCREF(__pyx_v_traceback);
           __Pyx_GIVEREF(__pyx_v_traceback);
           PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_traceback);
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 457, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 453, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         }
@@ -11373,7 +11534,7 @@ static void __pyx_f_7promise_7promise_7Promise_do_reject(struct __pyx_obj_7promi
     #endif
   }
 
-  /* "promise/promise.pyx":458
+  /* "promise/promise.pyx":454
  * 
  *     cpdef void do_reject(self, Exception reason, object traceback = None):
  *         self._reject_callback(reason, traceback)             # <<<<<<<<<<<<<<
@@ -11384,7 +11545,7 @@ static void __pyx_f_7promise_7promise_7Promise_do_reject(struct __pyx_obj_7promi
   __pyx_t_7.traceback = __pyx_v_traceback;
   ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_reject_callback(__pyx_v_self, __pyx_v_reason, &__pyx_t_7); 
 
-  /* "promise/promise.pyx":457
+  /* "promise/promise.pyx":453
  *     fulfill = do_resolve
  * 
  *     cpdef void do_reject(self, Exception reason, object traceback = None):             # <<<<<<<<<<<<<<
@@ -11406,8 +11567,9 @@ static void __pyx_f_7promise_7promise_7Promise_do_reject(struct __pyx_obj_7promi
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_25do_reject(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_25do_reject(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_27do_reject(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_27do_reject = {"do_reject", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_27do_reject, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_27do_reject(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_reason = 0;
   PyObject *__pyx_v_traceback = 0;
   int __pyx_lineno = 0;
@@ -11444,7 +11606,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_25do_reject(PyObject *__pyx
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "do_reject") < 0)) __PYX_ERR(0, 457, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "do_reject") < 0)) __PYX_ERR(0, 453, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -11460,14 +11622,14 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_25do_reject(PyObject *__pyx
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("do_reject", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 457, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("do_reject", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 453, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.do_reject", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_reason), (&((PyTypeObject*)PyExc_Exception)[0]), 1, "reason", 0))) __PYX_ERR(0, 457, __pyx_L1_error)
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_24do_reject(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_reason, __pyx_v_traceback);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_reason), (&((PyTypeObject*)PyExc_Exception)[0]), 1, "reason", 0))) __PYX_ERR(0, 453, __pyx_L1_error)
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_26do_reject(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_reason, __pyx_v_traceback);
 
   /* function exit code */
   goto __pyx_L0;
@@ -11478,7 +11640,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_25do_reject(PyObject *__pyx
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_24do_reject(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_reason, PyObject *__pyx_v_traceback) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_26do_reject(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_reason, PyObject *__pyx_v_traceback) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   struct __pyx_opt_args_7promise_7promise_7Promise_do_reject __pyx_t_1;
@@ -11491,7 +11653,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_24do_reject(struct __pyx_ob
   __pyx_t_1.__pyx_n = 1;
   __pyx_t_1.traceback = __pyx_v_traceback;
   __pyx_vtabptr_7promise_7promise_Promise->do_reject(__pyx_v_self, __pyx_v_reason, 1, &__pyx_t_1); 
-  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 457, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 453, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -11508,7 +11670,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_24do_reject(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":460
+/* "promise/promise.pyx":456
  *         self._reject_callback(reason, traceback)
  * 
  *     cpdef Promise then(self, object did_fulfill = None, object did_reject = None):             # <<<<<<<<<<<<<<
@@ -11516,7 +11678,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_24do_reject(struct __pyx_ob
  * 
  */
 
-static PyObject *__pyx_pw_7promise_7promise_7Promise_27then(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_29then(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Promise_then(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, int __pyx_skip_dispatch, struct __pyx_opt_args_7promise_7promise_7Promise_then *__pyx_optional_args) {
   PyObject *__pyx_v_did_fulfill = ((PyObject *)Py_None);
   PyObject *__pyx_v_did_reject = ((PyObject *)Py_None);
@@ -11550,9 +11712,9 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_then); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 460, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_then); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 456, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_27then)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_29then)) {
         __Pyx_XDECREF(((PyObject *)__pyx_r));
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -11570,7 +11732,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_did_fulfill, __pyx_v_did_reject};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 460, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 456, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
@@ -11578,13 +11740,13 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_did_fulfill, __pyx_v_did_reject};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 460, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 456, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
         #endif
         {
-          __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 460, __pyx_L1_error)
+          __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 456, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
           if (__pyx_t_4) {
             __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -11595,12 +11757,12 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
           __Pyx_INCREF(__pyx_v_did_reject);
           __Pyx_GIVEREF(__pyx_v_did_reject);
           PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_did_reject);
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 460, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 456, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         }
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 460, __pyx_L1_error)
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 456, __pyx_L1_error)
         __pyx_r = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -11619,7 +11781,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     #endif
   }
 
-  /* "promise/promise.pyx":461
+  /* "promise/promise.pyx":457
  * 
  *     cpdef Promise then(self, object did_fulfill = None, object did_reject = None):
  *         return self._then(did_fulfill, did_reject)             # <<<<<<<<<<<<<<
@@ -11630,13 +11792,13 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   __pyx_t_7.__pyx_n = 2;
   __pyx_t_7.did_fulfill = __pyx_v_did_fulfill;
   __pyx_t_7.did_reject = __pyx_v_did_reject;
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_then(__pyx_v_self, &__pyx_t_7)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 461, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_then(__pyx_v_self, &__pyx_t_7)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 457, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":460
+  /* "promise/promise.pyx":456
  *         self._reject_callback(reason, traceback)
  * 
  *     cpdef Promise then(self, object did_fulfill = None, object did_reject = None):             # <<<<<<<<<<<<<<
@@ -11660,8 +11822,9 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_27then(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_27then(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_29then(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_29then = {"then", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_29then, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_29then(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_did_fulfill = 0;
   PyObject *__pyx_v_did_reject = 0;
   int __pyx_lineno = 0;
@@ -11701,7 +11864,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_27then(PyObject *__pyx_v_se
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "then") < 0)) __PYX_ERR(0, 460, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "then") < 0)) __PYX_ERR(0, 456, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -11718,20 +11881,20 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_27then(PyObject *__pyx_v_se
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("then", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 460, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("then", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 456, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.then", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_26then(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_did_fulfill, __pyx_v_did_reject);
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_28then(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_did_fulfill, __pyx_v_did_reject);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_26then(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_did_fulfill, PyObject *__pyx_v_did_reject) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_28then(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_did_fulfill, PyObject *__pyx_v_did_reject) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -11744,7 +11907,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_26then(struct __pyx_obj_7pr
   __pyx_t_2.__pyx_n = 2;
   __pyx_t_2.did_fulfill = __pyx_v_did_fulfill;
   __pyx_t_2.did_reject = __pyx_v_did_reject;
-  __pyx_t_1 = ((PyObject *)__pyx_vtabptr_7promise_7promise_Promise->then(__pyx_v_self, 1, &__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 460, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_vtabptr_7promise_7promise_Promise->then(__pyx_v_self, 1, &__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 456, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -11761,7 +11924,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_26then(struct __pyx_obj_7pr
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":463
+/* "promise/promise.pyx":459
  *         return self._then(did_fulfill, did_reject)
  * 
  *     cpdef void done(self, did_fulfill=None, did_reject=None):             # <<<<<<<<<<<<<<
@@ -11769,7 +11932,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_26then(struct __pyx_obj_7pr
  *         promise._is_final = True
  */
 
-static PyObject *__pyx_pw_7promise_7promise_7Promise_29done(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_31done(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static void __pyx_f_7promise_7promise_7Promise_done(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, int __pyx_skip_dispatch, struct __pyx_opt_args_7promise_7promise_7Promise_done *__pyx_optional_args) {
   PyObject *__pyx_v_did_fulfill = ((PyObject *)Py_None);
   PyObject *__pyx_v_did_reject = ((PyObject *)Py_None);
@@ -11803,9 +11966,9 @@ static void __pyx_f_7promise_7promise_7Promise_done(struct __pyx_obj_7promise_7p
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_done); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 463, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_done); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 459, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_29done)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_31done)) {
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
         __pyx_t_5 = 0;
@@ -11822,7 +11985,7 @@ static void __pyx_f_7promise_7promise_7Promise_done(struct __pyx_obj_7promise_7p
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_did_fulfill, __pyx_v_did_reject};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 463, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 459, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
@@ -11830,13 +11993,13 @@ static void __pyx_f_7promise_7promise_7Promise_done(struct __pyx_obj_7promise_7p
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_did_fulfill, __pyx_v_did_reject};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 463, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 459, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
         #endif
         {
-          __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 463, __pyx_L1_error)
+          __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 459, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
           if (__pyx_t_4) {
             __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -11847,7 +12010,7 @@ static void __pyx_f_7promise_7promise_7Promise_done(struct __pyx_obj_7promise_7p
           __Pyx_INCREF(__pyx_v_did_reject);
           __Pyx_GIVEREF(__pyx_v_did_reject);
           PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_did_reject);
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 463, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 459, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         }
@@ -11869,7 +12032,7 @@ static void __pyx_f_7promise_7promise_7Promise_done(struct __pyx_obj_7promise_7p
     #endif
   }
 
-  /* "promise/promise.pyx":464
+  /* "promise/promise.pyx":460
  * 
  *     cpdef void done(self, did_fulfill=None, did_reject=None):
  *         cdef Promise promise = self._then(did_fulfill, did_reject)             # <<<<<<<<<<<<<<
@@ -11879,12 +12042,12 @@ static void __pyx_f_7promise_7promise_7Promise_done(struct __pyx_obj_7promise_7p
   __pyx_t_7.__pyx_n = 2;
   __pyx_t_7.did_fulfill = __pyx_v_did_fulfill;
   __pyx_t_7.did_reject = __pyx_v_did_reject;
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_then(__pyx_v_self, &__pyx_t_7)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 464, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->_then(__pyx_v_self, &__pyx_t_7)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 460, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_promise = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":465
+  /* "promise/promise.pyx":461
  *     cpdef void done(self, did_fulfill=None, did_reject=None):
  *         cdef Promise promise = self._then(did_fulfill, did_reject)
  *         promise._is_final = True             # <<<<<<<<<<<<<<
@@ -11893,7 +12056,7 @@ static void __pyx_f_7promise_7promise_7Promise_done(struct __pyx_obj_7promise_7p
  */
   __pyx_v_promise->_is_final = 1;
 
-  /* "promise/promise.pyx":463
+  /* "promise/promise.pyx":459
  *         return self._then(did_fulfill, did_reject)
  * 
  *     cpdef void done(self, did_fulfill=None, did_reject=None):             # <<<<<<<<<<<<<<
@@ -11916,8 +12079,9 @@ static void __pyx_f_7promise_7promise_7Promise_done(struct __pyx_obj_7promise_7p
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_29done(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_29done(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_31done(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_31done = {"done", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_31done, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_31done(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_did_fulfill = 0;
   PyObject *__pyx_v_did_reject = 0;
   int __pyx_lineno = 0;
@@ -11957,7 +12121,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_29done(PyObject *__pyx_v_se
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "done") < 0)) __PYX_ERR(0, 463, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "done") < 0)) __PYX_ERR(0, 459, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -11974,20 +12138,20 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_29done(PyObject *__pyx_v_se
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("done", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 463, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("done", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 459, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.done", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_28done(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_did_fulfill, __pyx_v_did_reject);
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_30done(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_did_fulfill, __pyx_v_did_reject);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_28done(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_did_fulfill, PyObject *__pyx_v_did_reject) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_30done(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_did_fulfill, PyObject *__pyx_v_did_reject) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   struct __pyx_opt_args_7promise_7promise_7Promise_done __pyx_t_1;
@@ -12001,7 +12165,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_28done(struct __pyx_obj_7pr
   __pyx_t_1.did_fulfill = __pyx_v_did_fulfill;
   __pyx_t_1.did_reject = __pyx_v_did_reject;
   __pyx_vtabptr_7promise_7promise_Promise->done(__pyx_v_self, 1, &__pyx_t_1); 
-  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 463, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 459, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -12018,7 +12182,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_28done(struct __pyx_obj_7pr
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":467
+/* "promise/promise.pyx":463
  *         promise._is_final = True
  * 
  *     cpdef void done_all(self, handlers=None):             # <<<<<<<<<<<<<<
@@ -12026,7 +12190,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_28done(struct __pyx_obj_7pr
  *         cdef list handler_list
  */
 
-static PyObject *__pyx_pw_7promise_7promise_7Promise_31done_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_33done_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, int __pyx_skip_dispatch, struct __pyx_opt_args_7promise_7promise_7Promise_done_all *__pyx_optional_args) {
   PyObject *__pyx_v_handlers = ((PyObject *)Py_None);
   int __pyx_v_i;
@@ -12064,9 +12228,9 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_done_all); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 467, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_done_all); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 463, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_31done_all)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_33done_all)) {
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -12080,7 +12244,7 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_handlers) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_handlers);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 467, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 463, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -12100,7 +12264,7 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
     #endif
   }
 
-  /* "promise/promise.pyx":471
+  /* "promise/promise.pyx":467
  *         cdef list handler_list
  * 
  *         if handlers is None:             # <<<<<<<<<<<<<<
@@ -12111,7 +12275,7 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
   __pyx_t_6 = (__pyx_t_5 != 0);
   if (__pyx_t_6) {
 
-    /* "promise/promise.pyx":472
+    /* "promise/promise.pyx":468
  * 
  *         if handlers is None:
  *             return             # <<<<<<<<<<<<<<
@@ -12120,7 +12284,7 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
  */
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":471
+    /* "promise/promise.pyx":467
  *         cdef list handler_list
  * 
  *         if handlers is None:             # <<<<<<<<<<<<<<
@@ -12129,43 +12293,43 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
  */
   }
 
-  /* "promise/promise.pyx":474
+  /* "promise/promise.pyx":470
  *             return
  * 
  *         handler_list = list(handlers)             # <<<<<<<<<<<<<<
  *         for i in range(len(handler_list)):
  *             handler = handler_list[i]
  */
-  __pyx_t_1 = PySequence_List(__pyx_v_handlers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 474, __pyx_L1_error)
+  __pyx_t_1 = PySequence_List(__pyx_v_handlers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 470, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_handler_list = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":475
+  /* "promise/promise.pyx":471
  * 
  *         handler_list = list(handlers)
  *         for i in range(len(handler_list)):             # <<<<<<<<<<<<<<
  *             handler = handler_list[i]
  *             if isinstance(handler, tuple):
  */
-  __pyx_t_7 = PyList_GET_SIZE(__pyx_v_handler_list); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 475, __pyx_L1_error)
+  __pyx_t_7 = PyList_GET_SIZE(__pyx_v_handler_list); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 471, __pyx_L1_error)
   __pyx_t_8 = __pyx_t_7;
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "promise/promise.pyx":476
+    /* "promise/promise.pyx":472
  *         handler_list = list(handlers)
  *         for i in range(len(handler_list)):
  *             handler = handler_list[i]             # <<<<<<<<<<<<<<
  *             if isinstance(handler, tuple):
  *                 s, f = handler
  */
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_handler_list, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 476, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_handler_list, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 472, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_XDECREF_SET(__pyx_v_handler, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "promise/promise.pyx":477
+    /* "promise/promise.pyx":473
  *         for i in range(len(handler_list)):
  *             handler = handler_list[i]
  *             if isinstance(handler, tuple):             # <<<<<<<<<<<<<<
@@ -12176,7 +12340,7 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
     __pyx_t_5 = (__pyx_t_6 != 0);
     if (__pyx_t_5) {
 
-      /* "promise/promise.pyx":478
+      /* "promise/promise.pyx":474
  *             handler = handler_list[i]
  *             if isinstance(handler, tuple):
  *                 s, f = handler             # <<<<<<<<<<<<<<
@@ -12189,7 +12353,7 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 478, __pyx_L1_error)
+          __PYX_ERR(0, 474, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -12202,21 +12366,21 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
         __Pyx_INCREF(__pyx_t_1);
         __Pyx_INCREF(__pyx_t_2);
         #else
-        __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 478, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 474, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 478, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 474, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_3 = PyObject_GetIter(__pyx_v_handler); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 478, __pyx_L1_error)
+        __pyx_t_3 = PyObject_GetIter(__pyx_v_handler); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 474, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_10 = Py_TYPE(__pyx_t_3)->tp_iternext;
         index = 0; __pyx_t_1 = __pyx_t_10(__pyx_t_3); if (unlikely(!__pyx_t_1)) goto __pyx_L7_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_1);
         index = 1; __pyx_t_2 = __pyx_t_10(__pyx_t_3); if (unlikely(!__pyx_t_2)) goto __pyx_L7_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_2);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_3), 2) < 0) __PYX_ERR(0, 478, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_3), 2) < 0) __PYX_ERR(0, 474, __pyx_L1_error)
         __pyx_t_10 = NULL;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         goto __pyx_L8_unpacking_done;
@@ -12224,7 +12388,7 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_10 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 478, __pyx_L1_error)
+        __PYX_ERR(0, 474, __pyx_L1_error)
         __pyx_L8_unpacking_done:;
       }
       __Pyx_XDECREF_SET(__pyx_v_s, __pyx_t_1);
@@ -12232,7 +12396,7 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
       __Pyx_XDECREF_SET(__pyx_v_f, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "promise/promise.pyx":479
+      /* "promise/promise.pyx":475
  *             if isinstance(handler, tuple):
  *                 s, f = handler
  *                 self.done(s, f)             # <<<<<<<<<<<<<<
@@ -12244,7 +12408,7 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
       __pyx_t_11.did_reject = __pyx_v_f;
       ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->done(__pyx_v_self, 0, &__pyx_t_11); 
 
-      /* "promise/promise.pyx":477
+      /* "promise/promise.pyx":473
  *         for i in range(len(handler_list)):
  *             handler = handler_list[i]
  *             if isinstance(handler, tuple):             # <<<<<<<<<<<<<<
@@ -12254,7 +12418,7 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
       goto __pyx_L6;
     }
 
-    /* "promise/promise.pyx":480
+    /* "promise/promise.pyx":476
  *                 s, f = handler
  *                 self.done(s, f)
  *             elif isinstance(handler, dict):             # <<<<<<<<<<<<<<
@@ -12265,14 +12429,14 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
     __pyx_t_6 = (__pyx_t_5 != 0);
     if (__pyx_t_6) {
 
-      /* "promise/promise.pyx":481
+      /* "promise/promise.pyx":477
  *                 self.done(s, f)
  *             elif isinstance(handler, dict):
  *                 s = handler.get("success")             # <<<<<<<<<<<<<<
  *                 f = handler.get("failure")
  * 
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_handler, __pyx_n_s_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 481, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_handler, __pyx_n_s_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 477, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_3 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -12286,20 +12450,20 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
       }
       __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_3, __pyx_n_u_success) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_n_u_success);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 481, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 477, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_XDECREF_SET(__pyx_v_s, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "promise/promise.pyx":482
+      /* "promise/promise.pyx":478
  *             elif isinstance(handler, dict):
  *                 s = handler.get("success")
  *                 f = handler.get("failure")             # <<<<<<<<<<<<<<
  * 
  *                 self.done(s, f)
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_handler, __pyx_n_s_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 482, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_handler, __pyx_n_s_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 478, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_3 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -12313,13 +12477,13 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
       }
       __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_3, __pyx_n_u_failure) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_n_u_failure);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 482, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 478, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_XDECREF_SET(__pyx_v_f, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "promise/promise.pyx":484
+      /* "promise/promise.pyx":480
  *                 f = handler.get("failure")
  * 
  *                 self.done(s, f)             # <<<<<<<<<<<<<<
@@ -12331,7 +12495,7 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
       __pyx_t_11.did_reject = __pyx_v_f;
       ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->done(__pyx_v_self, 0, &__pyx_t_11); 
 
-      /* "promise/promise.pyx":480
+      /* "promise/promise.pyx":476
  *                 s, f = handler
  *                 self.done(s, f)
  *             elif isinstance(handler, dict):             # <<<<<<<<<<<<<<
@@ -12341,7 +12505,7 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
       goto __pyx_L6;
     }
 
-    /* "promise/promise.pyx":486
+    /* "promise/promise.pyx":482
  *                 self.done(s, f)
  *             else:
  *                 self.done(handler)             # <<<<<<<<<<<<<<
@@ -12356,7 +12520,7 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
     __pyx_L6:;
   }
 
-  /* "promise/promise.pyx":467
+  /* "promise/promise.pyx":463
  *         promise._is_final = True
  * 
  *     cpdef void done_all(self, handlers=None):             # <<<<<<<<<<<<<<
@@ -12381,8 +12545,9 @@ static void __pyx_f_7promise_7promise_7Promise_done_all(struct __pyx_obj_7promis
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_31done_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_31done_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_33done_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_33done_all = {"done_all", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_33done_all, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_33done_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_handlers = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -12412,7 +12577,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_31done_all(PyObject *__pyx_
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "done_all") < 0)) __PYX_ERR(0, 467, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "done_all") < 0)) __PYX_ERR(0, 463, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -12426,20 +12591,20 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_31done_all(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("done_all", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 467, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("done_all", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 463, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.done_all", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_30done_all(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_handlers);
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_32done_all(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_handlers);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_30done_all(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_handlers) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_32done_all(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_handlers) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   struct __pyx_opt_args_7promise_7promise_7Promise_done_all __pyx_t_1;
@@ -12452,7 +12617,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_30done_all(struct __pyx_obj
   __pyx_t_1.__pyx_n = 1;
   __pyx_t_1.handlers = __pyx_v_handlers;
   __pyx_vtabptr_7promise_7promise_Promise->done_all(__pyx_v_self, 1, &__pyx_t_1); 
-  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 463, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -12469,7 +12634,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_30done_all(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":488
+/* "promise/promise.pyx":484
  *                 self.done(handler)
  * 
  *     cpdef list then_all(self, handlers=None):             # <<<<<<<<<<<<<<
@@ -12477,7 +12642,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_30done_all(struct __pyx_obj
  * 
  */
 
-static PyObject *__pyx_pw_7promise_7promise_7Promise_33then_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_7promise_7promise_7Promise_35then_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, int __pyx_skip_dispatch, struct __pyx_opt_args_7promise_7promise_7Promise_then_all *__pyx_optional_args) {
   PyObject *__pyx_v_handlers = ((PyObject *)Py_None);
   int __pyx_v_i;
@@ -12518,9 +12683,9 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_then_all); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 488, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_then_all); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 484, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_33then_all)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_7promise_7promise_7Promise_35then_all)) {
         __Pyx_XDECREF(__pyx_r);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -12535,10 +12700,10 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_handlers) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_handlers);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 488, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 484, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 488, __pyx_L1_error)
+        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 484, __pyx_L1_error)
         __pyx_r = ((PyObject*)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -12557,7 +12722,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
     #endif
   }
 
-  /* "promise/promise.pyx":491
+  /* "promise/promise.pyx":487
  *         cdef int i
  * 
  *         if handlers is None:             # <<<<<<<<<<<<<<
@@ -12568,7 +12733,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
   __pyx_t_6 = (__pyx_t_5 != 0);
   if (__pyx_t_6) {
 
-    /* "promise/promise.pyx":492
+    /* "promise/promise.pyx":488
  * 
  *         if handlers is None:
  *             return []             # <<<<<<<<<<<<<<
@@ -12576,13 +12741,13 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
  *         cdef list handler_list = list(handlers), \
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 492, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 488, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":491
+    /* "promise/promise.pyx":487
  *         cdef int i
  * 
  *         if handlers is None:             # <<<<<<<<<<<<<<
@@ -12591,55 +12756,55 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
  */
   }
 
-  /* "promise/promise.pyx":494
+  /* "promise/promise.pyx":490
  *             return []
  * 
  *         cdef list handler_list = list(handlers), \             # <<<<<<<<<<<<<<
  *             promises = []
  * 
  */
-  __pyx_t_1 = PySequence_List(__pyx_v_handlers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 494, __pyx_L1_error)
+  __pyx_t_1 = PySequence_List(__pyx_v_handlers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 490, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_handler_list = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":495
+  /* "promise/promise.pyx":491
  * 
  *         cdef list handler_list = list(handlers), \
  *             promises = []             # <<<<<<<<<<<<<<
  * 
  *         for i in range(len(handler_list)):
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 495, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 491, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_promises = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":497
+  /* "promise/promise.pyx":493
  *             promises = []
  * 
  *         for i in range(len(handler_list)):             # <<<<<<<<<<<<<<
  *             handler = handler_list[i]
  *             if isinstance(handler, tuple):
  */
-  __pyx_t_7 = PyList_GET_SIZE(__pyx_v_handler_list); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 497, __pyx_L1_error)
+  __pyx_t_7 = PyList_GET_SIZE(__pyx_v_handler_list); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 493, __pyx_L1_error)
   __pyx_t_8 = __pyx_t_7;
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "promise/promise.pyx":498
+    /* "promise/promise.pyx":494
  * 
  *         for i in range(len(handler_list)):
  *             handler = handler_list[i]             # <<<<<<<<<<<<<<
  *             if isinstance(handler, tuple):
  *                 s, f = handler
  */
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_handler_list, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 498, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_handler_list, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 494, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_XDECREF_SET(__pyx_v_handler, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "promise/promise.pyx":499
+    /* "promise/promise.pyx":495
  *         for i in range(len(handler_list)):
  *             handler = handler_list[i]
  *             if isinstance(handler, tuple):             # <<<<<<<<<<<<<<
@@ -12650,7 +12815,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
     __pyx_t_5 = (__pyx_t_6 != 0);
     if (__pyx_t_5) {
 
-      /* "promise/promise.pyx":500
+      /* "promise/promise.pyx":496
  *             handler = handler_list[i]
  *             if isinstance(handler, tuple):
  *                 s, f = handler             # <<<<<<<<<<<<<<
@@ -12663,7 +12828,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 500, __pyx_L1_error)
+          __PYX_ERR(0, 496, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -12676,21 +12841,21 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
         __Pyx_INCREF(__pyx_t_1);
         __Pyx_INCREF(__pyx_t_2);
         #else
-        __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 500, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 496, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 500, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 496, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_3 = PyObject_GetIter(__pyx_v_handler); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 500, __pyx_L1_error)
+        __pyx_t_3 = PyObject_GetIter(__pyx_v_handler); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 496, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_10 = Py_TYPE(__pyx_t_3)->tp_iternext;
         index = 0; __pyx_t_1 = __pyx_t_10(__pyx_t_3); if (unlikely(!__pyx_t_1)) goto __pyx_L7_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_1);
         index = 1; __pyx_t_2 = __pyx_t_10(__pyx_t_3); if (unlikely(!__pyx_t_2)) goto __pyx_L7_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_2);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_3), 2) < 0) __PYX_ERR(0, 500, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_3), 2) < 0) __PYX_ERR(0, 496, __pyx_L1_error)
         __pyx_t_10 = NULL;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         goto __pyx_L8_unpacking_done;
@@ -12698,7 +12863,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_10 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 500, __pyx_L1_error)
+        __PYX_ERR(0, 496, __pyx_L1_error)
         __pyx_L8_unpacking_done:;
       }
       __Pyx_XDECREF_SET(__pyx_v_s, __pyx_t_1);
@@ -12706,7 +12871,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
       __Pyx_XDECREF_SET(__pyx_v_f, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "promise/promise.pyx":501
+      /* "promise/promise.pyx":497
  *             if isinstance(handler, tuple):
  *                 s, f = handler
  *                 promises.append(self.then(s, f))             # <<<<<<<<<<<<<<
@@ -12716,12 +12881,12 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
       __pyx_t_11.__pyx_n = 2;
       __pyx_t_11.did_fulfill = __pyx_v_s;
       __pyx_t_11.did_reject = __pyx_v_f;
-      __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->then(__pyx_v_self, 0, &__pyx_t_11)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 501, __pyx_L1_error)
+      __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->then(__pyx_v_self, 0, &__pyx_t_11)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 497, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_promises, __pyx_t_2); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 501, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_promises, __pyx_t_2); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 497, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "promise/promise.pyx":499
+      /* "promise/promise.pyx":495
  *         for i in range(len(handler_list)):
  *             handler = handler_list[i]
  *             if isinstance(handler, tuple):             # <<<<<<<<<<<<<<
@@ -12731,7 +12896,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
       goto __pyx_L6;
     }
 
-    /* "promise/promise.pyx":502
+    /* "promise/promise.pyx":498
  *                 s, f = handler
  *                 promises.append(self.then(s, f))
  *             elif isinstance(handler, dict):             # <<<<<<<<<<<<<<
@@ -12742,14 +12907,14 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
     __pyx_t_6 = (__pyx_t_5 != 0);
     if (__pyx_t_6) {
 
-      /* "promise/promise.pyx":503
+      /* "promise/promise.pyx":499
  *                 promises.append(self.then(s, f))
  *             elif isinstance(handler, dict):
  *                 s = handler.get("success")             # <<<<<<<<<<<<<<
  *                 f = handler.get("failure")
  *                 promises.append(self.then(s, f))
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_handler, __pyx_n_s_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 503, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_handler, __pyx_n_s_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 499, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_3 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -12763,20 +12928,20 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
       }
       __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_3, __pyx_n_u_success) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_n_u_success);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 503, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 499, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_XDECREF_SET(__pyx_v_s, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "promise/promise.pyx":504
+      /* "promise/promise.pyx":500
  *             elif isinstance(handler, dict):
  *                 s = handler.get("success")
  *                 f = handler.get("failure")             # <<<<<<<<<<<<<<
  *                 promises.append(self.then(s, f))
  *             else:
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_handler, __pyx_n_s_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 504, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_handler, __pyx_n_s_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 500, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_3 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -12790,13 +12955,13 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
       }
       __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_3, __pyx_n_u_failure) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_n_u_failure);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 504, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 500, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_XDECREF_SET(__pyx_v_f, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "promise/promise.pyx":505
+      /* "promise/promise.pyx":501
  *                 s = handler.get("success")
  *                 f = handler.get("failure")
  *                 promises.append(self.then(s, f))             # <<<<<<<<<<<<<<
@@ -12806,12 +12971,12 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
       __pyx_t_11.__pyx_n = 2;
       __pyx_t_11.did_fulfill = __pyx_v_s;
       __pyx_t_11.did_reject = __pyx_v_f;
-      __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->then(__pyx_v_self, 0, &__pyx_t_11)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 505, __pyx_L1_error)
+      __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->then(__pyx_v_self, 0, &__pyx_t_11)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 501, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_promises, __pyx_t_2); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 505, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_promises, __pyx_t_2); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 501, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "promise/promise.pyx":502
+      /* "promise/promise.pyx":498
  *                 s, f = handler
  *                 promises.append(self.then(s, f))
  *             elif isinstance(handler, dict):             # <<<<<<<<<<<<<<
@@ -12821,7 +12986,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
       goto __pyx_L6;
     }
 
-    /* "promise/promise.pyx":507
+    /* "promise/promise.pyx":503
  *                 promises.append(self.then(s, f))
  *             else:
  *                 promises.append(self.then(handler))             # <<<<<<<<<<<<<<
@@ -12831,15 +12996,15 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
     /*else*/ {
       __pyx_t_11.__pyx_n = 1;
       __pyx_t_11.did_fulfill = __pyx_v_handler;
-      __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->then(__pyx_v_self, 0, &__pyx_t_11)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 507, __pyx_L1_error)
+      __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_self->__pyx_vtab)->then(__pyx_v_self, 0, &__pyx_t_11)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 503, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_promises, __pyx_t_2); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 507, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_promises, __pyx_t_2); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 503, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
     __pyx_L6:;
   }
 
-  /* "promise/promise.pyx":509
+  /* "promise/promise.pyx":505
  *                 promises.append(self.then(handler))
  * 
  *         return promises             # <<<<<<<<<<<<<<
@@ -12851,7 +13016,7 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
   __pyx_r = __pyx_v_promises;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":488
+  /* "promise/promise.pyx":484
  *                 self.done(handler)
  * 
  *     cpdef list then_all(self, handlers=None):             # <<<<<<<<<<<<<<
@@ -12879,8 +13044,9 @@ static PyObject *__pyx_f_7promise_7promise_7Promise_then_all(struct __pyx_obj_7p
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_33then_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_33then_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_35then_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_35then_all = {"then_all", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_35then_all, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_35then_all(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_handlers = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -12910,7 +13076,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_33then_all(PyObject *__pyx_
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "then_all") < 0)) __PYX_ERR(0, 488, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "then_all") < 0)) __PYX_ERR(0, 484, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -12924,20 +13090,20 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_33then_all(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("then_all", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 488, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("then_all", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 484, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.then_all", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_32then_all(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_handlers);
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_34then_all(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), __pyx_v_handlers);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_32then_all(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_handlers) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_34then_all(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v_handlers) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -12949,7 +13115,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_32then_all(struct __pyx_obj
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2.__pyx_n = 1;
   __pyx_t_2.handlers = __pyx_v_handlers;
-  __pyx_t_1 = __pyx_vtabptr_7promise_7promise_Promise->then_all(__pyx_v_self, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 488, __pyx_L1_error)
+  __pyx_t_1 = __pyx_vtabptr_7promise_7promise_Promise->then_all(__pyx_v_self, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 484, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -12966,7 +13132,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_32then_all(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":512
+/* "promise/promise.pyx":508
  * 
  *     @staticmethod
  *     cdef Promise c_reject(Exception reason):             # <<<<<<<<<<<<<<
@@ -12984,19 +13150,19 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("c_reject", 0);
 
-  /* "promise/promise.pyx":513
+  /* "promise/promise.pyx":509
  *     @staticmethod
  *     cdef Promise c_reject(Exception reason):
  *         ret = Promise()             # <<<<<<<<<<<<<<
  *         ret._reject_callback(reason)
  *         return ret
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_7promise_7promise_Promise)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 513, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_7promise_7promise_Promise)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 509, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_ret = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":514
+  /* "promise/promise.pyx":510
  *     cdef Promise c_reject(Exception reason):
  *         ret = Promise()
  *         ret._reject_callback(reason)             # <<<<<<<<<<<<<<
@@ -13005,7 +13171,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
  */
   ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_v_ret->__pyx_vtab)->_reject_callback(__pyx_v_ret, __pyx_v_reason, NULL);
 
-  /* "promise/promise.pyx":515
+  /* "promise/promise.pyx":511
  *         ret = Promise()
  *         ret._reject_callback(reason)
  *         return ret             # <<<<<<<<<<<<<<
@@ -13017,7 +13183,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   __pyx_r = __pyx_v_ret;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":512
+  /* "promise/promise.pyx":508
  * 
  *     @staticmethod
  *     cdef Promise c_reject(Exception reason):             # <<<<<<<<<<<<<<
@@ -13037,7 +13203,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":518
+/* "promise/promise.pyx":514
  * 
  *     @staticmethod
  *     def reject(obj: Exception) -> Promise:             # <<<<<<<<<<<<<<
@@ -13046,9 +13212,9 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
  */
 
 /* Python wrapper */
-static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7Promise_35reject(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_35reject = {"reject", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_35reject, METH_VARARGS|METH_KEYWORDS, 0};
-static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7Promise_35reject(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7Promise_37reject(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_37reject = {"reject", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_37reject, METH_VARARGS|METH_KEYWORDS, 0};
+static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7Promise_37reject(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_obj = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -13075,7 +13241,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7P
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "reject") < 0)) __PYX_ERR(0, 518, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "reject") < 0)) __PYX_ERR(0, 514, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -13086,14 +13252,14 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7P
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("reject", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 518, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("reject", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 514, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.reject", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_obj), (&((PyTypeObject*)PyExc_Exception)[0]), 1, "obj", 0))) __PYX_ERR(0, 518, __pyx_L1_error)
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_34reject(__pyx_v_obj);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_obj), (&((PyTypeObject*)PyExc_Exception)[0]), 1, "obj", 0))) __PYX_ERR(0, 514, __pyx_L1_error)
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_36reject(__pyx_v_obj);
 
   /* function exit code */
   goto __pyx_L0;
@@ -13104,7 +13270,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7P
   return __pyx_r;
 }
 
-static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7Promise_34reject(PyObject *__pyx_v_obj) {
+static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7Promise_36reject(PyObject *__pyx_v_obj) {
   struct __pyx_obj_7promise_7promise_Promise *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -13113,7 +13279,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("reject", 0);
 
-  /* "promise/promise.pyx":519
+  /* "promise/promise.pyx":515
  *     @staticmethod
  *     def reject(obj: Exception) -> Promise:
  *         return Promise.c_reject(obj)             # <<<<<<<<<<<<<<
@@ -13121,13 +13287,13 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7P
  *     rejected = reject
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __pyx_t_1 = ((PyObject *)__pyx_f_7promise_7promise_7Promise_c_reject(__pyx_v_obj)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 519, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7promise_7promise_7Promise_c_reject(__pyx_v_obj)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 515, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":518
+  /* "promise/promise.pyx":514
  * 
  *     @staticmethod
  *     def reject(obj: Exception) -> Promise:             # <<<<<<<<<<<<<<
@@ -13146,7 +13312,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7P
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":524
+/* "promise/promise.pyx":520
  * 
  *     @staticmethod
  *     cdef Promise c_resolve(object obj):             # <<<<<<<<<<<<<<
@@ -13165,7 +13331,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("c_resolve", 0);
 
-  /* "promise/promise.pyx":525
+  /* "promise/promise.pyx":521
  *     @staticmethod
  *     cdef Promise c_resolve(object obj):
  *         if not _is_thenable(obj):             # <<<<<<<<<<<<<<
@@ -13175,19 +13341,19 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   __pyx_t_1 = ((!(__pyx_f_7promise_7promise__is_thenable(__pyx_v_obj) != 0)) != 0);
   if (__pyx_t_1) {
 
-    /* "promise/promise.pyx":526
+    /* "promise/promise.pyx":522
  *     cdef Promise c_resolve(object obj):
  *         if not _is_thenable(obj):
  *             ret = Promise()             # <<<<<<<<<<<<<<
  *             ret._state = State.FULFILLED
  *             ret._rejection_handler0 = obj
  */
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_7promise_7promise_Promise)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 526, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_7promise_7promise_Promise)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 522, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_ret = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "promise/promise.pyx":527
+    /* "promise/promise.pyx":523
  *         if not _is_thenable(obj):
  *             ret = Promise()
  *             ret._state = State.FULFILLED             # <<<<<<<<<<<<<<
@@ -13196,7 +13362,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
  */
     __pyx_v_ret->_state = __pyx_e_7promise_7promise_FULFILLED;
 
-    /* "promise/promise.pyx":528
+    /* "promise/promise.pyx":524
  *             ret = Promise()
  *             ret._state = State.FULFILLED
  *             ret._rejection_handler0 = obj             # <<<<<<<<<<<<<<
@@ -13209,7 +13375,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     __Pyx_DECREF(__pyx_v_ret->_rejection_handler0);
     __pyx_v_ret->_rejection_handler0 = __pyx_v_obj;
 
-    /* "promise/promise.pyx":529
+    /* "promise/promise.pyx":525
  *             ret._state = State.FULFILLED
  *             ret._rejection_handler0 = obj
  *             return ret             # <<<<<<<<<<<<<<
@@ -13221,7 +13387,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
     __pyx_r = __pyx_v_ret;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":525
+    /* "promise/promise.pyx":521
  *     @staticmethod
  *     cdef Promise c_resolve(object obj):
  *         if not _is_thenable(obj):             # <<<<<<<<<<<<<<
@@ -13230,7 +13396,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
  */
   }
 
-  /* "promise/promise.pyx":530
+  /* "promise/promise.pyx":526
  *             ret._rejection_handler0 = obj
  *             return ret
  *         return _try_convert_to_promise(obj)             # <<<<<<<<<<<<<<
@@ -13238,13 +13404,13 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
  *     @staticmethod
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __pyx_t_2 = ((PyObject *)__pyx_f_7promise_7promise__try_convert_to_promise(__pyx_v_obj)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 530, __pyx_L1_error)
+  __pyx_t_2 = ((PyObject *)__pyx_f_7promise_7promise__try_convert_to_promise(__pyx_v_obj)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 526, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_2);
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":524
+  /* "promise/promise.pyx":520
  * 
  *     @staticmethod
  *     cdef Promise c_resolve(object obj):             # <<<<<<<<<<<<<<
@@ -13264,7 +13430,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":533
+/* "promise/promise.pyx":529
  * 
  *     @staticmethod
  *     def resolve(obj) -> Promise:             # <<<<<<<<<<<<<<
@@ -13273,9 +13439,9 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
  */
 
 /* Python wrapper */
-static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7Promise_37resolve(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_37resolve = {"resolve", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_37resolve, METH_VARARGS|METH_KEYWORDS, 0};
-static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7Promise_37resolve(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7Promise_39resolve(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_39resolve = {"resolve", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_39resolve, METH_VARARGS|METH_KEYWORDS, 0};
+static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7Promise_39resolve(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_obj = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -13302,7 +13468,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7P
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "resolve") < 0)) __PYX_ERR(0, 533, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "resolve") < 0)) __PYX_ERR(0, 529, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -13313,20 +13479,20 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7P
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("resolve", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 533, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("resolve", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 529, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.resolve", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_36resolve(__pyx_v_obj);
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_38resolve(__pyx_v_obj);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7Promise_36resolve(PyObject *__pyx_v_obj) {
+static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7Promise_38resolve(PyObject *__pyx_v_obj) {
   struct __pyx_obj_7promise_7promise_Promise *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -13335,7 +13501,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("resolve", 0);
 
-  /* "promise/promise.pyx":534
+  /* "promise/promise.pyx":530
  *     @staticmethod
  *     def resolve(obj) -> Promise:
  *         return Promise.c_resolve(obj)             # <<<<<<<<<<<<<<
@@ -13343,13 +13509,13 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7P
  *     fulfilled = cast = resolve
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __pyx_t_1 = ((PyObject *)__pyx_f_7promise_7promise_7Promise_c_resolve(__pyx_v_obj)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 534, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7promise_7promise_7Promise_c_resolve(__pyx_v_obj)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 530, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":533
+  /* "promise/promise.pyx":529
  * 
  *     @staticmethod
  *     def resolve(obj) -> Promise:             # <<<<<<<<<<<<<<
@@ -13368,7 +13534,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7P
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":539
+/* "promise/promise.pyx":535
  * 
  *     @staticmethod
  *     def promisify(f):             # <<<<<<<<<<<<<<
@@ -13377,9 +13543,9 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7P
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_39promisify(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_39promisify = {"promisify", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_39promisify, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_7promise_7promise_7Promise_39promisify(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_41promisify(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_41promisify = {"promisify", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_41promisify, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_41promisify(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_f = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -13406,7 +13572,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_39promisify(CYTHON_UNUSED P
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "promisify") < 0)) __PYX_ERR(0, 539, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "promisify") < 0)) __PYX_ERR(0, 535, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -13417,20 +13583,20 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_39promisify(CYTHON_UNUSED P
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("promisify", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 539, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("promisify", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 535, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.promisify", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_38promisify(__pyx_v_f);
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_40promisify(__pyx_v_f);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":541
+/* "promise/promise.pyx":537
  *     def promisify(f):
  *         @wraps(f)
  *         def wrapper(*args, **kwargs):             # <<<<<<<<<<<<<<
@@ -13461,7 +13627,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_9promisify_1wrapper(PyObjec
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":542
+/* "promise/promise.pyx":538
  *         @wraps(f)
  *         def wrapper(*args, **kwargs):
  *             def executor(resolve, reject):             # <<<<<<<<<<<<<<
@@ -13504,11 +13670,11 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_9promisify_7wrapper_1execut
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_reject)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("executor", 1, 2, 2, 1); __PYX_ERR(0, 542, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("executor", 1, 2, 2, 1); __PYX_ERR(0, 538, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "executor") < 0)) __PYX_ERR(0, 542, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "executor") < 0)) __PYX_ERR(0, 538, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -13521,7 +13687,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_9promisify_7wrapper_1execut
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("executor", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 542, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("executor", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 538, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.promisify.wrapper.executor", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -13550,7 +13716,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_9promisify_7wrapper_executo
   __pyx_outer_scope = (struct __pyx_obj_7promise_7promise___pyx_scope_struct_2_wrapper *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "promise/promise.pyx":543
+  /* "promise/promise.pyx":539
  *         def wrapper(*args, **kwargs):
  *             def executor(resolve, reject):
  *                 return resolve(f(*args, **kwargs))             # <<<<<<<<<<<<<<
@@ -13558,18 +13724,18 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_9promisify_7wrapper_executo
  *             return Promise(executor)
  */
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_f)) { __Pyx_RaiseClosureNameError("f"); __PYX_ERR(0, 543, __pyx_L1_error) }
-  if (unlikely(!__pyx_cur_scope->__pyx_v_args)) { __Pyx_RaiseClosureNameError("args"); __PYX_ERR(0, 543, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_f)) { __Pyx_RaiseClosureNameError("f"); __PYX_ERR(0, 539, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_args)) { __Pyx_RaiseClosureNameError("args"); __PYX_ERR(0, 539, __pyx_L1_error) }
   if (unlikely(__pyx_cur_scope->__pyx_v_args == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 543, __pyx_L1_error)
+    __PYX_ERR(0, 539, __pyx_L1_error)
   }
-  if (unlikely(!__pyx_cur_scope->__pyx_v_kwargs)) { __Pyx_RaiseClosureNameError("kwargs"); __PYX_ERR(0, 543, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_kwargs)) { __Pyx_RaiseClosureNameError("kwargs"); __PYX_ERR(0, 539, __pyx_L1_error) }
   if (unlikely(__pyx_cur_scope->__pyx_v_kwargs == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
-    __PYX_ERR(0, 543, __pyx_L1_error)
+    __PYX_ERR(0, 539, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_f, __pyx_cur_scope->__pyx_v_args, __pyx_cur_scope->__pyx_v_kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 543, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_f, __pyx_cur_scope->__pyx_v_args, __pyx_cur_scope->__pyx_v_kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 539, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_resolve);
   __pyx_t_3 = __pyx_v_resolve; __pyx_t_4 = NULL;
@@ -13585,14 +13751,14 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_9promisify_7wrapper_executo
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 543, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 539, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":542
+  /* "promise/promise.pyx":538
  *         @wraps(f)
  *         def wrapper(*args, **kwargs):
  *             def executor(resolve, reject):             # <<<<<<<<<<<<<<
@@ -13614,7 +13780,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_9promisify_7wrapper_executo
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":541
+/* "promise/promise.pyx":537
  *     def promisify(f):
  *         @wraps(f)
  *         def wrapper(*args, **kwargs):             # <<<<<<<<<<<<<<
@@ -13636,7 +13802,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_9promisify_wrapper(PyObject
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7promise_7promise___pyx_scope_struct_2_wrapper *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 541, __pyx_L1_error)
+    __PYX_ERR(0, 537, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -13650,19 +13816,19 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_9promisify_wrapper(PyObject
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_kwargs);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_kwargs);
 
-  /* "promise/promise.pyx":542
+  /* "promise/promise.pyx":538
  *         @wraps(f)
  *         def wrapper(*args, **kwargs):
  *             def executor(resolve, reject):             # <<<<<<<<<<<<<<
  *                 return resolve(f(*args, **kwargs))
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_9promisify_7wrapper_1executor, 0, __pyx_n_s_promisify_locals_wrapper_locals, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 542, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_9promisify_7wrapper_1executor, 0, __pyx_n_s_promisify_locals_wrapper_locals, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 538, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_executor = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":545
+  /* "promise/promise.pyx":541
  *                 return resolve(f(*args, **kwargs))
  * 
  *             return Promise(executor)             # <<<<<<<<<<<<<<
@@ -13670,13 +13836,13 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_9promisify_wrapper(PyObject
  *         return wrapper
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_v_executor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 545, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_v_executor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 541, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":541
+  /* "promise/promise.pyx":537
  *     def promisify(f):
  *         @wraps(f)
  *         def wrapper(*args, **kwargs):             # <<<<<<<<<<<<<<
@@ -13697,7 +13863,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_9promisify_wrapper(PyObject
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":539
+/* "promise/promise.pyx":535
  * 
  *     @staticmethod
  *     def promisify(f):             # <<<<<<<<<<<<<<
@@ -13705,7 +13871,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_9promisify_wrapper(PyObject
  *         def wrapper(*args, **kwargs):
  */
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_38promisify(PyObject *__pyx_v_f) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_40promisify(PyObject *__pyx_v_f) {
   struct __pyx_obj_7promise_7promise___pyx_scope_struct_1_promisify *__pyx_cur_scope;
   PyObject *__pyx_v_wrapper = 0;
   PyObject *__pyx_r = NULL;
@@ -13722,7 +13888,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_38promisify(PyObject *__pyx
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7promise_7promise___pyx_scope_struct_1_promisify *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 539, __pyx_L1_error)
+    __PYX_ERR(0, 535, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -13730,14 +13896,14 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_38promisify(PyObject *__pyx
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_f);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_f);
 
-  /* "promise/promise.pyx":540
+  /* "promise/promise.pyx":536
  *     @staticmethod
  *     def promisify(f):
  *         @wraps(f)             # <<<<<<<<<<<<<<
  *         def wrapper(*args, **kwargs):
  *             def executor(resolve, reject):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_wraps); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 540, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_wraps); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 536, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -13751,18 +13917,18 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_38promisify(PyObject *__pyx
   }
   __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_cur_scope->__pyx_v_f) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_cur_scope->__pyx_v_f);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 540, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 536, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "promise/promise.pyx":541
+  /* "promise/promise.pyx":537
  *     def promisify(f):
  *         @wraps(f)
  *         def wrapper(*args, **kwargs):             # <<<<<<<<<<<<<<
  *             def executor(resolve, reject):
  *                 return resolve(f(*args, **kwargs))
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_9promisify_1wrapper, 0, __pyx_n_s_promisify_locals_wrapper, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 541, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_9promisify_1wrapper, 0, __pyx_n_s_promisify_locals_wrapper, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 537, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -13777,13 +13943,13 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_38promisify(PyObject *__pyx
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 540, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 536, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_wrapper = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":547
+  /* "promise/promise.pyx":543
  *             return Promise(executor)
  * 
  *         return wrapper             # <<<<<<<<<<<<<<
@@ -13795,7 +13961,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_38promisify(PyObject *__pyx
   __pyx_r = __pyx_v_wrapper;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":539
+  /* "promise/promise.pyx":535
  * 
  *     @staticmethod
  *     def promisify(f):             # <<<<<<<<<<<<<<
@@ -13819,7 +13985,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_38promisify(PyObject *__pyx
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":552
+/* "promise/promise.pyx":548
  * 
  *     @staticmethod
  *     def safe(fn):             # <<<<<<<<<<<<<<
@@ -13828,9 +13994,9 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_38promisify(PyObject *__pyx
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_41safe(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_41safe = {"safe", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_41safe, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_7promise_7promise_7Promise_41safe(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_43safe(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_43safe = {"safe", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_43safe, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_43safe(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_fn = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -13857,7 +14023,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_41safe(CYTHON_UNUSED PyObje
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "safe") < 0)) __PYX_ERR(0, 552, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "safe") < 0)) __PYX_ERR(0, 548, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -13868,20 +14034,20 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_41safe(CYTHON_UNUSED PyObje
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("safe", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 552, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("safe", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 548, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.safe", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_40safe(__pyx_v_fn);
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_42safe(__pyx_v_fn);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":557
+/* "promise/promise.pyx":553
  * 
  *         @wraps(fn)
  *         def wrapper(*args, **kwargs):             # <<<<<<<<<<<<<<
@@ -13912,7 +14078,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_4safe_1wrapper(PyObject *__
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":558
+/* "promise/promise.pyx":554
  *         @wraps(fn)
  *         def wrapper(*args, **kwargs):
  *             return Promise._safe_resolved_promise.value.then(lambda v: fn(*args, **kwargs))             # <<<<<<<<<<<<<<
@@ -13947,18 +14113,18 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, CYTHON_UNUSED
   __pyx_outer_scope = (struct __pyx_obj_7promise_7promise___pyx_scope_struct_4_wrapper *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_fn)) { __Pyx_RaiseClosureNameError("fn"); __PYX_ERR(0, 558, __pyx_L1_error) }
-  if (unlikely(!__pyx_cur_scope->__pyx_v_args)) { __Pyx_RaiseClosureNameError("args"); __PYX_ERR(0, 558, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_fn)) { __Pyx_RaiseClosureNameError("fn"); __PYX_ERR(0, 554, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_args)) { __Pyx_RaiseClosureNameError("args"); __PYX_ERR(0, 554, __pyx_L1_error) }
   if (unlikely(__pyx_cur_scope->__pyx_v_args == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 558, __pyx_L1_error)
+    __PYX_ERR(0, 554, __pyx_L1_error)
   }
-  if (unlikely(!__pyx_cur_scope->__pyx_v_kwargs)) { __Pyx_RaiseClosureNameError("kwargs"); __PYX_ERR(0, 558, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_kwargs)) { __Pyx_RaiseClosureNameError("kwargs"); __PYX_ERR(0, 554, __pyx_L1_error) }
   if (unlikely(__pyx_cur_scope->__pyx_v_kwargs == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
-    __PYX_ERR(0, 558, __pyx_L1_error)
+    __PYX_ERR(0, 554, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_fn, __pyx_cur_scope->__pyx_v_args, __pyx_cur_scope->__pyx_v_kwargs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 558, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_fn, __pyx_cur_scope->__pyx_v_args, __pyx_cur_scope->__pyx_v_kwargs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 554, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -13975,7 +14141,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":557
+/* "promise/promise.pyx":553
  * 
  *         @wraps(fn)
  *         def wrapper(*args, **kwargs):             # <<<<<<<<<<<<<<
@@ -13999,7 +14165,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_4safe_wrapper(PyObject *__p
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7promise_7promise___pyx_scope_struct_4_wrapper *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 557, __pyx_L1_error)
+    __PYX_ERR(0, 553, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -14013,7 +14179,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_4safe_wrapper(PyObject *__p
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_kwargs);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_kwargs);
 
-  /* "promise/promise.pyx":558
+  /* "promise/promise.pyx":554
  *         @wraps(fn)
  *         def wrapper(*args, **kwargs):
  *             return Promise._safe_resolved_promise.value.then(lambda v: fn(*args, **kwargs))             # <<<<<<<<<<<<<<
@@ -14021,15 +14187,15 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_4safe_wrapper(PyObject *__p
  *         return wrapper
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_safe_resolved_promise); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 558, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_safe_resolved_promise); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 554, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_value); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 558, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_value); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 554, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_then); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 558, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_then); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 554, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_4safe_7wrapper_lambda, 0, __pyx_n_s_safe_locals_wrapper_locals_lambd, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 558, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_4safe_7wrapper_lambda, 0, __pyx_n_s_safe_locals_wrapper_locals_lambd, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 554, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -14044,14 +14210,14 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_4safe_wrapper(PyObject *__p
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 558, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 554, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":557
+  /* "promise/promise.pyx":553
  * 
  *         @wraps(fn)
  *         def wrapper(*args, **kwargs):             # <<<<<<<<<<<<<<
@@ -14074,7 +14240,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_4safe_wrapper(PyObject *__p
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":552
+/* "promise/promise.pyx":548
  * 
  *     @staticmethod
  *     def safe(fn):             # <<<<<<<<<<<<<<
@@ -14082,7 +14248,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_4safe_wrapper(PyObject *__p
  *             Promise._safe_resolved_promise.value = Promise.resolve(None)
  */
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_40safe(PyObject *__pyx_v_fn) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_42safe(PyObject *__pyx_v_fn) {
   struct __pyx_obj_7promise_7promise___pyx_scope_struct_3_safe *__pyx_cur_scope;
   PyObject *__pyx_v_wrapper = 0;
   PyObject *__pyx_r = NULL;
@@ -14101,7 +14267,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_40safe(PyObject *__pyx_v_fn
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7promise_7promise___pyx_scope_struct_3_safe *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 552, __pyx_L1_error)
+    __PYX_ERR(0, 548, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -14109,31 +14275,31 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_40safe(PyObject *__pyx_v_fn
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_fn);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_fn);
 
-  /* "promise/promise.pyx":553
+  /* "promise/promise.pyx":549
  *     @staticmethod
  *     def safe(fn):
  *         if not Promise._safe_resolved_promise.value:             # <<<<<<<<<<<<<<
  *             Promise._safe_resolved_promise.value = Promise.resolve(None)
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_safe_resolved_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 553, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_safe_resolved_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 549, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 553, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 549, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 553, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 549, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_4 = ((!__pyx_t_3) != 0);
   if (__pyx_t_4) {
 
-    /* "promise/promise.pyx":554
+    /* "promise/promise.pyx":550
  *     def safe(fn):
  *         if not Promise._safe_resolved_promise.value:
  *             Promise._safe_resolved_promise.value = Promise.resolve(None)             # <<<<<<<<<<<<<<
  * 
  *         @wraps(fn)
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_resolve); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 554, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_resolve); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 550, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -14147,16 +14313,16 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_40safe(PyObject *__pyx_v_fn
     }
     __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_5, Py_None) : __Pyx_PyObject_CallOneArg(__pyx_t_1, Py_None);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 554, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 550, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_safe_resolved_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 554, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_safe_resolved_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 550, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (__Pyx_PyObject_SetAttrStr(__pyx_t_1, __pyx_n_s_value, __pyx_t_2) < 0) __PYX_ERR(0, 554, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_t_1, __pyx_n_s_value, __pyx_t_2) < 0) __PYX_ERR(0, 550, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "promise/promise.pyx":553
+    /* "promise/promise.pyx":549
  *     @staticmethod
  *     def safe(fn):
  *         if not Promise._safe_resolved_promise.value:             # <<<<<<<<<<<<<<
@@ -14165,14 +14331,14 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_40safe(PyObject *__pyx_v_fn
  */
   }
 
-  /* "promise/promise.pyx":556
+  /* "promise/promise.pyx":552
  *             Promise._safe_resolved_promise.value = Promise.resolve(None)
  * 
  *         @wraps(fn)             # <<<<<<<<<<<<<<
  *         def wrapper(*args, **kwargs):
  *             return Promise._safe_resolved_promise.value.then(lambda v: fn(*args, **kwargs))
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_wraps); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 556, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_wraps); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 552, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -14186,18 +14352,18 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_40safe(PyObject *__pyx_v_fn
   }
   __pyx_t_2 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_6, __pyx_cur_scope->__pyx_v_fn) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_cur_scope->__pyx_v_fn);
   __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 556, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 552, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "promise/promise.pyx":557
+  /* "promise/promise.pyx":553
  * 
  *         @wraps(fn)
  *         def wrapper(*args, **kwargs):             # <<<<<<<<<<<<<<
  *             return Promise._safe_resolved_promise.value.then(lambda v: fn(*args, **kwargs))
  * 
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_4safe_1wrapper, 0, __pyx_n_s_safe_locals_wrapper, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 557, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_4safe_1wrapper, 0, __pyx_n_s_safe_locals_wrapper, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 553, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -14212,13 +14378,13 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_40safe(PyObject *__pyx_v_fn
   __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 556, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 552, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_wrapper = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":560
+  /* "promise/promise.pyx":556
  *             return Promise._safe_resolved_promise.value.then(lambda v: fn(*args, **kwargs))
  * 
  *         return wrapper             # <<<<<<<<<<<<<<
@@ -14230,7 +14396,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_40safe(PyObject *__pyx_v_fn
   __pyx_r = __pyx_v_wrapper;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":552
+  /* "promise/promise.pyx":548
  * 
  *     @staticmethod
  *     def safe(fn):             # <<<<<<<<<<<<<<
@@ -14254,7 +14420,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_40safe(PyObject *__pyx_v_fn
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":563
+/* "promise/promise.pyx":559
  * 
  *     @staticmethod
  *     cdef Promise _all(object promises):             # <<<<<<<<<<<<<<
@@ -14271,7 +14437,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_all", 0);
 
-  /* "promise/promise.pyx":564
+  /* "promise/promise.pyx":560
  *     @staticmethod
  *     cdef Promise _all(object promises):
  *         return PromiseList(promises).promise             # <<<<<<<<<<<<<<
@@ -14279,14 +14445,14 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
  *     @staticmethod
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_7promise_12promise_list_PromiseList), __pyx_v_promises); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 564, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_7promise_12promise_list_PromiseList), __pyx_v_promises); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 560, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)((struct __pyx_obj_7promise_12promise_list_PromiseList *)__pyx_t_1)->promise));
   __pyx_r = ((struct __pyx_obj_7promise_12promise_list_PromiseList *)__pyx_t_1)->promise;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":563
+  /* "promise/promise.pyx":559
  * 
  *     @staticmethod
  *     cdef Promise _all(object promises):             # <<<<<<<<<<<<<<
@@ -14305,7 +14471,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":567
+/* "promise/promise.pyx":563
  * 
  *     @staticmethod
  *     def all(promises) -> Promise:             # <<<<<<<<<<<<<<
@@ -14314,9 +14480,9 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise_7Pr
  */
 
 /* Python wrapper */
-static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7Promise_43all(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_43all = {"all", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_43all, METH_VARARGS|METH_KEYWORDS, 0};
-static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7Promise_43all(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7Promise_45all(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_45all = {"all", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_45all, METH_VARARGS|METH_KEYWORDS, 0};
+static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7Promise_45all(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_promises = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -14343,7 +14509,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7P
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "all") < 0)) __PYX_ERR(0, 567, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "all") < 0)) __PYX_ERR(0, 563, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -14354,20 +14520,20 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pw_7promise_7promise_7P
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("all", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 567, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("all", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 563, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.all", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_42all(__pyx_v_promises);
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_44all(__pyx_v_promises);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7Promise_42all(PyObject *__pyx_v_promises) {
+static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7Promise_44all(PyObject *__pyx_v_promises) {
   struct __pyx_obj_7promise_7promise_Promise *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -14376,7 +14542,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("all", 0);
 
-  /* "promise/promise.pyx":568
+  /* "promise/promise.pyx":564
  *     @staticmethod
  *     def all(promises) -> Promise:
  *         return Promise._all(promises)             # <<<<<<<<<<<<<<
@@ -14384,13 +14550,13 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7P
  *     @staticmethod
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __pyx_t_1 = ((PyObject *)__pyx_f_7promise_7promise_7Promise__all(__pyx_v_promises)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 568, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7promise_7promise_7Promise__all(__pyx_v_promises)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 564, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":567
+  /* "promise/promise.pyx":563
  * 
  *     @staticmethod
  *     def all(promises) -> Promise:             # <<<<<<<<<<<<<<
@@ -14409,7 +14575,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7P
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":571
+/* "promise/promise.pyx":567
  * 
  *     @staticmethod
  *     def is_thenable(obj) -> bool:             # <<<<<<<<<<<<<<
@@ -14418,9 +14584,9 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_pf_7promise_7promise_7P
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_45is_thenable(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_45is_thenable = {"is_thenable", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_45is_thenable, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_7promise_7promise_7Promise_45is_thenable(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_47is_thenable(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_47is_thenable = {"is_thenable", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_47is_thenable, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_47is_thenable(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_obj = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -14447,7 +14613,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_45is_thenable(CYTHON_UNUSED
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "is_thenable") < 0)) __PYX_ERR(0, 571, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "is_thenable") < 0)) __PYX_ERR(0, 567, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -14458,20 +14624,20 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_45is_thenable(CYTHON_UNUSED
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("is_thenable", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 571, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("is_thenable", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 567, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.is_thenable", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_44is_thenable(__pyx_v_obj);
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_46is_thenable(__pyx_v_obj);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_44is_thenable(PyObject *__pyx_v_obj) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_46is_thenable(PyObject *__pyx_v_obj) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -14480,7 +14646,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_44is_thenable(PyObject *__p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("is_thenable", 0);
 
-  /* "promise/promise.pyx":572
+  /* "promise/promise.pyx":568
  *     @staticmethod
  *     def is_thenable(obj) -> bool:
  *         return _is_thenable(obj)             # <<<<<<<<<<<<<<
@@ -14488,13 +14654,13 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_44is_thenable(PyObject *__p
  *     @staticmethod
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_7promise_7promise__is_thenable(__pyx_v_obj)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 572, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_7promise_7promise__is_thenable(__pyx_v_obj)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 568, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":571
+  /* "promise/promise.pyx":567
  * 
  *     @staticmethod
  *     def is_thenable(obj) -> bool:             # <<<<<<<<<<<<<<
@@ -14513,7 +14679,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_44is_thenable(PyObject *__p
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":575
+/* "promise/promise.pyx":571
  * 
  *     @staticmethod
  *     def for_dict(m):             # <<<<<<<<<<<<<<
@@ -14522,9 +14688,9 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_44is_thenable(PyObject *__p
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_47for_dict(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_47for_dict = {"for_dict", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_47for_dict, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_7promise_7promise_7Promise_47for_dict(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_49for_dict(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_49for_dict = {"for_dict", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_49for_dict, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_49for_dict(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_m = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -14551,7 +14717,7 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_47for_dict(CYTHON_UNUSED Py
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "for_dict") < 0)) __PYX_ERR(0, 575, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "for_dict") < 0)) __PYX_ERR(0, 571, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -14562,20 +14728,20 @@ static PyObject *__pyx_pw_7promise_7promise_7Promise_47for_dict(CYTHON_UNUSED Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("for_dict", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 575, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("for_dict", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 571, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise.Promise.for_dict", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_46for_dict(__pyx_v_m);
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_48for_dict(__pyx_v_m);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":581
+/* "promise/promise.pyx":577
  *             return Promise.resolve(dict_type())
  * 
  *         def handle_success(resolved_values):             # <<<<<<<<<<<<<<
@@ -14612,7 +14778,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8for_dict_handle_success(Py
   __pyx_outer_scope = (struct __pyx_obj_7promise_7promise___pyx_scope_struct_5_for_dict *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "promise/promise.pyx":582
+  /* "promise/promise.pyx":578
  * 
  *         def handle_success(resolved_values):
  *             return dict_type(zip(m.keys(), resolved_values))             # <<<<<<<<<<<<<<
@@ -14620,9 +14786,9 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8for_dict_handle_success(Py
  *         return Promise.all(m.values()).then(handle_success)
  */
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_dict_type)) { __Pyx_RaiseClosureNameError("dict_type"); __PYX_ERR(0, 582, __pyx_L1_error) }
-  if (unlikely(!__pyx_cur_scope->__pyx_v_m)) { __Pyx_RaiseClosureNameError("m"); __PYX_ERR(0, 582, __pyx_L1_error) }
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_m, __pyx_n_s_keys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 582, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_dict_type)) { __Pyx_RaiseClosureNameError("dict_type"); __PYX_ERR(0, 578, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_m)) { __Pyx_RaiseClosureNameError("m"); __PYX_ERR(0, 578, __pyx_L1_error) }
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_m, __pyx_n_s_keys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 578, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -14636,10 +14802,10 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8for_dict_handle_success(Py
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 582, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 578, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 582, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 578, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
@@ -14647,17 +14813,17 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8for_dict_handle_success(Py
   __Pyx_GIVEREF(__pyx_v_resolved_values);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_resolved_values);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 582, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 578, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_cur_scope->__pyx_v_dict_type), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 582, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_cur_scope->__pyx_v_dict_type), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 578, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":581
+  /* "promise/promise.pyx":577
  *             return Promise.resolve(dict_type())
  * 
  *         def handle_success(resolved_values):             # <<<<<<<<<<<<<<
@@ -14678,7 +14844,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8for_dict_handle_success(Py
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":575
+/* "promise/promise.pyx":571
  * 
  *     @staticmethod
  *     def for_dict(m):             # <<<<<<<<<<<<<<
@@ -14686,7 +14852,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_8for_dict_handle_success(Py
  * 
  */
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_46for_dict(PyObject *__pyx_v_m) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_48for_dict(PyObject *__pyx_v_m) {
   struct __pyx_obj_7promise_7promise___pyx_scope_struct_5_for_dict *__pyx_cur_scope;
   PyObject *__pyx_v_handle_success = 0;
   PyObject *__pyx_r = NULL;
@@ -14707,7 +14873,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_46for_dict(PyObject *__pyx_
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7promise_7promise___pyx_scope_struct_5_for_dict *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 575, __pyx_L1_error)
+    __PYX_ERR(0, 571, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -14715,7 +14881,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_46for_dict(PyObject *__pyx_
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_m);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_m);
 
-  /* "promise/promise.pyx":576
+  /* "promise/promise.pyx":572
  *     @staticmethod
  *     def for_dict(m):
  *         dict_type = type(m)             # <<<<<<<<<<<<<<
@@ -14726,18 +14892,18 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_46for_dict(PyObject *__pyx_
   __Pyx_GIVEREF(((PyObject *)Py_TYPE(__pyx_cur_scope->__pyx_v_m)));
   __pyx_cur_scope->__pyx_v_dict_type = ((PyTypeObject*)((PyObject *)Py_TYPE(__pyx_cur_scope->__pyx_v_m)));
 
-  /* "promise/promise.pyx":578
+  /* "promise/promise.pyx":574
  *         dict_type = type(m)
  * 
  *         if not m:             # <<<<<<<<<<<<<<
  *             return Promise.resolve(dict_type())
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_cur_scope->__pyx_v_m); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 578, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_cur_scope->__pyx_v_m); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 574, __pyx_L1_error)
   __pyx_t_2 = ((!__pyx_t_1) != 0);
   if (__pyx_t_2) {
 
-    /* "promise/promise.pyx":579
+    /* "promise/promise.pyx":575
  * 
  *         if not m:
  *             return Promise.resolve(dict_type())             # <<<<<<<<<<<<<<
@@ -14745,9 +14911,9 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_46for_dict(PyObject *__pyx_
  *         def handle_success(resolved_values):
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_resolve); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 579, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_resolve); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 575, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_cur_scope->__pyx_v_dict_type)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 579, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_cur_scope->__pyx_v_dict_type)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 575, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -14762,14 +14928,14 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_46for_dict(PyObject *__pyx_
     __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 579, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 575, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":578
+    /* "promise/promise.pyx":574
  *         dict_type = type(m)
  * 
  *         if not m:             # <<<<<<<<<<<<<<
@@ -14778,19 +14944,19 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_46for_dict(PyObject *__pyx_
  */
   }
 
-  /* "promise/promise.pyx":581
+  /* "promise/promise.pyx":577
  *             return Promise.resolve(dict_type())
  * 
  *         def handle_success(resolved_values):             # <<<<<<<<<<<<<<
  *             return dict_type(zip(m.keys(), resolved_values))
  * 
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_8for_dict_1handle_success, 0, __pyx_n_s_for_dict_locals_handle_success, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 581, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_8for_dict_1handle_success, 0, __pyx_n_s_for_dict_locals_handle_success, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 577, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_handle_success = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "promise/promise.pyx":584
+  /* "promise/promise.pyx":580
  *             return dict_type(zip(m.keys(), resolved_values))
  * 
  *         return Promise.all(m.values()).then(handle_success)             # <<<<<<<<<<<<<<
@@ -14798,9 +14964,9 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_46for_dict(PyObject *__pyx_
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_all); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 584, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_all); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_m, __pyx_n_s_values); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 584, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_m, __pyx_n_s_values); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_t_8 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -14814,7 +14980,7 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_46for_dict(PyObject *__pyx_
   }
   __pyx_t_6 = (__pyx_t_8) ? __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_8) : __Pyx_PyObject_CallNoArg(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 584, __pyx_L1_error)
+  if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_7 = NULL;
@@ -14830,10 +14996,10 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_46for_dict(PyObject *__pyx_
   __pyx_t_4 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_7, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 584, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_then); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 584, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_then); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -14848,14 +15014,14 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_46for_dict(PyObject *__pyx_
   }
   __pyx_t_3 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_4, __pyx_v_handle_success) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_handle_success);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 584, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":575
+  /* "promise/promise.pyx":571
  * 
  *     @staticmethod
  *     def for_dict(m):             # <<<<<<<<<<<<<<
@@ -15216,388 +15382,83 @@ static int __pyx_pf_7promise_7promise_7Promise_10_traceback_4__del__(struct __py
 
 /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     cdef tuple state
- *     cdef object _dict
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_49__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_49__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_51__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_51__reduce_cython__ = {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_51__reduce_cython__, METH_NOARGS, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_51__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_48__reduce_cython__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_50__reduce_cython__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_48__reduce_cython__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
-  PyObject *__pyx_v_state = 0;
-  PyObject *__pyx_v__dict = 0;
-  int __pyx_v_use_setstate;
+static PyObject *__pyx_pf_7promise_7promise_7Promise_50__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7 = NULL;
-  PyObject *__pyx_t_8 = NULL;
-  int __pyx_t_9;
-  int __pyx_t_10;
-  int __pyx_t_11;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__reduce_cython__", 0);
 
-  /* "(tree fragment)":5
- *     cdef object _dict
- *     cdef bint use_setstate
- *     state = (self._fulfillment_handler0, self._fulfillment_handlers, self._future, self._is_async_guaranteed, self._is_bound, self._is_final, self._is_following, self._is_waiting, self._length, self._promise0, self._promises, self._rejection_handler0, self._rejection_handlers, self._scheduler, self._state, self._traceback)             # <<<<<<<<<<<<<<
- *     _dict = getattr(self, '__dict__', None)
- *     if _dict is not None:
- */
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->_is_async_guaranteed); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->_is_bound); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyBool_FromLong(__pyx_v_self->_is_final); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_self->_is_following); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyBool_FromLong(__pyx_v_self->_is_waiting); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_self->_length); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyInt_From_enum____pyx_t_7promise_7promise_State(__pyx_v_self->_state); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = PyTuple_New(16); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  __Pyx_INCREF(__pyx_v_self->_fulfillment_handler0);
-  __Pyx_GIVEREF(__pyx_v_self->_fulfillment_handler0);
-  PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_v_self->_fulfillment_handler0);
-  __Pyx_INCREF(__pyx_v_self->_fulfillment_handlers);
-  __Pyx_GIVEREF(__pyx_v_self->_fulfillment_handlers);
-  PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_v_self->_fulfillment_handlers);
-  __Pyx_INCREF(__pyx_v_self->_future);
-  __Pyx_GIVEREF(__pyx_v_self->_future);
-  PyTuple_SET_ITEM(__pyx_t_8, 2, __pyx_v_self->_future);
-  __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_8, 3, __pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_8, 4, __pyx_t_2);
-  __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_8, 5, __pyx_t_3);
-  __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_8, 6, __pyx_t_4);
-  __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_8, 7, __pyx_t_5);
-  __Pyx_GIVEREF(__pyx_t_6);
-  PyTuple_SET_ITEM(__pyx_t_8, 8, __pyx_t_6);
-  __Pyx_INCREF(((PyObject *)__pyx_v_self->_promise0));
-  __Pyx_GIVEREF(((PyObject *)__pyx_v_self->_promise0));
-  PyTuple_SET_ITEM(__pyx_t_8, 9, ((PyObject *)__pyx_v_self->_promise0));
-  __Pyx_INCREF(__pyx_v_self->_promises);
-  __Pyx_GIVEREF(__pyx_v_self->_promises);
-  PyTuple_SET_ITEM(__pyx_t_8, 10, __pyx_v_self->_promises);
-  __Pyx_INCREF(__pyx_v_self->_rejection_handler0);
-  __Pyx_GIVEREF(__pyx_v_self->_rejection_handler0);
-  PyTuple_SET_ITEM(__pyx_t_8, 11, __pyx_v_self->_rejection_handler0);
-  __Pyx_INCREF(__pyx_v_self->_rejection_handlers);
-  __Pyx_GIVEREF(__pyx_v_self->_rejection_handlers);
-  PyTuple_SET_ITEM(__pyx_t_8, 12, __pyx_v_self->_rejection_handlers);
-  __Pyx_INCREF(__pyx_v_self->_scheduler);
-  __Pyx_GIVEREF(__pyx_v_self->_scheduler);
-  PyTuple_SET_ITEM(__pyx_t_8, 13, __pyx_v_self->_scheduler);
-  __Pyx_GIVEREF(__pyx_t_7);
-  PyTuple_SET_ITEM(__pyx_t_8, 14, __pyx_t_7);
-  __Pyx_INCREF(__pyx_v_self->_traceback);
-  __Pyx_GIVEREF(__pyx_v_self->_traceback);
-  PyTuple_SET_ITEM(__pyx_t_8, 15, __pyx_v_self->_traceback);
-  __pyx_t_1 = 0;
-  __pyx_t_2 = 0;
-  __pyx_t_3 = 0;
-  __pyx_t_4 = 0;
-  __pyx_t_5 = 0;
-  __pyx_t_6 = 0;
-  __pyx_t_7 = 0;
-  __pyx_v_state = ((PyObject*)__pyx_t_8);
-  __pyx_t_8 = 0;
-
-  /* "(tree fragment)":6
- *     cdef bint use_setstate
- *     state = (self._fulfillment_handler0, self._fulfillment_handlers, self._future, self._is_async_guaranteed, self._is_bound, self._is_final, self._is_following, self._is_waiting, self._length, self._promise0, self._promises, self._rejection_handler0, self._rejection_handlers, self._scheduler, self._state, self._traceback)
- *     _dict = getattr(self, '__dict__', None)             # <<<<<<<<<<<<<<
- *     if _dict is not None:
- *         state += (_dict,)
- */
-  __pyx_t_8 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_n_s_dict, Py_None); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 6, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  __pyx_v__dict = __pyx_t_8;
-  __pyx_t_8 = 0;
-
-  /* "(tree fragment)":7
- *     state = (self._fulfillment_handler0, self._fulfillment_handlers, self._future, self._is_async_guaranteed, self._is_bound, self._is_final, self._is_following, self._is_waiting, self._length, self._promise0, self._promises, self._rejection_handler0, self._rejection_handlers, self._scheduler, self._state, self._traceback)
- *     _dict = getattr(self, '__dict__', None)
- *     if _dict is not None:             # <<<<<<<<<<<<<<
- *         state += (_dict,)
- *         use_setstate = True
- */
-  __pyx_t_9 = (__pyx_v__dict != Py_None);
-  __pyx_t_10 = (__pyx_t_9 != 0);
-  if (__pyx_t_10) {
-
-    /* "(tree fragment)":8
- *     _dict = getattr(self, '__dict__', None)
- *     if _dict is not None:
- *         state += (_dict,)             # <<<<<<<<<<<<<<
- *         use_setstate = True
- *     else:
- */
-    __pyx_t_8 = PyTuple_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_INCREF(__pyx_v__dict);
-    __Pyx_GIVEREF(__pyx_v__dict);
-    PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_v__dict);
-    __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_7));
-    __pyx_t_7 = 0;
-
-    /* "(tree fragment)":9
- *     if _dict is not None:
- *         state += (_dict,)
- *         use_setstate = True             # <<<<<<<<<<<<<<
- *     else:
- *         use_setstate = self._fulfillment_handler0 is not None or self._fulfillment_handlers is not None or self._future is not None or self._promise0 is not None or self._promises is not None or self._rejection_handler0 is not None or self._rejection_handlers is not None or self._scheduler is not None or self._traceback is not None
- */
-    __pyx_v_use_setstate = 1;
-
-    /* "(tree fragment)":7
- *     state = (self._fulfillment_handler0, self._fulfillment_handlers, self._future, self._is_async_guaranteed, self._is_bound, self._is_final, self._is_following, self._is_waiting, self._length, self._promise0, self._promises, self._rejection_handler0, self._rejection_handlers, self._scheduler, self._state, self._traceback)
- *     _dict = getattr(self, '__dict__', None)
- *     if _dict is not None:             # <<<<<<<<<<<<<<
- *         state += (_dict,)
- *         use_setstate = True
- */
-    goto __pyx_L3;
-  }
-
-  /* "(tree fragment)":11
- *         use_setstate = True
- *     else:
- *         use_setstate = self._fulfillment_handler0 is not None or self._fulfillment_handlers is not None or self._future is not None or self._promise0 is not None or self._promises is not None or self._rejection_handler0 is not None or self._rejection_handlers is not None or self._scheduler is not None or self._traceback is not None             # <<<<<<<<<<<<<<
- *     if use_setstate:
- *         return __pyx_unpickle_Promise, (type(self), 0xb499ce5, None), state
- */
-  /*else*/ {
-    __pyx_t_9 = (__pyx_v_self->_fulfillment_handler0 != Py_None);
-    __pyx_t_11 = (__pyx_t_9 != 0);
-    if (!__pyx_t_11) {
-    } else {
-      __pyx_t_10 = __pyx_t_11;
-      goto __pyx_L4_bool_binop_done;
-    }
-    __pyx_t_11 = (__pyx_v_self->_fulfillment_handlers != ((PyObject*)Py_None));
-    __pyx_t_9 = (__pyx_t_11 != 0);
-    if (!__pyx_t_9) {
-    } else {
-      __pyx_t_10 = __pyx_t_9;
-      goto __pyx_L4_bool_binop_done;
-    }
-    __pyx_t_9 = (__pyx_v_self->_future != Py_None);
-    __pyx_t_11 = (__pyx_t_9 != 0);
-    if (!__pyx_t_11) {
-    } else {
-      __pyx_t_10 = __pyx_t_11;
-      goto __pyx_L4_bool_binop_done;
-    }
-    __pyx_t_11 = (((PyObject *)__pyx_v_self->_promise0) != Py_None);
-    __pyx_t_9 = (__pyx_t_11 != 0);
-    if (!__pyx_t_9) {
-    } else {
-      __pyx_t_10 = __pyx_t_9;
-      goto __pyx_L4_bool_binop_done;
-    }
-    __pyx_t_9 = (__pyx_v_self->_promises != ((PyObject*)Py_None));
-    __pyx_t_11 = (__pyx_t_9 != 0);
-    if (!__pyx_t_11) {
-    } else {
-      __pyx_t_10 = __pyx_t_11;
-      goto __pyx_L4_bool_binop_done;
-    }
-    __pyx_t_11 = (__pyx_v_self->_rejection_handler0 != Py_None);
-    __pyx_t_9 = (__pyx_t_11 != 0);
-    if (!__pyx_t_9) {
-    } else {
-      __pyx_t_10 = __pyx_t_9;
-      goto __pyx_L4_bool_binop_done;
-    }
-    __pyx_t_9 = (__pyx_v_self->_rejection_handlers != ((PyObject*)Py_None));
-    __pyx_t_11 = (__pyx_t_9 != 0);
-    if (!__pyx_t_11) {
-    } else {
-      __pyx_t_10 = __pyx_t_11;
-      goto __pyx_L4_bool_binop_done;
-    }
-    __pyx_t_11 = (__pyx_v_self->_scheduler != Py_None);
-    __pyx_t_9 = (__pyx_t_11 != 0);
-    if (!__pyx_t_9) {
-    } else {
-      __pyx_t_10 = __pyx_t_9;
-      goto __pyx_L4_bool_binop_done;
-    }
-    __pyx_t_9 = (__pyx_v_self->_traceback != Py_None);
-    __pyx_t_11 = (__pyx_t_9 != 0);
-    __pyx_t_10 = __pyx_t_11;
-    __pyx_L4_bool_binop_done:;
-    __pyx_v_use_setstate = __pyx_t_10;
-  }
-  __pyx_L3:;
-
-  /* "(tree fragment)":12
- *     else:
- *         use_setstate = self._fulfillment_handler0 is not None or self._fulfillment_handlers is not None or self._future is not None or self._promise0 is not None or self._promises is not None or self._rejection_handler0 is not None or self._rejection_handlers is not None or self._scheduler is not None or self._traceback is not None
- *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_Promise, (type(self), 0xb499ce5, None), state
- *     else:
- */
-  __pyx_t_10 = (__pyx_v_use_setstate != 0);
-  if (__pyx_t_10) {
-
-    /* "(tree fragment)":13
- *         use_setstate = self._fulfillment_handler0 is not None or self._fulfillment_handlers is not None or self._future is not None or self._promise0 is not None or self._promises is not None or self._rejection_handler0 is not None or self._rejection_handlers is not None or self._scheduler is not None or self._traceback is not None
- *     if use_setstate:
- *         return __pyx_unpickle_Promise, (type(self), 0xb499ce5, None), state             # <<<<<<<<<<<<<<
- *     else:
- *         return __pyx_unpickle_Promise, (type(self), 0xb499ce5, state)
- */
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_pyx_unpickle_Promise); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    PyTuple_SET_ITEM(__pyx_t_8, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_189373669);
-    __Pyx_GIVEREF(__pyx_int_189373669);
-    PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_int_189373669);
-    __Pyx_INCREF(Py_None);
-    __Pyx_GIVEREF(Py_None);
-    PyTuple_SET_ITEM(__pyx_t_8, 2, Py_None);
-    __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_GIVEREF(__pyx_t_7);
-    PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_7);
-    __Pyx_GIVEREF(__pyx_t_8);
-    PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_8);
-    __Pyx_INCREF(__pyx_v_state);
-    __Pyx_GIVEREF(__pyx_v_state);
-    PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_v_state);
-    __pyx_t_7 = 0;
-    __pyx_t_8 = 0;
-    __pyx_r = __pyx_t_6;
-    __pyx_t_6 = 0;
-    goto __pyx_L0;
-
-    /* "(tree fragment)":12
- *     else:
- *         use_setstate = self._fulfillment_handler0 is not None or self._fulfillment_handlers is not None or self._future is not None or self._promise0 is not None or self._promises is not None or self._rejection_handler0 is not None or self._rejection_handlers is not None or self._scheduler is not None or self._traceback is not None
- *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_Promise, (type(self), 0xb499ce5, None), state
- *     else:
- */
-  }
-
-  /* "(tree fragment)":15
- *         return __pyx_unpickle_Promise, (type(self), 0xb499ce5, None), state
- *     else:
- *         return __pyx_unpickle_Promise, (type(self), 0xb499ce5, state)             # <<<<<<<<<<<<<<
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
- *     __pyx_unpickle_Promise__set_state(self, __pyx_state)
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  /*else*/ {
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_pyx_unpickle_Promise); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    PyTuple_SET_ITEM(__pyx_t_8, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_189373669);
-    __Pyx_GIVEREF(__pyx_int_189373669);
-    PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_int_189373669);
-    __Pyx_INCREF(__pyx_v_state);
-    __Pyx_GIVEREF(__pyx_v_state);
-    PyTuple_SET_ITEM(__pyx_t_8, 2, __pyx_v_state);
-    __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __Pyx_GIVEREF(__pyx_t_6);
-    PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6);
-    __Pyx_GIVEREF(__pyx_t_8);
-    PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_8);
-    __pyx_t_6 = 0;
-    __pyx_t_8 = 0;
-    __pyx_r = __pyx_t_7;
-    __pyx_t_7 = 0;
-    goto __pyx_L0;
-  }
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 2, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     cdef tuple state
- *     cdef object _dict
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_8);
   __Pyx_AddTraceback("promise.promise.Promise.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_state);
-  __Pyx_XDECREF(__pyx_v__dict);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "(tree fragment)":16
- *     else:
- *         return __pyx_unpickle_Promise, (type(self), 0xb499ce5, state)
+/* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_unpickle_Promise__set_state(self, __pyx_state)
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_7Promise_51__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_7promise_7promise_7Promise_51__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_7promise_7promise_7Promise_53__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyMethodDef __pyx_mdef_7promise_7promise_7Promise_53__setstate_cython__ = {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_53__setstate_cython__, METH_O, 0};
+static PyObject *__pyx_pw_7promise_7promise_7Promise_53__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7promise_7promise_7Promise_50__setstate_cython__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_7promise_7promise_7Promise_52__setstate_cython__(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7promise_7promise_7Promise_50__setstate_cython__(struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_7promise_7promise_7Promise_52__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7promise_7promise_Promise *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -15606,37 +15467,35 @@ static PyObject *__pyx_pf_7promise_7promise_7Promise_50__setstate_cython__(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__setstate_cython__", 0);
 
-  /* "(tree fragment)":17
- *         return __pyx_unpickle_Promise, (type(self), 0xb499ce5, state)
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
- *     __pyx_unpickle_Promise__set_state(self, __pyx_state)             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  if (!(likely(PyTuple_CheckExact(__pyx_v___pyx_state))||((__pyx_v___pyx_state) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v___pyx_state)->tp_name), 0))) __PYX_ERR(1, 17, __pyx_L1_error)
-  __pyx_t_1 = __pyx_f_7promise_7promise___pyx_unpickle_Promise__set_state(__pyx_v_self, ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 17, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(1, 4, __pyx_L1_error)
 
-  /* "(tree fragment)":16
- *     else:
- *         return __pyx_unpickle_Promise, (type(self), 0xb499ce5, state)
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_unpickle_Promise__set_state(self, __pyx_state)
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
 
   /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_AddTraceback("promise.promise.Promise.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
-  __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":587
+/* "promise/promise.pyx":583
  * 
  * 
  * cdef bint _is_thenable(object obj):             # <<<<<<<<<<<<<<
@@ -15658,7 +15517,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_is_thenable", 0);
 
-  /* "promise/promise.pyx":588
+  /* "promise/promise.pyx":584
  * 
  * cdef bint _is_thenable(object obj):
  *     cdef object typ = type(obj)             # <<<<<<<<<<<<<<
@@ -15668,7 +15527,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
   __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_v_obj)));
   __pyx_v_typ = ((PyObject *)Py_TYPE(__pyx_v_obj));
 
-  /* "promise/promise.pyx":589
+  /* "promise/promise.pyx":585
  * cdef bint _is_thenable(object obj):
  *     cdef object typ = type(obj)
  *     if isinstance(obj, Promise):             # <<<<<<<<<<<<<<
@@ -15679,7 +15538,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "promise/promise.pyx":590
+    /* "promise/promise.pyx":586
  *     cdef object typ = type(obj)
  *     if isinstance(obj, Promise):
  *         return True             # <<<<<<<<<<<<<<
@@ -15689,7 +15548,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
     __pyx_r = 1;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":589
+    /* "promise/promise.pyx":585
  * cdef bint _is_thenable(object obj):
  *     cdef object typ = type(obj)
  *     if isinstance(obj, Promise):             # <<<<<<<<<<<<<<
@@ -15698,7 +15557,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
  */
   }
 
-  /* "promise/promise.pyx":591
+  /* "promise/promise.pyx":587
  *     if isinstance(obj, Promise):
  *         return True
  *     elif typ in (int, str, bool, float, complex, tuple, list, dict, bytes):             # <<<<<<<<<<<<<<
@@ -15707,72 +15566,72 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
  */
   __Pyx_INCREF(__pyx_v_typ);
   __pyx_t_3 = __pyx_v_typ;
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyInt_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyInt_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyUnicode_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyUnicode_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject*)&PyBool_Type), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject*)&PyBool_Type), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyFloat_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyFloat_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyComplex_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyComplex_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyTuple_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyTuple_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyList_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyList_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyDict_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyDict_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (!__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyBytes_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, ((PyObject *)(&PyBytes_Type)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 587, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = __pyx_t_1;
   __pyx_L4_bool_binop_done:;
@@ -15780,7 +15639,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "promise/promise.pyx":592
+    /* "promise/promise.pyx":588
  *         return True
  *     elif typ in (int, str, bool, float, complex, tuple, list, dict, bytes):
  *         return False             # <<<<<<<<<<<<<<
@@ -15790,7 +15649,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":591
+    /* "promise/promise.pyx":587
  *     if isinstance(obj, Promise):
  *         return True
  *     elif typ in (int, str, bool, float, complex, tuple, list, dict, bytes):             # <<<<<<<<<<<<<<
@@ -15799,14 +15658,14 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
  */
   }
 
-  /* "promise/promise.pyx":593
+  /* "promise/promise.pyx":589
  *     elif typ in (int, str, bool, float, complex, tuple, list, dict, bytes):
  *         return False
  *     elif iscoroutine(obj) or is_future_like(typ):             # <<<<<<<<<<<<<<
  *         return True
  *     else:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_iscoroutine); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 593, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_iscoroutine); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 589, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -15820,10 +15679,10 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
   }
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_v_obj) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_obj);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 593, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 589, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 593, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 589, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (!__pyx_t_2) {
   } else {
@@ -15835,7 +15694,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
   __pyx_L13_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "promise/promise.pyx":594
+    /* "promise/promise.pyx":590
  *         return False
  *     elif iscoroutine(obj) or is_future_like(typ):
  *         return True             # <<<<<<<<<<<<<<
@@ -15845,7 +15704,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
     __pyx_r = 1;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":593
+    /* "promise/promise.pyx":589
  *     elif typ in (int, str, bool, float, complex, tuple, list, dict, bytes):
  *         return False
  *     elif iscoroutine(obj) or is_future_like(typ):             # <<<<<<<<<<<<<<
@@ -15854,7 +15713,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
  */
   }
 
-  /* "promise/promise.pyx":596
+  /* "promise/promise.pyx":592
  *         return True
  *     else:
  *         return False             # <<<<<<<<<<<<<<
@@ -15866,7 +15725,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
     goto __pyx_L0;
   }
 
-  /* "promise/promise.pyx":587
+  /* "promise/promise.pyx":583
  * 
  * 
  * cdef bint _is_thenable(object obj):             # <<<<<<<<<<<<<<
@@ -15887,7 +15746,7 @@ static int __pyx_f_7promise_7promise__is_thenable(PyObject *__pyx_v_obj) {
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":599
+/* "promise/promise.pyx":595
  * 
  * 
  * def is_thenable(obj):             # <<<<<<<<<<<<<<
@@ -15918,7 +15777,7 @@ static PyObject *__pyx_pf_7promise_7promise_6is_thenable(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("is_thenable", 0);
 
-  /* "promise/promise.pyx":600
+  /* "promise/promise.pyx":596
  * 
  * def is_thenable(obj):
  *     return _is_thenable(obj)             # <<<<<<<<<<<<<<
@@ -15926,13 +15785,13 @@ static PyObject *__pyx_pf_7promise_7promise_6is_thenable(CYTHON_UNUSED PyObject 
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_7promise_7promise__is_thenable(__pyx_v_obj)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 600, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_7promise_7promise__is_thenable(__pyx_v_obj)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 596, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":599
+  /* "promise/promise.pyx":595
  * 
  * 
  * def is_thenable(obj):             # <<<<<<<<<<<<<<
@@ -15951,7 +15810,7 @@ static PyObject *__pyx_pf_7promise_7promise_6is_thenable(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":614
+/* "promise/promise.pyx":610
  * 
  *     if is_future_like(type_):
  *         def executor(resolve, reject):             # <<<<<<<<<<<<<<
@@ -15994,11 +15853,11 @@ static PyObject *__pyx_pw_7promise_7promise_23_try_convert_to_promise_1executor(
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_reject)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("executor", 1, 2, 2, 1); __PYX_ERR(0, 614, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("executor", 1, 2, 2, 1); __PYX_ERR(0, 610, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "executor") < 0)) __PYX_ERR(0, 614, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "executor") < 0)) __PYX_ERR(0, 610, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -16011,7 +15870,7 @@ static PyObject *__pyx_pw_7promise_7promise_23_try_convert_to_promise_1executor(
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("executor", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 614, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("executor", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 610, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise._try_convert_to_promise.executor", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -16044,15 +15903,15 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
   __pyx_outer_scope = (struct __pyx_obj_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "promise/promise.pyx":615
+  /* "promise/promise.pyx":611
  *     if is_future_like(type_):
  *         def executor(resolve, reject):
  *             if obj.done():             # <<<<<<<<<<<<<<
  *                 _process_future_result(resolve, reject)(obj)
  *             else:
  */
-  if (unlikely(!__pyx_cur_scope->__pyx_v_obj)) { __Pyx_RaiseClosureNameError("obj"); __PYX_ERR(0, 615, __pyx_L1_error) }
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_obj, __pyx_n_s_done); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 615, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_obj)) { __Pyx_RaiseClosureNameError("obj"); __PYX_ERR(0, 611, __pyx_L1_error) }
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_obj, __pyx_n_s_done); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 611, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -16066,21 +15925,21 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 611, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 615, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 611, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_4) {
 
-    /* "promise/promise.pyx":616
+    /* "promise/promise.pyx":612
  *         def executor(resolve, reject):
  *             if obj.done():
  *                 _process_future_result(resolve, reject)(obj)             # <<<<<<<<<<<<<<
  *             else:
  *                 obj.add_done_callback(_process_future_result(resolve, reject))
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_process_future_result); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 616, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_process_future_result); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 612, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -16097,7 +15956,7 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_resolve, __pyx_v_reject};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 616, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 612, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
@@ -16105,13 +15964,13 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_resolve, __pyx_v_reject};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 616, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 612, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 616, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 612, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_5) {
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -16122,12 +15981,12 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
       __Pyx_INCREF(__pyx_v_reject);
       __Pyx_GIVEREF(__pyx_v_reject);
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_v_reject);
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 616, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 612, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_cur_scope->__pyx_v_obj)) { __Pyx_RaiseClosureNameError("obj"); __PYX_ERR(0, 616, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_v_obj)) { __Pyx_RaiseClosureNameError("obj"); __PYX_ERR(0, 612, __pyx_L1_error) }
     __pyx_t_3 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
       __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
@@ -16140,12 +15999,12 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
     }
     __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_cur_scope->__pyx_v_obj) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_cur_scope->__pyx_v_obj);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 616, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 612, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "promise/promise.pyx":615
+    /* "promise/promise.pyx":611
  *     if is_future_like(type_):
  *         def executor(resolve, reject):
  *             if obj.done():             # <<<<<<<<<<<<<<
@@ -16155,7 +16014,7 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
     goto __pyx_L3;
   }
 
-  /* "promise/promise.pyx":618
+  /* "promise/promise.pyx":614
  *                 _process_future_result(resolve, reject)(obj)
  *             else:
  *                 obj.add_done_callback(_process_future_result(resolve, reject))             # <<<<<<<<<<<<<<
@@ -16163,10 +16022,10 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
  *         promise = Promise(executor)
  */
   /*else*/ {
-    if (unlikely(!__pyx_cur_scope->__pyx_v_obj)) { __Pyx_RaiseClosureNameError("obj"); __PYX_ERR(0, 618, __pyx_L1_error) }
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_obj, __pyx_n_s_add_done_callback); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 618, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_v_obj)) { __Pyx_RaiseClosureNameError("obj"); __PYX_ERR(0, 614, __pyx_L1_error) }
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_obj, __pyx_n_s_add_done_callback); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 614, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_process_future_result); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 618, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_process_future_result); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 614, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -16183,7 +16042,7 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_resolve, __pyx_v_reject};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 618, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 614, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else
@@ -16191,13 +16050,13 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_resolve, __pyx_v_reject};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 618, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 614, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 618, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 614, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       if (__pyx_t_5) {
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -16208,7 +16067,7 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
       __Pyx_INCREF(__pyx_v_reject);
       __Pyx_GIVEREF(__pyx_v_reject);
       PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_6, __pyx_v_reject);
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 618, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 614, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
@@ -16226,14 +16085,14 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
     __pyx_t_1 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_7, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 618, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 614, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
   __pyx_L3:;
 
-  /* "promise/promise.pyx":614
+  /* "promise/promise.pyx":610
  * 
  *     if is_future_like(type_):
  *         def executor(resolve, reject):             # <<<<<<<<<<<<<<
@@ -16259,7 +16118,7 @@ static PyObject *__pyx_pf_7promise_7promise_23_try_convert_to_promise_executor(P
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":603
+/* "promise/promise.pyx":599
  * 
  * 
  * cdef Promise _try_convert_to_promise(object obj):             # <<<<<<<<<<<<<<
@@ -16287,7 +16146,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 603, __pyx_L1_error)
+    __PYX_ERR(0, 599, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -16295,7 +16154,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_obj);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_obj);
 
-  /* "promise/promise.pyx":605
+  /* "promise/promise.pyx":601
  * cdef Promise _try_convert_to_promise(object obj):
  *     # can't subclass promise, don't need to check
  *     if isinstance(obj, Promise):             # <<<<<<<<<<<<<<
@@ -16309,7 +16168,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
 
-    /* "promise/promise.pyx":606
+    /* "promise/promise.pyx":602
  *     # can't subclass promise, don't need to check
  *     if isinstance(obj, Promise):
  *         return obj             # <<<<<<<<<<<<<<
@@ -16317,12 +16176,12 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
  *     type_ = type(obj)
  */
     __Pyx_XDECREF(((PyObject *)__pyx_r));
-    if (!(likely(((__pyx_cur_scope->__pyx_v_obj) == Py_None) || likely(__Pyx_TypeTest(__pyx_cur_scope->__pyx_v_obj, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 606, __pyx_L1_error)
+    if (!(likely(((__pyx_cur_scope->__pyx_v_obj) == Py_None) || likely(__Pyx_TypeTest(__pyx_cur_scope->__pyx_v_obj, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 602, __pyx_L1_error)
     __Pyx_INCREF(__pyx_cur_scope->__pyx_v_obj);
     __pyx_r = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_cur_scope->__pyx_v_obj);
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":605
+    /* "promise/promise.pyx":601
  * cdef Promise _try_convert_to_promise(object obj):
  *     # can't subclass promise, don't need to check
  *     if isinstance(obj, Promise):             # <<<<<<<<<<<<<<
@@ -16331,7 +16190,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
  */
   }
 
-  /* "promise/promise.pyx":608
+  /* "promise/promise.pyx":604
  *         return obj
  * 
  *     type_ = type(obj)             # <<<<<<<<<<<<<<
@@ -16341,14 +16200,14 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
   __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_cur_scope->__pyx_v_obj)));
   __pyx_v_type_ = ((PyObject *)Py_TYPE(__pyx_cur_scope->__pyx_v_obj));
 
-  /* "promise/promise.pyx":609
+  /* "promise/promise.pyx":605
  * 
  *     type_ = type(obj)
  *     if iscoroutine(obj):             # <<<<<<<<<<<<<<
  *         obj = ensure_future(obj)
  *         type_ = obj.__class__
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_iscoroutine); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 609, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_iscoroutine); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 605, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -16362,21 +16221,21 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
   }
   __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_cur_scope->__pyx_v_obj) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_cur_scope->__pyx_v_obj);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 609, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 605, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 609, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 605, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_3) {
 
-    /* "promise/promise.pyx":610
+    /* "promise/promise.pyx":606
  *     type_ = type(obj)
  *     if iscoroutine(obj):
  *         obj = ensure_future(obj)             # <<<<<<<<<<<<<<
  *         type_ = obj.__class__
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ensure_future); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 610, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ensure_future); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 606, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -16390,7 +16249,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
     }
     __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_cur_scope->__pyx_v_obj) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_cur_scope->__pyx_v_obj);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 606, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_cur_scope->__pyx_v_obj);
@@ -16398,19 +16257,19 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
     __Pyx_GIVEREF(__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "promise/promise.pyx":611
+    /* "promise/promise.pyx":607
  *     if iscoroutine(obj):
  *         obj = ensure_future(obj)
  *         type_ = obj.__class__             # <<<<<<<<<<<<<<
  * 
  *     if is_future_like(type_):
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_obj, __pyx_n_s_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 611, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_obj, __pyx_n_s_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 607, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF_SET(__pyx_v_type_, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "promise/promise.pyx":609
+    /* "promise/promise.pyx":605
  * 
  *     type_ = type(obj)
  *     if iscoroutine(obj):             # <<<<<<<<<<<<<<
@@ -16419,7 +16278,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
  */
   }
 
-  /* "promise/promise.pyx":613
+  /* "promise/promise.pyx":609
  *         type_ = obj.__class__
  * 
  *     if is_future_like(type_):             # <<<<<<<<<<<<<<
@@ -16429,31 +16288,31 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
   __pyx_t_3 = (__pyx_f_7promise_7promise_is_future_like(__pyx_v_type_) != 0);
   if (__pyx_t_3) {
 
-    /* "promise/promise.pyx":614
+    /* "promise/promise.pyx":610
  * 
  *     if is_future_like(type_):
  *         def executor(resolve, reject):             # <<<<<<<<<<<<<<
  *             if obj.done():
  *                 _process_future_result(resolve, reject)(obj)
  */
-    __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_23_try_convert_to_promise_1executor, 0, __pyx_n_s_try_convert_to_promise_locals_e, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 614, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_23_try_convert_to_promise_1executor, 0, __pyx_n_s_try_convert_to_promise_locals_e, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_executor = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "promise/promise.pyx":620
+    /* "promise/promise.pyx":616
  *                 obj.add_done_callback(_process_future_result(resolve, reject))
  * 
  *         promise = Promise(executor)             # <<<<<<<<<<<<<<
  *         promise._future = obj
  *         return promise
  */
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_v_executor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_v_executor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 616, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_promise = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "promise/promise.pyx":621
+    /* "promise/promise.pyx":617
  * 
  *         promise = Promise(executor)
  *         promise._future = obj             # <<<<<<<<<<<<<<
@@ -16466,7 +16325,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
     __Pyx_DECREF(__pyx_v_promise->_future);
     __pyx_v_promise->_future = __pyx_cur_scope->__pyx_v_obj;
 
-    /* "promise/promise.pyx":622
+    /* "promise/promise.pyx":618
  *         promise = Promise(executor)
  *         promise._future = obj
  *         return promise             # <<<<<<<<<<<<<<
@@ -16478,7 +16337,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
     __pyx_r = __pyx_v_promise;
     goto __pyx_L0;
 
-    /* "promise/promise.pyx":613
+    /* "promise/promise.pyx":609
  *         type_ = obj.__class__
  * 
  *     if is_future_like(type_):             # <<<<<<<<<<<<<<
@@ -16487,7 +16346,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
  */
   }
 
-  /* "promise/promise.pyx":624
+  /* "promise/promise.pyx":620
  *         return promise
  * 
  *     return obj             # <<<<<<<<<<<<<<
@@ -16495,12 +16354,12 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
  * 
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  if (!(likely(((__pyx_cur_scope->__pyx_v_obj) == Py_None) || likely(__Pyx_TypeTest(__pyx_cur_scope->__pyx_v_obj, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 624, __pyx_L1_error)
+  if (!(likely(((__pyx_cur_scope->__pyx_v_obj) == Py_None) || likely(__Pyx_TypeTest(__pyx_cur_scope->__pyx_v_obj, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(0, 620, __pyx_L1_error)
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_obj);
   __pyx_r = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_cur_scope->__pyx_v_obj);
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":603
+  /* "promise/promise.pyx":599
  * 
  * 
  * cdef Promise _try_convert_to_promise(object obj):             # <<<<<<<<<<<<<<
@@ -16525,7 +16384,7 @@ static struct __pyx_obj_7promise_7promise_Promise *__pyx_f_7promise_7promise__tr
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":627
+/* "promise/promise.pyx":623
  * 
  * 
  * cdef bint is_future_like(object type_):             # <<<<<<<<<<<<<<
@@ -16545,23 +16404,23 @@ static int __pyx_f_7promise_7promise_is_future_like(PyObject *__pyx_v_type_) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("is_future_like", 0);
 
-  /* "promise/promise.pyx":628
+  /* "promise/promise.pyx":624
  * 
  * cdef bint is_future_like(object type_):
  *     return hasattr(type_, "add_done_callback") and callable(type_.add_done_callback)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_2 = __Pyx_HasAttr(__pyx_v_type_, __pyx_n_u_add_done_callback); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 628, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_HasAttr(__pyx_v_type_, __pyx_n_u_add_done_callback); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 624, __pyx_L1_error)
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
   } else {
     __pyx_t_1 = __pyx_t_3;
     goto __pyx_L3_bool_binop_done;
   }
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_type_, __pyx_n_s_add_done_callback); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 628, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_type_, __pyx_n_s_add_done_callback); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 624, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyCallable_Check(__pyx_t_4); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 628, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyCallable_Check(__pyx_t_4); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 624, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = (__pyx_t_3 != 0);
   __pyx_t_1 = __pyx_t_2;
@@ -16569,7 +16428,7 @@ static int __pyx_f_7promise_7promise_is_future_like(PyObject *__pyx_v_type_) {
   __pyx_r = __pyx_t_1;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":627
+  /* "promise/promise.pyx":623
  * 
  * 
  * cdef bint is_future_like(object type_):             # <<<<<<<<<<<<<<
@@ -16587,7 +16446,7 @@ static int __pyx_f_7promise_7promise_is_future_like(PyObject *__pyx_v_type_) {
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":635
+/* "promise/promise.pyx":631
  * 
  * 
  * def _process_future_result(resolve, reject):             # <<<<<<<<<<<<<<
@@ -16630,11 +16489,11 @@ static PyObject *__pyx_pw_7promise_7promise_9_process_future_result(PyObject *__
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_reject)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_process_future_result", 1, 2, 2, 1); __PYX_ERR(0, 635, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_process_future_result", 1, 2, 2, 1); __PYX_ERR(0, 631, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_process_future_result") < 0)) __PYX_ERR(0, 635, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_process_future_result") < 0)) __PYX_ERR(0, 631, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -16647,7 +16506,7 @@ static PyObject *__pyx_pw_7promise_7promise_9_process_future_result(PyObject *__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_process_future_result", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 635, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_process_future_result", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 631, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("promise.promise._process_future_result", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -16660,7 +16519,7 @@ static PyObject *__pyx_pw_7promise_7promise_9_process_future_result(PyObject *__
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":636
+/* "promise/promise.pyx":632
  * 
  * def _process_future_result(resolve, reject):
  *     def handle_future_result(future):             # <<<<<<<<<<<<<<
@@ -16715,7 +16574,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
   __pyx_outer_scope = (struct __pyx_obj_7promise_7promise___pyx_scope_struct_7__process_future_result *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "promise/promise.pyx":637
+  /* "promise/promise.pyx":633
  * def _process_future_result(resolve, reject):
  *     def handle_future_result(future):
  *         try:             # <<<<<<<<<<<<<<
@@ -16731,15 +16590,15 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "promise/promise.pyx":638
+      /* "promise/promise.pyx":634
  *     def handle_future_result(future):
  *         try:
  *             resolve(future.result())             # <<<<<<<<<<<<<<
  *         except Exception as e:
  *             tb = exc_info()[2]
  */
-      if (unlikely(!__pyx_cur_scope->__pyx_v_resolve)) { __Pyx_RaiseClosureNameError("resolve"); __PYX_ERR(0, 638, __pyx_L3_error) }
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_future, __pyx_n_s_result); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 638, __pyx_L3_error)
+      if (unlikely(!__pyx_cur_scope->__pyx_v_resolve)) { __Pyx_RaiseClosureNameError("resolve"); __PYX_ERR(0, 634, __pyx_L3_error) }
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_future, __pyx_n_s_result); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 634, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_7 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -16753,7 +16612,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
       }
       __pyx_t_5 = (__pyx_t_7) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 638, __pyx_L3_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 634, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_INCREF(__pyx_cur_scope->__pyx_v_resolve);
@@ -16770,12 +16629,12 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
       __pyx_t_4 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_7, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 638, __pyx_L3_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 634, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "promise/promise.pyx":637
+      /* "promise/promise.pyx":633
  * def _process_future_result(resolve, reject):
  *     def handle_future_result(future):
  *         try:             # <<<<<<<<<<<<<<
@@ -16793,7 +16652,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "promise/promise.pyx":639
+    /* "promise/promise.pyx":635
  *         try:
  *             resolve(future.result())
  *         except Exception as e:             # <<<<<<<<<<<<<<
@@ -16803,7 +16662,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
     __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_8) {
       __Pyx_AddTraceback("promise.promise._process_future_result.handle_future_result", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_6, &__pyx_t_5) < 0) __PYX_ERR(0, 639, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_6, &__pyx_t_5) < 0) __PYX_ERR(0, 635, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_5);
@@ -16811,14 +16670,14 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
       __pyx_v_e = __pyx_t_6;
       /*try:*/ {
 
-        /* "promise/promise.pyx":640
+        /* "promise/promise.pyx":636
  *             resolve(future.result())
  *         except Exception as e:
  *             tb = exc_info()[2]             # <<<<<<<<<<<<<<
  *             reject(e, tb)
  * 
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_exc_info); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 640, __pyx_L14_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_exc_info); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 636, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_9);
         __pyx_t_10 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_9))) {
@@ -16832,23 +16691,23 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
         }
         __pyx_t_7 = (__pyx_t_10) ? __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_10) : __Pyx_PyObject_CallNoArg(__pyx_t_9);
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 640, __pyx_L14_error)
+        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 636, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_7, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 640, __pyx_L14_error)
+        __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_7, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 636, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __pyx_v_tb = __pyx_t_9;
         __pyx_t_9 = 0;
 
-        /* "promise/promise.pyx":641
+        /* "promise/promise.pyx":637
  *         except Exception as e:
  *             tb = exc_info()[2]
  *             reject(e, tb)             # <<<<<<<<<<<<<<
  * 
  *     return handle_future_result
  */
-        if (unlikely(!__pyx_cur_scope->__pyx_v_reject)) { __Pyx_RaiseClosureNameError("reject"); __PYX_ERR(0, 641, __pyx_L14_error) }
+        if (unlikely(!__pyx_cur_scope->__pyx_v_reject)) { __Pyx_RaiseClosureNameError("reject"); __PYX_ERR(0, 637, __pyx_L14_error) }
         __Pyx_INCREF(__pyx_cur_scope->__pyx_v_reject);
         __pyx_t_7 = __pyx_cur_scope->__pyx_v_reject; __pyx_t_10 = NULL;
         __pyx_t_8 = 0;
@@ -16865,7 +16724,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_7)) {
           PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_e, __pyx_v_tb};
-          __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 641, __pyx_L14_error)
+          __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 637, __pyx_L14_error)
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_GOTREF(__pyx_t_9);
         } else
@@ -16873,13 +16732,13 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
           PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_e, __pyx_v_tb};
-          __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 641, __pyx_L14_error)
+          __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 637, __pyx_L14_error)
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_GOTREF(__pyx_t_9);
         } else
         #endif
         {
-          __pyx_t_11 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 641, __pyx_L14_error)
+          __pyx_t_11 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 637, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_11);
           if (__pyx_t_10) {
             __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -16890,7 +16749,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
           __Pyx_INCREF(__pyx_v_tb);
           __Pyx_GIVEREF(__pyx_v_tb);
           PyTuple_SET_ITEM(__pyx_t_11, 1+__pyx_t_8, __pyx_v_tb);
-          __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_11, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 641, __pyx_L14_error)
+          __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_11, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 637, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
@@ -16898,7 +16757,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
 
-      /* "promise/promise.pyx":639
+      /* "promise/promise.pyx":635
  *         try:
  *             resolve(future.result())
  *         except Exception as e:             # <<<<<<<<<<<<<<
@@ -16957,7 +16816,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "promise/promise.pyx":637
+    /* "promise/promise.pyx":633
  * def _process_future_result(resolve, reject):
  *     def handle_future_result(future):
  *         try:             # <<<<<<<<<<<<<<
@@ -16977,7 +16836,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
     __pyx_L8_try_end:;
   }
 
-  /* "promise/promise.pyx":636
+  /* "promise/promise.pyx":632
  * 
  * def _process_future_result(resolve, reject):
  *     def handle_future_result(future):             # <<<<<<<<<<<<<<
@@ -17006,7 +16865,7 @@ static PyObject *__pyx_pf_7promise_7promise_22_process_future_result_handle_futu
   return __pyx_r;
 }
 
-/* "promise/promise.pyx":635
+/* "promise/promise.pyx":631
  * 
  * 
  * def _process_future_result(resolve, reject):             # <<<<<<<<<<<<<<
@@ -17028,7 +16887,7 @@ static PyObject *__pyx_pf_7promise_7promise_8_process_future_result(CYTHON_UNUSE
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7promise_7promise___pyx_scope_struct_7__process_future_result *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 635, __pyx_L1_error)
+    __PYX_ERR(0, 631, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -17039,19 +16898,19 @@ static PyObject *__pyx_pf_7promise_7promise_8_process_future_result(CYTHON_UNUSE
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_reject);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_reject);
 
-  /* "promise/promise.pyx":636
+  /* "promise/promise.pyx":632
  * 
  * def _process_future_result(resolve, reject):
  *     def handle_future_result(future):             # <<<<<<<<<<<<<<
  *         try:
  *             resolve(future.result())
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_22_process_future_result_1handle_future_result, 0, __pyx_n_s_process_future_result_locals_ha, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 636, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_22_process_future_result_1handle_future_result, 0, __pyx_n_s_process_future_result_locals_ha, ((PyObject*)__pyx_cur_scope), __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 632, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_handle_future_result = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":643
+  /* "promise/promise.pyx":639
  *             reject(e, tb)
  * 
  *     return handle_future_result             # <<<<<<<<<<<<<<
@@ -17063,7 +16922,7 @@ static PyObject *__pyx_pf_7promise_7promise_8_process_future_result(CYTHON_UNUSE
   __pyx_r = __pyx_v_handle_future_result;
   goto __pyx_L0;
 
-  /* "promise/promise.pyx":635
+  /* "promise/promise.pyx":631
  * 
  * 
  * def _process_future_result(resolve, reject):             # <<<<<<<<<<<<<<
@@ -17085,7 +16944,7 @@ static PyObject *__pyx_pf_7promise_7promise_8_process_future_result(CYTHON_UNUSE
 }
 static PyObject *__pyx_gb_7promise_7promise_12generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "promise/promise.pyx":646
+/* "promise/promise.pyx":642
  * 
  * 
  * def iterate_promise(promise: Promise) -> object:             # <<<<<<<<<<<<<<
@@ -17103,7 +16962,7 @@ static PyObject *__pyx_pw_7promise_7promise_11iterate_promise(PyObject *__pyx_se
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("iterate_promise (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_promise), __pyx_ptype_7promise_7promise_Promise, 1, "promise", 0))) __PYX_ERR(0, 646, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_promise), __pyx_ptype_7promise_7promise_Promise, 1, "promise", 0))) __PYX_ERR(0, 642, __pyx_L1_error)
   __pyx_r = __pyx_pf_7promise_7promise_10iterate_promise(__pyx_self, ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v_promise));
 
   /* function exit code */
@@ -17127,7 +16986,7 @@ static PyObject *__pyx_pf_7promise_7promise_10iterate_promise(CYTHON_UNUSED PyOb
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7promise_7promise___pyx_scope_struct_8_iterate_promise *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 646, __pyx_L1_error)
+    __PYX_ERR(0, 642, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -17135,7 +16994,7 @@ static PyObject *__pyx_pf_7promise_7promise_10iterate_promise(CYTHON_UNUSED PyOb
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_promise);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_promise);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_7promise_7promise_12generator, __pyx_codeobj__19, (PyObject *) __pyx_cur_scope, __pyx_n_s_iterate_promise, __pyx_n_s_iterate_promise, __pyx_n_s_promise_promise); if (unlikely(!gen)) __PYX_ERR(0, 646, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_7promise_7promise_12generator, __pyx_codeobj__21, (PyObject *) __pyx_cur_scope, __pyx_n_s_iterate_promise, __pyx_n_s_iterate_promise, __pyx_n_s_promise_promise); if (unlikely(!gen)) __PYX_ERR(0, 642, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -17171,30 +17030,30 @@ static PyObject *__pyx_gb_7promise_7promise_12generator(__pyx_CoroutineObject *_
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 646, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 642, __pyx_L1_error)
 
-  /* "promise/promise.pyx":647
+  /* "promise/promise.pyx":643
  * 
  * def iterate_promise(promise: Promise) -> object:
  *     if not promise.is_fulfilled:             # <<<<<<<<<<<<<<
  *         yield from promise.get_future()
  *     assert promise.is_fulfilled
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_promise), __pyx_n_s_is_fulfilled); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 647, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_promise), __pyx_n_s_is_fulfilled); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 643, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 647, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 643, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = ((!__pyx_t_2) != 0);
   if (__pyx_t_3) {
 
-    /* "promise/promise.pyx":648
+    /* "promise/promise.pyx":644
  * def iterate_promise(promise: Promise) -> object:
  *     if not promise.is_fulfilled:
  *         yield from promise.get_future()             # <<<<<<<<<<<<<<
  *     assert promise.is_fulfilled
  *     return promise.get()
  */
-    __pyx_t_1 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_cur_scope->__pyx_v_promise->__pyx_vtab)->get_future(__pyx_cur_scope->__pyx_v_promise, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 648, __pyx_L1_error)
+    __pyx_t_1 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_cur_scope->__pyx_v_promise->__pyx_vtab)->get_future(__pyx_cur_scope->__pyx_v_promise, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 644, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __Pyx_Generator_Yield_From(__pyx_generator, __pyx_t_1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -17207,16 +17066,16 @@ static PyObject *__pyx_gb_7promise_7promise_12generator(__pyx_CoroutineObject *_
       __pyx_generator->resume_label = 1;
       return __pyx_r;
       __pyx_L5_resume_from_yield_from:;
-      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 648, __pyx_L1_error)
+      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 644, __pyx_L1_error)
     } else {
       PyObject* exc_type = __Pyx_PyErr_Occurred();
       if (exc_type) {
         if (likely(exc_type == PyExc_StopIteration || (exc_type != PyExc_GeneratorExit && __Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration)))) PyErr_Clear();
-        else __PYX_ERR(0, 648, __pyx_L1_error)
+        else __PYX_ERR(0, 644, __pyx_L1_error)
       }
     }
 
-    /* "promise/promise.pyx":647
+    /* "promise/promise.pyx":643
  * 
  * def iterate_promise(promise: Promise) -> object:
  *     if not promise.is_fulfilled:             # <<<<<<<<<<<<<<
@@ -17225,7 +17084,7 @@ static PyObject *__pyx_gb_7promise_7promise_12generator(__pyx_CoroutineObject *_
  */
   }
 
-  /* "promise/promise.pyx":649
+  /* "promise/promise.pyx":645
  *     if not promise.is_fulfilled:
  *         yield from promise.get_future()
  *     assert promise.is_fulfilled             # <<<<<<<<<<<<<<
@@ -17233,31 +17092,31 @@ static PyObject *__pyx_gb_7promise_7promise_12generator(__pyx_CoroutineObject *_
  */
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_promise), __pyx_n_s_is_fulfilled); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 649, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_promise), __pyx_n_s_is_fulfilled); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 645, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 649, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 645, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (unlikely(!__pyx_t_3)) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 649, __pyx_L1_error)
+      __PYX_ERR(0, 645, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "promise/promise.pyx":650
+  /* "promise/promise.pyx":646
  *         yield from promise.get_future()
  *     assert promise.is_fulfilled
  *     return promise.get()             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_cur_scope->__pyx_v_promise->__pyx_vtab)->get(__pyx_cur_scope->__pyx_v_promise, 0, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 650, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_7promise_7promise_Promise *)__pyx_cur_scope->__pyx_v_promise->__pyx_vtab)->get(__pyx_cur_scope->__pyx_v_promise, 0, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 646, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = NULL; __Pyx_ReturnWithStopIteration(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   goto __pyx_L0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "promise/promise.pyx":646
+  /* "promise/promise.pyx":642
  * 
  * 
  * def iterate_promise(promise: Promise) -> object:             # <<<<<<<<<<<<<<
@@ -18539,563 +18398,9 @@ static PyObject *__pyx_f_7promise_7promise___pyx_unpickle_PartialSettlePromise__
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-
-/* "(tree fragment)":1
- * def __pyx_unpickle_Promise(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
- *     cdef object __pyx_PickleError
- *     cdef object __pyx_result
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_7promise_7promise_20__pyx_unpickle_Promise(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7promise_7promise_20__pyx_unpickle_Promise = {"__pyx_unpickle_Promise", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_20__pyx_unpickle_Promise, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_7promise_7promise_20__pyx_unpickle_Promise(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v___pyx_type = 0;
-  long __pyx_v___pyx_checksum;
-  PyObject *__pyx_v___pyx_state = 0;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__pyx_unpickle_Promise (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_pyx_type,&__pyx_n_s_pyx_checksum,&__pyx_n_s_pyx_state,0};
-    PyObject* values[3] = {0,0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-        CYTHON_FALLTHROUGH;
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pyx_type)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pyx_checksum)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_Promise", 1, 3, 3, 1); __PYX_ERR(1, 1, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  2:
-        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pyx_state)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_Promise", 1, 3, 3, 2); __PYX_ERR(1, 1, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__pyx_unpickle_Promise") < 0)) __PYX_ERR(1, 1, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-    }
-    __pyx_v___pyx_type = values[0];
-    __pyx_v___pyx_checksum = __Pyx_PyInt_As_long(values[1]); if (unlikely((__pyx_v___pyx_checksum == (long)-1) && PyErr_Occurred())) __PYX_ERR(1, 1, __pyx_L3_error)
-    __pyx_v___pyx_state = values[2];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_Promise", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("promise.promise.__pyx_unpickle_Promise", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7promise_7promise_19__pyx_unpickle_Promise(__pyx_self, __pyx_v___pyx_type, __pyx_v___pyx_checksum, __pyx_v___pyx_state);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_7promise_7promise_19__pyx_unpickle_Promise(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state) {
-  PyObject *__pyx_v___pyx_PickleError = 0;
-  PyObject *__pyx_v___pyx_result = 0;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  int __pyx_t_6;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__pyx_unpickle_Promise", 0);
-
-  /* "(tree fragment)":4
- *     cdef object __pyx_PickleError
- *     cdef object __pyx_result
- *     if __pyx_checksum != 0xb499ce5:             # <<<<<<<<<<<<<<
- *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xb499ce5 = (_fulfillment_handler0, _fulfillment_handlers, _future, _is_async_guaranteed, _is_bound, _is_final, _is_following, _is_waiting, _length, _promise0, _promises, _rejection_handler0, _rejection_handlers, _scheduler, _state, _traceback))" % __pyx_checksum)
- */
-  __pyx_t_1 = ((__pyx_v___pyx_checksum != 0xb499ce5) != 0);
-  if (__pyx_t_1) {
-
-    /* "(tree fragment)":5
- *     cdef object __pyx_result
- *     if __pyx_checksum != 0xb499ce5:
- *         from pickle import PickleError as __pyx_PickleError             # <<<<<<<<<<<<<<
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xb499ce5 = (_fulfillment_handler0, _fulfillment_handlers, _future, _is_async_guaranteed, _is_bound, _is_final, _is_following, _is_waiting, _length, _promise0, _promises, _rejection_handler0, _rejection_handlers, _scheduler, _state, _traceback))" % __pyx_checksum)
- *     __pyx_result = Promise.__new__(__pyx_type)
- */
-    __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 5, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_INCREF(__pyx_n_s_PickleError);
-    __Pyx_GIVEREF(__pyx_n_s_PickleError);
-    PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_PickleError);
-    __pyx_t_3 = __Pyx_Import(__pyx_n_s_pickle, __pyx_t_2, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 5, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_PickleError); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 5, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_INCREF(__pyx_t_2);
-    __pyx_v___pyx_PickleError = __pyx_t_2;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-    /* "(tree fragment)":6
- *     if __pyx_checksum != 0xb499ce5:
- *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xb499ce5 = (_fulfillment_handler0, _fulfillment_handlers, _future, _is_async_guaranteed, _is_bound, _is_final, _is_following, _is_waiting, _length, _promise0, _promises, _rejection_handler0, _rejection_handlers, _scheduler, _state, _traceback))" % __pyx_checksum)             # <<<<<<<<<<<<<<
- *     __pyx_result = Promise.__new__(__pyx_type)
- *     if __pyx_state is not None:
- */
-    __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_v___pyx_checksum); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 6, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Incompatible_checksums_s_vs_0xb4, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 6, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_INCREF(__pyx_v___pyx_PickleError);
-    __pyx_t_2 = __pyx_v___pyx_PickleError; __pyx_t_5 = NULL;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
-      if (likely(__pyx_t_5)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-        __Pyx_INCREF(__pyx_t_5);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_2, function);
-      }
-    }
-    __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_5, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4);
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 6, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(1, 6, __pyx_L1_error)
-
-    /* "(tree fragment)":4
- *     cdef object __pyx_PickleError
- *     cdef object __pyx_result
- *     if __pyx_checksum != 0xb499ce5:             # <<<<<<<<<<<<<<
- *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xb499ce5 = (_fulfillment_handler0, _fulfillment_handlers, _future, _is_async_guaranteed, _is_bound, _is_final, _is_following, _is_waiting, _length, _promise0, _promises, _rejection_handler0, _rejection_handlers, _scheduler, _state, _traceback))" % __pyx_checksum)
- */
-  }
-
-  /* "(tree fragment)":7
- *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xb499ce5 = (_fulfillment_handler0, _fulfillment_handlers, _future, _is_async_guaranteed, _is_bound, _is_final, _is_following, _is_waiting, _length, _promise0, _promises, _rejection_handler0, _rejection_handlers, _scheduler, _state, _traceback))" % __pyx_checksum)
- *     __pyx_result = Promise.__new__(__pyx_type)             # <<<<<<<<<<<<<<
- *     if __pyx_state is not None:
- *         __pyx_unpickle_Promise__set_state(<Promise> __pyx_result, __pyx_state)
- */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_new); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 7, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-    }
-  }
-  __pyx_t_3 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_v___pyx_type) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v___pyx_type);
-  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 7, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_v___pyx_result = __pyx_t_3;
-  __pyx_t_3 = 0;
-
-  /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xb499ce5 = (_fulfillment_handler0, _fulfillment_handlers, _future, _is_async_guaranteed, _is_bound, _is_final, _is_following, _is_waiting, _length, _promise0, _promises, _rejection_handler0, _rejection_handlers, _scheduler, _state, _traceback))" % __pyx_checksum)
- *     __pyx_result = Promise.__new__(__pyx_type)
- *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
- *         __pyx_unpickle_Promise__set_state(<Promise> __pyx_result, __pyx_state)
- *     return __pyx_result
- */
-  __pyx_t_1 = (__pyx_v___pyx_state != Py_None);
-  __pyx_t_6 = (__pyx_t_1 != 0);
-  if (__pyx_t_6) {
-
-    /* "(tree fragment)":9
- *     __pyx_result = Promise.__new__(__pyx_type)
- *     if __pyx_state is not None:
- *         __pyx_unpickle_Promise__set_state(<Promise> __pyx_result, __pyx_state)             # <<<<<<<<<<<<<<
- *     return __pyx_result
- * cdef __pyx_unpickle_Promise__set_state(Promise __pyx_result, tuple __pyx_state):
- */
-    if (!(likely(PyTuple_CheckExact(__pyx_v___pyx_state))||((__pyx_v___pyx_state) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v___pyx_state)->tp_name), 0))) __PYX_ERR(1, 9, __pyx_L1_error)
-    __pyx_t_3 = __pyx_f_7promise_7promise___pyx_unpickle_Promise__set_state(((struct __pyx_obj_7promise_7promise_Promise *)__pyx_v___pyx_result), ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 9, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-    /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xb499ce5 = (_fulfillment_handler0, _fulfillment_handlers, _future, _is_async_guaranteed, _is_bound, _is_final, _is_following, _is_waiting, _length, _promise0, _promises, _rejection_handler0, _rejection_handlers, _scheduler, _state, _traceback))" % __pyx_checksum)
- *     __pyx_result = Promise.__new__(__pyx_type)
- *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
- *         __pyx_unpickle_Promise__set_state(<Promise> __pyx_result, __pyx_state)
- *     return __pyx_result
- */
-  }
-
-  /* "(tree fragment)":10
- *     if __pyx_state is not None:
- *         __pyx_unpickle_Promise__set_state(<Promise> __pyx_result, __pyx_state)
- *     return __pyx_result             # <<<<<<<<<<<<<<
- * cdef __pyx_unpickle_Promise__set_state(Promise __pyx_result, tuple __pyx_state):
- *     __pyx_result._fulfillment_handler0 = __pyx_state[0]; __pyx_result._fulfillment_handlers = __pyx_state[1]; __pyx_result._future = __pyx_state[2]; __pyx_result._is_async_guaranteed = __pyx_state[3]; __pyx_result._is_bound = __pyx_state[4]; __pyx_result._is_final = __pyx_state[5]; __pyx_result._is_following = __pyx_state[6]; __pyx_result._is_waiting = __pyx_state[7]; __pyx_result._length = __pyx_state[8]; __pyx_result._promise0 = __pyx_state[9]; __pyx_result._promises = __pyx_state[10]; __pyx_result._rejection_handler0 = __pyx_state[11]; __pyx_result._rejection_handlers = __pyx_state[12]; __pyx_result._scheduler = __pyx_state[13]; __pyx_result._state = __pyx_state[14]; __pyx_result._traceback = __pyx_state[15]
- */
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v___pyx_result);
-  __pyx_r = __pyx_v___pyx_result;
-  goto __pyx_L0;
-
-  /* "(tree fragment)":1
- * def __pyx_unpickle_Promise(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
- *     cdef object __pyx_PickleError
- *     cdef object __pyx_result
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("promise.promise.__pyx_unpickle_Promise", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v___pyx_PickleError);
-  __Pyx_XDECREF(__pyx_v___pyx_result);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "(tree fragment)":11
- *         __pyx_unpickle_Promise__set_state(<Promise> __pyx_result, __pyx_state)
- *     return __pyx_result
- * cdef __pyx_unpickle_Promise__set_state(Promise __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result._fulfillment_handler0 = __pyx_state[0]; __pyx_result._fulfillment_handlers = __pyx_state[1]; __pyx_result._future = __pyx_state[2]; __pyx_result._is_async_guaranteed = __pyx_state[3]; __pyx_result._is_bound = __pyx_state[4]; __pyx_result._is_final = __pyx_state[5]; __pyx_result._is_following = __pyx_state[6]; __pyx_result._is_waiting = __pyx_state[7]; __pyx_result._length = __pyx_state[8]; __pyx_result._promise0 = __pyx_state[9]; __pyx_result._promises = __pyx_state[10]; __pyx_result._rejection_handler0 = __pyx_state[11]; __pyx_result._rejection_handlers = __pyx_state[12]; __pyx_result._scheduler = __pyx_state[13]; __pyx_result._state = __pyx_state[14]; __pyx_result._traceback = __pyx_state[15]
- *     if len(__pyx_state) > 16 and hasattr(__pyx_result, '__dict__'):
- */
-
-static PyObject *__pyx_f_7promise_7promise___pyx_unpickle_Promise__set_state(struct __pyx_obj_7promise_7promise_Promise *__pyx_v___pyx_result, PyObject *__pyx_v___pyx_state) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_t_2;
-  int __pyx_t_3;
-  enum __pyx_t_7promise_7promise_State __pyx_t_4;
-  Py_ssize_t __pyx_t_5;
-  int __pyx_t_6;
-  int __pyx_t_7;
-  PyObject *__pyx_t_8 = NULL;
-  PyObject *__pyx_t_9 = NULL;
-  PyObject *__pyx_t_10 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__pyx_unpickle_Promise__set_state", 0);
-
-  /* "(tree fragment)":12
- *     return __pyx_result
- * cdef __pyx_unpickle_Promise__set_state(Promise __pyx_result, tuple __pyx_state):
- *     __pyx_result._fulfillment_handler0 = __pyx_state[0]; __pyx_result._fulfillment_handlers = __pyx_state[1]; __pyx_result._future = __pyx_state[2]; __pyx_result._is_async_guaranteed = __pyx_state[3]; __pyx_result._is_bound = __pyx_state[4]; __pyx_result._is_final = __pyx_state[5]; __pyx_result._is_following = __pyx_state[6]; __pyx_result._is_waiting = __pyx_state[7]; __pyx_result._length = __pyx_state[8]; __pyx_result._promise0 = __pyx_state[9]; __pyx_result._promises = __pyx_state[10]; __pyx_result._rejection_handler0 = __pyx_state[11]; __pyx_result._rejection_handlers = __pyx_state[12]; __pyx_result._scheduler = __pyx_state[13]; __pyx_result._state = __pyx_state[14]; __pyx_result._traceback = __pyx_state[15]             # <<<<<<<<<<<<<<
- *     if len(__pyx_state) > 16 and hasattr(__pyx_result, '__dict__'):
- *         __pyx_result.__dict__.update(__pyx_state[16])
- */
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v___pyx_result->_fulfillment_handler0);
-  __Pyx_DECREF(__pyx_v___pyx_result->_fulfillment_handler0);
-  __pyx_v___pyx_result->_fulfillment_handler0 = __pyx_t_1;
-  __pyx_t_1 = 0;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v___pyx_result->_fulfillment_handlers);
-  __Pyx_DECREF(__pyx_v___pyx_result->_fulfillment_handlers);
-  __pyx_v___pyx_result->_fulfillment_handlers = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v___pyx_result->_future);
-  __Pyx_DECREF(__pyx_v___pyx_result->_future);
-  __pyx_v___pyx_result->_future = __pyx_t_1;
-  __pyx_t_1 = 0;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v___pyx_result->_is_async_guaranteed = __pyx_t_2;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 4, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v___pyx_result->_is_bound = __pyx_t_2;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v___pyx_result->_is_final = __pyx_t_2;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v___pyx_result->_is_following = __pyx_t_2;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v___pyx_result->_is_waiting = __pyx_t_2;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 8, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v___pyx_result->_length = __pyx_t_3;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 9, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_7promise_7promise_Promise))))) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v___pyx_result->_promise0);
-  __Pyx_DECREF(((PyObject *)__pyx_v___pyx_result->_promise0));
-  __pyx_v___pyx_result->_promise0 = ((struct __pyx_obj_7promise_7promise_Promise *)__pyx_t_1);
-  __pyx_t_1 = 0;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 10, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v___pyx_result->_promises);
-  __Pyx_DECREF(__pyx_v___pyx_result->_promises);
-  __pyx_v___pyx_result->_promises = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 11, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v___pyx_result->_rejection_handler0);
-  __Pyx_DECREF(__pyx_v___pyx_result->_rejection_handler0);
-  __pyx_v___pyx_result->_rejection_handler0 = __pyx_t_1;
-  __pyx_t_1 = 0;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 12, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v___pyx_result->_rejection_handlers);
-  __Pyx_DECREF(__pyx_v___pyx_result->_rejection_handlers);
-  __pyx_v___pyx_result->_rejection_handlers = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 13, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v___pyx_result->_scheduler);
-  __Pyx_DECREF(__pyx_v___pyx_result->_scheduler);
-  __pyx_v___pyx_result->_scheduler = __pyx_t_1;
-  __pyx_t_1 = 0;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 14, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = ((enum __pyx_t_7promise_7promise_State)__Pyx_PyInt_As_enum____pyx_t_7promise_7promise_State(__pyx_t_1)); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v___pyx_result->_state = __pyx_t_4;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 15, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v___pyx_result->_traceback);
-  __Pyx_DECREF(__pyx_v___pyx_result->_traceback);
-  __pyx_v___pyx_result->_traceback = __pyx_t_1;
-  __pyx_t_1 = 0;
-
-  /* "(tree fragment)":13
- * cdef __pyx_unpickle_Promise__set_state(Promise __pyx_result, tuple __pyx_state):
- *     __pyx_result._fulfillment_handler0 = __pyx_state[0]; __pyx_result._fulfillment_handlers = __pyx_state[1]; __pyx_result._future = __pyx_state[2]; __pyx_result._is_async_guaranteed = __pyx_state[3]; __pyx_result._is_bound = __pyx_state[4]; __pyx_result._is_final = __pyx_state[5]; __pyx_result._is_following = __pyx_state[6]; __pyx_result._is_waiting = __pyx_state[7]; __pyx_result._length = __pyx_state[8]; __pyx_result._promise0 = __pyx_state[9]; __pyx_result._promises = __pyx_state[10]; __pyx_result._rejection_handler0 = __pyx_state[11]; __pyx_result._rejection_handlers = __pyx_state[12]; __pyx_result._scheduler = __pyx_state[13]; __pyx_result._state = __pyx_state[14]; __pyx_result._traceback = __pyx_state[15]
- *     if len(__pyx_state) > 16 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
- *         __pyx_result.__dict__.update(__pyx_state[16])
- */
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 13, __pyx_L1_error)
-  }
-  __pyx_t_5 = PyTuple_GET_SIZE(__pyx_v___pyx_state); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(1, 13, __pyx_L1_error)
-  __pyx_t_6 = ((__pyx_t_5 > 16) != 0);
-  if (__pyx_t_6) {
-  } else {
-    __pyx_t_2 = __pyx_t_6;
-    goto __pyx_L4_bool_binop_done;
-  }
-  __pyx_t_6 = __Pyx_HasAttr(((PyObject *)__pyx_v___pyx_result), __pyx_n_s_dict); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(1, 13, __pyx_L1_error)
-  __pyx_t_7 = (__pyx_t_6 != 0);
-  __pyx_t_2 = __pyx_t_7;
-  __pyx_L4_bool_binop_done:;
-  if (__pyx_t_2) {
-
-    /* "(tree fragment)":14
- *     __pyx_result._fulfillment_handler0 = __pyx_state[0]; __pyx_result._fulfillment_handlers = __pyx_state[1]; __pyx_result._future = __pyx_state[2]; __pyx_result._is_async_guaranteed = __pyx_state[3]; __pyx_result._is_bound = __pyx_state[4]; __pyx_result._is_final = __pyx_state[5]; __pyx_result._is_following = __pyx_state[6]; __pyx_result._is_waiting = __pyx_state[7]; __pyx_result._length = __pyx_state[8]; __pyx_result._promise0 = __pyx_state[9]; __pyx_result._promises = __pyx_state[10]; __pyx_result._rejection_handler0 = __pyx_state[11]; __pyx_result._rejection_handlers = __pyx_state[12]; __pyx_result._scheduler = __pyx_state[13]; __pyx_result._state = __pyx_state[14]; __pyx_result._traceback = __pyx_state[15]
- *     if len(__pyx_state) > 16 and hasattr(__pyx_result, '__dict__'):
- *         __pyx_result.__dict__.update(__pyx_state[16])             # <<<<<<<<<<<<<<
- */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v___pyx_result), __pyx_n_s_dict); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 14, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_update); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 14, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(__pyx_v___pyx_state == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 14, __pyx_L1_error)
-    }
-    __pyx_t_8 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 16, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 14, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_10 = NULL;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
-      __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_9);
-      if (likely(__pyx_t_10)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
-        __Pyx_INCREF(__pyx_t_10);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_9, function);
-      }
-    }
-    __pyx_t_1 = (__pyx_t_10) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_10, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8);
-    __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 14, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-    /* "(tree fragment)":13
- * cdef __pyx_unpickle_Promise__set_state(Promise __pyx_result, tuple __pyx_state):
- *     __pyx_result._fulfillment_handler0 = __pyx_state[0]; __pyx_result._fulfillment_handlers = __pyx_state[1]; __pyx_result._future = __pyx_state[2]; __pyx_result._is_async_guaranteed = __pyx_state[3]; __pyx_result._is_bound = __pyx_state[4]; __pyx_result._is_final = __pyx_state[5]; __pyx_result._is_following = __pyx_state[6]; __pyx_result._is_waiting = __pyx_state[7]; __pyx_result._length = __pyx_state[8]; __pyx_result._promise0 = __pyx_state[9]; __pyx_result._promises = __pyx_state[10]; __pyx_result._rejection_handler0 = __pyx_state[11]; __pyx_result._rejection_handlers = __pyx_state[12]; __pyx_result._scheduler = __pyx_state[13]; __pyx_result._state = __pyx_state[14]; __pyx_result._traceback = __pyx_state[15]
- *     if len(__pyx_state) > 16 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
- *         __pyx_result.__dict__.update(__pyx_state[16])
- */
-  }
-
-  /* "(tree fragment)":11
- *         __pyx_unpickle_Promise__set_state(<Promise> __pyx_result, __pyx_state)
- *     return __pyx_result
- * cdef __pyx_unpickle_Promise__set_state(Promise __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result._fulfillment_handler0 = __pyx_state[0]; __pyx_result._fulfillment_handlers = __pyx_state[1]; __pyx_result._future = __pyx_state[2]; __pyx_result._is_async_guaranteed = __pyx_state[3]; __pyx_result._is_bound = __pyx_state[4]; __pyx_result._is_final = __pyx_state[5]; __pyx_result._is_following = __pyx_state[6]; __pyx_result._is_waiting = __pyx_state[7]; __pyx_result._length = __pyx_state[8]; __pyx_result._promise0 = __pyx_state[9]; __pyx_result._promises = __pyx_state[10]; __pyx_result._rejection_handler0 = __pyx_state[11]; __pyx_result._rejection_handlers = __pyx_state[12]; __pyx_result._scheduler = __pyx_state[13]; __pyx_result._state = __pyx_state[14]; __pyx_result._traceback = __pyx_state[15]
- *     if len(__pyx_state) > 16 and hasattr(__pyx_result, '__dict__'):
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_XDECREF(__pyx_t_10);
-  __Pyx_AddTraceback("promise.promise.__pyx_unpickle_Promise__set_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
 static struct __pyx_vtabstruct_7promise_7promise_Promise __pyx_vtable_7promise_7promise_Promise;
 
-static PyObject *__pyx_tp_new_7promise_7promise_Promise(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_7promise_7promise_Promise(PyTypeObject *t, PyObject *a, PyObject *k) {
   struct __pyx_obj_7promise_7promise_Promise *p;
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
@@ -19115,7 +18420,11 @@ static PyObject *__pyx_tp_new_7promise_7promise_Promise(PyTypeObject *t, CYTHON_
   p->_fulfillment_handler0 = Py_None; Py_INCREF(Py_None);
   p->_rejection_handler0 = Py_None; Py_INCREF(Py_None);
   p->_scheduler = Py_None; Py_INCREF(Py_None);
+  if (unlikely(__pyx_pw_7promise_7promise_7Promise_1__cinit__(o, a, k) < 0)) goto bad;
   return o;
+  bad:
+  Py_DECREF(o); o = 0;
+  return NULL;
 }
 
 static void __pyx_tp_dealloc_7promise_7promise_Promise(PyObject *o) {
@@ -19279,32 +18588,20 @@ static int __pyx_setprop_7promise_7promise_7Promise__traceback(PyObject *o, PyOb
   }
 }
 
-static PyObject *__pyx_specialmethod___pyx_pw_7promise_7promise_7Promise_9__await__(PyObject *self, CYTHON_UNUSED PyObject *arg) {return __pyx_pw_7promise_7promise_7Promise_9__await__(self);}
+static PyObject *__pyx_specialmethod___pyx_pw_7promise_7promise_7Promise_11__await__(PyObject *self, CYTHON_UNUSED PyObject *arg) {return __pyx_pw_7promise_7promise_7Promise_11__await__(self);}
 
 static PyMethodDef __pyx_methods_7promise_7promise_Promise[] = {
-  {"get_scheduler", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_3get_scheduler, METH_NOARGS, 0},
-  {"get_future", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_5get_future, METH_NOARGS, 0},
-  {"__await__", (PyCFunction)__pyx_specialmethod___pyx_pw_7promise_7promise_7Promise_9__await__, METH_NOARGS|METH_COEXIST, 0},
-  {"_target", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_11_target, METH_NOARGS, 0},
-  {"wait", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_13wait, METH_VARARGS|METH_KEYWORDS, 0},
-  {"_wait", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_15_wait, METH_VARARGS|METH_KEYWORDS, 0},
-  {"get", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_17get, METH_VARARGS|METH_KEYWORDS, 0},
-  {"catch", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_21catch, METH_O, 0},
-  {"do_resolve", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_23do_resolve, METH_O, 0},
-  {"do_reject", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_25do_reject, METH_VARARGS|METH_KEYWORDS, 0},
-  {"then", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_27then, METH_VARARGS|METH_KEYWORDS, 0},
-  {"done", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_29done, METH_VARARGS|METH_KEYWORDS, 0},
-  {"done_all", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_31done_all, METH_VARARGS|METH_KEYWORDS, 0},
-  {"then_all", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_33then_all, METH_VARARGS|METH_KEYWORDS, 0},
-  {"reject", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_35reject, METH_VARARGS|METH_KEYWORDS, 0},
-  {"resolve", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_37resolve, METH_VARARGS|METH_KEYWORDS, 0},
-  {"promisify", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_39promisify, METH_VARARGS|METH_KEYWORDS, 0},
-  {"safe", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_41safe, METH_VARARGS|METH_KEYWORDS, 0},
-  {"all", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_43all, METH_VARARGS|METH_KEYWORDS, 0},
-  {"is_thenable", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_45is_thenable, METH_VARARGS|METH_KEYWORDS, 0},
-  {"for_dict", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_47for_dict, METH_VARARGS|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_49__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_51__setstate_cython__, METH_O, 0},
+  {"__await__", (PyCFunction)__pyx_specialmethod___pyx_pw_7promise_7promise_7Promise_11__await__, METH_NOARGS|METH_COEXIST, 0},
+  {"wait", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_15wait, METH_VARARGS|METH_KEYWORDS, 0},
+  {"reject", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_37reject, METH_VARARGS|METH_KEYWORDS, 0},
+  {"resolve", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_39resolve, METH_VARARGS|METH_KEYWORDS, 0},
+  {"promisify", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_41promisify, METH_VARARGS|METH_KEYWORDS, 0},
+  {"safe", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_43safe, METH_VARARGS|METH_KEYWORDS, 0},
+  {"all", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_45all, METH_VARARGS|METH_KEYWORDS, 0},
+  {"is_thenable", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_47is_thenable, METH_VARARGS|METH_KEYWORDS, 0},
+  {"for_dict", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7promise_7promise_7Promise_49for_dict, METH_VARARGS|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_51__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_7promise_7promise_7Promise_53__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
@@ -19323,7 +18620,7 @@ static struct PyGetSetDef __pyx_getsets_7promise_7promise_Promise[] = {
 
 #if PY_MAJOR_VERSION >= 3
 static __Pyx_PyAsyncMethodsStruct __pyx_tp_as_async_Promise = {
-  __pyx_pw_7promise_7promise_7Promise_9__await__, /*am_await*/
+  __pyx_pw_7promise_7promise_7Promise_11__await__, /*am_await*/
   0, /*am_aiter*/
   0, /*am_anext*/
 };
@@ -19349,7 +18646,7 @@ static PyTypeObject __pyx_type_7promise_7promise_Promise = {
   #if PY_MAJOR_VERSION >= 3
   &__pyx_tp_as_async_Promise, /*tp_as_async*/
   #endif
-  __pyx_pw_7promise_7promise_7Promise_19__repr__, /*tp_repr*/
+  __pyx_pw_7promise_7promise_7Promise_21__repr__, /*tp_repr*/
   0, /*tp_as_number*/
   0, /*tp_as_sequence*/
   0, /*tp_as_mapping*/
@@ -19365,7 +18662,7 @@ static PyTypeObject __pyx_type_7promise_7promise_Promise = {
   __pyx_tp_clear_7promise_7promise_Promise, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
-  __pyx_pw_7promise_7promise_7Promise_7__iter__, /*tp_iter*/
+  __pyx_pw_7promise_7promise_7Promise_9__iter__, /*tp_iter*/
   0, /*tp_iternext*/
   __pyx_methods_7promise_7promise_Promise, /*tp_methods*/
   0, /*tp_members*/
@@ -19375,7 +18672,7 @@ static PyTypeObject __pyx_type_7promise_7promise_Promise = {
   0, /*tp_descr_get*/
   0, /*tp_descr_set*/
   0, /*tp_dictoffset*/
-  __pyx_pw_7promise_7promise_7Promise_1__init__, /*tp_init*/
+  __pyx_pw_7promise_7promise_7Promise_3__init__, /*tp_init*/
   0, /*tp_alloc*/
   __pyx_tp_new_7promise_7promise_Promise, /*tp_new*/
   0, /*tp_free*/
@@ -21000,26 +20297,55 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_AssertionError, __pyx_k_AssertionError, sizeof(__pyx_k_AssertionError), 0, 0, 1, 1},
   {&__pyx_n_s_Box, __pyx_k_Box, sizeof(__pyx_k_Box), 0, 0, 1, 1},
+  {&__pyx_n_s_Box___reduce_cython, __pyx_k_Box___reduce_cython, sizeof(__pyx_k_Box___reduce_cython), 0, 0, 1, 1},
+  {&__pyx_n_s_Box___setstate_cython, __pyx_k_Box___setstate_cython, sizeof(__pyx_k_Box___setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_DEFAULT_TIMEOUT, __pyx_k_DEFAULT_TIMEOUT, sizeof(__pyx_k_DEFAULT_TIMEOUT), 0, 0, 1, 1},
+  {&__pyx_n_u_Exception, __pyx_k_Exception, sizeof(__pyx_k_Exception), 0, 1, 0, 1},
   {&__pyx_n_s_Future, __pyx_k_Future, sizeof(__pyx_k_Future), 0, 0, 1, 1},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0x20, __pyx_k_Incompatible_checksums_s_vs_0x20, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x20), 0, 0, 1, 0},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0x47, __pyx_k_Incompatible_checksums_s_vs_0x47, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x47), 0, 0, 1, 0},
-  {&__pyx_kp_s_Incompatible_checksums_s_vs_0xb4, __pyx_k_Incompatible_checksums_s_vs_0xb4, sizeof(__pyx_k_Incompatible_checksums_s_vs_0xb4), 0, 0, 1, 0},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0xb5, __pyx_k_Incompatible_checksums_s_vs_0xb5, sizeof(__pyx_k_Incompatible_checksums_s_vs_0xb5), 0, 0, 1, 0},
   {&__pyx_n_s_MAX_LENGTH, __pyx_k_MAX_LENGTH, sizeof(__pyx_k_MAX_LENGTH), 0, 0, 1, 1},
   {&__pyx_n_s_PartialSettlePromise, __pyx_k_PartialSettlePromise, sizeof(__pyx_k_PartialSettlePromise), 0, 0, 1, 1},
+  {&__pyx_n_s_PartialSettlePromise___reduce_cy, __pyx_k_PartialSettlePromise___reduce_cy, sizeof(__pyx_k_PartialSettlePromise___reduce_cy), 0, 0, 1, 1},
+  {&__pyx_n_s_PartialSettlePromise___setstate, __pyx_k_PartialSettlePromise___setstate, sizeof(__pyx_k_PartialSettlePromise___setstate), 0, 0, 1, 1},
   {&__pyx_n_s_PickleError, __pyx_k_PickleError, sizeof(__pyx_k_PickleError), 0, 0, 1, 1},
   {&__pyx_n_s_Promise, __pyx_k_Promise, sizeof(__pyx_k_Promise), 0, 0, 1, 1},
+  {&__pyx_n_u_Promise, __pyx_k_Promise, sizeof(__pyx_k_Promise), 0, 1, 0, 1},
+  {&__pyx_n_s_Promise___reduce_cython, __pyx_k_Promise___reduce_cython, sizeof(__pyx_k_Promise___reduce_cython), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise___setstate_cython, __pyx_k_Promise___setstate_cython, sizeof(__pyx_k_Promise___setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_Promise__resolve_from_executor_l, __pyx_k_Promise__resolve_from_executor_l, sizeof(__pyx_k_Promise__resolve_from_executor_l), 0, 0, 1, 1},
   {&__pyx_n_s_Promise__resolve_from_executor_l_2, __pyx_k_Promise__resolve_from_executor_l_2, sizeof(__pyx_k_Promise__resolve_from_executor_l_2), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise__target, __pyx_k_Promise__target, sizeof(__pyx_k_Promise__target), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise__wait, __pyx_k_Promise__wait, sizeof(__pyx_k_Promise__wait), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise_all, __pyx_k_Promise_all, sizeof(__pyx_k_Promise_all), 0, 0, 1, 1},
   {&__pyx_kp_u_Promise_at_following, __pyx_k_Promise_at_following, sizeof(__pyx_k_Promise_at_following), 0, 1, 0, 0},
   {&__pyx_kp_u_Promise_at_fulfilled_with, __pyx_k_Promise_at_fulfilled_with, sizeof(__pyx_k_Promise_at_fulfilled_with), 0, 1, 0, 0},
   {&__pyx_kp_u_Promise_at_pending, __pyx_k_Promise_at_pending, sizeof(__pyx_k_Promise_at_pending), 0, 1, 0, 0},
   {&__pyx_kp_u_Promise_at_rejected_with, __pyx_k_Promise_at_rejected_with, sizeof(__pyx_k_Promise_at_rejected_with), 0, 1, 0, 0},
+  {&__pyx_n_s_Promise_catch, __pyx_k_Promise_catch, sizeof(__pyx_k_Promise_catch), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise_do_reject, __pyx_k_Promise_do_reject, sizeof(__pyx_k_Promise_do_reject), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise_do_resolve, __pyx_k_Promise_do_resolve, sizeof(__pyx_k_Promise_do_resolve), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise_done, __pyx_k_Promise_done, sizeof(__pyx_k_Promise_done), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise_done_all, __pyx_k_Promise_done_all, sizeof(__pyx_k_Promise_done_all), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise_for_dict, __pyx_k_Promise_for_dict, sizeof(__pyx_k_Promise_for_dict), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise_get, __pyx_k_Promise_get, sizeof(__pyx_k_Promise_get), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise_get_future, __pyx_k_Promise_get_future, sizeof(__pyx_k_Promise_get_future), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise_get_scheduler, __pyx_k_Promise_get_scheduler, sizeof(__pyx_k_Promise_get_scheduler), 0, 0, 1, 1},
   {&__pyx_kp_u_Promise_is_self, __pyx_k_Promise_is_self, sizeof(__pyx_k_Promise_is_self), 0, 1, 0, 0},
+  {&__pyx_n_s_Promise_is_thenable, __pyx_k_Promise_is_thenable, sizeof(__pyx_k_Promise_is_thenable), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise_promisify, __pyx_k_Promise_promisify, sizeof(__pyx_k_Promise_promisify), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise_reject, __pyx_k_Promise_reject, sizeof(__pyx_k_Promise_reject), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise_resolve, __pyx_k_Promise_resolve, sizeof(__pyx_k_Promise_resolve), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise_safe, __pyx_k_Promise_safe, sizeof(__pyx_k_Promise_safe), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise_then, __pyx_k_Promise_then, sizeof(__pyx_k_Promise_then), 0, 0, 1, 1},
+  {&__pyx_n_s_Promise_then_all, __pyx_k_Promise_then_all, sizeof(__pyx_k_Promise_then_all), 0, 0, 1, 1},
   {&__pyx_kp_u_Promise_unknown, __pyx_k_Promise_unknown, sizeof(__pyx_k_Promise_unknown), 0, 1, 0, 0},
+  {&__pyx_n_s_Promise_wait, __pyx_k_Promise_wait, sizeof(__pyx_k_Promise_wait), 0, 0, 1, 1},
   {&__pyx_kp_u_Should_not_be_following, __pyx_k_Should_not_be_following, sizeof(__pyx_k_Should_not_be_following), 0, 1, 0, 0},
   {&__pyx_n_s_TryCatchResult, __pyx_k_TryCatchResult, sizeof(__pyx_k_TryCatchResult), 0, 0, 1, 1},
+  {&__pyx_n_s_TryCatchResult___reduce_cython, __pyx_k_TryCatchResult___reduce_cython, sizeof(__pyx_k_TryCatchResult___reduce_cython), 0, 0, 1, 1},
+  {&__pyx_n_s_TryCatchResult___setstate_cython, __pyx_k_TryCatchResult___setstate_cython, sizeof(__pyx_k_TryCatchResult___setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
   {&__pyx_n_s_add_done_callback, __pyx_k_add_done_callback, sizeof(__pyx_k_add_done_callback), 0, 0, 1, 1},
   {&__pyx_n_u_add_done_callback, __pyx_k_add_done_callback, sizeof(__pyx_k_add_done_callback), 0, 1, 0, 1},
@@ -21036,6 +20362,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_close, __pyx_k_close, sizeof(__pyx_k_close), 0, 0, 1, 1},
   {&__pyx_n_s_default_scheduler, __pyx_k_default_scheduler, sizeof(__pyx_k_default_scheduler), 0, 0, 1, 1},
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
+  {&__pyx_n_s_dict_2, __pyx_k_dict_2, sizeof(__pyx_k_dict_2), 0, 0, 1, 1},
   {&__pyx_n_s_dict_type, __pyx_k_dict_type, sizeof(__pyx_k_dict_type), 0, 0, 1, 1},
   {&__pyx_n_s_did_fulfill, __pyx_k_did_fulfill, sizeof(__pyx_k_did_fulfill), 0, 0, 1, 1},
   {&__pyx_n_s_did_reject, __pyx_k_did_reject, sizeof(__pyx_k_did_reject), 0, 0, 1, 1},
@@ -21081,7 +20408,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
+  {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
   {&__pyx_n_s_obj, __pyx_k_obj, sizeof(__pyx_k_obj), 0, 0, 1, 1},
+  {&__pyx_n_u_object, __pyx_k_object, sizeof(__pyx_k_object), 0, 1, 0, 1},
+  {&__pyx_n_s_on_rejection, __pyx_k_on_rejection, sizeof(__pyx_k_on_rejection), 0, 0, 1, 1},
   {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
   {&__pyx_n_s_process_future_result, __pyx_k_process_future_result, sizeof(__pyx_k_process_future_result), 0, 0, 1, 1},
   {&__pyx_n_s_process_future_result_locals_ha, __pyx_k_process_future_result_locals_ha, sizeof(__pyx_k_process_future_result_locals_ha), 0, 0, 1, 1},
@@ -21101,7 +20431,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_pyx_type, __pyx_k_pyx_type, sizeof(__pyx_k_pyx_type), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_unpickle_Box, __pyx_k_pyx_unpickle_Box, sizeof(__pyx_k_pyx_unpickle_Box), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_unpickle_PartialSettleProm, __pyx_k_pyx_unpickle_PartialSettleProm, sizeof(__pyx_k_pyx_unpickle_PartialSettleProm), 0, 0, 1, 1},
-  {&__pyx_n_s_pyx_unpickle_Promise, __pyx_k_pyx_unpickle_Promise, sizeof(__pyx_k_pyx_unpickle_Promise), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_unpickle_TryCatchResult, __pyx_k_pyx_unpickle_TryCatchResult, sizeof(__pyx_k_pyx_unpickle_TryCatchResult), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
@@ -21114,17 +20443,20 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_resolve, __pyx_k_resolve, sizeof(__pyx_k_resolve), 0, 0, 1, 1},
   {&__pyx_n_s_resolved_values, __pyx_k_resolved_values, sizeof(__pyx_k_resolved_values), 0, 0, 1, 1},
   {&__pyx_n_s_result, __pyx_k_result, sizeof(__pyx_k_result), 0, 0, 1, 1},
+  {&__pyx_n_s_return, __pyx_k_return, sizeof(__pyx_k_return), 0, 0, 1, 1},
   {&__pyx_n_s_safe, __pyx_k_safe, sizeof(__pyx_k_safe), 0, 0, 1, 1},
   {&__pyx_n_s_safe_locals_wrapper, __pyx_k_safe_locals_wrapper, sizeof(__pyx_k_safe_locals_wrapper), 0, 0, 1, 1},
   {&__pyx_n_s_safe_locals_wrapper_locals_lambd, __pyx_k_safe_locals_wrapper_locals_lambd, sizeof(__pyx_k_safe_locals_wrapper_locals_lambd), 0, 0, 1, 1},
   {&__pyx_n_s_safe_resolved_promise, __pyx_k_safe_resolved_promise, sizeof(__pyx_k_safe_resolved_promise), 0, 0, 1, 1},
   {&__pyx_n_s_scheduler, __pyx_k_scheduler, sizeof(__pyx_k_scheduler), 0, 0, 1, 1},
+  {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
   {&__pyx_n_s_send, __pyx_k_send, sizeof(__pyx_k_send), 0, 0, 1, 1},
   {&__pyx_n_s_set_default_scheduler, __pyx_k_set_default_scheduler, sizeof(__pyx_k_set_default_scheduler), 0, 0, 1, 1},
   {&__pyx_n_s_set_exception, __pyx_k_set_exception, sizeof(__pyx_k_set_exception), 0, 0, 1, 1},
   {&__pyx_n_s_set_result, __pyx_k_set_result, sizeof(__pyx_k_set_result), 0, 0, 1, 1},
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
+  {&__pyx_n_s_state, __pyx_k_state, sizeof(__pyx_k_state), 0, 0, 1, 1},
   {&__pyx_n_s_staticmethod, __pyx_k_staticmethod, sizeof(__pyx_k_staticmethod), 0, 0, 1, 1},
   {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
   {&__pyx_n_u_success, __pyx_k_success, sizeof(__pyx_k_success), 0, 1, 0, 1},
@@ -21139,6 +20471,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_traceback, __pyx_k_traceback, sizeof(__pyx_k_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_try_convert_to_promise_locals_e, __pyx_k_try_convert_to_promise_locals_e, sizeof(__pyx_k_try_convert_to_promise_locals_e), 0, 0, 1, 1},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
+  {&__pyx_n_s_use_setstate, __pyx_k_use_setstate, sizeof(__pyx_k_use_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_value, __pyx_k_value, sizeof(__pyx_k_value), 0, 0, 1, 1},
   {&__pyx_n_s_values, __pyx_k_values, sizeof(__pyx_k_values), 0, 0, 1, 1},
   {&__pyx_n_s_wait, __pyx_k_wait, sizeof(__pyx_k_wait), 0, 0, 1, 1},
@@ -21150,13 +20483,13 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_staticmethod = __Pyx_GetBuiltinName(__pyx_n_s_staticmethod); if (!__pyx_builtin_staticmethod) __PYX_ERR(0, 360, __pyx_L1_error)
-  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 121, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 136, __pyx_L1_error)
-  __pyx_builtin_AssertionError = __Pyx_GetBuiltinName(__pyx_n_s_AssertionError); if (!__pyx_builtin_AssertionError) __PYX_ERR(0, 281, __pyx_L1_error)
-  __pyx_builtin_hex = __Pyx_GetBuiltinName(__pyx_n_s_hex); if (!__pyx_builtin_hex) __PYX_ERR(0, 383, __pyx_L1_error)
-  __pyx_builtin_id = __Pyx_GetBuiltinName(__pyx_n_s_id); if (!__pyx_builtin_id) __PYX_ERR(0, 383, __pyx_L1_error)
-  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 582, __pyx_L1_error)
+  __pyx_builtin_staticmethod = __Pyx_GetBuiltinName(__pyx_n_s_staticmethod); if (!__pyx_builtin_staticmethod) __PYX_ERR(0, 356, __pyx_L1_error)
+  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_builtin_AssertionError = __Pyx_GetBuiltinName(__pyx_n_s_AssertionError); if (!__pyx_builtin_AssertionError) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_builtin_hex = __Pyx_GetBuiltinName(__pyx_n_s_hex); if (!__pyx_builtin_hex) __PYX_ERR(0, 379, __pyx_L1_error)
+  __pyx_builtin_id = __Pyx_GetBuiltinName(__pyx_n_s_id); if (!__pyx_builtin_id) __PYX_ERR(0, 379, __pyx_L1_error)
+  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 578, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -21166,115 +20499,155 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "promise/promise.pyx":121
+  /* "promise/promise.pyx":117
  * 
  *         if value is self:
  *             self._reject_callback(TypeError("Promise is self"))             # <<<<<<<<<<<<<<
  *             return
  *         if not _is_thenable(value):
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Promise_is_self); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Promise_is_self); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "promise/promise.pyx":344
+  /* "promise/promise.pyx":340
  * 
  *     cdef void _resolve_from_executor(self, executor):
  *         def resolve(value):             # <<<<<<<<<<<<<<
  *             self._resolve_callback(value)
  * 
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_n_s_value); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 344, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_n_s_value); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 340, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
-  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_resolve, 344, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 344, __pyx_L1_error)
+  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_resolve, 340, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 340, __pyx_L1_error)
 
-  /* "promise/promise.pyx":347
+  /* "promise/promise.pyx":343
  *             self._resolve_callback(value)
  * 
  *         def reject(reason, traceback=None):             # <<<<<<<<<<<<<<
  *             self._reject_callback(reason, traceback)
  * 
  */
-  __pyx_tuple__4 = PyTuple_Pack(2, __pyx_n_s_reason, __pyx_n_s_traceback); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 347, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(2, __pyx_n_s_reason, __pyx_n_s_traceback); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 343, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
-  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_reject, 347, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 347, __pyx_L1_error)
-  __pyx_tuple__6 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 347, __pyx_L1_error)
+  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_reject, 343, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 343, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 343, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "promise/promise.pyx":542
+  /* "promise/promise.pyx":538
  *         @wraps(f)
  *         def wrapper(*args, **kwargs):
  *             def executor(resolve, reject):             # <<<<<<<<<<<<<<
  *                 return resolve(f(*args, **kwargs))
  * 
  */
-  __pyx_tuple__7 = PyTuple_Pack(2, __pyx_n_s_resolve, __pyx_n_s_reject); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 542, __pyx_L1_error)
+  __pyx_tuple__7 = PyTuple_Pack(2, __pyx_n_s_resolve, __pyx_n_s_reject); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 538, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
-  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_executor, 542, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 542, __pyx_L1_error)
+  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_executor, 538, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 538, __pyx_L1_error)
 
-  /* "promise/promise.pyx":541
+  /* "promise/promise.pyx":537
  *     def promisify(f):
  *         @wraps(f)
  *         def wrapper(*args, **kwargs):             # <<<<<<<<<<<<<<
  *             def executor(resolve, reject):
  *                 return resolve(f(*args, **kwargs))
  */
-  __pyx_tuple__9 = PyTuple_Pack(4, __pyx_n_s_args, __pyx_n_s_kwargs, __pyx_n_s_executor, __pyx_n_s_executor); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 541, __pyx_L1_error)
+  __pyx_tuple__9 = PyTuple_Pack(4, __pyx_n_s_args, __pyx_n_s_kwargs, __pyx_n_s_executor, __pyx_n_s_executor); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 537, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_wrapper, 541, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 541, __pyx_L1_error)
+  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_wrapper, 537, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 537, __pyx_L1_error)
 
-  /* "promise/promise.pyx":557
+  /* "promise/promise.pyx":553
  * 
  *         @wraps(fn)
  *         def wrapper(*args, **kwargs):             # <<<<<<<<<<<<<<
  *             return Promise._safe_resolved_promise.value.then(lambda v: fn(*args, **kwargs))
  * 
  */
-  __pyx_tuple__11 = PyTuple_Pack(2, __pyx_n_s_args, __pyx_n_s_kwargs); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 557, __pyx_L1_error)
+  __pyx_tuple__11 = PyTuple_Pack(2, __pyx_n_s_args, __pyx_n_s_kwargs); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 553, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
-  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_wrapper, 557, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 557, __pyx_L1_error)
+  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_wrapper, 553, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 553, __pyx_L1_error)
 
-  /* "promise/promise.pyx":581
+  /* "promise/promise.pyx":577
  *             return Promise.resolve(dict_type())
  * 
  *         def handle_success(resolved_values):             # <<<<<<<<<<<<<<
  *             return dict_type(zip(m.keys(), resolved_values))
  * 
  */
-  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_n_s_resolved_values); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 581, __pyx_L1_error)
+  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_n_s_resolved_values); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 577, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
-  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_handle_success, 581, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 581, __pyx_L1_error)
+  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_handle_success, 577, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 577, __pyx_L1_error)
 
-  /* "promise/promise.pyx":614
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__15);
+  __Pyx_GIVEREF(__pyx_tuple__15);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__16);
+  __Pyx_GIVEREF(__pyx_tuple__16);
+
+  /* "promise/promise.pyx":610
  * 
  *     if is_future_like(type_):
  *         def executor(resolve, reject):             # <<<<<<<<<<<<<<
  *             if obj.done():
  *                 _process_future_result(resolve, reject)(obj)
  */
-  __pyx_tuple__15 = PyTuple_Pack(2, __pyx_n_s_resolve, __pyx_n_s_reject); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 614, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__15);
-  __Pyx_GIVEREF(__pyx_tuple__15);
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_executor, 614, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 614, __pyx_L1_error)
+  __pyx_tuple__17 = PyTuple_Pack(2, __pyx_n_s_resolve, __pyx_n_s_reject); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 610, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__17);
+  __Pyx_GIVEREF(__pyx_tuple__17);
+  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_executor, 610, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 610, __pyx_L1_error)
 
-  /* "promise/promise.pyx":636
+  /* "promise/promise.pyx":632
  * 
  * def _process_future_result(resolve, reject):
  *     def handle_future_result(future):             # <<<<<<<<<<<<<<
  *         try:
  *             resolve(future.result())
  */
-  __pyx_tuple__17 = PyTuple_Pack(3, __pyx_n_s_future, __pyx_n_s_e, __pyx_n_s_tb); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 636, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__17);
-  __Pyx_GIVEREF(__pyx_tuple__17);
-  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_handle_future_result, 636, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 636, __pyx_L1_error)
+  __pyx_tuple__19 = PyTuple_Pack(3, __pyx_n_s_future, __pyx_n_s_e, __pyx_n_s_tb); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 632, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__19);
+  __Pyx_GIVEREF(__pyx_tuple__19);
+  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_handle_future_result, 632, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 632, __pyx_L1_error)
+
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     cdef tuple state
+ *     cdef object _dict
+ */
+  __pyx_tuple__22 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_state, __pyx_n_s_dict_2, __pyx_n_s_use_setstate); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__22);
+  __Pyx_GIVEREF(__pyx_tuple__22);
+  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(1, 1, __pyx_L1_error)
+
+  /* "(tree fragment)":16
+ *     else:
+ *         return __pyx_unpickle_Box, (type(self), 0x2063c16, state)
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     __pyx_unpickle_Box__set_state(self, __pyx_state)
+ */
+  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__24);
+  __Pyx_GIVEREF(__pyx_tuple__24);
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(1, 16, __pyx_L1_error)
 
   /* "promise/promise.pyx":27
  * 
@@ -21283,7 +20656,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     return async_instance
  * 
  */
-  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_get_async_instance, 27, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_get_async_instance, 27, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 27, __pyx_L1_error)
 
   /* "promise/promise.pyx":31
  * 
@@ -21292,7 +20665,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     return default_scheduler
  * 
  */
-  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_get_default_scheduler, 31, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_get_default_scheduler, 31, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 31, __pyx_L1_error)
 
   /* "promise/promise.pyx":35
  * 
@@ -21301,164 +20674,367 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     global default_scheduler
  *     default_scheduler = scheduler
  */
-  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_n_s_scheduler); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 35, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__22);
-  __Pyx_GIVEREF(__pyx_tuple__22);
-  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_set_default_scheduler, 35, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_n_s_scheduler); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__28);
+  __Pyx_GIVEREF(__pyx_tuple__28);
+  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_set_default_scheduler, 35, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 35, __pyx_L1_error)
 
-  /* "promise/promise.pyx":361
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     cdef tuple state
+ *     cdef object _dict
+ */
+  __pyx_tuple__30 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_state, __pyx_n_s_dict_2, __pyx_n_s_use_setstate); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__30);
+  __Pyx_GIVEREF(__pyx_tuple__30);
+  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(1, 1, __pyx_L1_error)
+
+  /* "(tree fragment)":16
+ *     else:
+ *         return __pyx_unpickle_TryCatchResult, (type(self), 0x47960a2, state)
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     __pyx_unpickle_TryCatchResult__set_state(self, __pyx_state)
+ */
+  __pyx_tuple__32 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__32);
+  __Pyx_GIVEREF(__pyx_tuple__32);
+  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(1, 16, __pyx_L1_error)
+
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     cdef tuple state
+ *     cdef object _dict
+ */
+  __pyx_tuple__34 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_state, __pyx_n_s_dict_2, __pyx_n_s_use_setstate); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__34);
+  __Pyx_GIVEREF(__pyx_tuple__34);
+  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(1, 1, __pyx_L1_error)
+
+  /* "(tree fragment)":16
+ *     else:
+ *         return __pyx_unpickle_PartialSettlePromise, (type(self), 0xb5dc62b, state)
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     __pyx_unpickle_PartialSettlePromise__set_state(self, __pyx_state)
+ */
+  __pyx_tuple__36 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__36);
+  __Pyx_GIVEREF(__pyx_tuple__36);
+  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(1, 16, __pyx_L1_error)
+
+  /* "promise/promise.pyx":95
+ *             self._resolve_from_executor(executor)
+ * 
+ *     cpdef Scheduler get_scheduler(self):             # <<<<<<<<<<<<<<
+ *         if self._scheduler is not None:
+ *             return self._scheduler
+ */
+  __pyx_tuple__38 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__38);
+  __Pyx_GIVEREF(__pyx_tuple__38);
+  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_get_scheduler, 95, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 95, __pyx_L1_error)
+
+  /* "promise/promise.pyx":100
+ *         return default_scheduler
+ * 
+ *     cpdef object get_future(self):             # <<<<<<<<<<<<<<
+ *         cdef object fut
+ *         if not self._future:
+ */
+  __pyx_tuple__40 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__40);
+  __Pyx_GIVEREF(__pyx_tuple__40);
+  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_get_future, 100, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 100, __pyx_L1_error)
+
+  /* "promise/promise.pyx":306
+ *         return index
+ * 
+ *     cpdef Promise _target(self):             # <<<<<<<<<<<<<<
+ *         cdef Promise ret = self
+ *         while ret._is_following:
+ */
+  __pyx_tuple__42 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 306, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__42);
+  __Pyx_GIVEREF(__pyx_tuple__42);
+  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_target, 306, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 306, __pyx_L1_error)
+
+  /* "promise/promise.pyx":357
  * 
  *     @staticmethod
  *     def wait(Promise promise, object timeout = None):             # <<<<<<<<<<<<<<
  *         promise._wait(timeout)
  * 
  */
-  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_n_s_promise, __pyx_n_s_timeout); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 361, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__24);
-  __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_wait_2, 361, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 361, __pyx_L1_error)
+  __pyx_tuple__44 = PyTuple_Pack(2, __pyx_n_s_promise, __pyx_n_s_timeout); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(0, 357, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__44);
+  __Pyx_GIVEREF(__pyx_tuple__44);
+  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_wait_2, 357, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 357, __pyx_L1_error)
 
-  /* "promise/promise.pyx":518
+  /* "promise/promise.pyx":360
+ *         promise._wait(timeout)
+ * 
+ *     cpdef void _wait(self, object timeout = None):             # <<<<<<<<<<<<<<
+ *         async_instance.wait(self, timeout)
+ * 
+ */
+  __pyx_tuple__46 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_timeout); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(0, 360, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__46);
+  __Pyx_GIVEREF(__pyx_tuple__46);
+  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__46, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_wait, 360, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 360, __pyx_L1_error)
+
+  /* "promise/promise.pyx":363
+ *         async_instance.wait(self, timeout)
+ * 
+ *     cpdef object get(self, object timeout = None):             # <<<<<<<<<<<<<<
+ *         self._wait(timeout or DEFAULT_TIMEOUT)
+ *         return self._target_settled_value(raise_=True)
+ */
+  __pyx_tuple__48 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_timeout); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(0, 363, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__48);
+  __Pyx_GIVEREF(__pyx_tuple__48);
+  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__48, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_get, 363, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 363, __pyx_L1_error)
+
+  /* "promise/promise.pyx":417
+ *         return self._is_rejected()
+ * 
+ *     cpdef Promise catch(self, on_rejection):             # <<<<<<<<<<<<<<
+ *         return self.then(None, on_rejection)
+ * 
+ */
+  __pyx_tuple__50 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_on_rejection); if (unlikely(!__pyx_tuple__50)) __PYX_ERR(0, 417, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__50);
+  __Pyx_GIVEREF(__pyx_tuple__50);
+  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_catch, 417, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(0, 417, __pyx_L1_error)
+
+  /* "promise/promise.pyx":448
+ *         return promise
+ * 
+ *     cpdef void do_resolve(self, object value):             # <<<<<<<<<<<<<<
+ *         self._resolve_callback(value)
+ * 
+ */
+  __pyx_tuple__52 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_value); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(0, 448, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__52);
+  __Pyx_GIVEREF(__pyx_tuple__52);
+  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__52, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_do_resolve, 448, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 448, __pyx_L1_error)
+
+  /* "promise/promise.pyx":453
+ *     fulfill = do_resolve
+ * 
+ *     cpdef void do_reject(self, Exception reason, object traceback = None):             # <<<<<<<<<<<<<<
+ *         self._reject_callback(reason, traceback)
+ * 
+ */
+  __pyx_tuple__54 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_reason, __pyx_n_s_traceback); if (unlikely(!__pyx_tuple__54)) __PYX_ERR(0, 453, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__54);
+  __Pyx_GIVEREF(__pyx_tuple__54);
+  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__54, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_do_reject, 453, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(0, 453, __pyx_L1_error)
+
+  /* "promise/promise.pyx":456
+ *         self._reject_callback(reason, traceback)
+ * 
+ *     cpdef Promise then(self, object did_fulfill = None, object did_reject = None):             # <<<<<<<<<<<<<<
+ *         return self._then(did_fulfill, did_reject)
+ * 
+ */
+  __pyx_tuple__56 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_did_fulfill, __pyx_n_s_did_reject); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(0, 456, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__56);
+  __Pyx_GIVEREF(__pyx_tuple__56);
+  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_then, 456, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(0, 456, __pyx_L1_error)
+
+  /* "promise/promise.pyx":459
+ *         return self._then(did_fulfill, did_reject)
+ * 
+ *     cpdef void done(self, did_fulfill=None, did_reject=None):             # <<<<<<<<<<<<<<
+ *         cdef Promise promise = self._then(did_fulfill, did_reject)
+ *         promise._is_final = True
+ */
+  __pyx_tuple__58 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_did_fulfill, __pyx_n_s_did_reject); if (unlikely(!__pyx_tuple__58)) __PYX_ERR(0, 459, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__58);
+  __Pyx_GIVEREF(__pyx_tuple__58);
+  __pyx_codeobj__59 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__58, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_done, 459, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__59)) __PYX_ERR(0, 459, __pyx_L1_error)
+
+  /* "promise/promise.pyx":463
+ *         promise._is_final = True
+ * 
+ *     cpdef void done_all(self, handlers=None):             # <<<<<<<<<<<<<<
+ *         cdef int i
+ *         cdef list handler_list
+ */
+  __pyx_tuple__60 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_handlers); if (unlikely(!__pyx_tuple__60)) __PYX_ERR(0, 463, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__60);
+  __Pyx_GIVEREF(__pyx_tuple__60);
+  __pyx_codeobj__61 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__60, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_done_all, 463, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__61)) __PYX_ERR(0, 463, __pyx_L1_error)
+
+  /* "promise/promise.pyx":484
+ *                 self.done(handler)
+ * 
+ *     cpdef list then_all(self, handlers=None):             # <<<<<<<<<<<<<<
+ *         cdef int i
+ * 
+ */
+  __pyx_tuple__62 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_handlers); if (unlikely(!__pyx_tuple__62)) __PYX_ERR(0, 484, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__62);
+  __Pyx_GIVEREF(__pyx_tuple__62);
+  __pyx_codeobj__63 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__62, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_then_all, 484, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__63)) __PYX_ERR(0, 484, __pyx_L1_error)
+
+  /* "promise/promise.pyx":514
  * 
  *     @staticmethod
  *     def reject(obj: Exception) -> Promise:             # <<<<<<<<<<<<<<
  *         return Promise.c_reject(obj)
  * 
  */
-  __pyx_tuple__26 = PyTuple_Pack(1, __pyx_n_s_obj); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 518, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__26);
-  __Pyx_GIVEREF(__pyx_tuple__26);
-  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_reject, 518, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 518, __pyx_L1_error)
+  __pyx_tuple__64 = PyTuple_Pack(1, __pyx_n_s_obj); if (unlikely(!__pyx_tuple__64)) __PYX_ERR(0, 514, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__64);
+  __Pyx_GIVEREF(__pyx_tuple__64);
+  __pyx_codeobj__65 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__64, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_reject, 514, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__65)) __PYX_ERR(0, 514, __pyx_L1_error)
 
-  /* "promise/promise.pyx":533
+  /* "promise/promise.pyx":529
  * 
  *     @staticmethod
  *     def resolve(obj) -> Promise:             # <<<<<<<<<<<<<<
  *         return Promise.c_resolve(obj)
  * 
  */
-  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_n_s_obj); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 533, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__28);
-  __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_resolve, 533, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 533, __pyx_L1_error)
+  __pyx_tuple__66 = PyTuple_Pack(1, __pyx_n_s_obj); if (unlikely(!__pyx_tuple__66)) __PYX_ERR(0, 529, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__66);
+  __Pyx_GIVEREF(__pyx_tuple__66);
+  __pyx_codeobj__67 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__66, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_resolve, 529, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__67)) __PYX_ERR(0, 529, __pyx_L1_error)
 
-  /* "promise/promise.pyx":539
+  /* "promise/promise.pyx":535
  * 
  *     @staticmethod
  *     def promisify(f):             # <<<<<<<<<<<<<<
  *         @wraps(f)
  *         def wrapper(*args, **kwargs):
  */
-  __pyx_tuple__30 = PyTuple_Pack(3, __pyx_n_s_f, __pyx_n_s_wrapper, __pyx_n_s_wrapper); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 539, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__30);
-  __Pyx_GIVEREF(__pyx_tuple__30);
-  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_promisify, 539, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 539, __pyx_L1_error)
+  __pyx_tuple__68 = PyTuple_Pack(3, __pyx_n_s_f, __pyx_n_s_wrapper, __pyx_n_s_wrapper); if (unlikely(!__pyx_tuple__68)) __PYX_ERR(0, 535, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__68);
+  __Pyx_GIVEREF(__pyx_tuple__68);
+  __pyx_codeobj__69 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__68, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_promisify, 535, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__69)) __PYX_ERR(0, 535, __pyx_L1_error)
 
-  /* "promise/promise.pyx":552
+  /* "promise/promise.pyx":548
  * 
  *     @staticmethod
  *     def safe(fn):             # <<<<<<<<<<<<<<
  *         if not Promise._safe_resolved_promise.value:
  *             Promise._safe_resolved_promise.value = Promise.resolve(None)
  */
-  __pyx_tuple__32 = PyTuple_Pack(3, __pyx_n_s_fn, __pyx_n_s_wrapper, __pyx_n_s_wrapper); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 552, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__32);
-  __Pyx_GIVEREF(__pyx_tuple__32);
-  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_safe, 552, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 552, __pyx_L1_error)
+  __pyx_tuple__70 = PyTuple_Pack(3, __pyx_n_s_fn, __pyx_n_s_wrapper, __pyx_n_s_wrapper); if (unlikely(!__pyx_tuple__70)) __PYX_ERR(0, 548, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__70);
+  __Pyx_GIVEREF(__pyx_tuple__70);
+  __pyx_codeobj__71 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__70, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_safe, 548, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__71)) __PYX_ERR(0, 548, __pyx_L1_error)
 
-  /* "promise/promise.pyx":567
+  /* "promise/promise.pyx":563
  * 
  *     @staticmethod
  *     def all(promises) -> Promise:             # <<<<<<<<<<<<<<
  *         return Promise._all(promises)
  * 
  */
-  __pyx_tuple__34 = PyTuple_Pack(1, __pyx_n_s_promises); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 567, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__34);
-  __Pyx_GIVEREF(__pyx_tuple__34);
-  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_all, 567, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_tuple__72 = PyTuple_Pack(1, __pyx_n_s_promises); if (unlikely(!__pyx_tuple__72)) __PYX_ERR(0, 563, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__72);
+  __Pyx_GIVEREF(__pyx_tuple__72);
+  __pyx_codeobj__73 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__72, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_all, 563, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__73)) __PYX_ERR(0, 563, __pyx_L1_error)
 
-  /* "promise/promise.pyx":571
+  /* "promise/promise.pyx":567
  * 
  *     @staticmethod
  *     def is_thenable(obj) -> bool:             # <<<<<<<<<<<<<<
  *         return _is_thenable(obj)
  * 
  */
-  __pyx_tuple__36 = PyTuple_Pack(1, __pyx_n_s_obj); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 571, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__36);
-  __Pyx_GIVEREF(__pyx_tuple__36);
-  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_is_thenable, 571, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 571, __pyx_L1_error)
+  __pyx_tuple__74 = PyTuple_Pack(1, __pyx_n_s_obj); if (unlikely(!__pyx_tuple__74)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__74);
+  __Pyx_GIVEREF(__pyx_tuple__74);
+  __pyx_codeobj__75 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__74, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_is_thenable, 567, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__75)) __PYX_ERR(0, 567, __pyx_L1_error)
 
-  /* "promise/promise.pyx":575
+  /* "promise/promise.pyx":571
  * 
  *     @staticmethod
  *     def for_dict(m):             # <<<<<<<<<<<<<<
  *         dict_type = type(m)
  * 
  */
-  __pyx_tuple__38 = PyTuple_Pack(4, __pyx_n_s_m, __pyx_n_s_dict_type, __pyx_n_s_handle_success, __pyx_n_s_handle_success); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 575, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__38);
-  __Pyx_GIVEREF(__pyx_tuple__38);
-  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_for_dict, 575, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 575, __pyx_L1_error)
+  __pyx_tuple__76 = PyTuple_Pack(4, __pyx_n_s_m, __pyx_n_s_dict_type, __pyx_n_s_handle_success, __pyx_n_s_handle_success); if (unlikely(!__pyx_tuple__76)) __PYX_ERR(0, 571, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__76);
+  __Pyx_GIVEREF(__pyx_tuple__76);
+  __pyx_codeobj__77 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__76, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_for_dict, 571, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__77)) __PYX_ERR(0, 571, __pyx_L1_error)
 
-  /* "promise/promise.pyx":599
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+  __pyx_tuple__78 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__78)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__78);
+  __Pyx_GIVEREF(__pyx_tuple__78);
+  __pyx_codeobj__79 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__78, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__79)) __PYX_ERR(1, 1, __pyx_L1_error)
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_tuple__80 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__80)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__80);
+  __Pyx_GIVEREF(__pyx_tuple__80);
+  __pyx_codeobj__81 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__80, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__81)) __PYX_ERR(1, 3, __pyx_L1_error)
+
+  /* "promise/promise.pyx":595
  * 
  * 
  * def is_thenable(obj):             # <<<<<<<<<<<<<<
  *     return _is_thenable(obj)
  * 
  */
-  __pyx_tuple__40 = PyTuple_Pack(1, __pyx_n_s_obj); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 599, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__40);
-  __Pyx_GIVEREF(__pyx_tuple__40);
-  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_is_thenable, 599, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 599, __pyx_L1_error)
+  __pyx_tuple__82 = PyTuple_Pack(1, __pyx_n_s_obj); if (unlikely(!__pyx_tuple__82)) __PYX_ERR(0, 595, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__82);
+  __Pyx_GIVEREF(__pyx_tuple__82);
+  __pyx_codeobj__83 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__82, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_is_thenable, 595, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__83)) __PYX_ERR(0, 595, __pyx_L1_error)
 
-  /* "promise/promise.pyx":635
+  /* "promise/promise.pyx":631
  * 
  * 
  * def _process_future_result(resolve, reject):             # <<<<<<<<<<<<<<
  *     def handle_future_result(future):
  *         try:
  */
-  __pyx_tuple__42 = PyTuple_Pack(4, __pyx_n_s_resolve, __pyx_n_s_reject, __pyx_n_s_handle_future_result, __pyx_n_s_handle_future_result); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 635, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__42);
-  __Pyx_GIVEREF(__pyx_tuple__42);
-  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_process_future_result, 635, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 635, __pyx_L1_error)
+  __pyx_tuple__84 = PyTuple_Pack(4, __pyx_n_s_resolve, __pyx_n_s_reject, __pyx_n_s_handle_future_result, __pyx_n_s_handle_future_result); if (unlikely(!__pyx_tuple__84)) __PYX_ERR(0, 631, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__84);
+  __Pyx_GIVEREF(__pyx_tuple__84);
+  __pyx_codeobj__85 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__84, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_process_future_result, 631, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__85)) __PYX_ERR(0, 631, __pyx_L1_error)
 
-  /* "promise/promise.pyx":646
+  /* "promise/promise.pyx":642
  * 
  * 
  * def iterate_promise(promise: Promise) -> object:             # <<<<<<<<<<<<<<
  *     if not promise.is_fulfilled:
  *         yield from promise.get_future()
  */
-  __pyx_tuple__44 = PyTuple_Pack(1, __pyx_n_s_promise); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(0, 646, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__44);
-  __Pyx_GIVEREF(__pyx_tuple__44);
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_iterate_promise, 646, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 646, __pyx_L1_error)
+  __pyx_tuple__86 = PyTuple_Pack(1, __pyx_n_s_promise); if (unlikely(!__pyx_tuple__86)) __PYX_ERR(0, 642, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__86);
+  __Pyx_GIVEREF(__pyx_tuple__86);
+  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__86, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_promise_promise_pyx, __pyx_n_s_iterate_promise, 642, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 642, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Box(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_tuple__45 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__45);
-  __Pyx_GIVEREF(__pyx_tuple__45);
-  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Box, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __pyx_tuple__47 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__47);
-  __Pyx_GIVEREF(__pyx_tuple__47);
-  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_TryCatchResult, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __pyx_tuple__49 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__49);
-  __Pyx_GIVEREF(__pyx_tuple__49);
-  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_PartialSettleProm, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __pyx_tuple__51 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__51);
-  __Pyx_GIVEREF(__pyx_tuple__51);
-  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__51, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Promise, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__87 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__87)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__87);
+  __Pyx_GIVEREF(__pyx_tuple__87);
+  __pyx_codeobj__88 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__87, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Box, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__88)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__89 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__89)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__89);
+  __Pyx_GIVEREF(__pyx_tuple__89);
+  __pyx_codeobj__90 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__89, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_TryCatchResult, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__90)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__91 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__91)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__91);
+  __Pyx_GIVEREF(__pyx_tuple__91);
+  __pyx_codeobj__92 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__91, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_PartialSettleProm, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__92)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -21470,7 +21046,6 @@ static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   __pyx_int_33963030 = PyInt_FromLong(33963030L); if (unlikely(!__pyx_int_33963030)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_75063458 = PyInt_FromLong(75063458L); if (unlikely(!__pyx_int_75063458)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_int_189373669 = PyInt_FromLong(189373669L); if (unlikely(!__pyx_int_189373669)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_190694955 = PyInt_FromLong(190694955L); if (unlikely(!__pyx_int_190694955)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -21625,7 +21200,7 @@ static int __Pyx_modinit_type_init_code(void) {
   if (PyObject_SetAttr(__pyx_m, __pyx_n_s_PartialSettlePromise, (PyObject *)&__pyx_type_7promise_7promise_PartialSettlePromise) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
   if (__Pyx_setup_reduce((PyObject*)&__pyx_type_7promise_7promise_PartialSettlePromise) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
   __pyx_ptype_7promise_7promise_PartialSettlePromise = &__pyx_type_7promise_7promise_PartialSettlePromise;
-  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct___resolve_from_executor) < 0) __PYX_ERR(0, 343, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct___resolve_from_executor) < 0) __PYX_ERR(0, 339, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7promise_7promise___pyx_scope_struct___resolve_from_executor.tp_print = 0;
   #endif
@@ -21633,7 +21208,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_7promise_7promise___pyx_scope_struct___resolve_from_executor.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_7promise_7promise___pyx_scope_struct___resolve_from_executor = &__pyx_type_7promise_7promise___pyx_scope_struct___resolve_from_executor;
-  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_1_promisify) < 0) __PYX_ERR(0, 539, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_1_promisify) < 0) __PYX_ERR(0, 535, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7promise_7promise___pyx_scope_struct_1_promisify.tp_print = 0;
   #endif
@@ -21641,7 +21216,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_7promise_7promise___pyx_scope_struct_1_promisify.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_7promise_7promise___pyx_scope_struct_1_promisify = &__pyx_type_7promise_7promise___pyx_scope_struct_1_promisify;
-  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_2_wrapper) < 0) __PYX_ERR(0, 541, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_2_wrapper) < 0) __PYX_ERR(0, 537, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7promise_7promise___pyx_scope_struct_2_wrapper.tp_print = 0;
   #endif
@@ -21649,7 +21224,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_7promise_7promise___pyx_scope_struct_2_wrapper.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_7promise_7promise___pyx_scope_struct_2_wrapper = &__pyx_type_7promise_7promise___pyx_scope_struct_2_wrapper;
-  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_3_safe) < 0) __PYX_ERR(0, 552, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_3_safe) < 0) __PYX_ERR(0, 548, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7promise_7promise___pyx_scope_struct_3_safe.tp_print = 0;
   #endif
@@ -21657,7 +21232,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_7promise_7promise___pyx_scope_struct_3_safe.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_7promise_7promise___pyx_scope_struct_3_safe = &__pyx_type_7promise_7promise___pyx_scope_struct_3_safe;
-  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_4_wrapper) < 0) __PYX_ERR(0, 557, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_4_wrapper) < 0) __PYX_ERR(0, 553, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7promise_7promise___pyx_scope_struct_4_wrapper.tp_print = 0;
   #endif
@@ -21665,7 +21240,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_7promise_7promise___pyx_scope_struct_4_wrapper.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_7promise_7promise___pyx_scope_struct_4_wrapper = &__pyx_type_7promise_7promise___pyx_scope_struct_4_wrapper;
-  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_5_for_dict) < 0) __PYX_ERR(0, 575, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_5_for_dict) < 0) __PYX_ERR(0, 571, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7promise_7promise___pyx_scope_struct_5_for_dict.tp_print = 0;
   #endif
@@ -21673,7 +21248,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_7promise_7promise___pyx_scope_struct_5_for_dict.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_7promise_7promise___pyx_scope_struct_5_for_dict = &__pyx_type_7promise_7promise___pyx_scope_struct_5_for_dict;
-  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise) < 0) __PYX_ERR(0, 603, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise) < 0) __PYX_ERR(0, 599, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise.tp_print = 0;
   #endif
@@ -21681,7 +21256,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise = &__pyx_type_7promise_7promise___pyx_scope_struct_6___pyx_f_7promise_7promise__try_convert_to_promise;
-  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_7__process_future_result) < 0) __PYX_ERR(0, 635, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_7__process_future_result) < 0) __PYX_ERR(0, 631, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7promise_7promise___pyx_scope_struct_7__process_future_result.tp_print = 0;
   #endif
@@ -21689,7 +21264,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_7promise_7promise___pyx_scope_struct_7__process_future_result.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_7promise_7promise___pyx_scope_struct_7__process_future_result = &__pyx_type_7promise_7promise___pyx_scope_struct_7__process_future_result;
-  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_8_iterate_promise) < 0) __PYX_ERR(0, 646, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7promise_7promise___pyx_scope_struct_8_iterate_promise) < 0) __PYX_ERR(0, 642, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7promise_7promise___pyx_scope_struct_8_iterate_promise.tp_print = 0;
   #endif
@@ -22133,6 +21708,29 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
 
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     cdef tuple state
+ *     cdef object _dict
+ */
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_3Box_1__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Box___reduce_cython, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Box->tp_dict, __pyx_n_s_reduce_cython, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Box);
+
+  /* "(tree fragment)":16
+ *     else:
+ *         return __pyx_unpickle_Box, (type(self), 0x2063c16, state)
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     __pyx_unpickle_Box__set_state(self, __pyx_state)
+ */
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_3Box_3__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Box___setstate_cython, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Box->tp_dict, __pyx_n_s_setstate_cython, __pyx_t_1) < 0) __PYX_ERR(1, 16, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Box);
+
   /* "promise/promise.pyx":27
  * 
  * 
@@ -22140,7 +21738,7 @@ if (!__Pyx_RefNanny) {
  *     return async_instance
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_1get_async_instance, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_1get_async_instance, 0, __pyx_n_s_get_async_instance, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_async_instance, __pyx_t_1) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -22152,7 +21750,7 @@ if (!__Pyx_RefNanny) {
  *     return default_scheduler
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_3get_default_scheduler, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_3get_default_scheduler, 0, __pyx_n_s_get_default_scheduler, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__27)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_default_scheduler, __pyx_t_1) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -22164,366 +21762,616 @@ if (!__Pyx_RefNanny) {
  *     global default_scheduler
  *     default_scheduler = scheduler
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_5set_default_scheduler, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_5set_default_scheduler, 0, __pyx_n_s_set_default_scheduler, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_default_scheduler, __pyx_t_1) < 0) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":361
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     cdef tuple state
+ *     cdef object _dict
+ */
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_14TryCatchResult_1__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_TryCatchResult___reduce_cython, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__31)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_TryCatchResult->tp_dict, __pyx_n_s_reduce_cython, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_TryCatchResult);
+
+  /* "(tree fragment)":16
+ *     else:
+ *         return __pyx_unpickle_TryCatchResult, (type(self), 0x47960a2, state)
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     __pyx_unpickle_TryCatchResult__set_state(self, __pyx_state)
+ */
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_14TryCatchResult_3__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_TryCatchResult___setstate_cython, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__33)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_TryCatchResult->tp_dict, __pyx_n_s_setstate_cython, __pyx_t_1) < 0) __PYX_ERR(1, 16, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_TryCatchResult);
+
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     cdef tuple state
+ *     cdef object _dict
+ */
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_20PartialSettlePromise_1__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PartialSettlePromise___reduce_cy, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_PartialSettlePromise->tp_dict, __pyx_n_s_reduce_cython, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_PartialSettlePromise);
+
+  /* "(tree fragment)":16
+ *     else:
+ *         return __pyx_unpickle_PartialSettlePromise, (type(self), 0xb5dc62b, state)
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     __pyx_unpickle_PartialSettlePromise__set_state(self, __pyx_state)
+ */
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_20PartialSettlePromise_3__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PartialSettlePromise___setstate, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_PartialSettlePromise->tp_dict, __pyx_n_s_setstate_cython, __pyx_t_1) < 0) __PYX_ERR(1, 16, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_PartialSettlePromise);
+
+  /* "promise/promise.pyx":95
+ *             self._resolve_from_executor(executor)
+ * 
+ *     cpdef Scheduler get_scheduler(self):             # <<<<<<<<<<<<<<
+ *         if self._scheduler is not None:
+ *             return self._scheduler
+ */
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_5get_scheduler, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_get_scheduler, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__39)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_get_scheduler, __pyx_t_1) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
+
+  /* "promise/promise.pyx":100
+ *         return default_scheduler
+ * 
+ *     cpdef object get_future(self):             # <<<<<<<<<<<<<<
+ *         cdef object fut
+ *         if not self._future:
+ */
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_7get_future, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_get_future, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__41)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_get_future, __pyx_t_1) < 0) __PYX_ERR(0, 100, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
+
+  /* "promise/promise.pyx":306
+ *         return index
+ * 
+ *     cpdef Promise _target(self):             # <<<<<<<<<<<<<<
+ *         cdef Promise ret = self
+ *         while ret._is_following:
+ */
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_13_target, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise__target, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 306, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_target, __pyx_t_1) < 0) __PYX_ERR(0, 306, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
+
+  /* "promise/promise.pyx":357
  * 
  *     @staticmethod
  *     def wait(Promise promise, object timeout = None):             # <<<<<<<<<<<<<<
  *         promise._wait(timeout)
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_13wait, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 361, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_15wait, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_wait, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__45)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_wait_2, __pyx_t_1) < 0) __PYX_ERR(0, 361, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_wait_2, __pyx_t_1) < 0) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":360
+  /* "promise/promise.pyx":356
  *             self._reject_callback(error, traceback)
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def wait(Promise promise, object timeout = None):
  *         promise._wait(timeout)
  */
-  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_wait_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 361, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_wait_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 360, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_wait_2, __pyx_t_2) < 0) __PYX_ERR(0, 361, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_wait_2, __pyx_t_2) < 0) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":455
+  /* "promise/promise.pyx":360
+ *         promise._wait(timeout)
+ * 
+ *     cpdef void _wait(self, object timeout = None):             # <<<<<<<<<<<<<<
+ *         async_instance.wait(self, timeout)
+ * 
+ */
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_17_wait, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise__wait, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__47)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 360, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_wait, __pyx_t_2) < 0) __PYX_ERR(0, 360, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
+
+  /* "promise/promise.pyx":363
+ *         async_instance.wait(self, timeout)
+ * 
+ *     cpdef object get(self, object timeout = None):             # <<<<<<<<<<<<<<
+ *         self._wait(timeout or DEFAULT_TIMEOUT)
+ *         return self._target_settled_value(raise_=True)
+ */
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_19get, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_get, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__49)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 363, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_get, __pyx_t_2) < 0) __PYX_ERR(0, 363, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
+
+  /* "promise/promise.pyx":417
+ *         return self._is_rejected()
+ * 
+ *     cpdef Promise catch(self, on_rejection):             # <<<<<<<<<<<<<<
+ *         return self.then(None, on_rejection)
+ * 
+ */
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_23catch, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_catch, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__51)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 417, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_catch, __pyx_t_2) < 0) __PYX_ERR(0, 417, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
+
+  /* "promise/promise.pyx":448
+ *         return promise
+ * 
+ *     cpdef void do_resolve(self, object value):             # <<<<<<<<<<<<<<
+ *         self._resolve_callback(value)
+ * 
+ */
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_25do_resolve, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_do_resolve, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__53)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 448, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_do_resolve, __pyx_t_2) < 0) __PYX_ERR(0, 448, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
+
+  /* "promise/promise.pyx":451
  *         self._resolve_callback(value)
  * 
  *     fulfill = do_resolve             # <<<<<<<<<<<<<<
  * 
  *     cpdef void do_reject(self, Exception reason, object traceback = None):
  */
-  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_do_resolve); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 455, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_do_resolve); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 451, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_fulfill, __pyx_t_2) < 0) __PYX_ERR(0, 455, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_fulfill, __pyx_t_2) < 0) __PYX_ERR(0, 451, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":518
+  /* "promise/promise.pyx":453
+ *     fulfill = do_resolve
+ * 
+ *     cpdef void do_reject(self, Exception reason, object traceback = None):             # <<<<<<<<<<<<<<
+ *         self._reject_callback(reason, traceback)
+ * 
+ */
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_27do_reject, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_do_reject, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__55)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 453, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_do_reject, __pyx_t_2) < 0) __PYX_ERR(0, 453, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
+
+  /* "promise/promise.pyx":456
+ *         self._reject_callback(reason, traceback)
+ * 
+ *     cpdef Promise then(self, object did_fulfill = None, object did_reject = None):             # <<<<<<<<<<<<<<
+ *         return self._then(did_fulfill, did_reject)
+ * 
+ */
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_29then, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_then, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__57)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 456, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_then, __pyx_t_2) < 0) __PYX_ERR(0, 456, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
+
+  /* "promise/promise.pyx":459
+ *         return self._then(did_fulfill, did_reject)
+ * 
+ *     cpdef void done(self, did_fulfill=None, did_reject=None):             # <<<<<<<<<<<<<<
+ *         cdef Promise promise = self._then(did_fulfill, did_reject)
+ *         promise._is_final = True
+ */
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_31done, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_done, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__59)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 459, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_done, __pyx_t_2) < 0) __PYX_ERR(0, 459, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
+
+  /* "promise/promise.pyx":463
+ *         promise._is_final = True
+ * 
+ *     cpdef void done_all(self, handlers=None):             # <<<<<<<<<<<<<<
+ *         cdef int i
+ *         cdef list handler_list
+ */
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_33done_all, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_done_all, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__61)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 463, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_done_all, __pyx_t_2) < 0) __PYX_ERR(0, 463, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
+
+  /* "promise/promise.pyx":484
+ *                 self.done(handler)
+ * 
+ *     cpdef list then_all(self, handlers=None):             # <<<<<<<<<<<<<<
+ *         cdef int i
+ * 
+ */
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_35then_all, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_then_all, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__63)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 484, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_then_all, __pyx_t_2) < 0) __PYX_ERR(0, 484, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
+
+  /* "promise/promise.pyx":514
  * 
  *     @staticmethod
  *     def reject(obj: Exception) -> Promise:             # <<<<<<<<<<<<<<
  *         return Promise.c_reject(obj)
  * 
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_35reject, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 518, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 514, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_reject, __pyx_t_2) < 0) __PYX_ERR(0, 518, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_obj, __pyx_n_u_Exception) < 0) __PYX_ERR(0, 514, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_return, __pyx_n_u_Promise) < 0) __PYX_ERR(0, 514, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_37reject, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_reject, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__65)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 514, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_1, __pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_reject, __pyx_t_1) < 0) __PYX_ERR(0, 514, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":517
+  /* "promise/promise.pyx":513
  *         return ret
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def reject(obj: Exception) -> Promise:
  *         return Promise.c_reject(obj)
  */
-  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_reject); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 518, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 517, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_reject); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 514, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_reject, __pyx_t_1) < 0) __PYX_ERR(0, 518, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 513, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_reject, __pyx_t_2) < 0) __PYX_ERR(0, 514, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":521
+  /* "promise/promise.pyx":517
  *         return Promise.c_reject(obj)
  * 
  *     rejected = reject             # <<<<<<<<<<<<<<
  * 
  *     @staticmethod
  */
-  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_reject); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 521, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_rejected, __pyx_t_1) < 0) __PYX_ERR(0, 521, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_reject); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 517, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_rejected, __pyx_t_2) < 0) __PYX_ERR(0, 517, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":533
+  /* "promise/promise.pyx":529
  * 
  *     @staticmethod
  *     def resolve(obj) -> Promise:             # <<<<<<<<<<<<<<
  *         return Promise.c_resolve(obj)
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_37resolve, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 533, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 529, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_return, __pyx_n_u_Promise) < 0) __PYX_ERR(0, 529, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_39resolve, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_resolve, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__67)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 529, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_resolve, __pyx_t_1) < 0) __PYX_ERR(0, 533, __pyx_L1_error)
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_1, __pyx_t_2);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_resolve, __pyx_t_1) < 0) __PYX_ERR(0, 529, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":532
+  /* "promise/promise.pyx":528
  *         return _try_convert_to_promise(obj)
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def resolve(obj) -> Promise:
  *         return Promise.c_resolve(obj)
  */
-  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_resolve); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 533, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_resolve); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 529, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 532, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 528, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_resolve, __pyx_t_2) < 0) __PYX_ERR(0, 533, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_resolve, __pyx_t_2) < 0) __PYX_ERR(0, 529, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":536
+  /* "promise/promise.pyx":532
  *         return Promise.c_resolve(obj)
  * 
  *     fulfilled = cast = resolve             # <<<<<<<<<<<<<<
  * 
  *     @staticmethod
  */
-  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_resolve); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 536, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_resolve); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 532, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_fulfilled, __pyx_t_2) < 0) __PYX_ERR(0, 536, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_fulfilled, __pyx_t_2) < 0) __PYX_ERR(0, 532, __pyx_L1_error)
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_cast, __pyx_t_2) < 0) __PYX_ERR(0, 536, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_cast, __pyx_t_2) < 0) __PYX_ERR(0, 532, __pyx_L1_error)
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "promise/promise.pyx":539
+  /* "promise/promise.pyx":535
  * 
  *     @staticmethod
  *     def promisify(f):             # <<<<<<<<<<<<<<
  *         @wraps(f)
  *         def wrapper(*args, **kwargs):
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_39promisify, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 539, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_41promisify, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_promisify, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__69)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 535, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_promisify, __pyx_t_2) < 0) __PYX_ERR(0, 539, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_promisify, __pyx_t_2) < 0) __PYX_ERR(0, 535, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":538
+  /* "promise/promise.pyx":534
  *     fulfilled = cast = resolve
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def promisify(f):
  *         @wraps(f)
  */
-  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_promisify); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 539, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_promisify); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 535, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 538, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 534, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_promisify, __pyx_t_1) < 0) __PYX_ERR(0, 539, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_promisify, __pyx_t_1) < 0) __PYX_ERR(0, 535, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":549
+  /* "promise/promise.pyx":545
  *         return wrapper
  * 
  *     _safe_resolved_promise = Box.__new__(Box)             # <<<<<<<<<<<<<<
  * 
  *     @staticmethod
  */
-  __pyx_t_1 = ((PyObject *)__pyx_tp_new_7promise_7promise_Box(((PyTypeObject *)__pyx_ptype_7promise_7promise_Box), __pyx_empty_tuple, NULL)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 549, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_tp_new_7promise_7promise_Box(((PyTypeObject *)__pyx_ptype_7promise_7promise_Box), __pyx_empty_tuple, NULL)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 545, __pyx_L1_error)
   __Pyx_GOTREF(((PyObject *)__pyx_t_1));
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_safe_resolved_promise, ((PyObject *)__pyx_t_1)) < 0) __PYX_ERR(0, 549, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_safe_resolved_promise, ((PyObject *)__pyx_t_1)) < 0) __PYX_ERR(0, 545, __pyx_L1_error)
   __Pyx_DECREF(((PyObject *)__pyx_t_1)); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":552
+  /* "promise/promise.pyx":548
  * 
  *     @staticmethod
  *     def safe(fn):             # <<<<<<<<<<<<<<
  *         if not Promise._safe_resolved_promise.value:
  *             Promise._safe_resolved_promise.value = Promise.resolve(None)
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_41safe, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 552, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_43safe, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_safe, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__71)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_safe, __pyx_t_1) < 0) __PYX_ERR(0, 552, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_safe, __pyx_t_1) < 0) __PYX_ERR(0, 548, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":551
+  /* "promise/promise.pyx":547
  *     _safe_resolved_promise = Box.__new__(Box)
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def safe(fn):
  *         if not Promise._safe_resolved_promise.value:
  */
-  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_safe); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 552, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_safe); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 547, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_safe, __pyx_t_2) < 0) __PYX_ERR(0, 552, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_safe, __pyx_t_2) < 0) __PYX_ERR(0, 548, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":567
+  /* "promise/promise.pyx":563
  * 
  *     @staticmethod
  *     def all(promises) -> Promise:             # <<<<<<<<<<<<<<
  *         return Promise._all(promises)
  * 
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_43all, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 563, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_all, __pyx_t_2) < 0) __PYX_ERR(0, 567, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_return, __pyx_n_u_Promise) < 0) __PYX_ERR(0, 563, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_45all, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_all, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__73)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 563, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_1, __pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_all, __pyx_t_1) < 0) __PYX_ERR(0, 563, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":566
+  /* "promise/promise.pyx":562
  *         return PromiseList(promises).promise
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def all(promises) -> Promise:
  *         return Promise._all(promises)
  */
-  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_all); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 567, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 566, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_all); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 563, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_all, __pyx_t_1) < 0) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 562, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_all, __pyx_t_2) < 0) __PYX_ERR(0, 563, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":571
+  /* "promise/promise.pyx":567
  * 
  *     @staticmethod
  *     def is_thenable(obj) -> bool:             # <<<<<<<<<<<<<<
  *         return _is_thenable(obj)
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_45is_thenable, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 571, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_return, ((PyObject*)&PyBool_Type)) < 0) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_47is_thenable, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_is_thenable, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__75)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 567, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_is_thenable, __pyx_t_1) < 0) __PYX_ERR(0, 571, __pyx_L1_error)
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_1, __pyx_t_2);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_is_thenable, __pyx_t_1) < 0) __PYX_ERR(0, 567, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":570
+  /* "promise/promise.pyx":566
  *         return Promise._all(promises)
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def is_thenable(obj) -> bool:
  *         return _is_thenable(obj)
  */
-  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_is_thenable); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 571, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_is_thenable); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 567, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 566, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_is_thenable, __pyx_t_2) < 0) __PYX_ERR(0, 571, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_is_thenable, __pyx_t_2) < 0) __PYX_ERR(0, 567, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":575
+  /* "promise/promise.pyx":571
  * 
  *     @staticmethod
  *     def for_dict(m):             # <<<<<<<<<<<<<<
  *         dict_type = type(m)
  * 
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7Promise_47for_dict, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 575, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_49for_dict, __Pyx_CYFUNCTION_STATICMETHOD | __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise_for_dict, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__77)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 571, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_for_dict, __pyx_t_2) < 0) __PYX_ERR(0, 575, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_for_dict, __pyx_t_2) < 0) __PYX_ERR(0, 571, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":574
+  /* "promise/promise.pyx":570
  *         return _is_thenable(obj)
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def for_dict(m):
  *         dict_type = type(m)
  */
-  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_for_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 575, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_7promise_7promise_Promise, __pyx_n_s_for_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 571, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 574, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 570, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_for_dict, __pyx_t_1) < 0) __PYX_ERR(0, 575, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7promise_7promise_Promise->tp_dict, __pyx_n_s_for_dict, __pyx_t_1) < 0) __PYX_ERR(0, 571, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7promise_7promise_Promise);
 
-  /* "promise/promise.pyx":599
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_51__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise___reduce_cython, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__79)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_reduce_cython, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7Promise_53__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Promise___setstate_cython, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__81)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_setstate_cython, __pyx_t_1) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "promise/promise.pyx":595
  * 
  * 
  * def is_thenable(obj):             # <<<<<<<<<<<<<<
  *     return _is_thenable(obj)
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_7is_thenable, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 599, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_7is_thenable, 0, __pyx_n_s_is_thenable, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__83)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 595, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_is_thenable, __pyx_t_1) < 0) __PYX_ERR(0, 599, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_is_thenable, __pyx_t_1) < 0) __PYX_ERR(0, 595, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":631
+  /* "promise/promise.pyx":627
  * 
  * 
  * promisify = Promise.promisify             # <<<<<<<<<<<<<<
  * promise_for_dict = Promise.for_dict
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_promisify); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 631, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_promisify); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 627, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_promisify, __pyx_t_1) < 0) __PYX_ERR(0, 631, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_promisify, __pyx_t_1) < 0) __PYX_ERR(0, 627, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":632
+  /* "promise/promise.pyx":628
  * 
  * promisify = Promise.promisify
  * promise_for_dict = Promise.for_dict             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_for_dict); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 632, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_7promise_7promise_Promise), __pyx_n_s_for_dict); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 628, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_promise_for_dict, __pyx_t_1) < 0) __PYX_ERR(0, 632, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_promise_for_dict, __pyx_t_1) < 0) __PYX_ERR(0, 628, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":635
+  /* "promise/promise.pyx":631
  * 
  * 
  * def _process_future_result(resolve, reject):             # <<<<<<<<<<<<<<
  *     def handle_future_result(future):
  *         try:
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_9_process_future_result, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 635, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_9_process_future_result, 0, __pyx_n_s_process_future_result, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__85)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 631, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_process_future_result, __pyx_t_1) < 0) __PYX_ERR(0, 635, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_process_future_result, __pyx_t_1) < 0) __PYX_ERR(0, 631, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "promise/promise.pyx":646
+  /* "promise/promise.pyx":642
  * 
  * 
  * def iterate_promise(promise: Promise) -> object:             # <<<<<<<<<<<<<<
  *     if not promise.is_fulfilled:
  *         yield from promise.get_future()
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_11iterate_promise, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 646, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_iterate_promise, __pyx_t_1) < 0) __PYX_ERR(0, 646, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_promise, __pyx_n_u_Promise) < 0) __PYX_ERR(0, 642, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_return, __pyx_n_u_object) < 0) __PYX_ERR(0, 642, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_11iterate_promise, 0, __pyx_n_s_iterate_promise, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__21)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 642, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_2, __pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_iterate_promise, __pyx_t_2) < 0) __PYX_ERR(0, 642, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Box(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_14__pyx_unpickle_Box, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_Box, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_14__pyx_unpickle_Box, 0, __pyx_n_s_pyx_unpickle_Box, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__88)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_Box, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "(tree fragment)":11
  *         __pyx_unpickle_Box__set_state(<Box> __pyx_result, __pyx_state)
@@ -22532,42 +22380,30 @@ if (!__Pyx_RefNanny) {
  *     __pyx_result.value = __pyx_state[0]
  *     if len(__pyx_state) > 1 and hasattr(__pyx_result, '__dict__'):
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_16__pyx_unpickle_TryCatchResult, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_TryCatchResult, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_16__pyx_unpickle_TryCatchResult, 0, __pyx_n_s_pyx_unpickle_TryCatchResult, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__90)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_TryCatchResult, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_PartialSettlePromise(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_18__pyx_unpickle_PartialSettlePromise, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_PartialSettleProm, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "(tree fragment)":11
- *         __pyx_unpickle_PartialSettlePromise__set_state(<PartialSettlePromise> __pyx_result, __pyx_state)
- *     return __pyx_result
- * cdef __pyx_unpickle_PartialSettlePromise__set_state(PartialSettlePromise __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result.handler = __pyx_state[0]; __pyx_result.promise = __pyx_state[1]; __pyx_result.target = __pyx_state[2]; __pyx_result.traceback = __pyx_state[3]; __pyx_result.value = __pyx_state[4]
- *     if len(__pyx_state) > 5 and hasattr(__pyx_result, '__dict__'):
- */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7promise_7promise_20__pyx_unpickle_Promise, NULL, __pyx_n_s_promise_promise); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_Promise, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7promise_7promise_18__pyx_unpickle_PartialSettlePromise, 0, __pyx_n_s_pyx_unpickle_PartialSettleProm, NULL, __pyx_n_s_promise_promise, __pyx_d, ((PyObject *)__pyx_codeobj__92)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_PartialSettleProm, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "promise/promise.pyx":1
  * cimport cython             # <<<<<<<<<<<<<<
  * 
  * from asyncio import Future, ensure_future
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /*--- Wrapped vars code ---*/
 
@@ -23456,6 +23292,27 @@ static void __Pyx_RaiseArgtupleInvalid(
                  "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
                  func_name, more_or_less, num_expected,
                  (num_expected == 1) ? "" : "s", num_found);
+}
+
+/* ArgTypeTest */
+static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact)
+{
+    if (unlikely(!type)) {
+        PyErr_SetString(PyExc_SystemError, "Missing type object");
+        return 0;
+    }
+    else if (exact) {
+        #if PY_MAJOR_VERSION == 2
+        if ((type == &PyBaseString_Type) && likely(__Pyx_PyBaseString_CheckExact(obj))) return 1;
+        #endif
+    }
+    else {
+        if (likely(__Pyx_TypeCheck(obj, type))) return 1;
+    }
+    PyErr_Format(PyExc_TypeError,
+        "Argument '%.200s' has incorrect type (expected %.200s, got %.200s)",
+        name, type->tp_name, Py_TYPE(obj)->tp_name);
+    return 0;
 }
 
 /* WriteUnraisableException */
@@ -24372,27 +24229,6 @@ static PyObject *__Pyx_CyFunction_New(PyMethodDef *ml, int flags, PyObject* qual
         PyObject_GC_Track(op);
     }
     return op;
-}
-
-/* ArgTypeTest */
-static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact)
-{
-    if (unlikely(!type)) {
-        PyErr_SetString(PyExc_SystemError, "Missing type object");
-        return 0;
-    }
-    else if (exact) {
-        #if PY_MAJOR_VERSION == 2
-        if ((type == &PyBaseString_Type) && likely(__Pyx_PyBaseString_CheckExact(obj))) return 1;
-        #endif
-    }
-    else {
-        if (likely(__Pyx_TypeCheck(obj, type))) return 1;
-    }
-    PyErr_Format(PyExc_TypeError,
-        "Argument '%.200s' has incorrect type (expected %.200s, got %.200s)",
-        name, type->tp_name, Py_TYPE(obj)->tp_name);
-    return 0;
 }
 
 /* None */
@@ -26424,6 +26260,37 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
     }
 
 /* CIntToPy */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
+    const long neg_one = (long) ((long) 0 - (long) 1), const_zero = (long) 0;
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(long) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(long) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(long) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(long),
+                                     little, !is_unsigned);
+    }
+}
+
+/* CIntToPy */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_enum____pyx_t_7promise_7promise_State(enum __pyx_t_7promise_7promise_State value) {
     const enum __pyx_t_7promise_7promise_State neg_one = (enum __pyx_t_7promise_7promise_State) ((enum __pyx_t_7promise_7promise_State) 0 - (enum __pyx_t_7promise_7promise_State) 1), const_zero = (enum __pyx_t_7promise_7promise_State) 0;
     const int is_unsigned = neg_one > const_zero;
@@ -26454,35 +26321,193 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_enum____pyx_t_7promise_7promise_
     }
 }
 
-/* CIntToPy */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
+/* CIntFromPy */
+static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *x) {
     const long neg_one = (long) ((long) 0 - (long) 1), const_zero = (long) 0;
     const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
+#if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_Check(x))) {
         if (sizeof(long) < sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(long) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+            __PYX_VERIFY_RETURN_INT(long, long, PyInt_AS_LONG(x))
+        } else {
+            long val = PyInt_AS_LONG(x);
+            if (is_unsigned && unlikely(val < 0)) {
+                goto raise_neg_overflow;
+            }
+            return (long) val;
+        }
+    } else
 #endif
+    if (likely(PyLong_Check(x))) {
+        if (is_unsigned) {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (long) 0;
+                case  1: __PYX_VERIFY_RETURN_INT(long, digit, digits[0])
+                case 2:
+                    if (8 * sizeof(long) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) >= 2 * PyLong_SHIFT) {
+                            return (long) (((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(long) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) >= 3 * PyLong_SHIFT) {
+                            return (long) (((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(long) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) >= 4 * PyLong_SHIFT) {
+                            return (long) (((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
+                        }
+                    }
+                    break;
+            }
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON
+            if (unlikely(Py_SIZE(x) < 0)) {
+                goto raise_neg_overflow;
+            }
+#else
+            {
+                int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
+                if (unlikely(result < 0))
+                    return (long) -1;
+                if (unlikely(result == 1))
+                    goto raise_neg_overflow;
+            }
+#endif
+            if (sizeof(long) <= sizeof(unsigned long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(long, unsigned long, PyLong_AsUnsignedLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(long, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
+#endif
+            }
+        } else {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (long) 0;
+                case -1: __PYX_VERIFY_RETURN_INT(long, sdigit, (sdigit) (-(sdigit)digits[0]))
+                case  1: __PYX_VERIFY_RETURN_INT(long,  digit, +digits[0])
+                case -2:
+                    if (8 * sizeof(long) - 1 > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                            return (long) (((long)-1)*(((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+                case 2:
+                    if (8 * sizeof(long) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                            return (long) ((((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+                case -3:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                            return (long) (((long)-1)*(((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(long) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                            return (long) ((((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+                case -4:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                            return (long) (((long)-1)*(((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(long) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                            return (long) ((((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+            }
+#endif
+            if (sizeof(long) <= sizeof(long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(long, long, PyLong_AsLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(long, PY_LONG_LONG, PyLong_AsLongLong(x))
+#endif
+            }
+        }
+        {
+#if CYTHON_COMPILING_IN_PYPY && !defined(_PyLong_AsByteArray)
+            PyErr_SetString(PyExc_RuntimeError,
+                            "_PyLong_AsByteArray() not available in PyPy, cannot convert large numbers");
+#else
+            long val;
+            PyObject *v = __Pyx_PyNumber_IntOrLong(x);
+ #if PY_MAJOR_VERSION < 3
+            if (likely(v) && !PyLong_Check(v)) {
+                PyObject *tmp = v;
+                v = PyNumber_Long(tmp);
+                Py_DECREF(tmp);
+            }
+ #endif
+            if (likely(v)) {
+                int one = 1; int is_little = (int)*(unsigned char *)&one;
+                unsigned char *bytes = (unsigned char *)&val;
+                int ret = _PyLong_AsByteArray((PyLongObject *)v,
+                                              bytes, sizeof(val),
+                                              is_little, !is_unsigned);
+                Py_DECREF(v);
+                if (likely(!ret))
+                    return val;
+            }
+#endif
+            return (long) -1;
         }
     } else {
-        if (sizeof(long) <= sizeof(long)) {
-            return PyInt_FromLong((long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-#endif
-        }
+        long val;
+        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
+        if (!tmp) return (long) -1;
+        val = __Pyx_PyInt_As_long(tmp);
+        Py_DECREF(tmp);
+        return val;
     }
-    {
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        unsigned char *bytes = (unsigned char *)&value;
-        return _PyLong_FromByteArray(bytes, sizeof(long),
-                                     little, !is_unsigned);
-    }
+raise_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "value too large to convert to long");
+    return (long) -1;
+raise_neg_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "can't convert negative value to long");
+    return (long) -1;
 }
 
 /* CIntFromPy */
@@ -26861,195 +26886,6 @@ raise_neg_overflow:
     PyErr_SetString(PyExc_OverflowError,
         "can't convert negative value to enum __pyx_t_7promise_7promise_State");
     return (enum __pyx_t_7promise_7promise_State) -1;
-}
-
-/* CIntFromPy */
-static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *x) {
-    const long neg_one = (long) ((long) 0 - (long) 1), const_zero = (long) 0;
-    const int is_unsigned = neg_one > const_zero;
-#if PY_MAJOR_VERSION < 3
-    if (likely(PyInt_Check(x))) {
-        if (sizeof(long) < sizeof(long)) {
-            __PYX_VERIFY_RETURN_INT(long, long, PyInt_AS_LONG(x))
-        } else {
-            long val = PyInt_AS_LONG(x);
-            if (is_unsigned && unlikely(val < 0)) {
-                goto raise_neg_overflow;
-            }
-            return (long) val;
-        }
-    } else
-#endif
-    if (likely(PyLong_Check(x))) {
-        if (is_unsigned) {
-#if CYTHON_USE_PYLONG_INTERNALS
-            const digit* digits = ((PyLongObject*)x)->ob_digit;
-            switch (Py_SIZE(x)) {
-                case  0: return (long) 0;
-                case  1: __PYX_VERIFY_RETURN_INT(long, digit, digits[0])
-                case 2:
-                    if (8 * sizeof(long) > 1 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) >= 2 * PyLong_SHIFT) {
-                            return (long) (((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
-                        }
-                    }
-                    break;
-                case 3:
-                    if (8 * sizeof(long) > 2 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) >= 3 * PyLong_SHIFT) {
-                            return (long) (((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
-                        }
-                    }
-                    break;
-                case 4:
-                    if (8 * sizeof(long) > 3 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) >= 4 * PyLong_SHIFT) {
-                            return (long) (((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
-                        }
-                    }
-                    break;
-            }
-#endif
-#if CYTHON_COMPILING_IN_CPYTHON
-            if (unlikely(Py_SIZE(x) < 0)) {
-                goto raise_neg_overflow;
-            }
-#else
-            {
-                int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
-                if (unlikely(result < 0))
-                    return (long) -1;
-                if (unlikely(result == 1))
-                    goto raise_neg_overflow;
-            }
-#endif
-            if (sizeof(long) <= sizeof(unsigned long)) {
-                __PYX_VERIFY_RETURN_INT_EXC(long, unsigned long, PyLong_AsUnsignedLong(x))
-#ifdef HAVE_LONG_LONG
-            } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
-                __PYX_VERIFY_RETURN_INT_EXC(long, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
-#endif
-            }
-        } else {
-#if CYTHON_USE_PYLONG_INTERNALS
-            const digit* digits = ((PyLongObject*)x)->ob_digit;
-            switch (Py_SIZE(x)) {
-                case  0: return (long) 0;
-                case -1: __PYX_VERIFY_RETURN_INT(long, sdigit, (sdigit) (-(sdigit)digits[0]))
-                case  1: __PYX_VERIFY_RETURN_INT(long,  digit, +digits[0])
-                case -2:
-                    if (8 * sizeof(long) - 1 > 1 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                            return (long) (((long)-1)*(((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-                case 2:
-                    if (8 * sizeof(long) > 1 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                            return (long) ((((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-                case -3:
-                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                            return (long) (((long)-1)*(((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-                case 3:
-                    if (8 * sizeof(long) > 2 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                            return (long) ((((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-                case -4:
-                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                            return (long) (((long)-1)*(((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-                case 4:
-                    if (8 * sizeof(long) > 3 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                            return (long) ((((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-            }
-#endif
-            if (sizeof(long) <= sizeof(long)) {
-                __PYX_VERIFY_RETURN_INT_EXC(long, long, PyLong_AsLong(x))
-#ifdef HAVE_LONG_LONG
-            } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
-                __PYX_VERIFY_RETURN_INT_EXC(long, PY_LONG_LONG, PyLong_AsLongLong(x))
-#endif
-            }
-        }
-        {
-#if CYTHON_COMPILING_IN_PYPY && !defined(_PyLong_AsByteArray)
-            PyErr_SetString(PyExc_RuntimeError,
-                            "_PyLong_AsByteArray() not available in PyPy, cannot convert large numbers");
-#else
-            long val;
-            PyObject *v = __Pyx_PyNumber_IntOrLong(x);
- #if PY_MAJOR_VERSION < 3
-            if (likely(v) && !PyLong_Check(v)) {
-                PyObject *tmp = v;
-                v = PyNumber_Long(tmp);
-                Py_DECREF(tmp);
-            }
- #endif
-            if (likely(v)) {
-                int one = 1; int is_little = (int)*(unsigned char *)&one;
-                unsigned char *bytes = (unsigned char *)&val;
-                int ret = _PyLong_AsByteArray((PyLongObject *)v,
-                                              bytes, sizeof(val),
-                                              is_little, !is_unsigned);
-                Py_DECREF(v);
-                if (likely(!ret))
-                    return val;
-            }
-#endif
-            return (long) -1;
-        }
-    } else {
-        long val;
-        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
-        if (!tmp) return (long) -1;
-        val = __Pyx_PyInt_As_long(tmp);
-        Py_DECREF(tmp);
-        return val;
-    }
-raise_overflow:
-    PyErr_SetString(PyExc_OverflowError,
-        "value too large to convert to long");
-    return (long) -1;
-raise_neg_overflow:
-    PyErr_SetString(PyExc_OverflowError,
-        "can't convert negative value to long");
-    return (long) -1;
 }
 
 /* FastTypeChecks */

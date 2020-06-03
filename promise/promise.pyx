@@ -75,7 +75,7 @@ cdef class PartialSettlePromise(SchedulerFn):
 
 
 cdef class Promise:
-    def __init__(self, executor=None, scheduler=None):
+    def __cinit__(self, executor=None, Scheduler scheduler=None):
         self._state = State.PENDING
         self._length = 0
         self._is_final = \
@@ -83,16 +83,12 @@ cdef class Promise:
             self._is_following = \
             self._is_async_guaranteed = \
             self._is_waiting = False
-        self._fulfillment_handler0 = \
-            self._rejection_handler0 = \
-            self._promise0 = \
-            self._future = \
-            self._traceback = None
         self._scheduler = scheduler
         self._promises = []
         self._rejection_handlers = []
         self._fulfillment_handlers = []
 
+    def __init__(self, executor=None, scheduler=None):
         if executor is not None:
             self._resolve_from_executor(executor)
 
